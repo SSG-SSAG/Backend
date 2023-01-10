@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -21,12 +22,17 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.shinsegae.ssgssag"})
 @MapperScan(basePackages = {"com.shinsegae.ssgssag"})
+@PropertySource("classpath:db.properties") // db.properties 파일 불러오기
 public class MvcConfig implements WebMvcConfigurer {
 	
-	@Value("${db.*}")
+	// DB 로그인 정보
+	@Value("${db.driver}")
 	private String driver;
+	@Value("${db.url}")
 	private String url;
+	@Value("${db.id}")
 	private String id;
+	@Value("${db.pwd}")
 	private String pwd;
 	
 	// default servlet 설정 (정적 자원(html, css, js, jpg, gif, png, ... ) 처리)
@@ -69,17 +75,7 @@ public class MvcConfig implements WebMvcConfigurer {
 		SqlSessionFactoryBean ssf = new SqlSessionFactoryBean();
 		ssf.setDataSource(dataSource());
 		
-		//SqlSessionTemplate 방식으로 하는 경우 매퍼 파일(xml)의 위치를 지정
-		PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		ssf.setMapperLocations(resolver.getResources("classpath:/mapper/emp.xml")); // 경로 적어주기
 		return ssf.getObject();
-	}
-	
-	// DAO에서 주입 받을 객체 (주입 받으려면 무조건! bean에 등록되어 있어야 한다)
-	@Bean
-	public SqlSessionTemplate sqlSessionTemplate() throws Exception {
-		SqlSessionTemplate sst = new SqlSessionTemplate(sqlSessionFactory());
-		return sst; 
 	}
 	
 }

@@ -175,6 +175,13 @@
 		    <artifactId>spring-tx</artifactId>
 		    <version>5.2.22.RELEASE</version>
 		</dependency>
+		
+		<!-- spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>5.2.22.RELEASE</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>

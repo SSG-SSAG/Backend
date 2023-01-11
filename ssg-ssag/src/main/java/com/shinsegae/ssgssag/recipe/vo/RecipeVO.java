@@ -17,4 +17,13 @@ public class RecipeVO {
 	private String source;			// 출처
 	private int level;				// 난이도
 	private String recipe_ing_info;	// 재료 정보
+	
+	// 페이징 처리
+	private int amount;
+	private int pageNum;
+	
+	public RecipeVO() {	// default
+		this.amount = 10;
+		this.pageNum = 1;
+	}
 }

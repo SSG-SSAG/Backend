@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shinsegae.ssgssag.recipe.mapper.RecipeMapper">	<!-- 인터페이스 -->
+
+<!-- 등록 -->
+<insert id="recipeInsert" parameterType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	INSERT INTO recipe (
+		recipe_id
+	) VALUES (
+		#{recipe_id}
+	)
+</insert>
+
+<!-- 조회 -->
+<!-- 한건 조회 -->
+<select id="selectOne" parameterType="int" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	SELECT * FROM recipe
+	<!-- WHERE recipe_id = #{recipe_id} -->
+</select>
+<!-- 전체 조회 -->
+<select id="selectList" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	SELECT * FROM recipe
+</select>
+
+</mapper>

@@ -6,10 +6,16 @@
 <script>
 
 function goRecipe(){
+	alert('레시피 이름 검색으로 변경');
 	console.log("레시피 이름 검색");
+	
+	document.srchForm.action="recipe.ssg";
+	document.srchForm.method="get";
+	document.srchForm.submit();
 }
 
 function goIngredient(){	
+	alert('레시피 재료 검색으로 변경');
 	console.log("레시피 재료 검색");
 }
 
@@ -33,9 +39,14 @@ function goIngredient(){
 	</div>
 </div>
  -->
-<form action="recipe.ssg" method="post">
+ 
+<form name="rForm" action="recipe.ssg" method="get">
+	<input type="text" name="rname" value="${recipeVO.rname }">	<!-- 검색어 -->
+	<input type="submit" value="검색">
+</form>
+
+<form name="iForm" action="recipe.ssg" method="post">
 	<input type="text" name="iname" value="${recipeVO.iname }">	<!-- 검색어 -->
-	<!-- <input type="text" name="recipe_ing" value="${recipeVO.iname }">	<!-- 검색어 -->
 	<input type="submit" value="검색">
 </form>
 

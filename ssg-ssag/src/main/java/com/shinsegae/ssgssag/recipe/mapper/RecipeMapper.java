@@ -12,7 +12,10 @@ public interface RecipeMapper {
 	// 등록
 	int recipeInsert(RecipeVO param);
 		
-	// 조회
-	RecipeVO selectOne(int recipe_id);
-	List<RecipeVO> selectList();
+	// 레시피 이름 조회
+	//RecipeVO selectOne(int recipe_id);
+	List<RecipeVO> selectList(RecipeVO vo);
+
+	// 레시피 재료 조회
+	List<RecipeVO> selectIngre(RecipeVO vo);
 }

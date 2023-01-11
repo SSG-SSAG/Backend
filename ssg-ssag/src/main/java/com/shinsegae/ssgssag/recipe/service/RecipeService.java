@@ -14,11 +14,23 @@ public class RecipeService {
 	@Autowired
 	RecipeMapper mapper;
 	
-	// 전체 조회
-	public List<RecipeVO> all() {
-		System.out.println("### Service ###");
+	// 레시피 이름 조회
+	public List<RecipeVO> reci(RecipeVO vo) {
+		System.out.println("### Recipe Service ###");
 		
-		List<RecipeVO> obj = mapper.selectList();
+		List<RecipeVO> obj = mapper.selectList(vo);
+		
+		System.out.println("### obj ### " + obj.get(0));
+		return obj;
+	}
+	
+	// 레시피 재료 조회
+	public List<RecipeVO> ingre(RecipeVO vo) {
+		System.out.println("### Ingredient Service ###");
+		
+		List<RecipeVO> obj = mapper.selectIngre(vo);
+		
+		System.out.println("### obj ### " + obj.get(0));
 		return obj;
 	}
 }

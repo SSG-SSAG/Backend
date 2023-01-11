@@ -1,5 +1,15 @@
 package com.shinsegae.ssgssag.member.mapper;
 
-public class RefgMapper {
+import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+
+import com.shinsegae.ssgssag.vo.RefgVO;
+
+@Mapper
+public interface RefgMapper {
+	
+	List<RefgVO> getList(String id);
+	String getName(int id);
+	int delete(int id);
 }

@@ -3,13 +3,17 @@
     pageEncoding="UTF-8"%>
 <%@ page session="false" %>
 
-<%
+<script>
 
-/* function goRecipe(){
-	
-};
- */
-%>
+function goRecipe(){
+	console.log("레시피 이름 검색");
+}
+
+function goIngredient(){	
+	console.log("레시피 재료 검색");
+}
+
+</script>
 
 <html>
 <head>
@@ -29,15 +33,15 @@
 	</div>
 </div>
  -->
-<form>
-	<input type="text" name="recipe_name" value="${recipeVO.recipe_name }">	<!-- 검색어 -->
-	<!-- <input type="text" name="recipe_ing" value="${recipeVO.recipe_ing }">	<!-- 검색어 -->
+<form action="recipe.ssg" method="post">
+	<input type="text" name="iname" value="${recipeVO.iname }">	<!-- 검색어 -->
+	<!-- <input type="text" name="recipe_ing" value="${recipeVO.iname }">	<!-- 검색어 -->
 	<input type="submit" value="검색">
 </form>
 
 <div>
-	<input id="recipeBtn" type="button" value="레시피 이름 검색">
-	<input id="ingBtn" type="button" value="레시피 재료 검색">
+	<input id="recipeBtn" type="button" value="레시피 이름 검색" onclick="goRecipe();">
+	<input id="ingBtn" type="button" value="레시피 재료 검색" onclick="goIngredient();">
 </div>
 
 <table border="1">
@@ -47,7 +51,7 @@
 		<td>난이도</td>
 		<td>이미지</td>
 	</tr>
-	<c:forEach var="vo" items="${list }">	<!-- request에 들어있는 아이템 -->
+	<c:forEach var="vo" items="${ilist }">	<!-- request에 들어있는 아이템 -->
 	<tr>
 		<td>${vo.recipe_id }</td>
 		<td>${vo.recipe_name }</td>

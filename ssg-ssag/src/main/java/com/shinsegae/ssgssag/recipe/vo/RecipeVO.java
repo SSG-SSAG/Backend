@@ -22,7 +22,8 @@ public class RecipeVO {
 	private int amount;
 	private int pageNum;
 	
-	public RecipeVO() {	// default
+	// »ı¼ºÀÚ
+	public RecipeVO() {				// default
 		this.amount = 10;
 		this.pageNum = 1;
 	}

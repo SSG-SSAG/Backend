@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.shinsegae.ssgssag.member.mapper.MemberMapper">
+
+	<!-- 존재하는 계정인지 확인 -->
+	<select id="alreadyMember" 
+		resultType="com.shinsegae.ssgssag.member.vo.MemberVO"
+		parameterType="com.shinsegae.ssgssag.member.vo.MemberVO">
+		SELECT * from user
+		WHERE id = #{check_id}
+	</select>
+	
+	<!-- 새로 회원가입 -->
+	<insert id="joinMember" parameterType="com.shinsegae.ssgssag.member.vo.MemberVO">
+		INSERT INTO user (
+			id, password, name, nickname, reg_date, gender, birth_date
+		)
+		VALUES (
+			#{id}, #{password}, #{name}, #{nickname}, now(), #{gender}, #{birth_date}
+		)
+	</insert>
+	
+</mapper>

@@ -27,8 +27,8 @@ function goIngredient(){
 	 location.href="recipe_des.ssg?recipe_id="+recipe_id;	 
 	 
  }
- 
  </script>
+ 
 <html>
 <head>
 	<title>Recipe Main</title>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shinsegae.ssgssag.recipe.mapper.RecipeMapper">	<!-- 인터페이스 -->
+
+<!-- 등록 -->
+<insert id="recipeInsert" parameterType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	INSERT INTO recipe (
+		recipe_id
+	) VALUES (
+		#{recipe_id}
+	)
+</insert>
+
+<!-- 조회 -->
+<select id="selectList" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	SELECT * FROM recipe
+	<where>
+		<if test="type == 'all'">
+			<if test="rname != '' and rname != null">
+				AND recipe_name LIKE '%${rname}%'
+				|| recipe_id IN (
+					SELECT recipe_id 
+					FROM recipe_ing 
+					WHERE ing_id IN (
+						SELECT ing_id FROM ingredients WHERE ing_name LIKE '%${rname}%'
+					)
+				)
+			</if>
+		</if>
+		<if test="type == 'rcp'">
+			<if test="rname != '' and rname != null">
+				AND recipe_name LIKE '%${rname}%'
+			</if>
+		</if>
+		<if test="type == 'ing'">
+			<if test="rname != '' and rname != null">
+				AND recipe_id IN (
+					SELECT recipe_id 
+					FROM recipe_ing 
+					WHERE ing_id IN (
+						SELECT ing_id FROM ingredients WHERE ing_name LIKE '%${rname}%'
+					)
+				)
+
+			</if>
+		</if>
+	</where>
+</select>
+
+
+
+
+</mapper>

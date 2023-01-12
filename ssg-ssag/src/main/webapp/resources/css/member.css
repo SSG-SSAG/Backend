@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+.member-form {
+	margin: 4vh 4vw;
+}
+
+.member-hello {
+	margin: 4vh 2vw 2vh 2vw;
+	color: #111111;
+}
+
+.member-submit-btn {
+	width: 15vw;
+	height: 5vh;
+	background: rgba(163, 144, 122, 0.8);
+	color: #ffffff;
+	border: none;
+	padding: 2px 4px;
+	border-radius: 5px;	
+	margin: 2vh 0;
+}

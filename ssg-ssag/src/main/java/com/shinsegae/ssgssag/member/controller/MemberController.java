@@ -44,7 +44,7 @@ public class MemberController extends BaseController {
 //	}
 	
 	// 회원 가입
-	@PostMapping("/auth/signup")
+	@PostMapping("/auth/signup.ssg")
 	public void signUp(MemberVO memberVO, HttpServletResponse res) throws Exception {
 		int r = memberService.joinMember(memberVO);
 		
@@ -62,7 +62,7 @@ public class MemberController extends BaseController {
 	
 	// 로그인 페이지로 이동
 	// auth/login으로 GET 요청을 보내면 member/login 페이지를 보여준다
-	@GetMapping(value="auth/login")
+	@GetMapping(value="auth/login.ssg")
 	public String Login(Model model) throws Exception {
 		return "member/login";
 	}
@@ -73,7 +73,7 @@ public class MemberController extends BaseController {
 	 * -1: 없는 계정(아이디 틀림)
 	 * -2: 비밀번호 불일치
 	 * */
-	@PostMapping(value="auth/login")
+	@PostMapping(value="auth/login.ssg")
 	@ResponseBody
 	public void loginAction(
 			MemberVO memberVO, HttpServletRequest req, HttpServletResponse res, HttpSession sess

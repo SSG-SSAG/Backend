@@ -3,16 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<jsp:include page="../layout/head.jsp"/>	
 </head>
 <body>
-	<div>
-		<button>홈</button>
-		<button>레시피</button>
-		<button>찜</button>
-		<button>냉장고</button>
-		<button><a href="auth/login" >로그인</a></button>
+	<div class="menu">
+		<div class="menu-btn"><a href="" >홈</a></div>
+		<div class="menu-btn"><a href="recipe/recipe_search.ssg" >레시피</a></div>
+		<div class="menu-btn"><a href="" >찜</a></div>
+		<div class="menu-btn"><a href="refg.ssg" >냉장고</a></div>
+		<div class="menu-btn"><a href="auth/login.ssg" >로그인</a></div>
 	</div>
 </body>
 </html>

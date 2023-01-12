@@ -1,8 +1,12 @@
 @charset "UTF-8";
 
+a {
+	text-decoration: none;
+}
+
 .main-background {
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	background: #554635;
 }
 
@@ -16,9 +20,8 @@
 
 .content-container {
 	border: 1px solid yellow;
-	width: 35%;
+	width: 100%;
 	height: 84%;
-	
 }
 
 .header{
@@ -35,4 +38,21 @@
 	height: 8vh;
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+}
+
+.menu-btn {
+	width: 20%;
+	text-decoration: none;
+	text-aling: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ccenter-layout {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }

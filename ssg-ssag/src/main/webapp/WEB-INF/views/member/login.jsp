@@ -12,11 +12,14 @@
 		<table>
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="check_id" value="${memberVO.check_id}"></td>
+				<td>
+					<input type="text" name="id" value="${memberVO.id}">
+				</td>
+				
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="check_password" value="${memberVO.check_password}"></td>
+				<td><input type="password" name="password" value="${memberVO.password}"></td>
 			</tr>
 			<tr>
 				<td colspan="2">

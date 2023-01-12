@@ -3,19 +3,8 @@
 
 <mapper namespace="com.shinsegae.ssgssag.member.mapper.MemberMapper">
 
-	<!-- 존재하는 계정인지 확인 -->
-	<select id="existedMember" resultType="com.shinsegae.ssgssag.member.vo.MemberVO">
-		SELECT id, password from user
-		WHERE id = #{check_id}
-	</select>
-	
-	<!-- 비밀번호 확인 -->
-	<select id="checkPwd" resultType="com.shinsegae.ssgssag.member.vo.MemberVO">
-		SELECT id, password from user
-		WHERE id = #{check_id} AND password = sha2(#{password}, 256)
-	</select>
-	
-	<!-- 새로 회원가입 -->
+	<!-- 회원가입 관련 SQL -->
+	<!-- 회원 등록 -->
 	<insert id="joinMember" parameterType="com.shinsegae.ssgssag.member.vo.MemberVO">
 		INSERT INTO user (
 			id, password, name, nickname, reg_date, gender, birth_date
@@ -24,5 +13,27 @@
 			#{id}, sha2(#{password}, 256), #{name}, #{nickname}, now(), #{gender}, #{birth_date}
 		)
 	</insert>
+	
+	<!-- 아이디 중복 확인 -->
+	<select id="checkId" resultType="com.shinsegae.ssgssag.member.vo.MemberVO">
+		SELECT id from user WHERE id = #{id}
+	</select>
+	
+	<!-- 이름 중복 확인 -->
+	<select id="checkName" resultType="com.shinsegae.ssgssag.member.vo.MemberVO">
+		SELECT id from user WHERE id = #{name}
+	</select>
+	
+	<!-- 닉네임 중복 확인 -->
+	<select id="checkNickname" resultType="com.shinsegae.ssgssag.member.vo.MemberVO">
+		SELECT id from user WHERE id = #{nickname}
+	</select>
+	
+	<!-- 로그인 관련 SQL -->	
+	<!-- 로그인 / 아이디 및 비밀번호 확인 -->
+	<select id="existedMember" parameterType="com.shinsegae.ssgssag.member.vo.MemberVO" resultType="com.shinsegae.ssgssag.member.vo.MemberVO">
+		SELECT * from user
+		WHERE id = #{id} AND password = sha2(#{password}, 256)
+	</select>
 	
 </mapper>

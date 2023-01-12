@@ -40,27 +40,6 @@ public class MemberVO {
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
-	}
-
-	// SQL 조회용 변수
-    private String check_id;
-    private String check_password;
-
-	public String getCheck_id() {
-		return check_id;
-	}
-
-	public void setCheck_id(String check_id) {
-		this.check_id = check_id;
-	}
-
-	public String getCheck_password() {
-		return check_password;
-	}
-
-	public void setCheck_password(String check_password) {
-		this.check_password = check_password;
-	}
-    
+	}    
     
 }

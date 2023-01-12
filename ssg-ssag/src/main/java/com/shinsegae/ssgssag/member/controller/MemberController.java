@@ -1,5 +1,8 @@
 package com.shinsegae.ssgssag.member.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -8,8 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.shinsegae.ssgssag.common.BaseController;
 import com.shinsegae.ssgssag.member.service.MemberService;
@@ -25,15 +29,21 @@ public class MemberController extends BaseController {
 	private MemberService memberService;
 
 	
-	// È¸¿ø °¡ÀÔ ÆäÀÌÁö·Î ÀÌµ¿
-	// auth/signupÀ¸·Î GET ¿äÃ»À» º¸³»¸é member/signup ÆäÀÌÁö¸¦ º¸¿©ÁØ´Ù
+	// íšŒì› ê°€ì… í˜ì´ì§€ë¡œ ì´ë™
+	// auth/signupìœ¼ë¡œ GET ìš”ì²­ì„ ë³´ë‚´ë©´ member/signup í˜ì´ì§€ë¥¼ ë³´ì—¬ì¤€ë‹¤
 	@GetMapping("/auth/signup")
 	public String signUp() {
 		return "member/signup";
- 
 	}
 	
-	// È¸¿ø °¡ÀÔ
+	// ì•„ì´ë”” ì¤‘ë³µ í™•ì¸
+//	@RequestMapping(value="/checkId", method = RequestMethod.GET)
+//	@ResponseBody
+//	public String checkId(String id) throws Exception {
+//		return memberService.checkId(id) + "";
+//	}
+	
+	// íšŒì› ê°€ì…
 	@PostMapping("/auth/signup")
 	public void signUp(MemberVO memberVO, HttpServletResponse res) throws Exception {
 		int r = memberService.joinMember(memberVO);
@@ -41,51 +51,63 @@ public class MemberController extends BaseController {
 		String msg = "";
 		String url = "";
 		if (r >0 ) {
-			msg = "È¸¿ø°¡ÀÔ ¿Ï·á!";
+			msg = "íšŒì›ê°€ì… ì™„ë£Œ!";
 			url="/ssgssag/auth/login";
 		} else {
-			msg = "È¸¿ø°¡ÀÔ¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù";
+			msg = "íšŒì›ê°€ì…ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤";
 			url="/ssgssag/auth/signup";
 		}
 		alert(res, msg, url);
 	}
 	
-	// ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿
-	// auth/loginÀ¸·Î GET ¿äÃ»À» º¸³»¸é member/login ÆäÀÌÁö¸¦ º¸¿©ÁØ´Ù
+	// ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™
+	// auth/loginìœ¼ë¡œ GET ìš”ì²­ì„ ë³´ë‚´ë©´ member/login í˜ì´ì§€ë¥¼ ë³´ì—¬ì¤€ë‹¤
 	@GetMapping(value="auth/login")
 	public String Login(Model model) throws Exception {
 		return "member/login";
 	}
 	
-	// ·Î±×ÀÎ ½ÇÇà
+	// ë¡œê·¸ì¸ ì‹¤í–‰
 	/*
-	 * 1: ·Î±×ÀÎ ¼º°ø
-	 * -1: ¾ø´Â °èÁ¤(¾ÆÀÌµğ Æ²¸²)
-	 * -2: ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡
+	 * 1: ë¡œê·¸ì¸ ì„±ê³µ
+	 * -1: ì—†ëŠ” ê³„ì •(ì•„ì´ë”” í‹€ë¦¼)
+	 * -2: ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜
 	 * */
 	@PostMapping(value="auth/login")
 	@ResponseBody
 	public void loginAction(
-			MemberVO memberVO, HttpSession session, HttpServletResponse res) throws Exception {
+			MemberVO memberVO, HttpServletRequest req, HttpServletResponse res, HttpSession sess
+			) throws Exception {
+		
+		/*
+		 * MemberVo: ë°ì´í„° ì „ë‹¬ ë°›ëŠ” ìš©
+		 * HttpServletRequest: ë¡œê·¸ì¸ ì„±ê³µ ì‹œ sessionì— íšŒì› ì •ë³´ ì €ì¥
+		 * HttpServletResponse: ë¡œê·¸ì¸ ì‹¤íŒ¨ ì‹œ sessionì— ì—ëŸ¬ ì €ì¥í•´ì„œ BaseControllerë¡œ ë³´ë‚´ê¸°
+		 * */
 		
 		String msg = "";
 		String url = "";
-		// ¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£ °ËÁõ
-		int result = memberService.loginAction(memberVO);
+		// ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ ê²€ì¦
+		MemberVO currentUser = memberService.loginAction(memberVO);
 			
-		if (result == 1) {
-			msg = "·Î±×ÀÎ¿¡ ¼º°øÇß½À´Ï´Ù!";
-			url = "/ssgssag"; // ¸ŞÀÎÀ¸·Î ÀÌµ¿
-		} else if (result == -1 ){
-			msg = "°èÁ¤ÀÌ ¾ø¾î¿ä. È¸¿ø°¡ÀÔ ¸ÕÀú ÇØÁÖ¼¼¿ä!" ;
-			url = "/ssgssag/auth/signup"; // È¸¿ø°¡ÀÔ ÆäÀÌÁö·Î ÀÌµ¿
+		if (currentUser != null) {
+			msg = "ë¡œê·¸ì¸ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤!";
+			url = "/ssgssag"; // ë©”ì¸ìœ¼ë¡œ ì´ë™
+			// ì„¸ì…˜ì— ë¡œê·¸ì¸ ë°ì´í„° ì €ì¥
+			sess.setAttribute("currentUser", currentUser);
 		} else {
-			msg = "ºñ¹Ğ¹øÈ£°¡ Æ²·È¾î¿ä. ´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä!";
-			url = "/ssgssag/auth/login"; // ·Î±×ÀÎ ÆäÀÌÁö·Î ÀçÀÌµ¿
+			msg = "ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ í™•ì¸í•´ì£¼ì„¸ìš”";
+			url = "redirect:/ssgssag/auth/login";			
 		}
+			
+//		} else if (result == -1 ){
+//			msg = "ê³„ì •ì´ ì—†ì–´ìš”. íšŒì›ê°€ì… ë¨¼ì € í•´ì£¼ì„¸ìš”!" ;
+//			url = "/ssgssag/auth/signup"; // íšŒì›ê°€ì… í˜ì´ì§€ë¡œ ì´ë™
+//		} else {
+//			msg = "ë¹„ë°€ë²ˆí˜¸ê°€ í‹€ë ¸ì–´ìš”. ë‹¤ì‹œ ì‹œë„í•´ì£¼ì„¸ìš”!";
+//			url = "/ssgssag/auth/login"; // ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì¬ì´ë™
+//		}
 		alert(res, msg, url);
-		
-		
 	}
 	
 }

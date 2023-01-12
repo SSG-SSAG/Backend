@@ -12,6 +12,9 @@ public interface MemberMapper {
 	// 아이디 조회
 	List<MemberVO> alreadyMember(String id);
 	
+	// id를 보내면 존재 여부를 확인해서 보내준다
+	int checkId(String id);
+	
 	// 회원가입
 	int joinMember(MemberVO memberVO);
 	

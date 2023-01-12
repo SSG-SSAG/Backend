@@ -182,6 +182,21 @@
 			<artifactId>spring-test</artifactId>
 			<version>5.2.22.RELEASE</version>
 		</dependency>
+		
+		<!-- not null 체크하는 Bean Validation API -->
+		<dependency>
+		    <groupId>javax.validation</groupId>
+		    <artifactId>validation-api</artifactId>
+		    <version>2.0.1.Final</version>
+		</dependency>
+				
+		<!-- JSON에 맞춰서 카멜케이스를 스네이크케이스로 변경, 데이터 Key 맞춰줌 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.13.4</version>
+		</dependency>
+				
 	</dependencies>
     <build>
         <plugins>

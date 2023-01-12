@@ -17,8 +17,9 @@ function srch_sort(sort) {
 	 location.href="recipe_search.ssg?sort="+sort;
  }
  
-</script>
 
+ </script>
+ 
 <html>
 <head>
 	<title>Recipe Main</title>

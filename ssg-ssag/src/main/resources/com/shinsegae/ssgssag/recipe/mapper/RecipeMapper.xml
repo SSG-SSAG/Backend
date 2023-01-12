@@ -64,5 +64,12 @@
     </if>
 </select>
 
+<select id="getIngs" parameterType="String" resultType="String">
+	SELECT ing_name FROM ingredients WHERE ing_id IN (SELECT ing_id FROM recipe_ing WHERE recipe_id = #{a })
+</select>
+
+<select id="getSteps" parameterType="String" resultType="String">
+	SELECT description FROM recipe_step WHERE recipe_id = #{a }
+</select>
 
 </mapper>

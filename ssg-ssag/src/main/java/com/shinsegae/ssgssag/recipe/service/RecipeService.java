@@ -17,7 +17,7 @@ public class RecipeService {
 	// 레시피 이름 조회
 	public List<RecipeVO> reci(RecipeVO vo) {
 		System.out.println("### Recipe Service ###");
-		
+		System.out.println(vo.getRname());
 		List<RecipeVO> obj = mapper.selectList(vo);
 		
 		System.out.println("### obj ### " + obj.get(0));

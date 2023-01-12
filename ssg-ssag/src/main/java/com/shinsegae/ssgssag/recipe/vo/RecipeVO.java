@@ -36,6 +36,8 @@ public class RecipeVO {
 	private int amount;
 	private int pageNum;
 	
+	private String type;
+	
 	// »ý¼ºÀÚ
 	public RecipeVO() {				// default
 		this.amount = 10;

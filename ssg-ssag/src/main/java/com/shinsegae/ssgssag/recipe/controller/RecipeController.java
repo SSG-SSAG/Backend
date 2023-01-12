@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shinsegae.ssgssag.recipe.service.RecipeService;
 import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
@@ -23,16 +24,24 @@ public class RecipeController {
 	public String getAll(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Recipe Controller ###");
 		List<RecipeVO> obj = service.reci(vo);	// 서비스 호출
-		req.setAttribute("rlist", obj);
+		req.setAttribute("list", obj);
 		return "recipe/recipe";
 	}
 	
 //	@GetMapping("/recipe/recipe.ssg")
-	@PostMapping("/recipe/recipe.ssg")
+	@GetMapping("/recipe/recipe_search.ssg")
 	public String getIng(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Ingredient Controller ###");
-		List<RecipeVO> obj = service.ingre(vo);	// 서비스 호출
-		req.setAttribute("ilist", obj);
+		System.out.println(vo.getRname());
+		List<RecipeVO> obj = service.reci(vo);	// 서비스 호출
+		req.setAttribute("list", obj);
+		System.out.println("checkpoint");
 		return "recipe/recipe";
+	}
+	
+	@GetMapping("/recipe/recipe_des.ssg")
+	public String test(@RequestParam("recipe_id") String recipe_id) {
+		System.out.println(recipe_id);
+		return "recipe/recipe_des";
 	}
 }

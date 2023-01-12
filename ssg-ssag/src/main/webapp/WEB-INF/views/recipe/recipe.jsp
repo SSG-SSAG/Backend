@@ -3,8 +3,9 @@
     pageEncoding="UTF-8"%>
 <%@ page session="false" %>
 
+<!--
 <script>
-
+var flag = "rcp"
 function goRecipe(){
 	alert('레시피 이름 검색으로 변경');
 	console.log("레시피 이름 검색");
@@ -12,15 +13,22 @@ function goRecipe(){
 	document.srchForm.action="recipe.ssg";
 	document.srchForm.method="get";
 	document.srchForm.submit();
+	
 }
 
 function goIngredient(){	
 	alert('레시피 재료 검색으로 변경');
 	console.log("레시피 재료 검색");
 }
-
 </script>
-
+ -->
+ <script>
+ function rcp_des(recipe_id) {
+	 location.href="recipe_des.ssg?recipe_id="+recipe_id;	 
+	 
+ }
+ 
+ </script>
 <html>
 <head>
 	<title>Recipe Main</title>
@@ -29,45 +37,30 @@ function goIngredient(){
 <h2>레시피 메인 페이지</h2>
 <h3>레시피 검색 결과</h3>
 
-<!-- <input type="submit" value="레시피 이름 검색">
-<input type="submit" value="레시피 재료 검색"> -->
-<!-- button --->
-<!-- <div class="btnSet clear">
-    <div>
-	    <a href="javascript:;" class="btn" onclick="goRecipe();">레시피 이름 검색</a>
-	    <a href="javascript:;" class="btn" onclick="goIngredient();">레시피 재료 검색</a>
-	</div>
-</div>
- -->
- 
-<form name="rForm" action="recipe.ssg" method="get">
+<form name="rForm" action="recipe_search.ssg" method="get">
+	<select name="type">
+		<option value="all">전체</option>
+		<option value="rcp">레시피</option>
+		<option value="ing">재료</option>
+	</select>
 	<input type="text" name="rname" value="${recipeVO.rname }">	<!-- 검색어 -->
 	<input type="submit" value="검색">
 </form>
-
-<form name="iForm" action="recipe.ssg" method="post">
-	<input type="text" name="iname" value="${recipeVO.iname }">	<!-- 검색어 -->
-	<input type="submit" value="검색">
-</form>
-
-<div>
-	<input id="recipeBtn" type="button" value="레시피 이름 검색" onclick="goRecipe();">
-	<input id="ingBtn" type="button" value="레시피 재료 검색" onclick="goIngredient();">
-</div>
 
 <table border="1">
 	<tr>
 		<td>ID</td>
 		<td>이름</td>
 		<td>난이도</td>
-		<td>이미지</td>
+		<td colspan="2">이미지</td>
 	</tr>
-	<c:forEach var="vo" items="${ilist }">	<!-- request에 들어있는 아이템 -->
+	<c:forEach var="vo" items="${list }">	<!-- request에 들어있는 아이템 -->
 	<tr>
 		<td>${vo.recipe_id }</td>
 		<td>${vo.recipe_name }</td>
 		<td>${vo.level }</td>
 		<td><img src = "${vo.recipe_img }" width="200" height="200" ></td>
+		<td><input type="button" value="상세보기" onclick="rcp_des(${vo.recipe_id})"></td>
 	</tr>
 	</c:forEach>
 </table>

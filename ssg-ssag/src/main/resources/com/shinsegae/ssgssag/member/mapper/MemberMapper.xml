@@ -4,11 +4,15 @@
 <mapper namespace="com.shinsegae.ssgssag.member.mapper.MemberMapper">
 
 	<!-- 존재하는 계정인지 확인 -->
-	<select id="alreadyMember" 
-		resultType="com.shinsegae.ssgssag.member.vo.MemberVO"
-		parameterType="com.shinsegae.ssgssag.member.vo.MemberVO">
-		SELECT * from user
+	<select id="existedMember" resultType="com.shinsegae.ssgssag.member.vo.MemberVO">
+		SELECT id, password from user
 		WHERE id = #{check_id}
+	</select>
+	
+	<!-- 비밀번호 확인 -->
+	<select id="checkPwd" resultType="com.shinsegae.ssgssag.member.vo.MemberVO">
+		SELECT id, password from user
+		WHERE id = #{check_id} AND password = sha2(#{password}, 256)
 	</select>
 	
 	<!-- 새로 회원가입 -->
@@ -17,7 +21,7 @@
 			id, password, name, nickname, reg_date, gender, birth_date
 		)
 		VALUES (
-			#{id}, #{password}, #{name}, #{nickname}, now(), #{gender}, #{birth_date}
+			#{id}, sha2(#{password}, 256), #{name}, #{nickname}, now(), #{gender}, #{birth_date}
 		)
 	</insert>
 	

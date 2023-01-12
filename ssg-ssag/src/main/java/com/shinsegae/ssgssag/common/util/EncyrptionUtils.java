@@ -21,4 +21,9 @@ public class EncyrptionUtils {
 			return pwd;
 		}
 	}
+	
+	public void test256() {
+		String pwd256 = encryptSHA256("test1234");
+		System.out.println(pwd256);
+	}
 }

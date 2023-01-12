@@ -10,29 +10,16 @@ public class MemberVO {
 	private String birth_date;
 	private int gender;
 	
-	public MemberVO() {
-	}
-	
-	public MemberVO (String id, String password, String name, String nickname, 
-			String reg_date, String birth_date, int gender) {
-		
-		this.id = id;
-		this.password = password;
-		this.name = name;
-		this.nickname = nickname;
-		this.reg_date = reg_date;
-		this.birth_date = birth_date;
-		this.gender = gender;
-	}
-	
-	
-	
     public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public String getPassword() {
+		return password;
 	}
 	
 	public void setPassword(String password) {
@@ -55,8 +42,25 @@ public class MemberVO {
 		this.nickname = nickname;
 	}
 
-
-
 	// SQL 조회용 변수
     private String check_id;
+    private String check_password;
+
+	public String getCheck_id() {
+		return check_id;
+	}
+
+	public void setCheck_id(String check_id) {
+		this.check_id = check_id;
+	}
+
+	public String getCheck_password() {
+		return check_password;
+	}
+
+	public void setCheck_password(String check_password) {
+		this.check_password = check_password;
+	}
+    
+    
 }

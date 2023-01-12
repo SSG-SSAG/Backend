@@ -16,5 +16,10 @@ public interface MemberMapper {
 	int joinMember(MemberVO memberVO);
 	
 	// 로그인
-	public MemberVO loginMember(MemberVO memberVO);
+	// 로그인 => 존재하는 유저인지 확인, 해당 유저 정보 객체 반환
+	public MemberVO existedMember(MemberVO memberVO);
+	
+	// 비밀번호 확인
+	public MemberVO checkPwd(MemberVO memberVO);
+
 }

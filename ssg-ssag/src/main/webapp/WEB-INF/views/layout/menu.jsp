@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="menu">
-		<div class="menu-btn"><a href="" >홈</a></div>
+		<div class="menu-btn"><a href="/ssgssag" >홈</a></div>
 		<div class="menu-btn"><a href="recipe/recipe_search.ssg" >레시피</a></div>
 		<div class="menu-btn"><a href="" >찜</a></div>
 		<div class="menu-btn"><a href="refg.ssg" >냉장고</a></div>

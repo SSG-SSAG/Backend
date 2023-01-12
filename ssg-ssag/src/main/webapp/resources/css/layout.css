@@ -56,3 +56,10 @@ a {
 	justify-content: center;
 	align-items: center;
 }
+
+.rcenter-layout {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}

@@ -31,7 +31,7 @@ public class MemberController extends BaseController {
 	
 	// 회원 가입 페이지로 이동
 	// auth/signup으로 GET 요청을 보내면 member/signup 페이지를 보여준다
-	@GetMapping("/auth/signup")
+	@GetMapping("/auth/signup.ssg")
 	public String signUp() {
 		return "member/signup";
 	}
@@ -44,6 +44,7 @@ public class MemberController extends BaseController {
 //	}
 	
 	// 회원 가입
+	// @RequestMapping(value="/auth/signup.ssg", method={RequestMethod.POST})
 	@PostMapping("/auth/signup.ssg")
 	public void signUp(MemberVO memberVO, HttpServletResponse res) throws Exception {
 		int r = memberService.joinMember(memberVO);
@@ -52,10 +53,10 @@ public class MemberController extends BaseController {
 		String url = "";
 		if (r >0 ) {
 			msg = "회원가입 완료!";
-			url="/ssgssag/auth/login";
+			url="/ssgssag/auth/login.ssg";
 		} else {
 			msg = "회원가입에 실패하였습니다";
-			url="/ssgssag/auth/signup";
+			url="/ssgssag/auth/signup.ssg";
 		}
 		alert(res, msg, url);
 	}

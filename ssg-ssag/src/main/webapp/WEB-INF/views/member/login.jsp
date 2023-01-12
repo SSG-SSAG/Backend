@@ -30,7 +30,7 @@
 				  	</div>
 					</form>
 					<div class="ccenter-layout">
-					  	<button class="member-submit-btn" onclick="location.href='/ssgssag/auth/signup'">회원가입</button>			  	
+					  	<button class="member-submit-btn" onclick="location.href='/ssgssag/auth/signup.ssg'">회원가입</button>			  	
 					</div>
 				</div>
 			</div>			

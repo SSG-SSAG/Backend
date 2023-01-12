@@ -33,6 +33,13 @@ public class RecipeVO {
 	private int ing_id;				// 재료 ID
 	private String ing_name;		// 재료명
 	
+	// Recipe Detail Field
+	private int recipe_step_id;		// 레시피 상세 ID
+	private int recipe_id3;			// 레시피 ID
+	private int step;				// 순서
+	private String description;		// 설명
+	private String dsc_img;			// 이미지
+	
 	// Like_recipe Field
 	private int cnt;				// 찜
 	
@@ -44,7 +51,6 @@ public class RecipeVO {
 	
 	// Input
 	private String rname;			// 검색어
-	//private String iname;
 	private String type;			// 검색
 	private String sort;			// 정렬
 	

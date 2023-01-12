@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shinsegae.ssgssag.recipe.service.RecipeDesService;
+import com.shinsegae.ssgssag.recipe.service.RecipeIngService;
 import com.shinsegae.ssgssag.recipe.service.RecipeService;
 import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
 
@@ -20,6 +20,8 @@ public class RecipeController {
 	RecipeService service;
 	@Autowired
 	RecipeDesService service_des;
+	@Autowired
+	RecipeIngService service_ing;
 	
 	// 전체 조회 - 여러 건 응답 (JSON 배열)
 	@GetMapping("/recipe/recipe.ssg")
@@ -40,15 +42,27 @@ public class RecipeController {
 		System.out.println("checkpoint");
 		return "recipe/recipe";
 	}
-	
+
 	@GetMapping("/recipe/recipe_des.ssg")
-	public String test(@RequestParam("recipe_id") String recipe_id, HttpServletRequest req) {
-		List<String> obj = service_des.getIngs(recipe_id);
-		List<String> obj2 = service_des.getSteps(recipe_id);
+	public String test(HttpServletRequest req, RecipeVO vo) {
+		List<RecipeVO> obj = service_des.getIngs(vo);
+		List<RecipeVO> obj2 = service_des.getSteps(vo);
 		req.setAttribute("list_ing", obj);
 		req.setAttribute("list_step", obj2);
 		System.out.println("k");
 		System.out.println(obj2);
+		
+		System.out.println("### Recipe Ing Controller ###");
 		return "recipe/recipe_des";
+	}
+	
+	@GetMapping("/recipe/recipe_ing.ssg")
+	public String getMaking(HttpServletRequest req, RecipeVO vo) {
+		System.out.println("### Recipe Ing Controller ###");
+		System.out.println(vo.getRname());
+		List<RecipeVO> obj = service_ing.ings(vo);
+		req.setAttribute("list_detail", obj);
+		
+		return "recipe/recipe_ing";
 	}
 }

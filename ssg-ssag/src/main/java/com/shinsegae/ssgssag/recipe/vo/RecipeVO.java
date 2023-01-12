@@ -5,6 +5,11 @@ import lombok.Data;
 @Data
 public class RecipeVO {
 
+	/*
+	 * Data Field
+	 * - ERD 기준으로 정의
+	 */
+	
 	// Recipe Field
 	private int recipe_id;			// 레시피 ID
 	private String recipe_name;		// 레시피 이름
@@ -28,19 +33,31 @@ public class RecipeVO {
 	private int ing_id;				// 재료 ID
 	private String ing_name;		// 재료명
 	
+	// Like_recipe Field
+	private int cnt;				// 찜
+	
+	
+	/*
+	 * Input Field
+	 * - 동적 처리를 위한 필드
+	 */
+	
 	// Input
-	private String rname;
-	private String iname;
+	private String rname;			// 검색어
+	//private String iname;
+	private String type;			// 검색
+	private String sort;			// 정렬
 	
 	// 페이징 처리
 	private int amount;
 	private int pageNum;
 	
-	private String type;
 	
 	// 생성자
 	public RecipeVO() {				// default
 		this.amount = 10;
 		this.pageNum = 1;
+		this.type = "all";
+		this.sort = "name";
 	}
 }

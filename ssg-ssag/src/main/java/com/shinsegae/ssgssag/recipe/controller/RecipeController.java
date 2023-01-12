@@ -35,6 +35,7 @@ public class RecipeController {
 	public String getIng(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Ingredient Controller ###");
 		System.out.println(vo.getRname());
+//		System.out.println();
 		List<RecipeVO> obj = service.reci(vo);	// 서비스 호출
 		req.setAttribute("list", obj);
 		System.out.println("checkpoint");

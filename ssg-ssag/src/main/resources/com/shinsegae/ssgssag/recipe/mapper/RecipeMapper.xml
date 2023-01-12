@@ -25,7 +25,7 @@
 			<if test="rname != '' and rname != null">
 				AND recipe_name LIKE '%${rname}%'
 				|| r.recipe_id IN (
-					SELECT recipe_id 
+					SELECT recipe_id
 					FROM recipe_ing 
 					WHERE ing_id IN (
 						SELECT ing_id FROM ingredients WHERE ing_name LIKE '%${rname}%'
@@ -42,7 +42,7 @@
 		<!-- 레시피 재료 조회 -->
 		<if test="type == 'ing'">
 			<if test="rname != '' and rname != null">
-				AND recipe_id IN (
+				AND r.recipe_id IN (
 					SELECT recipe_id 
 					FROM recipe_ing 
 					WHERE ing_id IN (
@@ -53,7 +53,7 @@
 			</if>
 		</if>
 	</where>
-	group by recipe_id
+	group by r.recipe_id
 	<!-- 정렬 조건 -->
 	<if test="sort != null and sort !=''"> ORDER BY
 		<choose>

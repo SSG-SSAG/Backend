@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.main-background {
+	width: 100%;
+	height: 100%;
+	background: #554635;
+}
+
+.main-container {
+	background: #fffefd;
+	width: 35%;
+	height: 100%;
+	margin-left: 50%;
+	border: 1px solid red;
+}
+
+.content-container {
+	border: 1px solid yellow;
+	width: 35%;
+	height: 84%;
+	
+}
+
+.header{
+	border: 1px solid red;
+	width: 100%;
+	height: 8%;
+	display: flex;
+	flex-direction: row;
+}
+
+.menu {
+	border: 1px solid red;
+	width: 100%;
+	height: 8vh;
+	display: flex;
+	flex-direction: row;
+}

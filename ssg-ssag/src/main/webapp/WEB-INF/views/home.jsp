@@ -1,24 +1,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<<<<<<< HEAD
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false" %>
 <html>
 <head>
 	<title>Home</title>
+	<link rel="stylesheet" href="resources/css/layout.css">
+	
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-<P>  The time on the server is ${serverTime}. </P>
-
-<button><a href="auth/signup" >회원가입 하러가기</a></button>
-<button><a href="auth/login" >로그인 하러가기</a></button>
-
-${currentUser.name }
-
+	<div class="main-background">
+		<div class="main-container">
+			<jsp:include page="layout/header.jsp" />
+			<div class="content-container">
+			
+			</div>
+			
+			<jsp:include page="layout/menu.jsp" />
+		</div>
+		
+	</div>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,27 +8,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>로그인 페이지</h1>
-	<form action="/ssgssag/auth/login" method="post">
-		<table>
-			<tr>
-				<td>아이디</td>
-				<td>
-					<input type="text" name="id" value="${memberVO.id}">
-				</td>
-				
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="password" value="${memberVO.password}"></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="로그인">
-				</td>
-			</tr>
-		</table>		
-	</form>
+	<jsp:include page="/WEB-INF/views/layout/pcBackground.jsp"/>	
+	<div class="container">
+		<jsp:include page="/WEB-INF/views/layout/header.jsp"/>		
+		<h1>로그인 페이지</h1>
+		<form action="/ssgssag/auth/login" method="post">
+			<table>
+				<tr>
+					<td>아이디</td>
+					<td>
+						<input type="text" name="id" value="${memberVO.id}">
+					</td>
+				</tr>
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" name="password" value="${memberVO.password}"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="로그인">
+					</td>
+				</tr>
+			</table>		
+		</form>
+		<button><a href="auth/signup" >회원가입 하러가기</a></button>
+	</div>
+	
 	
 </body>
 </html>

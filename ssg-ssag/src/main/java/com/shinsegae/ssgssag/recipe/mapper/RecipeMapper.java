@@ -19,8 +19,11 @@ public interface RecipeMapper {
 	List<RecipeVO> selectIngre(RecipeVO vo);
 	
 	// 레시피 재료 조회
-	List<String> getIngs(String recipe_id);
+	List<RecipeVO> getIngs(RecipeVO vo);
 	
 	// 레시피 조리 순서 조회
-	List<String> getSteps(String recipe_id);
+	List<RecipeVO> getSteps(RecipeVO vo);
+	
+	// 레시피 재료 상세 조회
+	List<RecipeVO> selectIngs(RecipeVO vo);
 }

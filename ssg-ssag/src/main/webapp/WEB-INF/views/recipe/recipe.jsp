@@ -9,8 +9,8 @@
 var flag = "rcp"
  -->
 
-function rcp_des(recipe_id) {
-	 location.href="recipe_des.ssg?recipe_id="+recipe_id;
+function rcp_des(id, name) {
+	 location.href = "recipe_des.ssg?recipe_id=" + id + "&recipe_name=" + name;
 }
 
 function srch_sort() {
@@ -58,7 +58,7 @@ function srch_sort() {
 		<td>${vo.level }</td>
 		<td>${vo.cnt }</td>
 		<td><img src = "${vo.recipe_img }" width="200" height="200" ></td>
-		<td><input type="button" value="상세보기" onclick="rcp_des(${vo.recipe_id})"></td>
+		<td><input type="button" value="상세보기" onclick="rcp_des(${vo.recipe_id}, '${vo.recipe_name}')"></td>
 	</tr>
 	</c:forEach>
 </table>

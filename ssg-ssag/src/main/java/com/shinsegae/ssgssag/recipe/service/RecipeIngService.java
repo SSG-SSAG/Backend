@@ -9,18 +9,13 @@ import com.shinsegae.ssgssag.recipe.mapper.RecipeMapper;
 import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
 
 @Service
-public class RecipeDesService {
+public class RecipeIngService {
 
 	@Autowired
 	RecipeMapper mapper;
 	
-	public List<RecipeVO> getIngs(RecipeVO vo) {
-		List<RecipeVO> obj = mapper.getIngs(vo);
+	public List<RecipeVO> ings(RecipeVO vo) {
+		List<RecipeVO> obj = mapper.selectIngs(vo);
 		return obj;
-	}
-	
-	public List<RecipeVO> getSteps(RecipeVO vo) {
-		List<RecipeVO> obj = mapper.getSteps(vo);
-		return obj;
-	}
+	}	
 }

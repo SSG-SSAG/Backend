@@ -4,43 +4,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Recipe Description</title>
+	<meta charset="UTF-8">
+	<jsp:include page="../layout/head.jsp"/>
+	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
+	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">
 </head>
 <body>
-<h2>레시피 과정 조회</h2>
-<script>
-
-function goPage(user_no, pg, id, name) {
-	if (pg == 1) {			// 장바구니로 이동
-		location.href = "cart.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;		 
-	} else if (pg == 2) {	// 다음 페이지로 이동
-		location.href = "recipe_ing.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;
-	} else if (pg == 3) {	// 홈으로 이동
-		location.href = "../";
-	}
-}
- </script>
-
-<h2>${recipeVO.recipe_name }의 레시피</h2>
-
-<input type="button" value="재료 상세 보기" onclick="goPage(1, 2, ${recipeVO.recipe_id}, '${recipeVO.recipe_name}');">
-<input type="button" value="홈으로 돌아가기" onclick="goPage(1, 3);">
-
-<table border="1">
-	<tr>
-		<td></td>
-		<td>조리 단계</td>
-		<td>이미지</td>
-	</tr>
-	<c:forEach var="vo" items="${list_step }" varStatus="status">
-	<tr>
-		<td>${status.count}</td>
-		<td>${vo.description}</td>
-		<td><img src = "${vo.dsc_img }" width="200" height="200" ></td>
-	</tr>
-	</c:forEach>
-</table>
-
+	<div class="main-background">
+	    <div class="pc-bg-left"></div>
+	    <div class="main-container">
+	        <jsp:include page="../layout/header.jsp" />
+	        <div class="content-container ccenter-layout">
+	            <div class="step-recipe-container">
+	            	<div class="card step-recipe-card">
+						<h5 style="margin: 0;">${recipeVO.recipe_name }</h5>
+						<div class="recipe-desc-box">
+							<img class="step-recipe-card-img" src="${recipeVO.recipe_img }" alt="${recipeVO.recipe_name }" >
+							<div class="recipe-desc">
+						      <p>영양정보 담을 거임</p>
+						      <p>태그 버튼 자리임</p>
+						      ${recipeVO.recipe_img }
+						    </div>
+						</div>
+					</div>
+					<div class="card step-recipe-ing-card" onclick="goPage(1, 2, ${recipeVO.recipe_id}, '${recipeVO.recipe_name}');">
+						재료 목록 보기
+					</div>
+	            </div>
+	            <div class="step-list-container">
+					<c:forEach var="vo" items="${list_step }" varStatus="status">
+						<div class="card step-card" style="display: flex; flex-direction: row;">
+							<div class="step-card-body">
+								<div class="step-card-num">
+									<h5 class="step-card-title">${status.count}</h5>
+								</div>
+								<img class="scard-img" src="${vo.dsc_img }" alt="${vo.dsc_img }" >
+								<div class="step-desc">
+								  <p class="step-desc-p">${vo.description}</p>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+	        </div>			
+	        
+	        <jsp:include page="../layout/menu.jsp" />
+	    </div>
+	    <div class="pc-bg-right"></div>
+	</div>
 </body>
+<script>
+	function goPage(user_no, pg, id, name) {
+		if (pg == 1) {			// 장바구니로 이동
+			location.href = "cart.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;		 
+		} else if (pg == 2) {	// 다음 페이지로 이동
+			location.href = "recipe_ing.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;
+		} else if (pg == 3) {	// 이전 페이지로 이동
+			location.href = "recipe_search.ssg";
+		}
+	}
+</script>
+
 </html>

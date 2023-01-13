@@ -1,8 +1,75 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false" %>
-
+<%@ page session="false" %> 
+<html>
+<head>
+	<jsp:include page="../layout/head.jsp"/>
+	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
+	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
+</head>
+<body>
+	<div class="main-background">
+	    <div class="pc-bg-left"></div>
+	    <div class="main-container">
+	        <jsp:include page="../layout/header.jsp" />
+	        <div class="content-container ccenter-layout">
+	        		<form name="rForm" action="recipe_search.ssg" method="get">
+						<select name="sort" onchange="srch_sort()" style="width: 90px;">
+				              <option value="name" <c:if test="${recipeVO.sort == 'name' }">selected</c:if>>가나다순</option>
+				              <option value="like" <c:if test="${recipeVO.sort == 'like' }">selected</c:if>>인기순</option>
+				              <option value="level" <c:if test="${recipeVO.sort == 'level' }">selected</c:if>>난이도순</option>
+	          			</select>
+			            <select name="type"  style="width: 70px;">
+			                <option value="all" <c:if test="${recipeVO.type == 'all' }">selected</c:if>>전체</option>
+			                <option value="rcp" <c:if test="${recipeVO.type == 'rcp' }">selected</c:if>>레시피</option>
+			                <option value="ing" <c:if test="${recipeVO.type == 'ing' }">selected</c:if>>재료</option>
+			            </select>
+						<input type="text" name="rname" value="${recipeVO.rname }" style="width: 200px;">
+						<input type="submit" value="검색">
+						<input type="hidden" name="curpage" value="1">
+					</form>	        	
+					<div class="recipe-list-container">
+						<c:forEach var="vo" items="${list }" varStatus="status">	<!-- request에 들어있는 아이템 -->
+							<div class="card recipe-card" onclick="goPage(${vo.recipe_id}, '${vo.recipe_name}')">
+								<h5 style="margin: 0;">${vo.recipe_name }</h5>
+								<div class="recipe-desc-box">
+									<img class="rcard-img" src="${vo.recipe_img }" alt="${vo.recipe_name }" >
+									<div class="recipe-desc">
+								      <p>우렁은 우렁우렁</p>
+								    </div>
+								</div>
+							</div>
+						</c:forEach>
+						<nav>
+							<ul class="pagination">
+							    <li class="page-item">
+							    <button class="page-link" 
+							        onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','1');" aria-label="Previous">
+							      <span aria-hidden="true" class="ssg-page">이전</span>
+							    </button>
+								</li>
+							  	<c:forEach var="n" items="${page }">
+									<li class="page-item">
+								    	<button class="page-link ssg-page" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');"
+										<c:if test="${n eq recipeVO.curpage}">style="font-weight:500; background: rgba(163, 144, 122, 0.8);"</c:if>><span class="ssg-page">${n}</span></button>
+									</li>
+								</c:forEach>
+								<li class="page-item">
+							  		<button class="page-link" 
+						     			onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');" aria-label="Next">
+							        <span aria-hidden="true" class="ssg-page">다음</span>
+						     		</button>
+							    </li>
+							</ul>
+						</nav>
+					</div>
+		    </div>	
+      		<jsp:include page="../layout/menu.jsp" />	
+ 		 </div>
+  		<div class="pc-bg-right"></div>
+	</div>
+</body>
 <script>
 
 <!--
@@ -55,70 +122,4 @@ function movepage(page_num, sort, type, rname, total_count,flag) {
 } 
 
 </script>
-
-<html>
-<head>
-	<jsp:include page="../layout/head.jsp"/>
-	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/layout.css">
-</head>
-<body>
-	<div class="main-background">
-	    <div class="pc-bg-left"></div>
-	    <div class="main-container">
-	        <jsp:include page="../layout/header.jsp" />
-	        <div class="content-container">
-				<form name="rForm" action="recipe_search.ssg" method="get">
-					<select name="sort" onchange="srch_sort()">
-              <option value="name" <c:if test="${recipeVO.sort == 'name' }">selected</c:if>>가나다순</option>
-              <option value="like" <c:if test="${recipeVO.sort == 'like' }">selected</c:if>>인기순</option>
-              <option value="level" <c:if test="${recipeVO.sort == 'level' }">selected</c:if>>난이도순</option>
-          </select>
-          <select name="type">
-              <option value="all" <c:if test="${recipeVO.type == 'all' }">selected</c:if>>전체</option>
-              <option value="rcp" <c:if test="${recipeVO.type == 'rcp' }">selected</c:if>>레시피</option>
-              <option value="ing" <c:if test="${recipeVO.type == 'ing' }">selected</c:if>>재료</option>
-          </select>
-          <input type="text" name="rname" value="${recipeVO.rname }">	<!-- 검색어 -->
-          <input type="submit" value="검색">
-          <input type="hidden" name="curpage" value="1">
-				</form>
-				<div class="recipe-list-container">
-					<table border="1">
-              <tr>
-                  <td></td>
-                  <td>ID</td>
-                  <td>이름</td>
-                  <td>난이도</td>
-                  <td>좋아요</td>
-                  <td colspan="2">이미지</td>
-              </tr>
-              <c:forEach var="vo" items="${list }" varStatus="status">	<!-- request에 들어있는 아이템 -->
-              <tr>
-                  <td>${status.count}</td>
-                  <td>${vo.recipe_id }</td>
-                  <td>${vo.recipe_name }</td>
-                  <td>${vo.level }</td>
-                  <td>${vo.cnt }</td>
-                  <td><img src = "${vo.recipe_img }" width="200" height="200" ></td>
-                  <td><input type="button" value="상세보기" onclick="goPage(${vo.recipe_id}, '${vo.recipe_name}')"></td>
-              </tr>
-              </c:forEach>
-          </table>
-          <input type="button" value="이전" onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','1');">
-          <div>
-              <c:forEach var="n" items="${page }">
-	
-	              <a href="#;" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');"
-		          <c:if test="${n eq recipeVO.curpage}">style="font-weight:900"</c:if>>${n}</a>
-		      </c:forEach>
-          </div>
-          <input type="button" value="다음" onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');">
-		</div>
-      </div>			
-      <jsp:include page="../layout/menu.jsp" />
-  </div>
-  <div class="pc-bg-right"></div>
-	</div>
-</body>
 </html>

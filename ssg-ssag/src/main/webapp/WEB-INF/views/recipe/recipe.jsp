@@ -84,7 +84,13 @@ function movepage(page_num, sort, type, rname, total_count,flag) {
 <input type="button" value="이전" onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','1');">
 
 <c:forEach var="n" items="${page }">
-	<input type="button" value="${n }" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');">
+	
+	<a href="#;" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');"
+		<c:if test="${n eq recipeVO.curpage}">style="font-weight:900"</c:if>
+	>
+		${n}
+	</a>
+	 
 </c:forEach>
 
 <input type="button" value="다음" onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');">

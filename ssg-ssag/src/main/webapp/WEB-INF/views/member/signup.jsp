@@ -5,55 +5,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>회원 가입</title>
+	<jsp:include page="../layout/head.jsp"/>
+	<link rel="stylesheet" href="/ssgssag/resources/css/member.css">
 </head>
 <body>
-	<h1>회원가입</h1>
-	<form action="/ssgssag/auth/signup" method="post">
-		<table>
-			<tr>
-				<td>아이디</td>
-				<td>
-					<input class="id_input" type="text" name="id" placeholder="아이디를 입력해주세요">
-					<span class="id_input_check1">사용 가능한 아이디입니다</span>
-					<span class="id_input_check2">사용 중인 아이디입니다</span>
-				</td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><input type="password" name="password"></td>
-			</tr>
-			<tr>
-				<td>이름</td>
-				<td><input type="text" name="name"></td>
-			</tr>
-			<tr>
-				<td>닉네임</td>
-				<td><input type="text" name="nickname"></td>
-			</tr>
-			<tr>
-				<td>성별</td>
-				<td>
-					<input type="radio" name="gender" value="2">여자</option>
-					<input type="radio" name="gender" value="1">남자</option>
-				</td>
-			</tr>
-			<tr>
-				<td>생년월일</td>
-				<td><input type="date" name="birth_date"></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="회원가입">
-				</td>
-			</tr>
-		</table>		
-	</form>
+	<div class="main-background">
+    <div class="pc-bg-left"></div>
+    <div class="main-container">
+        <jsp:include page="../layout/header.jsp" />
+        <div class="content-container">
+            <div class="member-form">
+			    <form action="/ssgssag/auth/signup.ssg" method="post">
+					<div class="mb-3">
+			            <label for="inputId" class="form-label">아이디</label>
+			            <input type="text" class="form-control" name="id">
+			            <span class="id_input_check1">사용 가능한 아이디입니다</span>
+			            <span class="id_input_check2">사용 중인 아이디입니다</span>
+		          	</div>
+					<div class="mb-3">
+					  	<label for="inputPwd" class="form-label">비밀번호</label>
+						<input type="password" class="form-control" name="password">
+					</div>
+			        <div class="mb-3">
+			            <label for="inputName" class="form-label">이름</label>
+			            <input type="text" class="form-control" name="name">
+			        </div>
+			        <div class="mb-3">
+			            <label for="inputNickname" class="form-label">닉네임</label>
+			            <input type="text" class="form-control" name="nickname">
+			        </div>
+			        <div class="mb-3 rcenter-layout" style="justify-content: space-between;">
+			            <div>
+			                <input class="form-check-input" type="radio" name="gender" value="2">
+			                <label class="form-check-label" for="gender">
+			                    여자
+			                </label>
+			                <input class="form-check-input" type="radio" name="gender" value="1">
+			                <label class="form-check-label" for="gender">
+			                    남자
+			                </label>				  		
+			            </div>
+			            <div>
+			                <label for="inputDate" class="form-label">생년월일</label>
+			                <input type="date" name="birth_date">				  		
+			            </div>
+			        </div>
+			        <div class="ccenter-layout">
+			            <button type="submit" class="member-submit-btn">회원가입</button>
+			        </div>
+			    </form>
+			    <div class="ccenter-layout">
+			          <button class="member-submit-btn" onclick="location.href='/ssgssag/auth/login.ssg'">로그인으로 돌아가기</button>			  	
+			    </div>
+			</div>
+        </div>		
+ 	    <jsp:include page="../layout/menu.jsp" />
+    </div>
+    <div class="pc-bg-right"></div>
+	</div>
 </body>
-<script>
-	$('.id_input').on("propertychange change keyup paste input", function(){
-		console.log("keyup 테스트");
-	});
-</script>
 </html>

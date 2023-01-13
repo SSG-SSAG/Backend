@@ -12,23 +12,23 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	
 	protected Log log = LogFactory.getLog(CommonInterceptor.class);
 
-	// ÀüÃ³¸®(preHandle): Å¬¶óÀÌ¾ğÆ®¿¡¼­ ÄÁÆ®·Ñ·¯·Î º¸³»´Â ¿äÃ» °¡·ÎÃ¤±â
+	// ì „ì²˜ë¦¬(preHandle): í´ë¼ì´ì–¸íŠ¸ì—ì„œ ì»¨íŠ¸ë¡¤ëŸ¬ë¡œ ë³´ë‚´ëŠ” ìš”ì²­ ê°€ë¡œì±„ê¸°
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		// ÀüÃ³¸®±â ÄÁÆ®·Ñ·¯ ½ÃÀÛ ¾Ë·ÁÁÖ±â
+		// ì „ì²˜ë¦¬ê¸° ì»¨íŠ¸ë¡¤ëŸ¬ ì‹œì‘ ì•Œë ¤ì£¼ê¸°
 		if (log.isDebugEnabled()) {
 			log.debug("------------ START ------------");
-			log.debug("Request URI \\t:  \" + request.getRequestURI()"); // ÇöÀç È£Ãâ ÁßÀÎ URL
+			log.debug("Request URI \\t:  \" + request.getRequestURI()"); // í˜„ì¬ í˜¸ì¶œ ì¤‘ì¸ URL
 		}
 		return super.preHandle(request, response, handler);
 	}
 
-	// ÈÄÃ³¸®(postHandle): ÄÁÆ®·Ñ·¯¿¡¼­ Å¬¶óÀÌ¾ğÆ®·Î º¸³»´Â ¿äÃ» °¡·ÎÃ¤±â
+	// í›„ì²˜ë¦¬(postHandle): ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ í´ë¼ì´ì–¸íŠ¸ë¡œ ë³´ë‚´ëŠ” ìš”ì²­ ê°€ë¡œì±„ê¸°
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		// ÈÄÃ³¸®±â ÄÁÆ®·Ñ·¯ Á¾·á ¾Ë·ÁÁÖ±â
+		// í›„ì²˜ë¦¬ê¸° ì»¨íŠ¸ë¡¤ëŸ¬ ì¢…ë£Œ ì•Œë ¤ì£¼ê¸°
 		if (log.isDebugEnabled()) {
 			log.debug("------------ END ------------");
 		}

@@ -14,19 +14,19 @@ import lombok.Data;
 @AllArgsConstructor
 public class SignUpRequestVO {
 	
-    @NotBlank(message="¾Æ¾Æµğ´Â ÇÊ¼ö°ªÀÔ´Ï´Ù.")
+    @NotBlank(message="ì•„ì•„ë””ëŠ” í•„ìˆ˜ê°’ì…ë‹ˆë‹¤.")
     private String id;
     
-    @NotBlank(message="ºñ¹Ğ¹øÈ£´Â ÇÊ¼ö°ªÀÔ´Ï´Ù.")
-//    @Pattern(regexp = "(?=.*\\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{4,16}", message = "4ÀÚ ÀÌ»ó, 16ÀÚ ÀÌÇÏÀÇ ¿µ¹®, ¼ıÀÚ Á¶ÇÕ")
+    @NotBlank(message="ë¹„ë°€ë²ˆí˜¸ëŠ” í•„ìˆ˜ê°’ì…ë‹ˆë‹¤.")
+//    @Pattern(regexp = "(?=.*\\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{4,16}", message = "4ì ì´ìƒ, 16ì ì´í•˜ì˜ ì˜ë¬¸, ìˆ«ì ì¡°í•©")
     private String password;
     
-    @NotBlank(message="ÀÌ¸§ ÇÊ¼ö°ªÀÔ´Ï´Ù.")
-    @Pattern(regexp = "([a-zA-Z0-9¤¡-¤¾|¤¿-¤Ó|°¡-ÆR]).{1,10}", message = "ÇÑ±Û or ¿µ¹®ÀÚ or ¼ıÀÚÀÇ Á¶ÇÕÀ¸·Î 1~10ÀÚ¸®")
+    @NotBlank(message="ì´ë¦„ í•„ìˆ˜ê°’ì…ë‹ˆë‹¤.")
+    @Pattern(regexp = "([a-zA-Z0-9ã„±-ã…|ã…-ã…£|ê°€-R]).{1,10}", message = "í•œê¸€ or ì˜ë¬¸ì or ìˆ«ìì˜ ì¡°í•©ìœ¼ë¡œ 1~10ìë¦¬")
     private String name;
 
-    @NotBlank(message="´Ğ³×ÀÓÀº ÇÊ¼ö°ªÀÔ´Ï´Ù.")
-    @Pattern(regexp = "([a-zA-Z0-9¤¡-¤¾|¤¿-¤Ó|°¡-ÆR]).{1,10}", message = "ÇÑ±Û or ¿µ¹®ÀÚ or ¼ıÀÚÀÇ Á¶ÇÕÀ¸·Î 1~10ÀÚ¸®")
+    @NotBlank(message="ë‹‰ë„¤ì„ì€ í•„ìˆ˜ê°’ì…ë‹ˆë‹¤.")
+    @Pattern(regexp = "([a-zA-Z0-9ã„±-ã…|ã…-ã…£|ê°€-R]).{1,10}", message = "í•œê¸€ or ì˜ë¬¸ì or ìˆ«ìì˜ ì¡°í•©ìœ¼ë¡œ 1~10ìë¦¬")
     private String nickname;
     
     private Date birthdate;

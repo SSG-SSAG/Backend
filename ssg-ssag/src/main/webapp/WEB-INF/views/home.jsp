@@ -36,7 +36,9 @@ function goTag(cat, name) {
 					<input type="button" value="종류" onclick="goTag(1, '종류');">
 					<input type="button" value="건강" onclick="goTag(2, '건강');">
 					<input type="button" value="테마" onclick="goTag(3, '테마');">
-					<input type="button" value="조리법" onclick="goTag(4, '조리법');">
+				<input type="button" value="조리법" onclick="goTag(4, '조리법');">
+					태그 들어갈 자리
+					${currentUser.name }
 				</div>
 				<div>
 					냉장고 간단 정보 넣을 자리

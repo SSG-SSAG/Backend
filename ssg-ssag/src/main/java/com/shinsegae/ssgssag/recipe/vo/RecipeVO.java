@@ -80,4 +80,10 @@ public class RecipeVO {
 		this.sort = "name";
 		this.curpage = 1;
 	}
+	
+	// nutrient
+	private int car;
+	private int pro;
+	private int fat;
+	
 }

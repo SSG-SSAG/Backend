@@ -190,5 +190,14 @@
     limit #{start}, 5
 </select>
 
+<!-- 영양 성분 조회 -->
+<select id="selectNut" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	SELECT recipe_id, recipe_name, info_car, info_pro, info_fat, 
+		round(info_car/(info_car+info_pro+info_fat)*100,2) car,
+		round(info_pro/(info_car+info_pro+info_fat)*100,2) pro,
+		round(info_fat/(info_car+info_pro+info_fat)*100,2) fat
+		FROM recipe tmp
+		WHERE recipe_id = #{recipe_id }
+</select>
 
 </mapper>

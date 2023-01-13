@@ -38,5 +38,8 @@ public interface RecipeMapper {
 
 	// For paging
 	List<RecipeVO> rcp_page(RecipeVO vo);
+	
+	// 영양 성분 조회
+	List<RecipeVO> selectNut(RecipeVO vo);
 }
 

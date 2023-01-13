@@ -42,6 +42,24 @@ function page(user_no, pg, id, name) {
 	</c:forEach>
 </table>
 
+<table border="1">
+	<tr>
+		<td colspan="3">영양 성분</td>
+	</tr>
+	<tr>
+		<td>탄</td>
+		<td>단</td>
+		<td>지</td>
+	</tr>
+	<c:forEach var="vo2" items="${list_nut }" >
+	<tr>
+		<td>${vo2.car} %</td>
+		<td>${vo2.pro} %</td>
+		<td>${vo2.fat} %</td>
+	</tr>
+	</c:forEach>
+</table>
+
 <input type="button" value="장바구니로 ssag" onclick="page(1, 1, ${recipeVO.recipe_id}, '${recipeVO.recipe_name}');">
 
 </body>

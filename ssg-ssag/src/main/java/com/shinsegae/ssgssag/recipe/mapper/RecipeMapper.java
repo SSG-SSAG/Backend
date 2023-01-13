@@ -8,6 +8,7 @@ import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
 
 @Mapper
 public interface RecipeMapper {
+	
 	// 등록
 	int recipeInsert(RecipeVO param);
 		
@@ -34,4 +35,5 @@ public interface RecipeMapper {
 
 	// For paging
 	List<RecipeVO> rcp_page(RecipeVO vo);
+
 }

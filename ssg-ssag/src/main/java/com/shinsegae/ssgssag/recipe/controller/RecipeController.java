@@ -45,6 +45,7 @@ public class RecipeController {
 		System.out.println(vo.getRname());
 		List<RecipeVO> obj = service.reci(vo);	// Service
 		System.out.println("checkpoint");
+
 		int total = obj.size();
 		int cur = vo.getCurpage();
 		vo.setCurpage(cur);

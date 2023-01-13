@@ -62,12 +62,15 @@ public class RecipeVO {
 	private String type;			// 검색
 	private String sort;			// 정렬
 	private int cat;				// 카테고리 대분류
-
+	
+	// 페이징 처리
+	private int amount;
+	private int pageNum;
+	
+	// 생성자
 	private int total_count;
 	private int curpage;
 	private int start;
-	
-	// 생성자
 	public RecipeVO() {				// default
 //		this.amount = 10;
 //		this.pageNum = 1;

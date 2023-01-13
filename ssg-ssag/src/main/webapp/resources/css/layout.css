@@ -41,24 +41,6 @@
 	flex-direction: row;
 }
 
-.menu {
-	border: 1px solid red;
-	width: 100%;
-	height: 8vh;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-.menu-btn {
-	width: 20%;
-	text-decoration: none;
-	text-aling: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 .ccenter-layout {
 	display: flex;
 	flex-direction: column;

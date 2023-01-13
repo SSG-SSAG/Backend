@@ -7,13 +7,6 @@
 <head>
 	<jsp:include page="../layout/head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
-	<script>
-	function del(refg_id) {
-		if (confirm('삭제하시겠습니까?')) {
-			location.href="delete.ssg?refg_id="+refg_id;
-		}
-	}
-</script>
 </head>
 <body>
 	<div class="main-background">
@@ -42,8 +35,15 @@
 			</table>
         </div>			
         <jsp:include page="../layout/menu.jsp" />
-    </div>
-    <div class="pc-bg-right"></div>
-</div>
+	    </div>
+	    <div class="pc-bg-right"></div>
+	</div>
 </body>
+<script>
+	function del(refg_id) {
+		if (confirm('삭제하시겠습니까?')) {
+			location.href="delete.ssg?refg_id="+refg_id;
+		}
+	}
+</script>
 </html>

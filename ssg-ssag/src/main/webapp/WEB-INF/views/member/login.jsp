@@ -5,7 +5,7 @@
 <html>
 <head>
 	<jsp:include page="../layout/head.jsp"/>
-	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
+	<link rel="stylesheet" href="/ssgssag/resources/css/member.css">
 </head>
 <body>
 	<div class="main-background">
@@ -40,4 +40,11 @@
     <div class="pc-bg-right"></div>
 </div>
 </body>
+<script>
+	function del(refg_id) {
+		if (confirm('삭제하시겠습니까?')) {
+			location.href="delete.ssg?refg_id="+refg_id;
+		}
+	}
+</script>
 </html>

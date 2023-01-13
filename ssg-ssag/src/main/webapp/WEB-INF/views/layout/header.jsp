@@ -14,12 +14,13 @@
 </style>
 </head>
 <body>
-    <% 
+    <!--   
         String currentUser = null;
     	if (session.getAttribute("currentUser") != null){
     		currentUser = (String) session.getAttribute("currentUser");
     	}
-	%>
+	%>  -->
+	
 	<div class="header"">
 		<div>로고자리</div>
 		

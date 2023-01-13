@@ -31,11 +31,13 @@ function page(user_no, pg, id, name) {
 	<tr>
 		<td></td>
 		<td>레시피 재료</td>
+		<td></td>
 	</tr>
 	<c:forEach var="vo" items="${list_detail }" varStatus="status">
 	<tr>
 		<td>${status.count}</td>
 		<td>${vo.ing_name}</td>
+		<td></td>
 	</tr>
 	</c:forEach>
 </table>

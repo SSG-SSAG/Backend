@@ -21,7 +21,7 @@ function goPage(pg, id, name, cat) {
 </head>
 <body>
 <h2>레시피 태그 선택 페이지</h2>
-<h1>#${RecipeVO.tag_name } 중 원하는 #태그를 선택하세요!</h1>
+<h1>#${recipeVO.category_name } 중 원하는 #태그를 선택하세요!</h1>
 
 <c:forEach var="vo" items="${list_cat }" varStatus="status">
 	<button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${param.cat})">#${vo.tag_name }</button>

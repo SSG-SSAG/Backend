@@ -67,10 +67,11 @@ public class RecipeVO {
 	private int amount;
 	private int pageNum;
 	
-	// 생성자
 	private int total_count;
 	private int curpage;
 	private int start;
+
+	// 생성자
 	public RecipeVO() {				// default
 //		this.amount = 10;
 //		this.pageNum = 1;

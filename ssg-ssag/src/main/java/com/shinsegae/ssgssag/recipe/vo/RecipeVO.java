@@ -62,6 +62,8 @@ public class RecipeVO {
 	private String type;			// 검색
 	private String sort;			// 정렬
 	private int cat;				// 카테고리 대분류
+	private boolean my_ing;			// 나의 냉장고인지 확인
+	private int user_no;			// user ID
 	
 	// 페이징 처리
 	private int amount;
@@ -79,4 +81,10 @@ public class RecipeVO {
 		this.sort = "name";
 		this.curpage = 1;
 	}
+	
+	// nutrient
+	private int car;
+	private int pro;
+	private int fat;
+	
 }

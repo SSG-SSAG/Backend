@@ -19,6 +19,9 @@ public interface RecipeMapper {
 	List<RecipeVO> selectIngre(RecipeVO vo);
 	
 	// 태그 조회
+	List<RecipeVO> selectLikes(RecipeVO vo);
+	
+	// 태그 조회
 	List<RecipeVO> selectCats(RecipeVO vo);
 	
 	// 레시피 태그로 조회
@@ -35,5 +38,8 @@ public interface RecipeMapper {
 
 	// For paging
 	List<RecipeVO> rcp_page(RecipeVO vo);
+	
+	// 영양 성분 조회
+	List<RecipeVO> selectNut(RecipeVO vo);
 }
 

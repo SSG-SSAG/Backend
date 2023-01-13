@@ -4,8 +4,11 @@
 <mapper namespace="com.shinsegae.ssgssag.member.mapper.RefgMapper">
 	
 	<select id="getList" resultType="com.shinsegae.ssgssag.vo.RefgVO" parameterType="java.lang.String">
-		SELECT refg_id, ing_id, expire_date FROM refrigerator where user_no = #{a}
-		
+		<!-- <if test="a != null and a !=''"> -->
+		SELECT refg_id, ing_id, expire_date
+		FROM refrigerator
+		WHERE user_no = ${user_no}
+		<!-- </if> -->
 	</select>
 	
 	
@@ -17,4 +20,19 @@
 		DELETE FROM refrigerator where refg_id = #{a}
 	</delete>
 	
+	<select id="getId" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT ing_id FROM ingredients WHERE ing_name = #{a}
+	</select>
+	
+	<select id="ing_check" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT COUNT(*) FROM ingredients WHERE ing_name = #{a}
+	</select>
+	
+	<select id="isContain" resultType="java.lang.String" parameterType="map">
+		SELECT COUNT(*) FROM refrigerator WHERE user_no = #{user_id} and ing_id = #{ing_id }
+	</select>
+	
+	<insert id="add" parameterType="map">
+		INSERT INTO refrigerator (user_no, ing_id, expire_date) VALUES (#{user_no}, #{ing_id}, #{expire_date})
+	</insert>
 </mapper>

@@ -20,7 +20,10 @@ public class RefgService {
 		List<RefgVO> list = mapper.getList(ing_id);
 		for ( int i = 0; i<list.size(); i++) {
 			Date cur_time = new Date();
-			long remain_mil = list.get(i).getExpire_date().getTime()-cur_time.getTime();
+			long remain_mil = 0;
+			if (list.get(i).getExpire_date() != null) {
+				remain_mil = list.get(i).getExpire_date().getTime()-cur_time.getTime();
+			}
 			long remain_hour = (remain_mil)/3600000%24;
 			long remain_day = remain_mil/3600000/24;
 			if (remain_mil < 0) {
@@ -42,6 +45,29 @@ public class RefgService {
 			return true;
 		}
 		return false;
+	}
+	
+	public int add(String ing_name, String expire_date, String curid) {
+		int result = Integer.parseInt(mapper.ing_check(ing_name));
+		if (result == 0 ) {
+			return 0;
+		}
+		String ing_id = mapper.getId(ing_name);
+		String contain = mapper.isContain(ing_id, curid);
+		System.out.println(contain);
+		if ( contain.equals("1")) {
+			// 이미 있는 재료인 경우
+			System.out.println("a");
+			return 1;
+		}
+		else {
+			/// 냉장고에 없는 재료인 경우
+			System.out.println("b");
+			mapper.add(curid, ing_id, expire_date);
+			return 2;
+		}
+		
+	
 	}
 	
 	

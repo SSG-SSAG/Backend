@@ -63,6 +63,7 @@ function movepage(page_num, sort, type, rname, total_count,flag) {
 	<link rel="stylesheet" href="/ssgssag/resources/css/layout.css">
 </head>
 <body>
+
 	<div class="main-background">
 	    <div class="pc-bg-left"></div>
 	    <div class="main-container">
@@ -106,11 +107,10 @@ function movepage(page_num, sort, type, rname, total_count,flag) {
               </c:forEach>
           </table>
           <div>
-              <input type="button" value="이전" onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','1');">
               <c:forEach var="n" items="${page }">
-                  <input type="button" value="${n }" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');">
-              </c:forEach>
-              <input type="button" value="다음" onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');">
+	
+	              <a href="#;" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');"
+		          <c:if test="${n eq recipeVO.curpage}">style="font-weight:900"</c:if>>${n}</a></c:forEach>
           </div>
 				</div>
       </div>			

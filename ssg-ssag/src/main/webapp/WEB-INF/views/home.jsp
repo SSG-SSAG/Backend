@@ -26,6 +26,7 @@
 				</div>
 				<div>
 					태그 들어갈 자리
+					${currentUser.name }
 				</div>
 				<div>
 					냉장고 간단 정보 넣을 자리

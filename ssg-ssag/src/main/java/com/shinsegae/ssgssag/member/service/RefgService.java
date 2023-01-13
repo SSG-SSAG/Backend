@@ -44,6 +44,26 @@ public class RefgService {
 		return false;
 	}
 	
+	public int add(String ing_name, String expire_date, String curid) {
+		int result = Integer.parseInt(mapper.ing_check(ing_name));
+		if (result == 0 ) {
+			return 0;
+		}
+		String ing_id = mapper.getId(ing_name);
+		String contain = mapper.isContain(ing_id, curid);
+		if ( contain == "1") {
+			// 이미 있는 재료인 경우
+			return 1;
+		}
+		else {
+			/// 냉장고에 없는 재료인 경우
+			mapper.add(curid, ing_id, expire_date);
+			return 2;
+		}
+		
+	
+	}
+	
 	
 	
 }

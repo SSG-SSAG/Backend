@@ -17,4 +17,19 @@
 		DELETE FROM refrigerator where refg_id = #{a}
 	</delete>
 	
+	<select id="getId" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT ing_id FROM ingredients WHERE ing_name = #{a}
+	</select>
+	
+	<select id="ing_check" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT COUNT(*) FROM ingredients WHERE ing_name = #{a}
+	</select>
+	
+	<select id="isContain" resultType="java.lang.String" parameterType="map">
+		SELECT COUNT(*) FROM refrigerator WHERE user_no = #{user_id} and ing_id = #{ing_id }
+	</select>
+	
+	<insert id="add" parameterType="map">
+		INSERT INTO refrigerator (user_no, ing_id, expire_date) VALUES (#{user_no}, #{ing_id}, #{expire_date})
+	</insert>
 </mapper>

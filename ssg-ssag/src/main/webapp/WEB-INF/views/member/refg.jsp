@@ -17,8 +17,8 @@
 <body>
 <h>나의 냉장고!</h>
 <hr>
-
-
+<h>${currentUser.name }</h>
+<hr>
 <table border="1">
 	<tr>
 		<td> 재료 명</td>

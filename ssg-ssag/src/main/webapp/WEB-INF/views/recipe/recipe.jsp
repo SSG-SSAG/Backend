@@ -20,19 +20,23 @@ function srch_sort() {
 function movepage(page_num, sort, type, rname, total_count,flag) {
 	
 	if (page_num == "" && page_num == null) {
-		page_num = 1
+		page_num = "1"
 	}
 	if (flag == "1") {
 		if (page_num == "1") {
-			page_num = 1;
+			page_num = "1";
 		}
 		else {
-			page_num -= 1;
+			var temp = parseInt(page_num);
+			temp -= 1;
+			page_num = String(temp);
 		}
 	}
 	if (flag == "2") {
-		if ( page_num < total_count){	
-			page_num += 1;
+		if ( parseInt(page_num) < parseInt(total_count)){
+			var temp = parseInt(page_num);
+			temp += 1
+			page_num = String(temp);
 		}
 	}
 	

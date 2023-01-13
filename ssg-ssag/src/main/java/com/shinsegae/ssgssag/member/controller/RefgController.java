@@ -36,20 +36,18 @@ public class RefgController {
 	
 	@GetMapping(value="delete.ssg")
 	public void delete(@RequestParam("refg_id") String param, HttpServletResponse res) throws Exception {
-		System.out.println("askdjs;adjasldjlsa;j");
-		System.out.println(param);
 		boolean result = service.delete(param);
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html;charset=utf-8");
 		if (result) {
 			out.print("<script>");
-			out.print("alert('Á¤»óÀûÀ¸·Î »èÁ¦µÇ¾ú½À´Ï´Ù.');");
+			out.print("alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.');");
 			out.print("location.href='refg.ssg';");
 			out.print("</script>");
 		}
 		else {
 			out.print("<script>");
-			out.print("alert('»èÁ¦ ½ÇÆÐ');");
+			out.print("alert('ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½');");
 			out.print("location.href='refg.ssg';");
 			out.print("</script>");
 		}

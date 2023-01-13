@@ -6,39 +6,39 @@ import lombok.Data;
 public class RecipeVO {
 
 	// Recipe Field
-	private int recipe_id;			// ·¹½ÃÇÇ ID
-	private String recipe_name;		// ·¹½ÃÇÇ ÀÌ¸§
-	private String recipe_img;		// ´ëÇ¥ ÀÌ¹ÌÁö
-	private int calorie;			// ¿­·®
-	private int info_car;			// Åº¼öÈ­¹°
-	private int info_pro;			// ´Ü¹éÁú
-	private int info_fat;			// Áö¹æ
-	private int info_na;			// ³ªÆ®·ı
-	private String source;			// ÃâÃ³
-	private int level;				// ³­ÀÌµµ
-	private String recipe_ing_info;	// Àç·á Á¤º¸
+	private int recipe_id;			// ë ˆì‹œí”¼ ID
+	private String recipe_name;		// ë ˆì‹œí”¼ ì´ë¦„
+	private String recipe_img;		// ëŒ€í‘œ ì´ë¯¸ì§€
+	private int calorie;			// ì—´ëŸ‰
+	private int info_car;			// íƒ„ìˆ˜í™”ë¬¼
+	private int info_pro;			// ë‹¨ë°±ì§ˆ
+	private int info_fat;			// ì§€ë°©
+	private int info_na;			// ë‚˜íŠ¸ë¥¨
+	private String source;			// ì¶œì²˜
+	private int level;				// ë‚œì´ë„
+	private String recipe_ing_info;	// ì¬ë£Œ ì •ë³´
 	
 	// Recipe Ingredient Field
-	private int recipe_ing_id;		// ·¹½ÃÇÇ Àç·á ID
-	private int recipe_id2;			// ·¹½ÃÇÇ ID
-	private int ing_id2;			// Àç·á ID
-	private char recipe_capacity;	// ¿ë·®
+	private int recipe_ing_id;		// ë ˆì‹œí”¼ ì¬ë£Œ ID
+	private int recipe_id2;			// ë ˆì‹œí”¼ ID
+	private int ing_id2;			// ì¬ë£Œ ID
+	private char recipe_capacity;	// ìš©ëŸ‰
 	
 	// Ingredients Field
-	private int ing_id;				// Àç·á ID
-	private String ing_name;		// Àç·á¸í
+	private int ing_id;				// ì¬ë£Œ ID
+	private String ing_name;		// ì¬ë£Œëª…
 	
 	// Input
 	private String rname;
 	private String iname;
 	
-	// ÆäÀÌÂ¡ Ã³¸®
+	// í˜ì´ì§• ì²˜ë¦¬
 	private int amount;
 	private int pageNum;
 	
 	private String type;
 	
-	// »ı¼ºÀÚ
+	// ìƒì„±ì
 	public RecipeVO() {				// default
 		this.amount = 10;
 		this.pageNum = 1;

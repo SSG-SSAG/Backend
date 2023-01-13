@@ -19,11 +19,11 @@ public class RecipeController {
 	@Autowired
 	RecipeService service;
 	
-	// ÀüÃ¼ Á¶È¸ - ¿©·¯ °Ç ÀÀ´ä (JSON ¹è¿­)
+	// ì „ì²´ ì¡°íšŒ - ì—¬ëŸ¬ ê±´ ì‘ë‹µ (JSON ë°°ì—´)
 	@GetMapping("/recipe/recipe.ssg")
 	public String getAll(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Recipe Controller ###");
-		List<RecipeVO> obj = service.reci(vo);	// ¼­ºñ½º È£Ãâ
+		List<RecipeVO> obj = service.reci(vo);	// ì„œë¹„ìŠ¤ í˜¸ì¶œ
 		req.setAttribute("list", obj);
 		return "recipe/recipe";
 	}
@@ -33,7 +33,7 @@ public class RecipeController {
 	public String getIng(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Ingredient Controller ###");
 		System.out.println(vo.getRname());
-		List<RecipeVO> obj = service.reci(vo);	// ¼­ºñ½º È£Ãâ
+		List<RecipeVO> obj = service.reci(vo);	// ì„œë¹„ìŠ¤ í˜¸ì¶œ
 		req.setAttribute("list", obj);
 		System.out.println("checkpoint");
 		return "recipe/recipe";

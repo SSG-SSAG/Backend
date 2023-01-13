@@ -16,7 +16,7 @@
 					어쩌고저쩌고 할 말 적어주세요
 				</div>
 				<div class="member-form">
-					<form action="/ssgssag/auth/login" method="post">
+					<form action="/ssgssag/auth/login.ssg" method="post">
 					<div class="mb-3">
 					    <label for="inputId" class="form-label">아이디</label>
 					    <input type="text" class="form-control" name="id" value="${memberVO.id}">

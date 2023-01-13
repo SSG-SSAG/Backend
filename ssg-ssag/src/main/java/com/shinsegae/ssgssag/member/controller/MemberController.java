@@ -69,13 +69,8 @@ public class MemberController extends BaseController {
 	}
 	
 	// 로그인 실행
-	/*
-	 * 1: 로그인 성공
-	 * -1: 없는 계정(아이디 틀림)
-	 * -2: 비밀번호 불일치
-	 * */
 	@PostMapping(value="auth/login.ssg")
-	@ResponseBody
+//	@ResponseBody
 	public void loginAction(
 			MemberVO memberVO, HttpServletRequest req, HttpServletResponse res, HttpSession sess
 			) throws Exception {
@@ -98,7 +93,7 @@ public class MemberController extends BaseController {
 			sess.setAttribute("currentUser", currentUser);
 		} else {
 			msg = "아이디와 비밀번호를 다시 확인해주세요";
-			url = "redirect:/ssgssag/auth/login";			
+			url = "redirect:/ssgssag/auth/login.ssg";			
 		}
 			
 //		} else if (result == -1 ){

@@ -9,12 +9,12 @@ import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
 @Mapper
 public interface RecipeMapper {
 	
-	// µî·Ï
+	// ë“±ë¡
 	int recipeInsert(RecipeVO param);
 		
-	// ·¹½ÃÇÇ ÀÌ¸§ Á¶È¸
+	// ë ˆì‹œí”¼ ì´ë¦„ ì¡°íšŒ
 	List<RecipeVO> selectList(RecipeVO vo);
 
-	// ·¹½ÃÇÇ Àç·á Á¶È¸
+	// ë ˆì‹œí”¼ ì¬ë£Œ ì¡°íšŒ
 	List<RecipeVO> selectIngre(RecipeVO vo);
 }

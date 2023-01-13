@@ -14,7 +14,7 @@ public class RecipeService {
 	@Autowired
 	RecipeMapper mapper;
 	
-	// ·¹½ÃÇÇ ÀÌ¸§ Á¶È¸
+	// ë ˆì‹œí”¼ ì´ë¦„ ì¡°íšŒ
 	public List<RecipeVO> reci(RecipeVO vo) {
 		System.out.println("### Recipe Service ###");
 		System.out.println(vo.getRname());
@@ -24,7 +24,7 @@ public class RecipeService {
 		return obj;
 	}
 	
-	// ·¹½ÃÇÇ Àç·á Á¶È¸
+	// ë ˆì‹œí”¼ ì¬ë£Œ ì¡°íšŒ
 	public List<RecipeVO> ingre(RecipeVO vo) {
 		System.out.println("### Ingredient Service ###");
 		

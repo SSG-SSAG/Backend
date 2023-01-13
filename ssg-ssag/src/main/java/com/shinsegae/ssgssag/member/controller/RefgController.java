@@ -43,13 +43,13 @@ public class RefgController {
 		res.setContentType("text/html;charset=utf-8");
 		if (result) {
 			out.print("<script>");
-			out.print("alert('Á¤»óÀûÀ¸·Î »èÁ¦µÇ¾ú½À´Ï´Ù.');");
+			out.print("alert('ì •ìƒì ìœ¼ë¡œ ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.');");
 			out.print("location.href='refg.ssg';");
 			out.print("</script>");
 		}
 		else {
 			out.print("<script>");
-			out.print("alert('»èÁ¦ ½ÇÆĞ');");
+			out.print("alert('ì‚­ì œ ì‹¤íŒ¨');");
 			out.print("location.href='refg.ssg';");
 			out.print("</script>");
 		}

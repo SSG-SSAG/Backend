@@ -5,17 +5,20 @@
 }
 
 .member-hello {
-	margin: 4vh 2vw 2vh 2vw;
+	margin: 8vh 2vw 8vh 2vw;
 	color: #111111;
 }
 
 .member-submit-btn {
-	width: 15vw;
-	height: 5vh;
+	width: 200px;
+	height: 40px;
 	background: rgba(163, 144, 122, 0.8);
 	color: #ffffff;
-	border: none;
-	padding: 2px 4px;
-	border-radius: 5px;	
 	margin: 1.5vh 0 1.5vh 0;
+	border: none;
+	padding: 5px 8px;
+	border-radius: 4px;
+}
+.member-submit-btn:hover {
+	background: rgba(163, 144, 122, 1);
 }

@@ -14,7 +14,7 @@
         <jsp:include page="../layout/header.jsp" />
         <div class="content-container">
             <div class="member-hello">
-			    어쩌고저쩌고 할 말 적어주세요
+			    SSG.COM 계정으로 쓱- 로그인해주세요
 			</div>
 			<div class="member-form">
 			    <form action="/ssgssag/auth/login.ssg" method="post">

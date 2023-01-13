@@ -30,7 +30,7 @@ public class RecipeService {
 		System.out.println("### obj ### " + obj.get(0));
 		return obj;
 	}
-}	
+
 	public List<RecipeVO> rcp_page(RecipeVO vo) {
 		List<RecipeVO> obj = mapper.rcp_page(vo);
 		

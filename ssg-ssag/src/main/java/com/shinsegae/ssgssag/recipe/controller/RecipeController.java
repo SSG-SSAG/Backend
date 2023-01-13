@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.shinsegae.ssgssag.recipe.service.RecipeCatService;
 import com.shinsegae.ssgssag.recipe.service.RecipeDesService;
 import com.shinsegae.ssgssag.recipe.service.RecipeIngService;
 import com.shinsegae.ssgssag.recipe.service.RecipeService;
+import com.shinsegae.ssgssag.recipe.service.RecipeTagService;
 import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
 
 @Controller
@@ -23,18 +25,26 @@ public class RecipeController {
 	RecipeDesService service_des;
 	@Autowired
 	RecipeIngService service_ing;
+	@Autowired
+	RecipeTagService service_tag;
+	@Autowired
+	RecipeCatService service_cat;
 	
-	// ��ü ��ȸ - ���� �� ���� (JSON �迭)
-	@GetMapping("/recipe/recipe.ssg")
-	public String getAll(HttpServletRequest req, RecipeVO vo) {
-		System.out.println("### Recipe Controller ###");
-		List<RecipeVO> obj = service.reci(vo);	// ���� ȣ��
-		req.setAttribute("list", obj);
-		return "recipe/recipe";
-	}
+//	// 전체 조회 - 여러 건 응답 (JSON 배열)
+//	@GetMapping("/recipe/recipe.ssg")
+//	public String getAll(HttpServletRequest req, RecipeVO vo) {
+//		System.out.println("### Recipe Controller ###");
+//		List<RecipeVO> obj = service.reci(vo);	// 서비스 호출
+//		req.setAttribute("list", obj);
+//		return "recipe/recipe";
+//	}
 	
 	@GetMapping("/recipe/recipe_search.ssg")
 	public String getIng(HttpServletRequest req, RecipeVO vo) {
+		System.out.println("### Ingredient Controller ###");
+		System.out.println(vo.getRname());
+		List<RecipeVO> obj = service.reci(vo);	// Service
+		System.out.println("checkpoint");
 		List<RecipeVO> obj = service.reci(vo);
 		int total = obj.size();
 		int cur = vo.getCurpage();
@@ -59,7 +69,24 @@ public class RecipeController {
 		}
 		req.setAttribute("list", obj2);
 		req.setAttribute("page", pagebutton);
+
 		return "recipe/recipe";
+	}
+	
+	@GetMapping("/recipe/recipe_cat.ssg")
+	public String getCats(HttpServletRequest req, RecipeVO vo) {
+		System.out.println("### Category Controller ###");
+		List<RecipeVO> obj = service_cat.cats(vo);
+		req.setAttribute("list_cat", obj);
+		return "recipe/recipe_cat";
+	}
+
+	@GetMapping("/recipe/recipe_tag.ssg")
+	public String getTags(HttpServletRequest req, RecipeVO vo) {
+		System.out.println("### Tag Controller ###");
+		List<RecipeVO> obj = service_tag.tags(vo);
+		req.setAttribute("list_tag", obj);
+		return "recipe/recipe_tag";
 	}
 
 	@GetMapping("/recipe/recipe_des.ssg")

@@ -9,7 +9,7 @@
 var flag = "rcp"
  -->
 
-function rcp_des(id, name) {
+function goPage(id, name) {
 	 location.href = "recipe_des.ssg?recipe_id=" + id + "&recipe_name=" + name;
 }
 
@@ -87,20 +87,22 @@ function movepage(page_num, sort, type, rname, total_count,flag) {
 
 <table border="1">
 	<tr>
+		<td></td>
 		<td>ID</td>
 		<td>이름</td>
 		<td>난이도</td>
 		<td>좋아요</td>
 		<td colspan="2">이미지</td>
 	</tr>
-	<c:forEach var="vo" items="${list }">	<!-- request에 들어있는 아이템 -->
+	<c:forEach var="vo" items="${list }" varStatus="status">	<!-- request에 들어있는 아이템 -->
 	<tr>
+		<td>${status.count}</td>
 		<td>${vo.recipe_id }</td>
 		<td>${vo.recipe_name }</td>
 		<td>${vo.level }</td>
 		<td>${vo.cnt }</td>
 		<td><img src = "${vo.recipe_img }" width="200" height="200" ></td>
-		<td><input type="button" value="상세보기" onclick="rcp_des(${vo.recipe_id}, '${vo.recipe_name}')"></td>
+		<td><input type="button" value="상세보기" onclick="goPage(${vo.recipe_id}, '${vo.recipe_name}')"></td>
 	</tr>
 	</c:forEach>
 </table>

@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false" %>
 
 <script>
 
@@ -28,7 +27,6 @@ function srch_sort() {
 <body>
 <h2>${currentUser.name }님이 관심 있는 레시피</h2>
 <h3>레시피 구경하고 장바구니에 ssag 담아보세요~!</h3>
-<%-- <h1>${cu.category_name}의 #${recipeVO.tag_name} 레시피 모음 </h1> --%>
 
 <form name="rForm" action="recipe_tag.ssg" method="get">
 	<input type="hidden" name="tag_id" value="${recipeVO.tag_id }">

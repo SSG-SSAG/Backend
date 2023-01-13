@@ -20,7 +20,10 @@ public class RefgService {
 		List<RefgVO> list = mapper.getList(ing_id);
 		for ( int i = 0; i<list.size(); i++) {
 			Date cur_time = new Date();
-			long remain_mil = list.get(i).getExpire_date().getTime()-cur_time.getTime();
+			long remain_mil = 0;
+			if (list.get(i).getExpire_date() != null) {
+				remain_mil = list.get(i).getExpire_date().getTime()-cur_time.getTime();
+			}
 			long remain_hour = (remain_mil)/3600000%24;
 			long remain_day = remain_mil/3600000/24;
 			if (remain_mil < 0) {

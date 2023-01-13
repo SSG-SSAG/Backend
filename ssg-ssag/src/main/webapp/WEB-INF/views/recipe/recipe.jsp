@@ -96,14 +96,28 @@ function movepage(page_num, sort, type, rname, total_count,flag) {
 							</div>
 						</div>
 					</c:forEach>
-					<input type="button" value="이전" onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','1');">
-					<div>
-					    <c:forEach var="n" items="${page }">
-					   <a href="#;" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');"
-					<c:if test="${n eq recipeVO.curpage}">style="font-weight:900"</c:if>>${n}</a>
-					</c:forEach>
-					</div>
-					<input type="button" value="다음" onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');">
+					<nav>
+						<ul class="pagination">
+						    <li class="page-item">
+						    <button class="page-link" 
+						        onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');" aria-label="Previous">
+						      <span aria-hidden="true" class="ssg-page">이전</span>
+						    </button>
+							</li>
+						  	<c:forEach var="n" items="${page }">
+								<li class="page-item">
+							    	<button class="page-link ssg-page" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');"
+									<c:if test="${n eq recipeVO.curpage}">style="font-weight:500; background: rgba(163, 144, 122, 0.8);"</c:if>><span class="ssg-page">${n}</span></button>
+								</li>
+							</c:forEach>
+							<li class="page-item">
+						  		<button class="page-link" 
+					     			onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');" aria-label="Next">
+						        <span aria-hidden="true" class="ssg-page">다음</span>
+					     		</button>
+						    </li>
+						</ul>
+					</nav>
 				</div>
 			    </div>			
       		<jsp:include page="../layout/menu.jsp" />

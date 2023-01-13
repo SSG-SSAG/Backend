@@ -14,23 +14,26 @@ public class RecipeService {
 	@Autowired
 	RecipeMapper mapper;
 	
-	// ·¹½ÃÇÇ ÀÌ¸§ Á¶È¸
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½È¸
 	public List<RecipeVO> reci(RecipeVO vo) {
 		System.out.println("### Recipe Service ###");
-		System.out.println(vo.getRname());
 		List<RecipeVO> obj = mapper.selectList(vo);
-		
-		System.out.println("### obj ### " + obj.get(0));
 		return obj;
 	}
 	
-	// ·¹½ÃÇÇ Àç·á Á¶È¸
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	public List<RecipeVO> ingre(RecipeVO vo) {
 		System.out.println("### Ingredient Service ###");
 		
 		List<RecipeVO> obj = mapper.selectIngre(vo);
 		
 		System.out.println("### obj ### " + obj.get(0));
+		return obj;
+	}
+	
+	public List<RecipeVO> rcp_page(RecipeVO vo) {
+		List<RecipeVO> obj = mapper.rcp_page(vo);
+		
 		return obj;
 	}
 }

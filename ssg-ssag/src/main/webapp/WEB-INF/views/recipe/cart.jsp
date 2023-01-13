@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +9,8 @@
 </head>
 <body>
 <script>
- function refg() {
-	 location.href="http://localhost:8081/ssgssag/refg.ssg";	 
+ function refg(id) {
+	 location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + id;	 
 	 
  }
  </script>
@@ -28,6 +27,6 @@
 	</tr>
 	</c:forEach>
 </table>
-<input type="button" value="냉장고로 이동" onclick="refg();">
+<input type="button" value="냉장고로 이동" onclick="refg('${currentUser.user_no}');">
 </body>
 </html>

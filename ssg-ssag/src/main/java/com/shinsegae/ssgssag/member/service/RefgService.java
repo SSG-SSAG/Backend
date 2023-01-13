@@ -51,12 +51,15 @@ public class RefgService {
 		}
 		String ing_id = mapper.getId(ing_name);
 		String contain = mapper.isContain(ing_id, curid);
-		if ( contain == "1") {
+		System.out.println(contain);
+		if ( contain.equals("1")) {
 			// 이미 있는 재료인 경우
+			System.out.println("a");
 			return 1;
 		}
 		else {
 			/// 냉장고에 없는 재료인 경우
+			System.out.println("b");
 			mapper.add(curid, ing_id, expire_date);
 			return 2;
 		}

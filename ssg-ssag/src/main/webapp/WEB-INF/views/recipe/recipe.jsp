@@ -55,7 +55,7 @@ function movepage(page_num, sort, type, rname, total_count,flag) {
 } 
 
 </script>
- 
+
 <html>
 <head>
 	<jsp:include page="../layout/head.jsp"/>
@@ -63,7 +63,6 @@ function movepage(page_num, sort, type, rname, total_count,flag) {
 	<link rel="stylesheet" href="/ssgssag/resources/css/layout.css">
 </head>
 <body>
-
 	<div class="main-background">
 	    <div class="pc-bg-left"></div>
 	    <div class="main-container">

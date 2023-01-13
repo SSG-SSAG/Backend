@@ -62,6 +62,7 @@ public class RecipeVO {
 	private String type;			// 검색
 	private String sort;			// 정렬
 	private int cat;				// 카테고리 대분류
+	private boolean my_ing;			// 나의 냉장고인지 확인
 	
 	// 페이징 처리
 	private int amount;

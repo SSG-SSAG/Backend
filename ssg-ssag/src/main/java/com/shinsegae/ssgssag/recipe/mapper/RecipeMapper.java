@@ -19,6 +19,9 @@ public interface RecipeMapper {
 	List<RecipeVO> selectIngre(RecipeVO vo);
 	
 	// 태그 조회
+	List<RecipeVO> selectLikes(RecipeVO vo);
+	
+	// 태그 조회
 	List<RecipeVO> selectCats(RecipeVO vo);
 	
 	// 레시피 태그로 조회

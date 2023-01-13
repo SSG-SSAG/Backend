@@ -18,8 +18,8 @@ function goPage(user_no, pg, id, name) {
 		location.href = "cart.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;		 
 	} else if (pg == 2) {	// 다음 페이지로 이동
 		location.href = "recipe_ing.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;
-	} else if (pg == 3) {	// 이전 페이지로 이동
-		location.href = "recipe_search.ssg";
+	} else if (pg == 3) {	// 홈으로 이동
+		location.href = "../";
 	}
 }
  </script>
@@ -27,7 +27,7 @@ function goPage(user_no, pg, id, name) {
 <h2>${recipeVO.recipe_name }의 레시피</h2>
 
 <input type="button" value="재료 상세 보기" onclick="goPage(1, 2, ${recipeVO.recipe_id}, '${recipeVO.recipe_name}');">
-<input type="button" value="검색으로 돌아가기" onclick="goPage(1, 3);">
+<input type="button" value="홈으로 돌아가기" onclick="goPage(1, 3);">
 
 <table border="1">
 	<tr>

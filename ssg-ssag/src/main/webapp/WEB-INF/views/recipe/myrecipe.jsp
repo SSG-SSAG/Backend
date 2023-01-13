@@ -23,24 +23,17 @@ function srch_sort() {
  
 <html>
 <head>
-	<title>Recipe Tag</title>
+	<title>My Recipe</title>
 </head>
 <body>
-<h2>레시피 태그 별 조회 페이지</h2>
-<h1>${param.category_name}의 #${recipeVO.tag_name} 레시피 모음 </h1>
+<h2>${currentUser.name }님이 관심 있는 레시피</h2>
+<h3>레시피 구경하고 장바구니에 ssag 담아보세요~!</h3>
+<%-- <h1>${cu.category_name}의 #${recipeVO.tag_name} 레시피 모음 </h1> --%>
 
 <form name="rForm" action="recipe_tag.ssg" method="get">
-	<!-- 정렬 기준 -->
-	<select name="sort" onchange="srch_sort()">
-		<option value="name" <c:if test="${recipeVO.sort == 'name' }">selected</c:if>>가나다순</option>
-		<option value="like" <c:if test="${recipeVO.sort == 'like' }">selected</c:if>>인기순</option>
-		<option value="level" <c:if test="${recipeVO.sort == 'level' }">selected</c:if>>난이도순</option>
-	</select>
 	<input type="hidden" name="tag_id" value="${recipeVO.tag_id }">
 	<input type="hidden" name="tag_name" value="${recipeVO.tag_name }">
 </form>
-
-<input type="button" value="다시 선택" onclick="goPage(3, ${param.cat}, '${param.category_name}')">
 
 <table border="1">
 	<tr>
@@ -51,7 +44,7 @@ function srch_sort() {
 		<td>좋아요</td>
 		<td colspan="2">이미지</td>
 	</tr>
-	<c:forEach var="vo" items="${list_tag }" varStatus="status">	<!-- request에 들어있는 아이템 -->
+	<c:forEach var="vo" items="${list_my }" varStatus="status">
 	<tr>
 		<td>${status.count}</td>
 		<td>${vo.recipe_id }</td>

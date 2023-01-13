@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div class="main-background">
+		<div class="pc-bg-left"></div>
 		<div class="main-container">
 			<jsp:include page="layout/header.jsp" />
 			<div class="content-container">
@@ -32,6 +33,7 @@
 			</div>			
 			<jsp:include page="layout/menu.jsp" />
 		</div>
+		<div class="pc-bg-right"></div>
 	</div>
 </body>
 </html>

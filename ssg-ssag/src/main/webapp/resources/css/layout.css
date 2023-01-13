@@ -1,23 +1,32 @@
 @charset "UTF-8";
 
-a {
-	text-decoration: none;
-}
-
+/* 전체 레이아웃 */
 .main-background {
 	width: 100%;
 	height: 100vh;
 	background: #554635;
+	display: flex;
+    flex-direction: row;
+}
+
+.pc-bg-left {
+    width: 60%;
+    visibility: visible;
+}
+
+.pc-bg-right {
+    visibility: visible;
 }
 
 .main-container {
 	background: #fffefd;
-	width: 35%;
-	height: 100%;
-	margin-left: 50%;
-	border: 1px solid red;
+	width: 470px;
+    height: 100vh;
 }
 
+
+
+/* 콘텐츠 들어갈 화면 레이아웃(모바일) */
 .content-container {
 	border: 1px solid yellow;
 	width: 100%;
@@ -62,4 +71,29 @@ a {
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+}
+
+/* 1200px 이하 + 모바일 화면 레이아웃 */
+@media screen and (max-width: 1200px) {
+    .main-background {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .pc-bg-left {
+        display: none;
+    }
+
+    .pc-bg-right {
+        display: none;
+    }
+    
+    .main-container {
+        position: relative;
+        min-width: 470px;
+        height: 100vh;
+    }
 }

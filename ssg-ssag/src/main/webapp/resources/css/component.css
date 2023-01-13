@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.main-btn {
+	width: 10vw;
+	height: 5vh;
+	background: rgba(163, 144, 122, 0.8);
+	color: #ffffff;
+	border: none;
+	padding: 2px 4px;
+	border-radius: 5px;
+}

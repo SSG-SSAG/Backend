@@ -41,13 +41,13 @@ public class RefgController {
 		res.setContentType("text/html;charset=utf-8");
 		if (result) {
 			out.print("<script>");
-			out.print("alert('���������� �����Ǿ����ϴ�.');");
+			out.print("alert('정상적으로 삭제되었습니다.');");
 			out.print("location.href='refg.ssg';");
 			out.print("</script>");
 		}
 		else {
 			out.print("<script>");
-			out.print("alert('���� ����');");
+			out.print("alert('삭제 실패');");
 			out.print("location.href='refg.ssg';");
 			out.print("</script>");
 		}

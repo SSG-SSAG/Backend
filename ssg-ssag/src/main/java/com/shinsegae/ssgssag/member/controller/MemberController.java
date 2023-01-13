@@ -31,7 +31,7 @@ public class MemberController extends BaseController {
 	
 	// 회원 가입 페이지로 이동
 	// auth/signup으로 GET 요청을 보내면 member/signup 페이지를 보여준다
-	@GetMapping("/auth/signup")
+	@GetMapping("/auth/signup.ssg")
 	public String signUp() {
 		return "member/signup";
 	}
@@ -44,7 +44,8 @@ public class MemberController extends BaseController {
 //	}
 	
 	// 회원 가입
-	@PostMapping("/auth/signup")
+	// @RequestMapping(value="/auth/signup.ssg", method={RequestMethod.POST})
+	@PostMapping("/auth/signup.ssg")
 	public void signUp(MemberVO memberVO, HttpServletResponse res) throws Exception {
 		int r = memberService.joinMember(memberVO);
 		
@@ -52,29 +53,24 @@ public class MemberController extends BaseController {
 		String url = "";
 		if (r >0 ) {
 			msg = "회원가입 완료!";
-			url="/ssgssag/auth/login";
+			url="/ssgssag/auth/login.ssg";
 		} else {
 			msg = "회원가입에 실패하였습니다";
-			url="/ssgssag/auth/signup";
+			url="/ssgssag/auth/signup.ssg";
 		}
 		alert(res, msg, url);
 	}
 	
 	// 로그인 페이지로 이동
 	// auth/login으로 GET 요청을 보내면 member/login 페이지를 보여준다
-	@GetMapping(value="auth/login")
+	@GetMapping(value="auth/login.ssg")
 	public String Login(Model model) throws Exception {
 		return "member/login";
 	}
 	
 	// 로그인 실행
-	/*
-	 * 1: 로그인 성공
-	 * -1: 없는 계정(아이디 틀림)
-	 * -2: 비밀번호 불일치
-	 * */
-	@PostMapping(value="auth/login")
-	@ResponseBody
+	@PostMapping(value="auth/login.ssg")
+//	@ResponseBody
 	public void loginAction(
 			MemberVO memberVO, HttpServletRequest req, HttpServletResponse res, HttpSession sess
 			) throws Exception {
@@ -97,7 +93,7 @@ public class MemberController extends BaseController {
 			sess.setAttribute("currentUser", currentUser);
 		} else {
 			msg = "아이디와 비밀번호를 다시 확인해주세요";
-			url = "redirect:/ssgssag/auth/login";			
+			url = "redirect:/ssgssag/auth/login.ssg";			
 		}
 			
 //		} else if (result == -1 ){

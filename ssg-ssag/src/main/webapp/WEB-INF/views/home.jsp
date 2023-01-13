@@ -1,21 +1,39 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false" %>
 <html>
 <head>
-	<title>Home</title>
+	<jsp:include page="layout/head.jsp"/>	
+	<link rel="stylesheet" href="resources/css/layout.css">
+	
 </head>
 <body>
-<h1>
-	Hello world!  
-</h1>
-<P>  The time on the server is ${serverTime}. </P>
-
-<button><a href="auth/signup" >회원가입 하러가기</a></button>
-<button><a href="auth/login" >로그인 하러가기</a></button>
-
-${currentUser.name }
-
+	<div class="main-background">
+		<div class="pc-bg-left"></div>
+		<div class="main-container">
+			<jsp:include page="layout/header.jsp" />
+			<div class="content-container">
+				<div>
+					<form name="rForm" action="recipe_search.ssg" method="get">
+						<select name="type">
+							<option value="all">전체</option>
+							<option value="rcp">레시피</option>
+							<option value="ing">재료</option>
+						</select>
+						<input type="text" name="rname" value="${recipeVO.rname }">	<!-- 검색어 -->
+						<input type="submit" value="검색" class="main-btn">
+					</form>	
+				</div>
+				<div>
+					태그 들어갈 자리
+				</div>
+				<div>
+					냉장고 간단 정보 넣을 자리
+				</div>
+			</div>			
+			<jsp:include page="layout/menu.jsp" />
+		</div>
+		<div class="pc-bg-right"></div>
+	</div>
 </body>
 </html>

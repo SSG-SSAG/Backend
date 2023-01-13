@@ -10,20 +10,20 @@ import com.shinsegae.ssgssag.member.vo.MemberVO;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor // finalÀÌ ºÙ°Å³ª @NotNull ÀÌ ºÙÀº ÇÊµåÀÇ »ı¼ºÀÚ¸¦ ÀÚµ¿ »ı¼ºÇØÁÖ´Â ·Òº¹ ¾î³ëÅ×ÀÌ¼Ç
-// À¯Àú °èÁ¤ÀÇ DB¿Í °ü·ÃµÈ ·ÎÁ÷À» Ã³¸®ÇÏÀÚ
-// È¸¿ø°¡ÀÔ, ·Î±×ÀÎ, ·Î±×¾Æ¿ô, È¸¿øÁ¤º¸ ¼öÁ¤
+@RequiredArgsConstructor // finalì´ ë¶™ê±°ë‚˜ @NotNull ì´ ë¶™ì€ í•„ë“œì˜ ìƒì„±ìë¥¼ ìë™ ìƒì„±í•´ì£¼ëŠ” ë¡¬ë³µ ì–´ë…¸í…Œì´ì…˜
+// ìœ ì € ê³„ì •ì˜ DBì™€ ê´€ë ¨ëœ ë¡œì§ì„ ì²˜ë¦¬í•˜ì
+// íšŒì›ê°€ì…, ë¡œê·¸ì¸, ë¡œê·¸ì•„ì›ƒ, íšŒì›ì •ë³´ ìˆ˜ì •
 public class MemberService {
 
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	// È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	public int joinMember(MemberVO memberVO) {
 		return memberMapper.joinMember(memberVO);
 	}
 	
-	// ¾ÆÀÌµğ Áßº¹ È®ÀÎ
+	// ì•„ì´ë”” ì¤‘ë³µ í™•ì¸
 //	public int checkId(String id) throws Exception {
 //		int result = 0;
 //		if (memberMapper.checkId(id) != null)
@@ -31,29 +31,29 @@ public class MemberService {
 //		return result;
 //	}
 	
-	// ·Î±×ÀÎ °ËÁõ (°èÁ¤ Á¸Àç ¿©ºÎ + ºñ¹Ğ¹øÈ£ ÀÏÄ¡ ¿©ºÎ)
+	// ë¡œê·¸ì¸ ê²€ì¦ (ê³„ì • ì¡´ì¬ ì—¬ë¶€ + ë¹„ë°€ë²ˆí˜¸ ì¼ì¹˜ ì—¬ë¶€)
 //	@Override
 	public MemberVO loginAction(MemberVO memberVO) throws Exception {
-		MemberVO exist = memberMapper.existedMember(memberVO); // ÀÌ°Å ¼¼¼Ç¿¡ ¾î¶»°Ô ÀúÀåÇÔ??????
-		// Á¸ÀçÇÏ°í + ÀÔ·ÂÇÑ ºñ¹Ğ¹øÈ£ == °´Ã¼ ¾È¿¡ µç ºñ¹Ğ¹øÈ£!!!
+		MemberVO exist = memberMapper.existedMember(memberVO); // ì´ê±° ì„¸ì…˜ì— ì–´ë–»ê²Œ ì €ì¥í•¨??????
+		// ì¡´ì¬í•˜ê³  + ì…ë ¥í•œ ë¹„ë°€ë²ˆí˜¸ == ê°ì²´ ì•ˆì— ë“  ë¹„ë°€ë²ˆí˜¸!!!
 		if (exist == null) {
-			return null; // Á¸ÀçÇÏÁö ¾Ê´Â´Ù
+			return null; // ì¡´ì¬í•˜ì§€ ì•ŠëŠ”ë‹¤
 		} else {
 			return exist;
 			
-//			// Á¸ÀçÇÑ´Ù¸é, ºñ¹Ğ¹øÈ£¸¦ È®ÀÎÇØº¸ÀÚ => ¿ÀÈ÷·Á ³Ê¹« ¸¹Àº ÈùÆ®¸¦ Áà¼­ º¸¾ÈÀÌ ¾àÇØÁö´Â ¿ªÈ¿°ú!
+//			// ì¡´ì¬í•œë‹¤ë©´, ë¹„ë°€ë²ˆí˜¸ë¥¼ í™•ì¸í•´ë³´ì => ì˜¤íˆë ¤ ë„ˆë¬´ ë§ì€ íŒíŠ¸ë¥¼ ì¤˜ì„œ ë³´ì•ˆì´ ì•½í•´ì§€ëŠ” ì—­íš¨ê³¼!
 //			String encryptedPwd = EncyrptionUtils.encryptSHA256(memberVO.getPassword());
 //			String correctPwd = exist.getPassword();
 //			
 //			if (correctPwd.equals(encryptedPwd)) {
 //				return 1;
 //			} else {
-//				return -2; // ºñ¹Ğ¹øÈ£ ºÒÀÏÄ¡
+//				return -2; // ë¹„ë°€ë²ˆí˜¸ ë¶ˆì¼ì¹˜
 //			}				
 		}
 	}
 	
-	// ·Î±×¾Æ¿ô
+	// ë¡œê·¸ì•„ì›ƒ
 	
 	
 }

@@ -9,21 +9,24 @@ import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
 @Mapper
 public interface RecipeMapper {
 	
-	// µî·Ï
+	// ï¿½ï¿½ï¿½
 	int recipeInsert(RecipeVO param);
 		
-	// ·¹½ÃÇÇ ÀÌ¸§À¸·Î Á¶È¸
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	List<RecipeVO> selectList(RecipeVO vo);
 
-	// ·¹½ÃÇÇ Àç·á·Î Á¶È¸
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	List<RecipeVO> selectIngre(RecipeVO vo);
 	
-	// ·¹½ÃÇÇ Àç·á Á¶È¸
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	List<RecipeVO> getIngs(RecipeVO vo);
 	
-	// ·¹½ÃÇÇ Á¶¸® ¼ø¼­ Á¶È¸
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	List<RecipeVO> getSteps(RecipeVO vo);
 	
-	// ·¹½ÃÇÇ Àç·á »ó¼¼ Á¶È¸
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¸
 	List<RecipeVO> selectIngs(RecipeVO vo);
+	
+	// For paging
+	List<RecipeVO> rcp_page(RecipeVO vo);
 }

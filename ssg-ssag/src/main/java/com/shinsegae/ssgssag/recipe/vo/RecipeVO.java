@@ -7,63 +7,67 @@ public class RecipeVO {
 
 	/*
 	 * Data Field
-	 * - ERD ±âÁØÀ¸·Î Á¤ÀÇ
+	 * - ERD ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	
 	// Recipe Field
-	private int recipe_id;			// ·¹½ÃÇÇ ID
-	private String recipe_name;		// ·¹½ÃÇÇ ÀÌ¸§
-	private String recipe_img;		// ´ëÇ¥ ÀÌ¹ÌÁö
-	private int calorie;			// ¿­·®
-	private int info_car;			// Åº¼öÈ­¹°
-	private int info_pro;			// ´Ü¹éÁú
-	private int info_fat;			// Áö¹æ
-	private int info_na;			// ³ªÆ®·ý
-	private String source;			// ÃâÃ³
-	private int level;				// ³­ÀÌµµ
-	private String recipe_ing_info;	// Àç·á Á¤º¸
+	private int recipe_id;			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID
+	private String recipe_name;		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
+	private String recipe_img;		// ï¿½ï¿½Ç¥ ï¿½Ì¹ï¿½ï¿½ï¿½
+	private int calorie;			// ï¿½ï¿½ï¿½ï¿½
+	private int info_car;			// Åºï¿½ï¿½È­ï¿½ï¿½
+	private int info_pro;			// ï¿½Ü¹ï¿½ï¿½ï¿½
+	private int info_fat;			// ï¿½ï¿½ï¿½ï¿½
+	private int info_na;			// ï¿½ï¿½Æ®ï¿½ï¿½
+	private String source;			// ï¿½ï¿½Ã³
+	private int level;				// ï¿½ï¿½ï¿½Ìµï¿½
+	private String recipe_ing_info;	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	
 	// Recipe Ingredient Field
-	private int recipe_ing_id;		// ·¹½ÃÇÇ Àç·á ID
-	private int recipe_id2;			// ·¹½ÃÇÇ ID
-	private int ing_id2;			// Àç·á ID
-	private char recipe_capacity;	// ¿ë·®
+	private int recipe_ing_id;		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ID
+	private int recipe_id2;			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID
+	private int ing_id2;			// ï¿½ï¿½ï¿½ ID
+	private char recipe_capacity;	// ï¿½ë·®
 	
 	// Ingredients Field
-	private int ing_id;				// Àç·á ID
-	private String ing_name;		// Àç·á¸í
+	private int ing_id;				// ï¿½ï¿½ï¿½ ID
+	private String ing_name;		// ï¿½ï¿½ï¿½ï¿½
 	
 	// Recipe Detail Field
-	private int recipe_step_id;		// ·¹½ÃÇÇ »ó¼¼ ID
-	private int recipe_id3;			// ·¹½ÃÇÇ ID
-	private int step;				// ¼ø¼­
-	private String description;		// ¼³¸í
-	private String dsc_img;			// ÀÌ¹ÌÁö
+	private int recipe_step_id;		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ID
+	private int recipe_id3;			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID
+	private int step;				// ï¿½ï¿½ï¿½ï¿½
+	private String description;		// ï¿½ï¿½ï¿½ï¿½
+	private String dsc_img;			// ï¿½Ì¹ï¿½ï¿½ï¿½
 	
 	// Like_recipe Field
-	private int cnt;				// Âò
+	private int cnt;				// ï¿½ï¿½
 	
 	
 	/*
 	 * Input Field
-	 * - µ¿Àû Ã³¸®¸¦ À§ÇÑ ÇÊµå
+	 * - ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Êµï¿½
 	 */
 	
 	// Input
-	private String rname;			// °Ë»ö¾î
-	private String type;			// °Ë»ö
-	private String sort;			// Á¤·Ä
+	private String rname;			// ï¿½Ë»ï¿½ï¿½ï¿½
+	private String type;			// ï¿½Ë»ï¿½
+	private String sort;			// ï¿½ï¿½ï¿½ï¿½
 	
-	// ÆäÀÌÂ¡ Ã³¸®
+	// ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½
 	private int amount;
 	private int pageNum;
 	
 	
-	// »ý¼ºÀÚ
+	private int total_count;
+	private int curpage;
+	private int start;
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public RecipeVO() {				// default
 		this.amount = 10;
 		this.pageNum = 1;
 		this.type = "all";
 		this.sort = "name";
+		this.curpage = 1;
 	}
 }

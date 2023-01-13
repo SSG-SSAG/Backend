@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false" %>
 
 <!DOCTYPE html>
 <html>
@@ -38,24 +37,6 @@ function page(user_no, pg, id, name) {
 		<td>${status.count}</td>
 		<td>${vo.ing_name}</td>
 		<td>${vo.my_ing }</td>
-	</tr>
-	</c:forEach>
-</table>
-
-<table border="1">
-	<tr>
-		<td colspan="3">영양 성분</td>
-	</tr>
-	<tr>
-		<td>탄</td>
-		<td>단</td>
-		<td>지</td>
-	</tr>
-	<c:forEach var="vo2" items="${list_nut }" >
-	<tr>
-		<td>${vo2.car} %</td>
-		<td>${vo2.pro} %</td>
-		<td>${vo2.fat} %</td>
 	</tr>
 	</c:forEach>
 </table>

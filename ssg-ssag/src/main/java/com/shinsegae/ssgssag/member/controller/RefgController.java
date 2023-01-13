@@ -36,8 +36,6 @@ public class RefgController {
 	
 	@GetMapping(value="delete.ssg")
 	public void delete(@RequestParam("refg_id") String param, HttpServletResponse res) throws Exception {
-		System.out.println("askdjs;adjasldjlsa;j");
-		System.out.println(param);
 		boolean result = service.delete(param);
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html;charset=utf-8");

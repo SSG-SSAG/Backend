@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 
-// °øÅëÀ¸·Î, ÀÚÁÖ »ç¿ëÇÏ´Â °Í
+// ê³µí†µìœ¼ë¡œ, ìì£¼ ì‚¬ìš©í•˜ëŠ” ê²ƒ
 public class BaseController {
 	
 	// alert

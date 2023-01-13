@@ -9,20 +9,20 @@ import com.shinsegae.ssgssag.member.vo.MemberVO;
 @Mapper
 public interface MemberMapper {
 
-	// ¾ÆÀÌµğ Á¶È¸
+	// ì•„ì´ë”” ì¡°íšŒ
 	List<MemberVO> alreadyMember(String id);
 	
-	// id¸¦ º¸³»¸é Á¸Àç ¿©ºÎ¸¦ È®ÀÎÇØ¼­ º¸³»ÁØ´Ù
+	// idë¥¼ ë³´ë‚´ë©´ ì¡´ì¬ ì—¬ë¶€ë¥¼ í™•ì¸í•´ì„œ ë³´ë‚´ì¤€ë‹¤
 	int checkId(String id);
 	
-	// È¸¿ø°¡ÀÔ
+	// íšŒì›ê°€ì…
 	int joinMember(MemberVO memberVO);
 	
-	// ·Î±×ÀÎ
-	// ·Î±×ÀÎ => Á¸ÀçÇÏ´Â À¯ÀúÀÎÁö È®ÀÎ, ÇØ´ç À¯Àú Á¤º¸ °´Ã¼ ¹İÈ¯
+	// ë¡œê·¸ì¸
+	// ë¡œê·¸ì¸ => ì¡´ì¬í•˜ëŠ” ìœ ì €ì¸ì§€ í™•ì¸, í•´ë‹¹ ìœ ì € ì •ë³´ ê°ì²´ ë°˜í™˜
 	public MemberVO existedMember(MemberVO memberVO);
 	
-	// ºñ¹Ğ¹øÈ£ È®ÀÎ
+	// ë¹„ë°€ë²ˆí˜¸ í™•ì¸
 	public MemberVO checkPwd(MemberVO memberVO);
 
 }

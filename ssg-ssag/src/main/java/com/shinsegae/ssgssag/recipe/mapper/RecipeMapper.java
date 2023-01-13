@@ -35,5 +35,5 @@ public interface RecipeMapper {
 
 	// For paging
 	List<RecipeVO> rcp_page(RecipeVO vo);
-
 }
+

@@ -23,7 +23,7 @@
 			</a>
 		</div>
 		<div class="menu-btn">
-			<a href="/ssgssag/recipe/myrecipe.ssg">
+			<a href="/ssgssag/recipe/myrecipe.ssg?no=${currentUser.user_no }">
 				<i class="fa-solid fa-heart fa-lg menu-icon"></i>
 				<p>찜</p>
 			</a>

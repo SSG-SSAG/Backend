@@ -4,8 +4,11 @@
 <mapper namespace="com.shinsegae.ssgssag.member.mapper.RefgMapper">
 	
 	<select id="getList" resultType="com.shinsegae.ssgssag.vo.RefgVO" parameterType="java.lang.String">
-		SELECT refg_id, ing_id, expire_date FROM refrigerator where user_no = #{a}
-		
+		<!-- <if test="a != null and a !=''"> -->
+		SELECT refg_id, ing_id, expire_date
+		FROM refrigerator
+		WHERE user_no = ${user_no}
+		<!-- </if> -->
 	</select>
 	
 	

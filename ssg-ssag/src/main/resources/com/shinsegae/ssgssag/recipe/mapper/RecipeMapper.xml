@@ -76,7 +76,7 @@
 	) tmp
 	WHERE like_recipe.recipe_id = recipe.recipe_id
 	AND recipe.recipe_id = tmp.recipe_id
-	AND user_no = 1<!-- ${user_no} -->	<!-- 일단 고정해놔서 나중에 바꾸면 돼용 -->
+	AND user_no = ${user_no}
 </select>
 
 <!-- 태그 조회 -->

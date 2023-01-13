@@ -30,7 +30,7 @@
            	
 			<table border="1">
 				<tr>
-					<td> 재료 명</td>
+					<td> 재료명</td>
 					<td colspan="2"> 남은 기한</td>
 					
 				</tr>
@@ -40,12 +40,9 @@
 					<c:if test="${vo.over eq 'true' }"><td  style="background-color:#FF0000">
 					유통기한지남
 					</td></c:if>
-					
 					<c:if test="${vo.over eq 'false' }"><td  style="background-color:#008000">
 					${vo.remain_day }일 ${vo.remain_hour } 시간
 					</td></c:if>
-					
-					
 					<td>
 						<input type="button" value="삭제" onclick="del(${vo.refg_id});">
 					</td>

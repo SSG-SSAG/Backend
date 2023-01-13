@@ -23,7 +23,7 @@
 			</a>
 		</div>
 		<div class="menu-btn">
-			<a href="/ssgssag">
+			<a href="/ssgssag/recipe/myrecipe.ssg">
 				<i class="fa-solid fa-heart fa-lg menu-icon"></i>
 				<p>찜</p>
 			</a>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.shinsegae.ssgssag.recipe.service.RecipeCatService;
 import com.shinsegae.ssgssag.recipe.service.RecipeDesService;
 import com.shinsegae.ssgssag.recipe.service.RecipeIngService;
+import com.shinsegae.ssgssag.recipe.service.RecipeMyService;
 import com.shinsegae.ssgssag.recipe.service.RecipeService;
 import com.shinsegae.ssgssag.recipe.service.RecipeTagService;
 import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
@@ -29,6 +30,8 @@ public class RecipeController {
 	RecipeTagService service_tag;
 	@Autowired
 	RecipeCatService service_cat;
+	@Autowired
+	RecipeMyService service_my;
 	
 //	// 전체 조회 - 여러 건 응답 (JSON 배열)
 //	@GetMapping("/recipe/recipe.ssg")
@@ -73,6 +76,14 @@ public class RecipeController {
 		return "recipe/recipe";
 	}
 	
+	@GetMapping("/recipe/myrecipe.ssg")
+	public String getMy(HttpServletRequest req, RecipeVO vo) {
+		System.out.println("### Mylist Controller ###");
+		List<RecipeVO> obj = service_my.my(vo);
+		req.setAttribute("list_my", obj);
+		return "recipe/myrecipe";
+	}
+
 	@GetMapping("/recipe/recipe_cat.ssg")
 	public String getCats(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Category Controller ###");

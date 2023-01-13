@@ -2,6 +2,7 @@ package com.shinsegae.ssgssag.member.vo;
 
 public class MemberVO {
 	
+	private int user_no;
 	private String id;
 	private String password;
 	private String name;
@@ -10,7 +11,12 @@ public class MemberVO {
 	private String birth_date;
 	private int gender;
 	
-    public String getId() {
+	
+    public int getUser_no() {
+		return user_no;
+	}
+	
+	public String getId() {
 		return id;
 	}
 

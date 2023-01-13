@@ -29,6 +29,9 @@
 				</div>
 				<div>
 					냉장고 간단 정보 넣을 자리
+					<h4>${currentUser.name }님 하이 </h4>
+					<h4>${currentUser.id }님 하이 </h4>
+					<h4>${currentUser.user_no }님 하이 </h4>
 				</div>
 			</div>			
 			<jsp:include page="layout/menu.jsp" />

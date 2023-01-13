@@ -17,10 +17,7 @@ public class RecipeService {
 	// 레시피 이름 조회
 	public List<RecipeVO> reci(RecipeVO vo) {
 		System.out.println("### Recipe Service ###");
-		System.out.println(vo.getRname());
 		List<RecipeVO> obj = mapper.selectList(vo);
-		
-		System.out.println("### obj ### " + obj.get(0));
 		return obj;
 	}
 	
@@ -31,6 +28,12 @@ public class RecipeService {
 		List<RecipeVO> obj = mapper.selectIngre(vo);
 		
 		System.out.println("### obj ### " + obj.get(0));
+		return obj;
+	}
+	
+	public List<RecipeVO> rcp_page(RecipeVO vo) {
+		List<RecipeVO> obj = mapper.rcp_page(vo);
+		
 		return obj;
 	}
 }

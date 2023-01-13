@@ -17,6 +17,39 @@ function srch_sort() {
 	rForm.submit();	// form 자체를 통째로 전송
 } 
 
+function movepage(page_num, sort, type, rname, total_count,flag) {
+	
+	if (page_num == "" && page_num == null) {
+		page_num = 1
+	}
+	if (flag == "1") {
+		if (page_num == "1") {
+			page_num = 1;
+		}
+		else {
+			page_num -= 1;
+		}
+	}
+	if (flag == "2") {
+		if ( page_num < total_count){	
+			page_num += 1;
+		}
+	}
+	
+	
+	var s = "recipe_search.ssg?curpage=" + page_num;
+	if (sort != "" && sort != null) {
+		s += "&sort=" + sort;
+	} 
+	if (type != "" && type != null) {
+		s += "&type=" + type;		
+	} 
+	if (rname != "" && rname != null) {
+		s += "&rname=" + rname;
+	} 
+	location.href = s;
+} 
+
 </script>
  
 <html>
@@ -41,7 +74,16 @@ function srch_sort() {
 	</select>
 	<input type="text" name="rname" value="${recipeVO.rname }">	<!-- 검색어 -->
 	<input type="submit" value="검색">
+	<input type="hidden" name="curpage" value="1">
 </form>
+
+<input type="button" value="이전" onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','1');">
+
+<c:forEach var="n" items="${page }">
+	<input type="button" value="${n }" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');">
+</c:forEach>
+
+<input type="button" value="다음" onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');">
 
 <table border="1">
 	<tr>

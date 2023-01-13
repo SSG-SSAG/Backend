@@ -14,16 +14,8 @@
 </style>
 </head>
 <body>
-    <!--   
-        String currentUser = null;
-    	if (session.getAttribute("currentUser") != null){
-    		currentUser = (String) session.getAttribute("currentUser");
-    	}
-	%>  -->
-	
 	<div class="header"">
 		<div>로고자리</div>
-		
 	</div>
     
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

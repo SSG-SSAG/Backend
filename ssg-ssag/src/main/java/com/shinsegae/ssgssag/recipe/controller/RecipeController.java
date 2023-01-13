@@ -103,7 +103,9 @@ public class RecipeController {
 	public String getMaking(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Recipe Ing Controller ###");
 		List<RecipeVO> obj = service_ing.ings(vo);
+		List<RecipeVO> obj2 = service_ing.nut(vo);
 		req.setAttribute("list_detail", obj);
+		req.setAttribute("list_nut", obj2);
 		return "recipe/recipe_ing";
 	}
 }

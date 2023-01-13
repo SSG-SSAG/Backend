@@ -9,21 +9,30 @@
 	<meta charset="UTF-8">
 	<jsp:include page="../layout/head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/component.css"></head>
+	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">
+</head>
 <body>
 	<div class="main-background">
 	    <div class="pc-bg-left"></div>
 	    <div class="main-container">
 	        <jsp:include page="../layout/header.jsp" />
-	        <div class="content-container">
-	        	<div class="step-top-container">
-	        		<div>
-	        			뒤로 가기
-	        		</div>
-	        		<div>
-	        			재료 리스트
-	        		</div>
-	        	</div>
+	        <div class="content-container ccenter-layout">
+	            <div class="step-recipe-container">
+	            	<div class="card step-recipe-card">
+						<h5 style="margin: 0;">${recipeVO.recipe_name }</h5>
+						<div class="recipe-desc-box">
+							<img class="step-recipe-card-img" src="${recipeVO.recipe_img }" alt="${recipeVO.recipe_name }" >
+							<div class="recipe-desc">
+						      <p>영양정보 담을 거임</p>
+						      <p>태그 버튼 자리임</p>
+						      ${recipeVO.recipe_img }
+						    </div>
+						</div>
+					</div>
+					<div class="card step-recipe-ing-card" onclick="goPage(1, 2, ${recipeVO.recipe_id}, '${recipeVO.recipe_name}');">
+						재료 목록 보기
+					</div>
+	            </div>
 	            <div class="step-list-container">
 					<c:forEach var="vo" items="${list_step }" varStatus="status">
 						<div class="card step-card" style="display: flex; flex-direction: row;">
@@ -40,6 +49,7 @@
 					</c:forEach>
 				</div>
 	        </div>			
+	        
 	        <jsp:include page="../layout/menu.jsp" />
 	    </div>
 	    <div class="pc-bg-right"></div>

@@ -45,7 +45,7 @@
 							<ul class="pagination">
 							    <li class="page-item">
 							    <button class="page-link" 
-							        onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');" aria-label="Previous">
+							        onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','1');" aria-label="Previous">
 							      <span aria-hidden="true" class="ssg-page">이전</span>
 							    </button>
 								</li>

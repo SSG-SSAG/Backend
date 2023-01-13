@@ -52,7 +52,6 @@ public class RecipeVO {
 	// Recipe Tag Filed
 	private int recipe_tag_id;		// 레시피 태그 번호
 	
-	
 	/*
 	 * Input Field
 	 * - 동적 처리를 위한 필드
@@ -73,8 +72,8 @@ public class RecipeVO {
 	private int curpage;
 	private int start;
 	public RecipeVO() {				// default
-		this.amount = 10;
-		this.pageNum = 1;
+//		this.amount = 10;
+//		this.pageNum = 1;
 		this.type = "all";
 		this.sort = "name";
 		this.curpage = 1;

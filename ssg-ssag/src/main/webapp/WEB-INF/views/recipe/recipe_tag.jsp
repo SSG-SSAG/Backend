@@ -5,43 +5,42 @@
 
 <script>
 
-<!--
-var flag = "rcp"
- -->
-
-function goPage(id, name) {
-	 location.href = "recipe_des.ssg?recipe_id=" + id + "&recipe_name=" + name;
+function goPage(pg, id, name) {
+	if (pg == 1) {
+		location.href = "recipe_des.ssg?recipe_id=" + id + "&recipe_name=" + name;		
+	} else if (pg == 2) {	// 다음 페이지로 이동
+		location.href = "recipe_des.ssg?recipe_id=" + id + "&recipe_name=" + name;
+	} else if (pg == 3) {	// 이전 페이지로 이동
+		location.href = "recipe_cat.ssg?cat=" + id;
+	}
 }
 
 function srch_sort() {
 	rForm.submit();	// form 자체를 통째로 전송
-} 
+}
 
 </script>
  
 <html>
 <head>
-	<title>Recipe Main</title>
+	<title>Recipe Tag</title>
 </head>
 <body>
-<h2>레시피 메인 페이지</h2>
-<h3>레시피 검색 결과</h3>
+<h2>레시피 태그 별 조회 페이지</h2>
+<h1>#${recipeVO.tag_name} 레시피 모음 </h1>
 
-<form name="rForm" action="recipe_search.ssg" method="get">
+<form name="rForm" action="recipe_tag.ssg" method="get">
 	<!-- 정렬 기준 -->
 	<select name="sort" onchange="srch_sort()">
 		<option value="name" <c:if test="${recipeVO.sort == 'name' }">selected</c:if>>가나다순</option>
 		<option value="like" <c:if test="${recipeVO.sort == 'like' }">selected</c:if>>인기순</option>
 		<option value="level" <c:if test="${recipeVO.sort == 'level' }">selected</c:if>>난이도순</option>
 	</select>
-	<select name="type">
-		<option value="all" <c:if test="${recipeVO.type == 'all' }">selected</c:if>>전체</option>
-		<option value="rcp" <c:if test="${recipeVO.type == 'rcp' }">selected</c:if>>레시피</option>
-		<option value="ing" <c:if test="${recipeVO.type == 'ing' }">selected</c:if>>재료</option>
-	</select>
-	<input type="text" name="rname" value="${recipeVO.rname }">	<!-- 검색어 -->
-	<input type="submit" value="검색">
+	<input type="hidden" name="tag_id" value="${recipeVO.tag_id }">
+	<input type="hidden" name="tag_name" value="${recipeVO.tag_name }">
 </form>
+
+<input type="button" value="다시 선택" onclick="goPage(3, ${param.cat})">
 
 <table border="1">
 	<tr>
@@ -52,7 +51,7 @@ function srch_sort() {
 		<td>좋아요</td>
 		<td colspan="2">이미지</td>
 	</tr>
-	<c:forEach var="vo" items="${list }" varStatus="status">	<!-- request에 들어있는 아이템 -->
+	<c:forEach var="vo" items="${list_tag }" varStatus="status">	<!-- request에 들어있는 아이템 -->
 	<tr>
 		<td>${status.count}</td>
 		<td>${vo.recipe_id }</td>
@@ -60,7 +59,7 @@ function srch_sort() {
 		<td>${vo.level }</td>
 		<td>${vo.cnt }</td>
 		<td><img src = "${vo.recipe_img }" width="200" height="200" ></td>
-		<td><input type="button" value="상세보기" onclick="goPage(${vo.recipe_id}, '${vo.recipe_name}')"></td>
+		<td><input type="button" value="상세보기" onclick="goPage(2, ${vo.recipe_id}, '${vo.recipe_name}')"></td>
 	</tr>
 	</c:forEach>
 </table>

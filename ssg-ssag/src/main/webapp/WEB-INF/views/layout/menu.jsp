@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,10 +36,18 @@
 			</a>
 		</div>
 		<div class="menu-btn">
-			<a href="/ssgssag/auth/login.ssg">
-				<i class="fa-solid fa-right-to-bracket fa-lg menu-icon"></i>
-				<p>로그인</p>
-			</a>
+			<c:if test="${empty currentUser}">
+				<a href="/ssgssag/auth/login.ssg">
+					<i class="fa-solid fa-right-to-bracket fa-lg menu-icon"></i>
+					<p>로그인</p>
+				</a>
+			</c:if>
+			<c:if test="${not empty currentUser }">
+				<a href="/ssgssag/">
+					<i class="fa-solid fa-user fa-lg menu-icon"></i>
+					<p>마이페이지</p>
+				</a>
+			</c:if>
 		</div>
 	</div>
 </body>

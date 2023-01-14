@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="../layout/head.jsp"/>
+	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">
 	<link rel="stylesheet" href="/ssgssag/resources/css/menu.css">
 	<link rel="stylesheet" href="/ssgssag/resources/css/layout.css">
 </head>

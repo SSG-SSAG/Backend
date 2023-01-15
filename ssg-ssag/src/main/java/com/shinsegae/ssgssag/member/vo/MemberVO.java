@@ -1,5 +1,8 @@
 package com.shinsegae.ssgssag.member.vo;
 
+import lombok.Data;
+
+@Data
 public class MemberVO {
 	
 	private int user_no;

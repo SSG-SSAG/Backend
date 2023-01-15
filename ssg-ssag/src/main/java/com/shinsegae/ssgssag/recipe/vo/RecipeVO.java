@@ -80,6 +80,8 @@ public class RecipeVO {
 	private int curpage;
 	private int start;
 
+	private String user_id;
+	
 	// 생성자
 	public RecipeVO() {				// default
 //		this.amount = 10;

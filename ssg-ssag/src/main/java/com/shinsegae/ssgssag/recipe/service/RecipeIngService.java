@@ -26,6 +26,9 @@ public class RecipeIngService {
 	
 	public List<RecipeVO> ref(RecipeVO vo) {
 		List<RecipeVO> obj = mapper.selectRef(vo);
+		for ( int i = 0; i<obj.size(); i++) {
+			System.out.println(obj.get(i).getIng_id());
+		}
 		return obj;
 	}
 }

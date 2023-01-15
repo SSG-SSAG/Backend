@@ -115,8 +115,10 @@ public class RecipeController {
 		System.out.println("### Recipe Ing Controller ###");
 		List<RecipeVO> obj = service_ing.ings(vo);
 		List<RecipeVO> obj2 = service_ing.nut(vo);
+		List<RecipeVO> obj3 = service_ing.ref(vo);
 		req.setAttribute("list_detail", obj);
 		req.setAttribute("list_nut", obj2);
+		req.setAttribute("list_ref", obj3);
 		return "recipe/recipe_ing";
 	}
 }

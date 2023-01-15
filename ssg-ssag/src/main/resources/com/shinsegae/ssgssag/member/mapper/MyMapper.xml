@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shinsegae.ssgssag.member.mapper.MyMapper">
+	
+	<!-- 관심 있는 태그와 카테고리 조회 -->
+	<select id="selectTags" resultType="com.shinsegae.ssgssag.member.vo.MyVO">
+		SELECT t.tag_id, tag_name, category_name
+		FROM tag t, like_tag l, tag_category c
+		WHERE t.tag_id = l.tag_id
+		AND t.tag_category = c.category_id
+	</select>
+	
+</mapper>

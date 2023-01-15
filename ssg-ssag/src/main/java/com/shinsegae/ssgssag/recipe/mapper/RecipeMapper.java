@@ -41,5 +41,8 @@ public interface RecipeMapper {
 	
 	// 영양 성분 조회
 	List<RecipeVO> selectNut(RecipeVO vo);
+	
+	// 냉장고 조회
+	List<RecipeVO> selectRef(RecipeVO vo);
 }
 

@@ -43,7 +43,7 @@
 				</a>
 			</c:if>
 			<c:if test="${not empty currentUser }">
-				<a href="/ssgssag/">
+				<a href="/ssgssag/member/mypage.ssg?no=${currentUser.user_no }">
 					<i class="fa-solid fa-user fa-lg menu-icon"></i>
 					<p>마이페이지</p>
 				</a>

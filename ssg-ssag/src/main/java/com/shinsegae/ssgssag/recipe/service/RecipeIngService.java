@@ -22,5 +22,10 @@ public class RecipeIngService {
 	public List<RecipeVO> nut(RecipeVO vo) {
 		List<RecipeVO> obj = mapper.selectNut(vo);
 		return obj;
-	}	
+	}
+	
+	public List<RecipeVO> ref(RecipeVO vo) {
+		List<RecipeVO> obj = mapper.selectRef(vo);
+		return obj;
+	}
 }

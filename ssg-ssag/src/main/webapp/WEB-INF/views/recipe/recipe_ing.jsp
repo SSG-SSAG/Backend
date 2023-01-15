@@ -32,11 +32,26 @@
 						<div class="card step-card" style="display: flex; flex-direction: row;">
 							<div class="step-card-body">
 							    <p class="step-desc-p">${vo.ing_name}</p>
+							    <p class="step-desc-p">${vo.my_ing}</p>
 							</div>
 						</div>
 					</c:forEach>
-	            </div>	            
-	        </div>			
+	            </div>
+	            <%-- <table border="1">
+					<tr>
+						<td></td>
+						<td>ID</td>
+						<td>이름</td>
+					</tr>
+					<c:forEach var="vo" items="${list_ref }" varStatus="status">
+					<tr>
+						<td>${status.count}</td>
+						<td>${vo.ing_id }</td>
+						<td>${vo.expire_date }</td>
+					</tr>
+					</c:forEach>
+				</table> --%>
+	        </div>
 	        <jsp:include page="../layout/menu.jsp" />
 	    </div>
 	    <div class="pc-bg-right"></div>

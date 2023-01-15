@@ -119,6 +119,13 @@
 	)
 </select>
 
+<!-- 냉장고 조회 -->
+<select id="selectRef" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	SELECT *
+	FROM refrigerator
+	WHERE user_no = #{user_no}
+</select>
+
 <!-- 레시피 단계 조회 -->
 <select id="getSteps" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
 	SELECT *

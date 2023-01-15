@@ -7,7 +7,7 @@
 		<!-- <if test="a != null and a !=''"> -->
 		SELECT refg_id, ing_id, expire_date
 		FROM refrigerator
-		WHERE user_no = ${user_no}
+		WHERE user_no = #{user_id}
 		<!-- </if> -->
 	</select>
 	

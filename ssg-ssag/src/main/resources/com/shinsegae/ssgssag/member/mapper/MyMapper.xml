@@ -5,7 +5,7 @@
 	
 	<!-- 관심 있는 태그와 카테고리 조회 -->
 	<select id="selectTags" resultType="com.shinsegae.ssgssag.member.vo.MyVO">
-		SELECT t.tag_id, tag_name, category_name
+		SELECT t.tag_id, tag_name, category_name, category_id
 		FROM tag t, like_tag l, tag_category c
 		WHERE t.tag_id = l.tag_id
 		AND t.tag_category = c.category_id

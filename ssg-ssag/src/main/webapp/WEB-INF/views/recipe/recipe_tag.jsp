@@ -22,46 +22,57 @@ function srch_sort() {
  
 <html>
 <head>
-	<title>Recipe Tag</title>
+	<jsp:include page="../layout/head.jsp"/>
+	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
+	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
 </head>
 <body>
-<h2>레시피 태그 별 조회 페이지</h2>
-<h1>${param.category_name}의 #${recipeVO.tag_name} 레시피 모음 </h1>
-
-<form name="rForm" action="recipe_tag.ssg" method="get">
-	<!-- 정렬 기준 -->
-	<select name="sort" onchange="srch_sort()">
-		<option value="name" <c:if test="${recipeVO.sort == 'name' }">selected</c:if>>가나다순</option>
-		<option value="like" <c:if test="${recipeVO.sort == 'like' }">selected</c:if>>인기순</option>
-		<option value="level" <c:if test="${recipeVO.sort == 'level' }">selected</c:if>>난이도순</option>
-	</select>
-	<input type="hidden" name="tag_id" value="${recipeVO.tag_id }">
-	<input type="hidden" name="tag_name" value="${recipeVO.tag_name }">
-</form>
-
-<input type="button" value="다시 선택" onclick="goPage(3, ${param.cat}, '${param.category_name}')">
-
-<table border="1">
-	<tr>
-		<td></td>
-		<td>ID</td>
-		<td>이름</td>
-		<td>난이도</td>
-		<td>좋아요</td>
-		<td colspan="2">이미지</td>
-	</tr>
-	<c:forEach var="vo" items="${list_tag }" varStatus="status">	<!-- request에 들어있는 아이템 -->
-	<tr>
-		<td>${status.count}</td>
-		<td>${vo.recipe_id }</td>
-		<td>${vo.recipe_name }</td>
-		<td>${vo.level }</td>
-		<td>${vo.cnt }</td>
-		<td><img src = "${vo.recipe_img }" width="200" height="200" ></td>
-		<td><input type="button" value="상세보기" onclick="goPage(2, ${vo.recipe_id}, '${vo.recipe_name}')"></td>
-	</tr>
-	</c:forEach>
-</table>
+<div class="main-background">
+    <div class="pc-bg-left"></div>
+    <div class="main-container">
+        <jsp:include page="../layout/header.jsp" />
+        <div class="content-container">
+			<h1>${param.category_name}의 #${recipeVO.tag_name} 레시피 모음 </h1>
+			
+			<form name="rForm" action="recipe_tag.ssg" method="get">
+				<!-- 정렬 기준 -->
+				<select name="sort" onchange="srch_sort()">
+					<option value="name" <c:if test="${recipeVO.sort == 'name' }">selected</c:if>>가나다순</option>
+					<option value="like" <c:if test="${recipeVO.sort == 'like' }">selected</c:if>>인기순</option>
+					<option value="level" <c:if test="${recipeVO.sort == 'level' }">selected</c:if>>난이도순</option>
+				</select>
+				<input type="hidden" name="tag_id" value="${recipeVO.tag_id }">
+				<input type="hidden" name="tag_name" value="${recipeVO.tag_name }">
+			</form>
+			
+			<input type="button" value="다시 선택" onclick="goPage(3, ${param.cat}, '${param.category_name}')">
+			
+			<table border="1">
+				<tr>
+					<td></td>
+					<td>ID</td>
+					<td>이름</td>
+					<td>난이도</td>
+					<td>좋아요</td>
+					<td colspan="2">이미지</td>
+				</tr>
+				<c:forEach var="vo" items="${list_tag }" varStatus="status">	<!-- request에 들어있는 아이템 -->
+				<tr>
+					<td>${status.count}</td>
+					<td>${vo.recipe_id }</td>
+					<td>${vo.recipe_name }</td>
+					<td>${vo.level }</td>
+					<td>${vo.cnt }</td>
+					<td><img src = "${vo.recipe_img }" width="200" height="200" ></td>
+					<td><input type="button" value="상세보기" onclick="goPage(2, ${vo.recipe_id}, '${vo.recipe_name}')"></td>
+				</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<jsp:include page="../layout/menu.jsp" />
+	    </div>
+	<div class="pc-bg-right"></div>
+</div>
 
 </body>
 </html>

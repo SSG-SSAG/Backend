@@ -50,5 +50,9 @@ public interface RecipeMapper {
 	
 	// 인기 있는 레시피 조회
 	List<RecipeVO> getHotRec(RecipeVO vo);
+  
+	// 레시피의 태그 조회
+	List<RecipeVO> rcp_tag(RecipeVO vo);
+//	RecipeVO rcp_tag(RecipeVO vo);
 }
 

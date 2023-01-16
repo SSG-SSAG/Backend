@@ -39,6 +39,13 @@ public class RecipeService {
 
 	public List<RecipeVO> rcp_page(RecipeVO vo) {
 		List<RecipeVO> obj = mapper.rcp_page(vo);
+		return obj;
+	}	
+	
+	// 레시피 태그 조회
+	public List<RecipeVO> rcp_tag(RecipeVO vo) {
+		List<RecipeVO> obj = mapper.rcp_tag(vo);
+		System.out.println("rcp_tag : " + obj);
 		
 		return obj;
 	}

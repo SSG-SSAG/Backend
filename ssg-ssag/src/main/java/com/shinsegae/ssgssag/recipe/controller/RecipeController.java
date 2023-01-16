@@ -38,15 +38,6 @@ public class RecipeController {
 	@Autowired
 	RecipeMyService service_my;
 	
-//	// 전체 조회 - 여러 건 응답 (JSON 배열)
-//	@GetMapping("/recipe/recipe.ssg")
-//	public String getAll(HttpServletRequest req, RecipeVO vo) {
-//		System.out.println("### Recipe Controller ###");
-//		List<RecipeVO> obj = service.reci(vo);	// 서비스 호출
-//		req.setAttribute("list", obj);
-//		return "recipe/recipe";
-//	}
-	
 	@GetMapping("/recipe/recipe_search.ssg")
 	public String getIng(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Ingredient Controller ###");
@@ -75,8 +66,12 @@ public class RecipeController {
 				pagebutton.add(s+i);
 			}
 		}
+		
+		List<RecipeVO> obj3 = service.rcp_tag(vo);
+		
 		req.setAttribute("list", obj2);
 		req.setAttribute("page", pagebutton);
+		req.setAttribute("rcp_tag", obj3);
 
 		return "recipe/recipe";
 	}
@@ -110,9 +105,13 @@ public class RecipeController {
 		List<RecipeVO> obj = service_des.getIngs(vo);
 		List<RecipeVO> obj2 = service_des.getSteps(vo);
 		RecipeVO obj3 = service_des.getImgs(vo);
+		List<RecipeVO> obj4 = service.rcp_tag(vo);
+		
 		req.setAttribute("list_ing", obj);
 		req.setAttribute("list_step", obj2);
 		req.setAttribute("list_des", obj3);
+		req.setAttribute("rcp_tag", obj4);
+		
 		System.out.println("### Recipe Ing Controller ###");
 		
 		// 좋아요(찜) 여부 조회를 위한 기능
@@ -143,6 +142,8 @@ public class RecipeController {
 		List<RecipeVO> obj3 = service_ing.ref(vo);
 		List<Integer> my_ings = new ArrayList<>();
 		RecipeVO obj4 = service_des.getImgs(vo);
+		List<RecipeVO> obj5 = service.rcp_tag(vo);
+		
 		for ( int i = 0; i<obj3.size(); i++) {
 			my_ings.add(obj3.get(i).getIng_id());
 		}
@@ -155,9 +156,17 @@ public class RecipeController {
 		req.setAttribute("list_nut", obj2);
 		req.setAttribute("list_ref", obj3);
 		req.setAttribute("list_des", obj4);
+		req.setAttribute("rcp_tag", obj5);
+		
 		return "recipe/recipe_ing";
 	}
 	
+
+	
+	
+	
+	
+
 	// 레시피 좋아요
 	@PostMapping("/recipe/recipe_like.ssg")
 	@ResponseBody
@@ -177,4 +186,3 @@ public class RecipeController {
 
 		return "home";
 	}
-}

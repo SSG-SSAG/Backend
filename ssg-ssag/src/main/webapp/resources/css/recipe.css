@@ -57,26 +57,42 @@
 	padding: 5px 0;
 }
 
-.recipe-desc {
-	margin-left: 10px;
+.recipe-desc-title-box {
+	display: flex;
+	flex-direction: row;	
+	justify-content: space-between;
 }
+
+.recipe-desc {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+}
+
 
 /* 요리 순서 페이지 */
 /* 선택한 요리 관련 정보 */
 .step-recipe-container {
 	width: 400px;
-	height: 30vh;
+	height: 200px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	margin-left: -10px;
+	padding-top: 20px;
 }
 
 .step-recipe-card{
 	width: 400px;
-	height: 20vh;
+	height: 120px;
 	margin-bottom: 1vh;
+	padding: 1.2vh 1vw;
+}
+
+.step-recipe-desc-box {
+	background: #C2DBFA;
+	padding: 0.3vh 0.5vw;
+	width: 60%;
+	height: 100%;
 }
 
 .step-recipe-card-img {
@@ -87,7 +103,9 @@
 
 .step-recipe-ing-card {
 	width: 400px;
-	heigth: 9vh;
+	heigth: 78px;
+	margin-top: 2px;
+	padding: 2px;
 	cursor: pointer;
 }
 
@@ -203,4 +221,9 @@
 .ing-list-container::-webkit-scrollbar-track {
 	background-color: rgba(163, 144, 122, 0.4);
 	border-radius: 10px;
+}
+
+.space-strip {
+	margin: 0;
+	padding: 0;
 }

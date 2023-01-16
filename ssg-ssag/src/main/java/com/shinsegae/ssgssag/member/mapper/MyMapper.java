@@ -14,10 +14,10 @@ public interface MyMapper {
 	List<MyVO> selectTags(MyVO vo);
 	
 	// 새로운 태그 추가
-	int addTag(@Param("user_no") String user_no, @Param("tag_id") String tag_id);
+	int addTag(@Param("user_no") String user_no, @Param("tag_id") int tag_id, @Param("tag_name") String tag_name);
 	
 	// 존재하는 태그인지 확인
-	String isContain(@Param("tag_id") String tag_id, @Param("user_no") String user_no);
+	String isContain(@Param("tag_id") int tag_id, @Param("user_no") String user_no);
 	
 	String getName(int tag_id);
 	
@@ -26,4 +26,7 @@ public interface MyMapper {
 	String tagCheck(String tag_name);
 	
 	String getId(String tag_name);
+	
+	// 회원 정보 조회
+	List<MyVO> selectUsers(MyVO vo);
 }

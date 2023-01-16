@@ -4,21 +4,8 @@
 <html>
 <meta charset="UTF-8">
 <head>
-	<jsp:include page="../layout/head.jsp"/>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
-	
-	<script>
-	function show() {
-		var target = document.getElementById("new");
-		if (target.style.display == "none") {
-			target.style.display = "block";
-		}
-		else {
-			target.style.display = "none";	
-		}
-	}
-	
-	</script>
 </head>
 <body>
 	<div class="main-background">
@@ -66,10 +53,21 @@
 	</div>
 </body>
 <script>
+	function show() {
+		var target = document.getElementById("new");
+		if (target.style.display == "none") {
+			target.style.display = "block";
+		}
+		else {
+			target.style.display = "none";	
+		}
+	}
+
 	function del(refg_id) {
 		if (confirm('삭제하시겠습니까?')) {
 			location.href="delete.ssg?refg_id="+refg_id;
 		}
 	}
 </script>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

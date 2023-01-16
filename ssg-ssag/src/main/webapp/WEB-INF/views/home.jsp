@@ -14,7 +14,7 @@ function goCart(no) {
 
 <html>
 <head>
-	<jsp:include page="layout/head.jsp"/>	
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="resources/css/layout.css">
 	
 </head>
@@ -40,8 +40,7 @@ function goCart(no) {
 					<input type="button" value="종류" onclick="goTag(1, '종류');">
 					<input type="button" value="건강" onclick="goTag(2, '건강');">
 					<input type="button" value="테마" onclick="goTag(3, '테마');">
-				<input type="button" value="조리법" onclick="goTag(4, '조리법');">
-					${currentUser.name }
+					<input type="button" value="조리법" onclick="goTag(4, '조리법');">
 				</div>
 				<div>
 					<input type="button" value="장바구니 ㄱ" onclick="goCart(${currentUser.user_no});">

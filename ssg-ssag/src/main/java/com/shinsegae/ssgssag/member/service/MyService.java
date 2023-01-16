@@ -14,18 +14,10 @@ public class MyService {
 	@Autowired
 	MyMapper mapper;
 	
+	// 관심 태그 조회
 	public List<MyVO> tags(MyVO vo) {
 		List<MyVO> obj = mapper.selectTags(vo);
-		
-		for ( int i = 0 ; i<obj.size(); i++) {
-			obj.get(i).setUser_no( vo.getUser_no());
-			System.out.println(obj.get(i));
-		}
 		return obj;
-	}
-	
-	public String getName(int tag_id) {
-		return mapper.getName(tag_id);
 	}
 	
 	public boolean deleteTag(String like_tag_id) {
@@ -36,9 +28,8 @@ public class MyService {
 		return false;
 	}
 	
-	public int addTag(String tag_name, String user_no) {
+	public int addTag(int tag_id, String tag_name, String user_no) {
 		System.out.println("###### Add Tag Service ######");
-		System.out.println("tag name : " + tag_name);
 		System.out.println("user no : " + user_no);
 		
 		int result = Integer.parseInt(mapper.tagCheck(tag_name));
@@ -46,19 +37,24 @@ public class MyService {
 			return 0;
 		}
 		
-		String tag_id = mapper.getId(tag_name);
-		String contain = mapper.isContain(tag_name, user_no);
 		System.out.println("tag id : " + tag_id);
-		System.out.println("isContain : " + contain);
+		tag_id = Integer.parseInt(mapper.getId(tag_name));
 		
-		if (contain.equals("1")) {	// 이미 있는 태그인 경우
+		String contain = mapper.isContain(tag_id, user_no);
+		
+		if (contain.equals("0")) {	// 새로운 경우
+			System.out.println("new tag");
+			mapper.addTag(user_no, tag_id, tag_name);
+			return 2;
+		} else {	// 이미 있는 태그인 경우
 			System.out.println("cannot add");
 			return 1;
-		} else {	// 새로운 경우
-			System.out.println("new tag");
-			mapper.addTag(user_no, tag_id);
-			return 2;
 		}
+	}
 	
+	// 회원 정보 조회
+	public List<MyVO> users(MyVO vo) {
+		List<MyVO> obj = mapper.selectUsers(vo);
+		return obj;
 	}
 }

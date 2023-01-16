@@ -25,15 +25,22 @@ public class CartService {
 	}
 	
 	public List<CartVO> rcpIngs(String recipe_id) {
-		
 		List<CartVO> obj = mapper.rcpIngs(recipe_id);
-		
 		return obj;
 	}
 	
 	public int addIngs(String user_id, String ing_id) {
 		LocalDate now = LocalDate.now();
 		int r = mapper.addIngs(user_id, ing_id, now);
-		return 1; 
+		return 1;
+	}
+	
+	public boolean deleteCart(String user_id, int ing_id) {
+		int r = mapper.deleteCart(user_id, ing_id);
+		
+		if (r == 1) {
+			return true;
+		}
+		return false;
 	}
 }

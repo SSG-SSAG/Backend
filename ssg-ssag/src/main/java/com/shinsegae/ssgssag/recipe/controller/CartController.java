@@ -1,12 +1,15 @@
 package com.shinsegae.ssgssag.recipe.controller;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,5 +79,27 @@ public class CartController {
 		return "recipe/cart";
 	}
 	
+
 	 
+
+	@GetMapping(value="/recipe/deleteCart.ssg")
+	public void delete(@RequestParam("no") String user_id, @RequestParam("ing_id") int ing_id, HttpServletResponse res) throws Exception {
+		boolean result = service.deleteCart(user_id, ing_id);
+		PrintWriter out = res.getWriter();
+		res.setContentType("text/html;charset=utf-8");
+		String s = "location.href='/ssgssag/recipe/cart.ssg?no=" + user_id + "';";
+		
+		if (result) {
+			out.print("<script>");
+			out.print("alert('정상적으로 삭제되었습니다.');");
+			out.print(s);
+			out.print("</script>");
+		} else {
+			out.print("<script>");
+			out.print("alert('삭제 실패');");
+			out.print(s);
+			out.print("</script>");
+		}
+	}
+
 }

@@ -5,9 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="../layout/head.jsp"/>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
 </head>
 <body>
 	<div class="main-background">
@@ -21,12 +20,14 @@
 						<div class="recipe-desc-box">
 							<img class="step-recipe-card-img" src="${list_des.recipe_img }" alt="${recipeVO.recipe_name }" >
 							<div class="recipe-desc">
-						      <p>kcal ${list_des.calrorie }</p>
+							    <p>${list_des.calrorie }kcal</p>
 								<p>탄수화물 ${list_des.info_car }</p>
 								<p>단백질 ${list_des.info_pro }</p>
 								<p>지방 ${list_des.info_fat }</p>
 								<p>나트륨 ${list_des.info_na }</p>
-						      <p>태그 버튼 자리임</p>
+							    <c:forEach var="vo" items="${rcp_tag }" varStatus="status">
+							    	<p>#${vo.tag_name }</p>
+							    </c:forEach>
 						    </div>
 						</div>
 					</div>
@@ -73,4 +74,5 @@
 		 }		 
 	}
 </script>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

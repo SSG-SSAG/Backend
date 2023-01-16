@@ -47,5 +47,9 @@ public interface RecipeMapper {
 	
 	// 이미지 조회
 	List<RecipeVO> getImgs(RecipeVO vo);
+	
+	// 레시피의 태그 조회
+	List<RecipeVO> rcp_tag(RecipeVO vo);
+//	RecipeVO rcp_tag(RecipeVO vo);
 }
 

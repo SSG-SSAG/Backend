@@ -19,7 +19,8 @@ function srch_sort() {
 }
 
 </script>
- 
+
+<!DOCTYPE html>
 <html>
 <head>
 	<jsp:include page="../layout/head.jsp"/>
@@ -31,9 +32,8 @@ function srch_sort() {
     <div class="pc-bg-left"></div>
     <div class="main-container">
         <jsp:include page="../layout/header.jsp" />
-        <div class="content-container">
-			<h1>${param.category_name}의 #${recipeVO.tag_name} 레시피 모음 </h1>
-			
+        <div class="content-container ccenter-layout">
+			<h2>${param.category_name}의 #${recipeVO.tag_name} 레시피 모음 </h2>
 			<form name="rForm" action="recipe_tag.ssg" method="get">
 				<!-- 정렬 기준 -->
 				<select name="sort" onchange="srch_sort()">
@@ -47,32 +47,45 @@ function srch_sort() {
 			
 			<input type="button" value="다시 선택" onclick="goPage(3, ${param.cat}, '${param.category_name}')">
 			
-			<table border="1">
-				<tr>
-					<td></td>
-					<td>ID</td>
-					<td>이름</td>
-					<td>난이도</td>
-					<td>좋아요</td>
-					<td colspan="2">이미지</td>
-				</tr>
+			<div class="recipe-list-container">
 				<c:forEach var="vo" items="${list_tag }" varStatus="status">	<!-- request에 들어있는 아이템 -->
-				<tr>
-					<td>${status.count}</td>
-					<td>${vo.recipe_id }</td>
-					<td>${vo.recipe_name }</td>
-					<td>${vo.level }</td>
-					<td>${vo.cnt }</td>
-					<td><img src = "${vo.recipe_img }" width="200" height="200" ></td>
-					<td><input type="button" value="상세보기" onclick="goPage(2, ${vo.recipe_id}, '${vo.recipe_name}')"></td>
-				</tr>
+				<div class="card recipe-card" onclick="goPage(2, ${vo.recipe_id}, '${vo.recipe_name}')">
+					<h5 style="margin: 0;">${vo.recipe_name }</h5>
+					<div class="recipe-desc-box">
+						<img class="rcard-img" src="${vo.recipe_img }" alt="${vo.recipe_name }" >
+						<div class="recipe-desc">
+					      <p>우렁은 우렁우렁</p>
+					    </div>
+					</div>
+				</div>
 				</c:forEach>
-			</table>
+				<nav>
+					<ul class="pagination">
+					    <li class="page-item">
+					    <button class="page-link" 
+					        onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','1');" aria-label="Previous">
+					      <span aria-hidden="true" class="ssg-page">이전</span>
+					    </button>
+						</li>
+					  	<c:forEach var="n" items="${page }">
+							<li class="page-item">
+						    	<button class="page-link ssg-page" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');"
+								<c:if test="${n eq recipeVO.curpage}">style="font-weight:500; background: rgba(163, 144, 122, 0.8);"</c:if>><span class="ssg-page">${n}</span></button>
+							</li>
+						</c:forEach>
+						<li class="page-item">
+					  		<button class="page-link" 
+				     			onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');" aria-label="Next">
+					        <span aria-hidden="true" class="ssg-page">다음</span>
+				     		</button>
+					    </li>
+					</ul>
+				</nav>
+			</div>
 		</div>
 		<jsp:include page="../layout/menu.jsp" />
 	    </div>
 	<div class="pc-bg-right"></div>
 </div>
-
 </body>
 </html>

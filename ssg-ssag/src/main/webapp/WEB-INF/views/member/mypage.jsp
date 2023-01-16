@@ -2,6 +2,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" /> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+/* function addTag(){
+	new swal("Alert", "hi");
+}
+
+function deleteTag(){
+	new swal("삭제", "관심 태그를 삭제할까요?");
+} */
+	/* var alert = function(msg, type) {
+		swal('로그인 실패!',"아이디와 비밀번호를 확인해 주세요",'warning');
+		swal({
+			title : '',
+			text : msg,
+			type : type,
+			timer : 1500,
+			customClass : 'sweet-size',
+			showConfirmButton : false
+		});
+		swal('로그인 성공!','success')
+		.then(function(){
+			location.href="mypage.ssg";                   
+		})
+
+		} else {
+			swal('로그인 실패!',"아이디와 비밀번호를 확인해 주세요",'warning');
+		};
+	} */
+
+	/* var confirm = function(msg, title, resvNum) {
+		swal({
+			title : title,
+			text : msg,
+			type : "warning",
+			showCancelButton : true,
+			confirmButtonClass : "btn-danger",
+			confirmButtonText : "예",
+			cancelButtonText : "아니오",
+			closeOnConfirm : false,
+			closeOnCancel : true
+		}, function(isConfirm) {
+			if (isConfirm) {
+				swal('', '예약이 승인되었습니다.', "success");
+			}else{
+				swal('', '예약이 거부되었습니다.', "failed");
+			}
+
+		});
+		swal('로그인 성공!','success')
+		.then(function(){
+			location.href="mypage.ssg";                   
+		})
+
+		} else {
+			swal('로그인 실패!',"아이디와 비밀번호를 확인해 주세요",'warning');
+		};
+	}
+
+	function Alert() {
+		alert('gg', 'success');
+	}
+	function Confirm() {
+		confirm('', '승인할까요?');
+	} */
+</script>
+
 <script>
 
 function goPage(pg, id, name, cat, cname) {
@@ -10,6 +79,7 @@ function goPage(pg, id, name, cat, cname) {
 	} else if (pg == 2) {	// 다음 페이지로 이동
 		location.href = "../recipe/recipe_tag.ssg?tag_id=" + id + "&tag_name=" + name + "&cat=" + cat + "&category_name=" + cname;
 	} else if (pg == 3) {
+		//deleteTag();
 		location.href="deleteTag.ssg?like_tag_id="+id;
 	} else if (pg == 4) {
 		location.href="change.ssg?user_no="+id;
@@ -55,6 +125,19 @@ function boxSelect(cat){
 	}
 }
 
+function addTag(id){
+	//new swal("Alert", "hi");
+	new swal("관심 태그 추가", "관심 태그에 추가하시겠어요?", 'question').then(
+		function(){
+			location.href="mypage.ssg?user_no="+id;
+		}
+	)
+}
+
+function deleteTag(){
+	new swal("삭제", "관심 태그를 삭제할까요?");
+}
+
 </script>
 
 <html>
@@ -69,7 +152,9 @@ function boxSelect(cat){
     <div class="main-container">
         <jsp:include page="../layout/header.jsp" />
 	    <div class="content-container">
-        	<div>     	
+        	<div>
+        		<!-- <button onclick="Alert();">Alert</button>
+				<button onclick="Confirm();">Confirm</button> -->
 				<h3>회원 정보 수정</h3>	
 				<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
         	</div>
@@ -111,7 +196,7 @@ function boxSelect(cat){
 					<select id="tagBox" name="tag_name">
 						<option>관심 있는 #태그를 선택해주세요</option>
 					</select>
-					<input type="submit" value="추가">
+					<input type="submit" value="추가" onclick="addTag(${currentUser.user_no });">
 					<input type="hidden" name="user_no" value="${currentUser.user_no }">
 				</form>
 			</div>

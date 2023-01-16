@@ -4,10 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<jsp:include page="../layout/head.jsp"/>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">
 </head>
 <body>
 	<div class="main-background">
@@ -16,14 +14,21 @@
 	        <jsp:include page="../layout/header.jsp" />
 	        <div class="content-container ccenter-layout">
 	            <div class="step-recipe-container">
-	            	<div class="card step-recipe-card">
-						<h5 style="margin: 0;">${recipeVO.recipe_name }</h5>
-						<div class="recipe-desc-box">
-							<img class="step-recipe-card-img" src="${recipeVO.recipe_img }" alt="${recipeVO.recipe_name }" >
+	            	<div class="card step-recipe-card rcenter-layout" style="border: 1px solid black">
+						<img class="step-recipe-card-img" src="${recipeVO.recipe_img }" alt="${recipeVO.recipe_name }" >
+						<div class="step-recipe-desc-box">
+							<div class="recipe-desc-title-box">
+								<h5 class="space-strip">${recipeVO.recipe_name }</h5>
+								<!-- 좋아요 여부에 따라서 보여주는 아이콘 분기 처리 + 클릭에 따라 넣었다가 뺐다가 하기 -->
+								<i class="fa-solid fa-heart"></i>
+								<i class="fa-regular fa-heart"></i>				
+							</div>
 							<div class="recipe-desc">
-						      <p>영양정보 담을 거임</p>
 						      <p>태그 버튼 자리임</p>
-						      ${recipeVO.recipe_img }
+						      <p>영양정보 담을 거임</p>
+						      <form action="/recipe/recipe_like/recipe_id=${recipeVO.recipe_id }" method="post">
+						      	<button type="submit">좋아요 기능 확인</button>
+						      </form>
 						    </div>
 						</div>
 					</div>
@@ -63,6 +68,11 @@
 			location.href = "recipe_search.ssg";
 		}
 	}
+	
+	// 좋아요(찜)
+	
+	
 </script>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 
 </html>

@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shinsegae.ssgssag.recipe.service.RecipeCatService;
 import com.shinsegae.ssgssag.recipe.service.RecipeDesService;
@@ -15,6 +18,7 @@ import com.shinsegae.ssgssag.recipe.service.RecipeIngService;
 import com.shinsegae.ssgssag.recipe.service.RecipeMyService;
 import com.shinsegae.ssgssag.recipe.service.RecipeService;
 import com.shinsegae.ssgssag.recipe.service.RecipeTagService;
+import com.shinsegae.ssgssag.recipe.vo.RecipeLikeVO;
 import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
 
 @Controller
@@ -120,5 +124,35 @@ public class RecipeController {
 		req.setAttribute("list_nut", obj2);
 		req.setAttribute("list_ref", obj3);
 		return "recipe/recipe_ing";
+	}
+	
+	// 레시피 좋아요
+	@PostMapping("/recipe/recipe_like")
+	public String recipeLike(@RequestParam("recipe_id") int recipe_id, HttpSession sess) {
+		
+		// 파라미터로 넘긴 레시피 아이디와 현재 로그인한 유저 정보를 통해 좋아요 여부 확인하기
+		// 관련 데이터를 담을 VO
+		RecipeLikeVO vo = new RecipeLikeVO();
+		
+		// 레시피 번호 담기
+		vo.setRecipe_id(recipe_id);
+		
+		// 유저 번호, 닉네임 담기
+		vo.setUser_no((int) sess.getAttribute("user_no"));
+		vo.setId((String) sess.getAttribute("id"));
+		
+		// 조회부터
+		boolean isRecipeLiked = service.isLiked(vo);
+		
+		// 좋아요 취소 (이미 눌러놨다면 true => 취소해주세요)
+		if (isRecipeLiked) {
+			System.out.println("눌러놨었네~");
+			
+		} else {
+		// 좋아요 (안 눌러놨다면 false => 누르기)
+			System.out.println("이제 누를게요");			
+		}
+		return "/";
+		
 	}
 }

@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.shinsegae.ssgssag.recipe.mapper.RecipeLikeMapper;
 import com.shinsegae.ssgssag.recipe.mapper.RecipeMapper;
+import com.shinsegae.ssgssag.recipe.vo.RecipeLikeVO;
 import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
 
 @Service
@@ -13,6 +15,8 @@ public class RecipeService {
 
 	@Autowired
 	RecipeMapper mapper;
+	@Autowired
+	RecipeLikeMapper likeMapper;
 	
 	// 레시피 이름 조회
 	public List<RecipeVO> reci(RecipeVO vo) {
@@ -35,6 +39,19 @@ public class RecipeService {
 		List<RecipeVO> obj = mapper.rcp_page(vo);
 		
 		return obj;
+	}
+	
+	// 레시피 좋아요 여부 조회
+	public boolean isLiked(RecipeLikeVO vo) {
+		
+		// 좋아요 여부 확인
+		RecipeLikeVO likedRecipe = likeMapper.isRecipeLiked(vo);
+		
+		if (likedRecipe != null) {
+			return true;			
+		} else {
+			return false;
+		}
 	}
 }
 

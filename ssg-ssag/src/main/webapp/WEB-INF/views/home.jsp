@@ -10,7 +10,7 @@ function goTag(cat, name) {
 
 <html>
 <head>
-	<jsp:include page="layout/head.jsp"/>	
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="resources/css/layout.css">
 	
 </head>

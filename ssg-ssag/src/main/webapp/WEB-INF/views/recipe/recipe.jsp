@@ -4,9 +4,8 @@
 <%@ page session="false" %> 
 <html>
 <head>
-	<jsp:include page="../layout/head.jsp"/>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
 </head>
 <body>
 	<div class="main-background">
@@ -14,7 +13,8 @@
 	    <div class="main-container">
 	        <jsp:include page="../layout/header.jsp" />
 	        <div class="content-container ccenter-layout">
-	        		<form name="rForm" action="recipe_search.ssg" method="get">
+	        		<div>
+	        			<form name="rForm" action="recipe_search.ssg" method="get">
 						<select name="sort" onchange="srch_sort()" style="width: 90px;">
 				              <option value="name" <c:if test="${recipeVO.sort == 'name' }">selected</c:if>>가나다순</option>
 				              <option value="like" <c:if test="${recipeVO.sort == 'like' }">selected</c:if>>인기순</option>
@@ -28,7 +28,8 @@
 						<input type="text" name="rname" value="${recipeVO.rname }" style="width: 200px;">
 						<input type="submit" value="검색">
 						<input type="hidden" name="curpage" value="1">
-					</form>	        	
+					</form>	     
+	        		</div>   	
 					<div class="recipe-list-container">
 						<c:forEach var="vo" items="${list }" varStatus="status">	<!-- request에 들어있는 아이템 -->
 							<div class="card recipe-card" onclick="goPage(${vo.recipe_id}, '${vo.recipe_name}')">
@@ -123,4 +124,5 @@ function movepage(page_num, sort, type, rname, total_count,flag) {
 } 
 
 </script>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

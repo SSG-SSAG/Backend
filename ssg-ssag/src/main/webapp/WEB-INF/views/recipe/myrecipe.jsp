@@ -22,7 +22,6 @@ function srch_sort() {
  
 <html>
 <head>
-	<jsp:include page="../layout/head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
 	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
 </head>

@@ -62,6 +62,7 @@ public class RefgController {
 		String s = "location.href='refg.ssg?no=" + curid+"';";
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html;charset=utf-8");
+
 		int result = service.add(vo.getIng_name(), vo.getExpire_date(), curid);
 		if (result == 0) {
 			out.print("<script>");

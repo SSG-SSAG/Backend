@@ -6,6 +6,10 @@
 function goTag(cat, name) {
 	location.href="recipe/recipe_cat.ssg?cat=" + cat + "&category_name=" + name;
 }
+
+function goCart(no) {
+	location.href="recipe/cart.ssg?no="+no;
+}
 </script>
 
 <html>
@@ -36,11 +40,10 @@ function goTag(cat, name) {
 					<input type="button" value="종류" onclick="goTag(1, '종류');">
 					<input type="button" value="건강" onclick="goTag(2, '건강');">
 					<input type="button" value="테마" onclick="goTag(3, '테마');">
-				<input type="button" value="조리법" onclick="goTag(4, '조리법');">
-					${currentUser.name }
+					<input type="button" value="조리법" onclick="goTag(4, '조리법');">
 				</div>
 				<div>
-					냉장고 간단 정보 넣을 자리
+					<input type="button" value="장바구니 ㄱ" onclick="goCart(${currentUser.user_no});">
 					<h4>${currentUser.name }님 하이 </h4>
 				</div>
 			</div>

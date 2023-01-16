@@ -123,7 +123,7 @@
 <select id="selectRef" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
 	SELECT *
 	FROM refrigerator
-	WHERE user_no = #{user_no}
+	WHERE user_no = #{user_id }
 </select>
 
 <!-- 레시피 단계 조회 -->
@@ -205,6 +205,11 @@
 		round(info_fat/(info_car+info_pro+info_fat)*100,2) fat
 		FROM recipe tmp
 		WHERE recipe_id = #{recipe_id }
+</select>
+
+<select id="getImgs" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	SELECT * FROM recipe WHERE recipe_id = #{recipe_id}
+
 </select>
 
 </mapper>

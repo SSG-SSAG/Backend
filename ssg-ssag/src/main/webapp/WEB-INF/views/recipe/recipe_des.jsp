@@ -23,12 +23,15 @@
 								<i id="like-heart" class="fa-heart fa-regular fa-md"></i>
 							</div>
 							<div class="recipe-desc">
-						      <p>태그 버튼 자리임</p>
-						      <p>영양정보 담을 거임</p>
+								<p>kcal ${list_des.calrorie }</p>
+								<p>탄수화물 ${list_des.info_car }</p>
+								<p>단백질 ${list_des.info_pro }</p>
+								<p>지방 ${list_des.info_fat }</p>
+								<p>나트륨 ${list_des.info_na }</p>
 						    </div>
 						</div>
 					</div>
-					<div class="card step-recipe-ing-card" onclick="goPage(1, 2, ${recipeVO.recipe_id}, '${recipeVO.recipe_name}');">
+					<div class="card step-recipe-ing-card" onclick="goPage(${currentUser.user_no }, 2, ${recipeVO.recipe_id}, '${recipeVO.recipe_name}');">
 						재료 목록 보기
 					</div>
 	            </div>

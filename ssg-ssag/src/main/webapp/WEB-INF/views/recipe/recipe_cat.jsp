@@ -16,18 +16,26 @@ function goPage(pg, id, name, cat, cname) {
 
 <html>
 <head>
-	<title>Recipe Category</title>
+	<jsp:include page="../layout/head.jsp"/>
+	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
+	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
 </head>
 <body>
-<h2>레시피 태그 선택 페이지</h2>
-<h1>${recipeVO.category_name} 중 원하는 #태그를 선택하세요!</h1>
-
-<c:forEach var="vo" items="${list_cat }" varStatus="status">
-	<button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${param.cat}, '${param.category_name}')">#${vo.tag_name }</button>
-</c:forEach>
-
-<br><br>
-<input type="button" value="홈" onclick="goPage(1)" >
+<div class="main-background">
+    <div class="pc-bg-left"></div>
+    <div class="main-container">
+        <jsp:include page="../layout/header.jsp" />
+        <div class="content-container">
+			<h2>${recipeVO.category_name} 중 원하는 #태그를 선택하세요!</h2>
+			
+			<c:forEach var="vo" items="${list_cat }" varStatus="status">
+				<button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${param.cat}, '${param.category_name}')">#${vo.tag_name }</button>
+			</c:forEach>
+		</div>
+	<jsp:include page="../layout/menu.jsp" />
+	    </div>
+	<div class="pc-bg-right"></div>
+</div>
 
 </body>
 </html>

@@ -46,7 +46,6 @@
 					<td>
 						<input type="button" value="삭제" onclick="del(${vo.refg_id});">
 					</td>
-							
 				</tr>
 				</c:forEach>
 			</table>
@@ -60,7 +59,7 @@
 					<input type="submit" value="add">
 				</form>
 			</div>
-        </div>			
+        </div>
         <jsp:include page="../layout/menu.jsp" />
 	    </div>
 	    <div class="pc-bg-right"></div>

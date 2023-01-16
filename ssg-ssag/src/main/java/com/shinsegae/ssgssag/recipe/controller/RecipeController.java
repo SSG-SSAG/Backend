@@ -109,8 +109,10 @@ public class RecipeController {
 	public String test(HttpServletRequest req, RecipeVO vo, HttpSession sess) {
 		List<RecipeVO> obj = service_des.getIngs(vo);
 		List<RecipeVO> obj2 = service_des.getSteps(vo);
+		RecipeVO obj3 = service_des.getImgs(vo);
 		req.setAttribute("list_ing", obj);
 		req.setAttribute("list_step", obj2);
+		req.setAttribute("list_des", obj3);
 		System.out.println("### Recipe Ing Controller ###");
 		
 		// 좋아요(찜) 여부 조회를 위한 기능
@@ -139,9 +141,20 @@ public class RecipeController {
 		List<RecipeVO> obj = service_ing.ings(vo);
 		List<RecipeVO> obj2 = service_ing.nut(vo);
 		List<RecipeVO> obj3 = service_ing.ref(vo);
+		List<Integer> my_ings = new ArrayList<>();
+		RecipeVO obj4 = service_des.getImgs(vo);
+		for ( int i = 0; i<obj3.size(); i++) {
+			my_ings.add(obj3.get(i).getIng_id());
+		}
+		for ( int i = 0; i<obj.size(); i++) {
+			if (my_ings.contains(obj.get(i).getIng_id())) {
+				obj.get(i).setMy_ing(true);
+			}
+		}
 		req.setAttribute("list_detail", obj);
 		req.setAttribute("list_nut", obj2);
 		req.setAttribute("list_ref", obj3);
+		req.setAttribute("list_des", obj4);
 		return "recipe/recipe_ing";
 	}
 	

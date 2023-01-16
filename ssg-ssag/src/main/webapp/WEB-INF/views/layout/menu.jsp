@@ -24,7 +24,7 @@
 			</a>
 		</div>
 		<div class="menu-btn">
-			<a href="/ssgssag/recipe/myrecipe.ssg?no=${currentUser.user_no }">
+			<a href="/ssgssag/recipe/myrecipe.ssg?user_no=${currentUser.user_no }">
 				<i class="fa-solid fa-heart fa-lg menu-icon"></i>
 				<p>찜</p>
 			</a>
@@ -44,7 +44,7 @@
 				</a>
 			</c:if>
 			<c:if test="${not empty currentUser }">
-				<a href="/ssgssag/member/mypage.ssg?no=${currentUser.user_no }">
+				<a href="/ssgssag/member/mypage.ssg?user_no=${currentUser.user_no }">
 					<i class="fa-solid fa-user fa-lg menu-icon"></i>
 					<p>마이페이지</p>
 				</a>

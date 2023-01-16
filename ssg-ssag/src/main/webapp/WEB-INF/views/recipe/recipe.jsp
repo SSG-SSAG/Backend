@@ -37,6 +37,7 @@
 									<img class="rcard-img" src="${vo.recipe_img }" alt="${vo.recipe_name }" >
 									<div class="recipe-desc">
 								      <p>우렁은 우렁우렁</p>
+								      <p>찜 ${vo.cnt }</p>
 								    </div>
 								</div>
 							</div>

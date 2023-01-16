@@ -109,6 +109,14 @@
     </if>
 </select>
 
+<!-- 레시피의 태그 조회 -->
+<select id="rcp_tag" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	SELECT tag_name
+	FROM recipe_tag r, tag t
+	WHERE recipe_id = #{recipe_id }
+	AND r.tag_id = t.tag_id
+</select>
+
 <select id="getIngs" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
 	SELECT *
 	FROM ingredients

@@ -38,15 +38,6 @@ public class RecipeController {
 	@Autowired
 	RecipeMyService service_my;
 	
-//	// 전체 조회 - 여러 건 응답 (JSON 배열)
-//	@GetMapping("/recipe/recipe.ssg")
-//	public String getAll(HttpServletRequest req, RecipeVO vo) {
-//		System.out.println("### Recipe Controller ###");
-//		List<RecipeVO> obj = service.reci(vo);	// 서비스 호출
-//		req.setAttribute("list", obj);
-//		return "recipe/recipe";
-//	}
-	
 	@GetMapping("/recipe/recipe_search.ssg")
 	public String getIng(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Ingredient Controller ###");
@@ -75,6 +66,7 @@ public class RecipeController {
 				pagebutton.add(s+i);
 			}
 		}
+		
 		req.setAttribute("list", obj2);
 		req.setAttribute("page", pagebutton);
 
@@ -110,9 +102,13 @@ public class RecipeController {
 		List<RecipeVO> obj = service_des.getIngs(vo);
 		List<RecipeVO> obj2 = service_des.getSteps(vo);
 		RecipeVO obj3 = service_des.getImgs(vo);
+		List<RecipeVO> obj4 = service.rcp_tag(vo);
+		
 		req.setAttribute("list_ing", obj);
 		req.setAttribute("list_step", obj2);
 		req.setAttribute("list_des", obj3);
+		req.setAttribute("rcp_tag", obj4);
+		
 		System.out.println("### Recipe Ing Controller ###");
 		
 		// 좋아요(찜) 여부 조회를 위한 기능

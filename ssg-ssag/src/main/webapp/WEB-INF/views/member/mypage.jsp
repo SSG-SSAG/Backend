@@ -71,8 +71,6 @@ function boxSelect(cat){
 					<td></td>
 					<td>카테고리</td>
 					<td>#관심태그</td>
-					<td>ID</td>
-					<td>User ID</td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -81,8 +79,6 @@ function boxSelect(cat){
 					<td>${status.count}</td>
 					<td>${vo.category_name }</td>
 					<td>${vo.tag_name }</td>
-					<td>${vo.like_tag_id }</td>
-					<td>${vo.user_no }</td>
 					<td><button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}')">레시피 보러가기</button></td>
 					<td><button onclick="goPage(3, ${vo.like_tag_id})">삭제</button></td>
 				</tr>
@@ -93,6 +89,7 @@ function boxSelect(cat){
 			<div id="addTag" style="display:none">
 				<form name="tagForm" action="tag_new.ssg" method="get">
 					<select id="catBox" name="catBox" onchange="boxSelect(this)">
+						<option value="cat">관심 카테고리를 선택하세요!</option>
 						<option value="option">종류</option>
 						<option value="health">건강</option>
 						<option value="theme">테마</option>

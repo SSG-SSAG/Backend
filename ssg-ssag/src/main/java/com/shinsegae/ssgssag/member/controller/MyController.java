@@ -39,7 +39,8 @@ public class MyController {
 		boolean result = service.deleteTag(like_tag_id);
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html;charset=utf-8");
-		String s = "location.href='/ssgssag/member/mypage.ssg';";
+		String s = "location.href='/ssgssag/member/mypage.ssg?user_no=" + Integer.toString(user_no) + "';";
+		
 		if (result) {
 			out.print("<script>");
 			out.print("alert('정상적으로 삭제되었습니다.');");
@@ -55,27 +56,23 @@ public class MyController {
 	
 	@GetMapping(value="/member/tag_new.ssg")
 	public void addTag(HttpServletResponse res, MyVO vo) throws Exception {
-//		String s = "location.href='/ssgssag/member/mypage.ssg?user_no=" + Integer.toString(user_no) + "';";
-		String s = "location.href='/ssgssag/member/mypage.ssg';";
+		String s = "location.href='/ssgssag/member/mypage.ssg?user_no=" + Integer.toString(user_no) + "';";
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html;charset=utf-8");
-		System.out.println("Add Tag Controller");
-		System.out.println("ssssss " + s);
+		System.out.println("###### Add Tag Controller ######");
 		
-		int result = service.addTag(vo.getTag_name(), Integer.toString(user_no));
-		if (result == 0) {
-			out.print("<script>");
-			out.print("alert('재료명을 다시 입력해주세요.');");
-			out.print(s);
-			out.print("</script>");
-		}
-		else if (result == 1) {
+		int result = service.addTag(vo.getTag_id(), vo.getTag_name(), Integer.toString(user_no));
+		System.out.println("result : " + result);
+		
+		if (result == 1) {
+			System.out.println("관심 태그에 이미 존재");
 			out.print("<script>");
 			out.print("alert('이미 관심 태그에 존재합니다.');");
 			out.print(s);
 			out.print("</script>");
 		}
 		else {
+			System.out.println("관심 태그 추가 성공");
 			out.print("<script>");
 			out.print("alert('태그 추가 성공');");
 			out.print(s);

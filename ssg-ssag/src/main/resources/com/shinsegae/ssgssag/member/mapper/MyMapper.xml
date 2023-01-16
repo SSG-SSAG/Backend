@@ -16,13 +16,14 @@
 		SELECT tag_name FROM tag WHERE tag_id = #{tag_id}
 	</select>
 	
-	<delete id="deleteTag" parameterType="int">
-		DELETE FROM like_tag where like_tag_id = #{a}
-	</delete>
-	
 	<select id="getId" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT tag_id FROM tag WHERE tag_name = #{a}
 	</select>
+
+	<!-- 관심 태그 삭제 -->
+	<delete id="deleteTag" parameterType="int">
+		DELETE FROM like_tag where like_tag_id = #{a}
+	</delete>	
 	
 	<select id="tagCheck" resultType="java.lang.String" parameterType="java.lang.String">
 		SELECT COUNT(*) FROM tag WHERE tag_name = #{a}
@@ -41,5 +42,14 @@
 		INSERT INTO like_tag (user_no, tag_id)
 		VALUES (#{user_no}, #{tag_id})
 	</insert>
+	
+	<!-- 회원 정보 조회 -->
+	<select id="selectUsers" resultType="com.shinsegae.ssgssag.member.vo.MyVO">
+		SELECT *
+		FROM user
+		WHERE user_no = #{user_no}
+	</select>
+	
+	<!-- 회원 정보 수정 -->
 	
 </mapper>

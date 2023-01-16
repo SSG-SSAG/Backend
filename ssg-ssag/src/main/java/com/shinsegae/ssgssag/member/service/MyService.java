@@ -14,13 +14,10 @@ public class MyService {
 	@Autowired
 	MyMapper mapper;
 	
+	// 관심 태그 조회
 	public List<MyVO> tags(MyVO vo) {
 		List<MyVO> obj = mapper.selectTags(vo);
 		return obj;
-	}
-	
-	public String getName(int tag_id) {
-		return mapper.getName(tag_id);
 	}
 	
 	public boolean deleteTag(String like_tag_id) {
@@ -53,6 +50,11 @@ public class MyService {
 			System.out.println("cannot add");
 			return 1;
 		}
+	}
 	
+	// 회원 정보 조회
+	public List<MyVO> users(MyVO vo) {
+		List<MyVO> obj = mapper.selectUsers(vo);
+		return obj;
 	}
 }

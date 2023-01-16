@@ -26,4 +26,7 @@ public interface MyMapper {
 	String tagCheck(String tag_name);
 	
 	String getId(String tag_name);
+	
+	// 회원 정보 조회
+	List<MyVO> selectUsers(MyVO vo);
 }

@@ -11,6 +11,8 @@ function goPage(pg, id, name, cat, cname) {
 		location.href = "../recipe/recipe_tag.ssg?tag_id=" + id + "&tag_name=" + name + "&cat=" + cat + "&category_name=" + cname;
 	} else if (pg == 3) {
 		location.href="deleteTag.ssg?like_tag_id="+id;
+	} else if (pg == 4) {
+		location.href="change.ssg?user_no="+id;
 	}
 }
 
@@ -102,6 +104,8 @@ function boxSelect(cat){
 					<input type="hidden" name="user_no" value="${currentUser.user_no }">
 				</form>
 			</div>
+			
+			<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
 		</div>
 		<jsp:include page="../layout/menu.jsp" />
 	    </div>

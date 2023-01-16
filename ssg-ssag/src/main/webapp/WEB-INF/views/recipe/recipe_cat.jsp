@@ -26,3 +26,15 @@
 </body>
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>
+
+<script>
+
+function goPage(pg, id, name, cat, cname) {
+	if (pg == 1) {			// 장바구니로 이동
+		location.href = "cart.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;		 
+	} else if (pg == 2) {	// 다음 페이지로 이동
+		location.href = "recipe_tag.ssg?tag_id=" + id + "&tag_name=" + name + "&cat=" + cat + "&category_name=" + cname;
+	}
+}
+
+</script>

@@ -69,7 +69,7 @@ function boxSelect(cat){
     <div class="main-container">
         <jsp:include page="../layout/header.jsp" />
 	    <div class="content-container">
-        	<div>        	
+        	<div>     	
 				<h3>회원 정보 수정</h3>	
 				<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
         	</div>

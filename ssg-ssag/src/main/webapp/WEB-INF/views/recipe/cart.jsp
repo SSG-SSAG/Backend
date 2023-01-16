@@ -22,8 +22,15 @@
 	</tr>
 	<c:forEach var="vo" items="${list }">
 	<tr>
-		<td>${vo.ing_name}</td>
-		<td>${vo.update_date}</td>
+	
+		<c:if test="${vo.iisNew == true }"> 
+			<td style="background-color:#FF0000">${vo.ing_name}</td>
+			<td>${vo.update_date}</td>
+		</c:if>
+		<c:if test="${vo.iisNew eq 'false' }"> 
+			<td >${vo.ing_name}</td>
+			<td>${vo.update_date}</td>
+		</c:if>
 	</tr>
 	</c:forEach>
 </table>

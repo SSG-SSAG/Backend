@@ -16,11 +16,18 @@ public class RecipeDesService {
 	
 	public List<RecipeVO> getIngs(RecipeVO vo) {
 		List<RecipeVO> obj = mapper.getIngs(vo);
+		System.out.println("test");
+		System.out.println(obj);
 		return obj;
 	}
 	
 	public List<RecipeVO> getSteps(RecipeVO vo) {
 		List<RecipeVO> obj = mapper.getSteps(vo);
 		return obj;
+	}
+	
+	public RecipeVO getImgs(RecipeVO vo) {
+		List<RecipeVO> obj = mapper.getImgs(vo);
+		return obj.get(0);
 	}
 }

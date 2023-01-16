@@ -104,8 +104,10 @@ public class RecipeController {
 	public String test(HttpServletRequest req, RecipeVO vo) {
 		List<RecipeVO> obj = service_des.getIngs(vo);
 		List<RecipeVO> obj2 = service_des.getSteps(vo);
+		RecipeVO obj3 = service_des.getImgs(vo);
 		req.setAttribute("list_ing", obj);
 		req.setAttribute("list_step", obj2);
+		req.setAttribute("list_des", obj3);
 		System.out.println("### Recipe Ing Controller ###");
 		return "recipe/recipe_des";
 	}
@@ -117,6 +119,7 @@ public class RecipeController {
 		List<RecipeVO> obj2 = service_ing.nut(vo);
 		List<RecipeVO> obj3 = service_ing.ref(vo);
 		List<Integer> my_ings = new ArrayList<>();
+		RecipeVO obj4 = service_des.getImgs(vo);
 		for ( int i = 0; i<obj3.size(); i++) {
 			my_ings.add(obj3.get(i).getIng_id());
 		}
@@ -128,6 +131,7 @@ public class RecipeController {
 		req.setAttribute("list_detail", obj);
 		req.setAttribute("list_nut", obj2);
 		req.setAttribute("list_ref", obj3);
+		req.setAttribute("list_des", obj4);
 		return "recipe/recipe_ing";
 	}
 }

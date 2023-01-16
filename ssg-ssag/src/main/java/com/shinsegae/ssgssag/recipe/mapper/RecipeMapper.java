@@ -44,5 +44,8 @@ public interface RecipeMapper {
 	
 	// 냉장고 조회
 	List<RecipeVO> selectRef(RecipeVO vo);
+	
+	// 이미지 조회
+	List<RecipeVO> getImgs(RecipeVO vo);
 }
 

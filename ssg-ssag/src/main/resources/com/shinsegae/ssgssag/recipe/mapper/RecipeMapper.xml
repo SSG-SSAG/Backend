@@ -207,4 +207,9 @@
 		WHERE recipe_id = #{recipe_id }
 </select>
 
+<select id="getImgs" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	SELECT * FROM recipe WHERE recipe_id = #{recipe_id}
+
+</select>
+
 </mapper>

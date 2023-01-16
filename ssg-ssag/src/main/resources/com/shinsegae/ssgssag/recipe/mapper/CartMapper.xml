@@ -8,4 +8,12 @@
 	<select id="getName" parameterType="String" resultType="String">
 		SELECT ing_name FROM ingredients WHERE ing_id = #{a}
 	</select>
+	
+	<select id="rcpIngs" parameterType="String" resultType="com.shinsegae.ssgssag.recipe.vo.CartVO">
+		SELECT * FROM recipe_ing WHERE recipe_id = #{a}
+	</select>
+	
+	<insert id="addIngs" parameterType="map">
+		INSERT INTO cart (user_no, ing_id, update_date) VALUES (#{user_id}, #{ing_id}, #{date})
+	</insert>
 </mapper>

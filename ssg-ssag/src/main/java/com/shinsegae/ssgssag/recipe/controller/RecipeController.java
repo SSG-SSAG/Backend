@@ -67,8 +67,11 @@ public class RecipeController {
 			}
 		}
 		
+		List<RecipeVO> obj3 = service.rcp_tag(vo);
+		
 		req.setAttribute("list", obj2);
 		req.setAttribute("page", pagebutton);
+		req.setAttribute("rcp_tag", obj3);
 
 		return "recipe/recipe";
 	}
@@ -139,6 +142,8 @@ public class RecipeController {
 		List<RecipeVO> obj3 = service_ing.ref(vo);
 		List<Integer> my_ings = new ArrayList<>();
 		RecipeVO obj4 = service_des.getImgs(vo);
+		List<RecipeVO> obj5 = service.rcp_tag(vo);
+		
 		for ( int i = 0; i<obj3.size(); i++) {
 			my_ings.add(obj3.get(i).getIng_id());
 		}
@@ -151,6 +156,8 @@ public class RecipeController {
 		req.setAttribute("list_nut", obj2);
 		req.setAttribute("list_ref", obj3);
 		req.setAttribute("list_des", obj4);
+		req.setAttribute("rcp_tag", obj5);
+		
 		return "recipe/recipe_ing";
 	}
 	

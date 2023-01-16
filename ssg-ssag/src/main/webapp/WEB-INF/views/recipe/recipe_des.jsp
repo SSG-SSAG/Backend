@@ -15,7 +15,7 @@
 	        <div class="content-container ccenter-layout">
 	            <div class="step-recipe-container">
 	            	<div class="card step-recipe-card rcenter-layout" style="border: 1px solid black">
-						<img class="step-recipe-card-img" src="${recipeVO.recipe_img }" alt="${recipeVO.recipe_name }" >
+						<img class="step-recipe-card-img" src="${list_des.recipe_img }" alt="${recipeVO.recipe_name }" >
 						<div class="step-recipe-desc-box">
 							<div class="recipe-desc-title-box">
 								<h5 class="space-strip">${recipeVO.recipe_name }</h5>

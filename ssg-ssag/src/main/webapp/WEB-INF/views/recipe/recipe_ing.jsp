@@ -19,9 +19,13 @@
 	            	<div class="card step-recipe-card" style="margin-top: 10px;">
 						<h5 style="margin: 0;">${recipeVO.recipe_name }</h5>
 						<div class="recipe-desc-box">
-							<img class="step-recipe-card-img" src="${recipeVO.recipe_img }" alt="${recipeVO.recipe_name }" >
+							<img class="step-recipe-card-img" src="${list_des.recipe_img }" alt="${recipeVO.recipe_name }" >
 							<div class="recipe-desc">
-						      <p>영양정보 담을 거임</p>
+						      <p>kcal ${list_des.calrorie }</p>
+								<p>탄수화물 ${list_des.info_car }</p>
+								<p>단백질 ${list_des.info_pro }</p>
+								<p>지방 ${list_des.info_fat }</p>
+								<p>나트륨 ${list_des.info_na }</p>
 						      <p>태그 버튼 자리임</p>
 						    </div>
 						</div>

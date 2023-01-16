@@ -47,5 +47,8 @@ public interface RecipeMapper {
 	
 	// 이미지 조회
 	List<RecipeVO> getImgs(RecipeVO vo);
+	
+	// 인기 있는 레시피 조회
+	List<RecipeVO> getHotRec(RecipeVO vo);
 }
 

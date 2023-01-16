@@ -209,7 +209,18 @@
 
 <select id="getImgs" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
 	SELECT * FROM recipe WHERE recipe_id = #{recipe_id}
+</select>
 
+<!-- 인기 레시피 조회 -->
+<select id="getHotRec" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	SELECT r.recipe_id, recipe_name, recipe_img, source, level, <!-- recipe_ing_info, -->
+	IFNULL(COUNT(like_id), 0) AS cnt
+	FROM recipe r
+	LEFT OUTER JOIN like_recipe l
+	ON r.recipe_id = l.recipe_id
+	GROUP BY r.recipe_id
+	ORDER BY cnt DESC, recipe_name <!-- 찜 순서대로 정렬 -->
+	LIMIT 5 <!-- 인기 많은 상위 5개만 -->
 </select>
 
 </mapper>

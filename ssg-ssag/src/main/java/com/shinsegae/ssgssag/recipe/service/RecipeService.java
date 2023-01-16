@@ -77,5 +77,12 @@ public class RecipeService {
 		}
 		return result;
 	}
+	
+	// 인기 있는 레시피 리스트
+	public List<RecipeVO> hotRe(RecipeVO vo) {
+		List<RecipeVO> obj = mapper.getHotRec(vo);
+		
+		return obj;
+	}
 }
 

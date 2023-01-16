@@ -168,31 +168,13 @@ public class RecipeController {
 		return isLiked+"";
 	}
 	
-//	public String recipeLike(@RequestParam("recipe_id") int recipe_id, HttpSession sess) {
-//		
-//		// 파라미터로 넘긴 레시피 아이디와 현재 로그인한 유저 정보를 통해 좋아요 여부 확인하기
-//		// 관련 데이터를 담을 VO
-//		RecipeLikeVO vo = new RecipeLikeVO();
-//		
-//		// 레시피 번호 담기
-//		vo.setRecipe_id(recipe_id);
-//		
-//		// 유저 번호, 닉네임 담기
-//		vo.setUser_no((int) sess.getAttribute("user_no"));
-//		vo.setId((String) sess.getAttribute("id"));
-//		
-//		// 조회부터
-//		boolean isRecipeLiked = service.isLiked(vo);
-//		
-//		// 좋아요 취소 (이미 눌러놨다면 true => 취소해주세요)
-//		if (isRecipeLiked) {
-//			System.out.println("눌러놨었네~");
-//			
-//		} else {
-//		// 좋아요 (안 눌러놨다면 false => 누르기)
-//			System.out.println("이제 누를게요");			
-//		}
-//		return "/";
-//		
-//	}
+	// home 접속 시 인기 레시피 5개 보내주기
+	@GetMapping("/")
+	public String hotRecipeList(HttpServletRequest req, RecipeVO vo) {
+		System.out.println("### hotRecipeList ###");
+		List<RecipeVO> obj = service.hotRe(vo);	// Service
+		req.setAttribute("hotRecipe_list", obj);
+
+		return "home";
+	}
 }

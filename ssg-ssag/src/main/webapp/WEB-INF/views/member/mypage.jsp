@@ -13,6 +13,8 @@ function goPage(pg, id, name, cat, cname) {
 		location.href="deleteTag.ssg?like_tag_id="+id;
 	} else if (pg == 4) {
 		location.href="change.ssg?user_no="+id;
+	} else if (pg == 5) {
+		location.href="../recipe/cart.ssg?no="+id;
 	}
 }
 
@@ -66,7 +68,16 @@ function boxSelect(cat){
     <div class="pc-bg-left"></div>
     <div class="main-container">
         <jsp:include page="../layout/header.jsp" />
-        <div class="content-container">
+	    <div class="content-container">
+        	<div>        	
+				<h3>회원 정보 수정</h3>	
+				<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
+        	</div>
+        	<div>        	
+				<h3>장바구니</h3>	
+				<input type="button" value="장바구니" onclick="goPage(5, ${currentUser.user_no});">
+        	</div>
+        	<div>
 			<table border="1">
 				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>	
 				<tr>
@@ -104,8 +115,7 @@ function boxSelect(cat){
 					<input type="hidden" name="user_no" value="${currentUser.user_no }">
 				</form>
 			</div>
-			
-			<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
+        	</div>
 		</div>
 		<jsp:include page="../layout/menu.jsp" />
 	    </div>

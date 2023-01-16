@@ -22,7 +22,7 @@
 
 	<!-- 관심 태그 삭제 -->
 	<delete id="deleteTag" parameterType="int">
-		DELETE FROM like_tag where like_tag_id = #{a}
+		DELETE FROM like_tag WHERE like_tag_id = #{a}
 	</delete>	
 	
 	<select id="tagCheck" resultType="java.lang.String" parameterType="java.lang.String">

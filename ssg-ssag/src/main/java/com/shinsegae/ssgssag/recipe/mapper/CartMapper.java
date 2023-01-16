@@ -18,4 +18,5 @@ public interface CartMapper {
 	List<CartVO> rcpIngs(String recipe_id);
 	int addIngs(@Param("user_id") String user_id, @Param("ing_id") String ing_id, @Param("date") LocalDate now);
 	
+	int deleteCart(@Param("user_id") String user_id, @Param("ing_id") int ing_id);
 }

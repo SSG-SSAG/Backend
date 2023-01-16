@@ -16,4 +16,11 @@
 	<insert id="addIngs" parameterType="map">
 		INSERT INTO cart (user_no, ing_id, update_date) VALUES (#{user_id}, #{ing_id}, #{date})
 	</insert>
+	
+	<!-- 장바구니 삭제 -->
+	<delete id="deleteCart" parameterType="map">
+		DELETE FROM cart
+		WHERE ing_id = #{ing_id}
+		AND user_no = #{user_id}
+	</delete>	
 </mapper>

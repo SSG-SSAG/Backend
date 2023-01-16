@@ -5,10 +5,11 @@
 	
 	<!-- 관심 있는 태그와 카테고리 조회 -->
 	<select id="selectTags" resultType="com.shinsegae.ssgssag.member.vo.MyVO">
-		SELECT t.tag_id, tag_name, category_name, category_id, like_tag_id
+		SELECT t.tag_id, tag_name, category_name, category_id, like_tag_id, user_no
 		FROM tag t, like_tag l, tag_category c
 		WHERE t.tag_id = l.tag_id
 		AND t.tag_category = c.category_id
+		AND l.user_no = #{user_no}
 	</select>
 	
 	<select id="getName" resultType="java.lang.String" parameterType="int">
@@ -29,7 +30,10 @@
 	
 	<!-- 이미 존재하는 태그인지 확인 -->
 	<select id="isContain" resultType="java.lang.String" parameterType="map">
-		SELECT COUNT(*) FROM like_tag WHERE user_no = #{user_no} and tag_id = #{tag_id }
+		SELECT COUNT(*)
+		FROM like_tag
+		WHERE user_no = #{user_no}
+		AND tag_id = #{tag_id }
 	</select>
 	
 	<!-- 새로운 관심 태그 추가 -->

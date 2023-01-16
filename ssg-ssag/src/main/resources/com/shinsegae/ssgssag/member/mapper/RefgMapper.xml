@@ -11,7 +11,6 @@
 		<!-- </if> -->
 	</select>
 	
-	
 	<select id="getName" resultType="java.lang.String" parameterType="int">
 		SELECT ing_name FROM ingredients where ing_id = #{a}
 	</select>

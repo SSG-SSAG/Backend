@@ -5,10 +5,37 @@
 	
 	<!-- 관심 있는 태그와 카테고리 조회 -->
 	<select id="selectTags" resultType="com.shinsegae.ssgssag.member.vo.MyVO">
-		SELECT t.tag_id, tag_name, category_name, category_id
+		SELECT t.tag_id, tag_name, category_name, category_id, like_tag_id
 		FROM tag t, like_tag l, tag_category c
 		WHERE t.tag_id = l.tag_id
 		AND t.tag_category = c.category_id
 	</select>
+	
+	<select id="getName" resultType="java.lang.String" parameterType="int">
+		SELECT tag_name FROM tag WHERE tag_id = #{tag_id}
+	</select>
+	
+	<delete id="deleteTag" parameterType="int">
+		DELETE FROM like_tag where like_tag_id = #{a}
+	</delete>
+	
+	<select id="getId" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT tag_id FROM tag WHERE tag_name = #{a}
+	</select>
+	
+	<select id="tagCheck" resultType="java.lang.String" parameterType="java.lang.String">
+		SELECT COUNT(*) FROM tag WHERE tag_name = #{a}
+	</select>
+	
+	<!-- 이미 존재하는 태그인지 확인 -->
+	<select id="isContain" resultType="java.lang.String" parameterType="map">
+		SELECT COUNT(*) FROM like_tag WHERE user_no = #{user_no} and tag_id = #{tag_id }
+	</select>
+	
+	<!-- 새로운 관심 태그 추가 -->
+	<insert id="addTag" parameterType="map">
+		INSERT INTO like_tag (user_no, tag_id)
+		VALUES (#{user_no}, #{tag_id})
+	</insert>
 	
 </mapper>

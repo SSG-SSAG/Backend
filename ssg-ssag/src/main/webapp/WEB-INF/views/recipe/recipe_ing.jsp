@@ -5,9 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<jsp:include page="../layout/head.jsp"/>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
 </head>
 <body>
 	<div class="main-background">

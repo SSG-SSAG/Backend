@@ -116,6 +116,15 @@ public class RecipeController {
 		List<RecipeVO> obj = service_ing.ings(vo);
 		List<RecipeVO> obj2 = service_ing.nut(vo);
 		List<RecipeVO> obj3 = service_ing.ref(vo);
+		List<Integer> my_ings = new ArrayList<>();
+		for ( int i = 0; i<obj3.size(); i++) {
+			my_ings.add(obj3.get(i).getIng_id());
+		}
+		for ( int i = 0; i<obj.size(); i++) {
+			if (my_ings.contains(obj.get(i).getIng_id())) {
+				obj.get(i).setMy_ing(true);
+			}
+		}
 		req.setAttribute("list_detail", obj);
 		req.setAttribute("list_nut", obj2);
 		req.setAttribute("list_ref", obj3);

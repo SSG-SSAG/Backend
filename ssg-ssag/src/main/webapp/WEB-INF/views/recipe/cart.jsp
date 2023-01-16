@@ -13,6 +13,10 @@
 	 location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + id;	 
 	 
  }
+ 
+ function ssag(id, onssg) {
+	location.href="http://localhost:8081/ssgssag/recipe/cart.ssg?no="+id+'&onssg=' + onssg;
+ }
  </script>
 <h2>장바구니</h2>
 <table border="1">
@@ -34,6 +38,7 @@
 	</tr>
 	</c:forEach>
 </table>
+<input type="button" value="싹~~~~~~" onclick="ssag('${currentUser.user_no}', 1);">
 <input type="button" value="냉장고로 이동" onclick="refg('${currentUser.user_no}');">
 </body>
 </html>

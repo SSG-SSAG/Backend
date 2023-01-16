@@ -134,4 +134,9 @@ public class RecipeController {
 		req.setAttribute("list_des", obj4);
 		return "recipe/recipe_ing";
 	}
+	
+	
+	
+	
+	
 }

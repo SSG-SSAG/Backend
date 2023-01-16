@@ -197,6 +197,13 @@
 		    <version>2.13.4</version>
 		</dependency>
 				
+		<!-- 제이쿼리 JQuery -->
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>3.6.2</version>
+		</dependency>
+				
 	</dependencies>
     <build>
         <plugins>

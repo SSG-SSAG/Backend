@@ -19,16 +19,12 @@
 						<div class="step-recipe-desc-box">
 							<div class="recipe-desc-title-box">
 								<h5 class="space-strip">${recipeVO.recipe_name }</h5>
-								<!-- 좋아요 여부에 따라서 보여주는 아이콘 분기 처리 + 클릭에 따라 넣었다가 뺐다가 하기 -->
-								<i class="fa-solid fa-heart"></i>
-								<i class="fa-regular fa-heart"></i>				
+								<!-- 좋아요 여부에 따라서  -->
+								<i id="like-heart" class="fa-heart fa-regular fa-md"></i>
 							</div>
 							<div class="recipe-desc">
 						      <p>태그 버튼 자리임</p>
 						      <p>영양정보 담을 거임</p>
-						      <form action="/recipe/recipe_like/recipe_id=${recipeVO.recipe_id }" method="post">
-						      	<button type="submit">좋아요 기능 확인</button>
-						      </form>
 						    </div>
 						</div>
 					</div>
@@ -58,6 +54,7 @@
 	    <div class="pc-bg-right"></div>
 	</div>
 </body>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 	function goPage(user_no, pg, id, name) {
 		if (pg == 1) {			// 장바구니로 이동
@@ -70,9 +67,55 @@
 	}
 	
 	// 좋아요(찜)
+	// 렌더링 전에 미리 확인하고 붙여야 함
+	$(document).ready(function () {
+		
+		// 좋아요 여부 확인하자
+		// 로그인한 유저지만 좋아요를 누르지 않았거나 비로그인 상태라면 recipeLike가 null이다
+		let recipeLike = '${recipeLike.user_no }';
+		// 세션에 아예 값이 널일떄는 찾아오질 못한다 흑흑
+		if (recipeLike != '') {
+			//recipeLike = ${recipeLike.user_no };
+			console.log('이미 좋아요 누르셨네요!')
+			$("#like-heart").prop("class", "fa-heart fa-solid fa-md"); // 채운 하트로 띄워주기						
+		} else {
+			// 좋아요 안 누름
+			console.log('좋아요를 안 누르셨네요!')
+			$("#like-heart").prop("class", "fa-heart fa-regular fa-md"); // 빈 하트로 띄워주기			
+		}		
+
+		// 좋아요 버튼 클릭시 동작하는 함수
+		$("#like-heart").on("click", function() {
+			const that = $("like-heart");
+			console.log('하트 클릭');
+			if ('${currentUser.user_no}' == '') {
+				alert('로그인 해주세요!')
+			} else {
+				$.ajax({
+					url: '/ssgssag/recipe/recipe_like.ssg',
+					type: 'POST',
+					data: {'recipe_id': ${recipeVO.recipe_id}, 'user_no': ${currentUser.user_no} + ""},
+					success: function(data) {
+						if (data == 1) {
+							console.log()
+							// 새로 추가했어요
+							$("#like-heart").prop("class", "fa-heart fa-solid fa-md"); // 채운 하트로 바꿔주기
+						} else {
+							console.log('좋아요 추ㅣ소하라고 ㅡㅡ')
+							// 좋아요 취소했어요
+							$("#like-heart").prop("class", "fa-heart fa-regular fa-md"); // 빈 하트로 띄워주기
+						}
+					},
+					error: function (xhr, status, error) {
+						alert('실패'); 
+					}		
+				})
+			}
+		
+		});
+	})
 	
 	
 </script>
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
-
 </html>

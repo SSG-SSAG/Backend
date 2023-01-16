@@ -3,7 +3,7 @@
 <mapper namespace="com.shinsegae.ssgssag.recipe.mapper.RecipeLikeMapper">
 
 <!-- 찜한 레시피인지 조회 -->
-<select id="isRecipeLiked" parameterType="com.shinsegae.ssgssag.recipe.vo.RecipeLikeVO">
+<select id="isRecipeLiked" parameterType="java.util.HashMap" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeLikeVO">
 	SELECT * FROM like_recipe
 	WHERE user_no=${user_no} AND recipe_id=${recipe_id}
 </select>

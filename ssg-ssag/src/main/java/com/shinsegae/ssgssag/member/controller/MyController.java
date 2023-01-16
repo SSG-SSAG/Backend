@@ -85,7 +85,6 @@ public class MyController {
 		System.out.println(vo);
 		System.out.println("### MyUsers Controller ###");
 		List<MyVO> obj = service.users(vo);
-//		user_no = vo.getUser_no();
 		req.setAttribute("list_users", obj);
 		return "member/change";
 	}

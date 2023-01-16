@@ -21,23 +21,14 @@
 .main-container {
 	background: #fffefd;
 	width: 470px;
-    height: 100vh;
+   height: 100vh;
 }
 
 /* 콘텐츠 들어갈 화면 레이아웃(모바일) */
 .content-container {
-	border: 1px solid black;
 	width: 100%;
 	height: 82vh;
-	
-}
-
-.header{
-	border: 1px solid red;
-	width: 100%;
-	height: 8vh;
-	display: flex;
-	flex-direction: row;
+	border: 1px solid black;
 }
 
 .ccenter-layout {

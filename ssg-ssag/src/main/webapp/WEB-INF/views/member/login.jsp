@@ -6,35 +6,35 @@
 <head>
 	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/member.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	
+	
 </head>
 <body>
 	<div class="main-background">
     <div class="pc-bg-left"></div>
     <div class="main-container">
-        <jsp:include page="../layout/header.jsp" />
-        <div class="content-container">
-            <div class="member-hello">
-			    SSG.COM 계정으로 쓱- 로그인해주세요
-			</div>
-			<div class="member-form">
-			    <form action="/ssgssag/auth/login.ssg" method="post">
-			    <div class="mb-3">
-			        <label for="inputId" class="form-label">아이디</label>
-			        <input type="text" class="form-control" name="id" value="${memberVO.id}">
-			      </div>
-			      <div class="mb-3">
-			        <label for="inputPwd" class="form-label">비밀번호</label>
-			        <input type="password" class="form-control" name="password" value="${memberVO.password}">
-			      </div>
-			      <div class="ccenter-layout">
-			          <button type="submit" class="member-submit-btn">로그인</button>
-			      </div>
-			    </form>
-			    <div class="ccenter-layout">
-			          <button class="member-submit-btn" onclick="location.href='/ssgssag/auth/signup.ssg'">회원가입</button>			  	
-			    </div>
-			</div>
-        </div>			
+    	<jsp:include page="../layout/header.jsp" />
+			   <div class="content-container">
+						<div class="member-form">
+					    <form action="/ssgssag/auth/login.ssg" method="post">
+						    <div class="mb-3">
+					        <label for="inputId" class="form-label">아이디</label>
+					        <input type="text" class="form-control" name="id" value="${memberVO.id}">
+								</div>
+								<div class="mb-3">
+								  <label for="inputPwd" class="form-label">비밀번호</label>
+								  <input type="password" class="form-control" name="password" value="${memberVO.password}">
+							  </div>
+							  <div class="ccenter-layout">
+						      <button type="submit" class="member-submit-btn">로그인</button>
+							  </div>
+							</form>
+							<div class="ccenter-layout">
+					      <button class="member-submit-btn" onclick="location.href='/ssgssag/auth/signup.ssg'">회원가입</button>			  	
+					    </div>
+						</div>
+			    </div>			
         <jsp:include page="../layout/menu.jsp" />
     </div>
     <div class="pc-bg-right"></div>
@@ -48,4 +48,6 @@
 	}
 </script>
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </html>

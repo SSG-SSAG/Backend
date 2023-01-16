@@ -1,24 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<script>
-
-function goPage(pg, no, id) {
-	if (pg == 1){
-		location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + no;
-	} else if (pg == 2) {
-		location.href="deleteCart.ssg?no=" + no + "&ing_id=" + id;
-	}
-}
-
-</script>
-
 <!DOCTYPE html>
 <html>
 <head>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
 </head>
 <body>
 <div class="main-background">
@@ -54,4 +41,14 @@ function goPage(pg, no, id) {
 	<div class="pc-bg-right"></div>
 </div>
 </body>
+<script>
+	function goPage(pg, no, id) {
+		if (pg == 1){
+			location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + no;
+		} else if (pg == 2) {
+			location.href="deleteCart.ssg?no=" + no + "&ing_id=" + id;
+		}
+	}
+</script>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

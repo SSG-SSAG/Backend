@@ -20,8 +20,9 @@ function goPage(pg, id, name, cat, cname) {
 
 <html>
 <head>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
+	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
 </head>
 <body>
 <div class="main-background">
@@ -60,4 +61,5 @@ function goPage(pg, id, name, cat, cname) {
 	<div class="pc-bg-right"></div>
 </div>
 </body>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

@@ -59,8 +59,9 @@ function boxSelect(cat){
 
 <html>
 <head>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
+	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
 </head>
 <body>
 <div class="main-background">
@@ -121,4 +122,5 @@ function boxSelect(cat){
 	<div class="pc-bg-right"></div>
 </div>
 </body>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

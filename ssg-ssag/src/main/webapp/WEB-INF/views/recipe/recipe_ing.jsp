@@ -74,4 +74,5 @@
 		 }		 
 	}
 </script>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

@@ -1,29 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<script>
-
-function goPage(pg, id, name) {
-	if (pg == 1) {
-		location.href = "recipe_des.ssg?recipe_id=" + id + "&recipe_name=" + name;		
-	} else if (pg == 2) {	// 다음 페이지로 이동
-		location.href = "recipe_des.ssg?recipe_id=" + id + "&recipe_name=" + name;
-	} else if (pg == 3) {	// 이전 페이지로 이동
-		location.href = "recipe_cat.ssg?cat=" + id + "&category_name=" + name;
-	}
-}
-
-function srch_sort() {
-	rForm.submit();	// form 자체를 통째로 전송
-}
-
-</script>
  
 <html>
 <head>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/component.css">	
 </head>
 <body>
 <div class="main-background">
@@ -67,4 +49,20 @@ function srch_sort() {
 </div>
 
 </body>
+<script>
+	function goPage(pg, id, name) {
+		if (pg == 1) {
+			location.href = "recipe_des.ssg?recipe_id=" + id + "&recipe_name=" + name;		
+		} else if (pg == 2) {	// 다음 페이지로 이동
+			location.href = "recipe_des.ssg?recipe_id=" + id + "&recipe_name=" + name;
+		} else if (pg == 3) {	// 이전 페이지로 이동
+			location.href = "recipe_cat.ssg?cat=" + id + "&category_name=" + name;
+		}
+	}
+	
+	function srch_sort() {
+		rForm.submit();	// form 자체를 통째로 전송
+	}
+</script>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

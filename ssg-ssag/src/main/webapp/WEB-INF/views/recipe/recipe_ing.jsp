@@ -41,6 +41,8 @@
 						</div>
 					</c:forEach>
 	            </div>
+				<input type="button" value="장바구니로 쓰윽" 
+				onclick="page(${currentUser.user_no} , 1, ${recipeVO.recipe_id } );">
 	            <%-- <table border="1">
 					<tr>
 						<td></td>
@@ -62,11 +64,12 @@
 	</div>
 </body>
 <script>
-	function page(user_no, pg, id, name) {
+	function page(user_no, pg, recipe_id) {
 		 if (pg == 1){			// 장바구니로 이동
-		 	location.href="cart.ssg?user_id="+user_no + "&recipe_id=" + id + "&recipe_name=" + name;
+			 console.log("dadf0");
+		 	location.href="cart.ssg?no="+user_no + "&recipe_id=" + recipe_id;
 		 } else if (pg == 2){	// 이전 페이지로 이동
-		 	location.href="recipe_des.ssg?user_id="+user_no + "&recipe_id=" + id + "&recipe_name=" + name;
+		 	location.href="recipe_des.ssg?user_id="+user_no + "&recipe_id=" + recipe_id + "&recipe_name=" + name;
 		 }		 
 	}
 </script>

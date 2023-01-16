@@ -11,4 +11,5 @@ public class CartVO {
 	private String ing_id;
 	private String ing_name;
 	private Date update_date;
+	private boolean iisNew;
 }

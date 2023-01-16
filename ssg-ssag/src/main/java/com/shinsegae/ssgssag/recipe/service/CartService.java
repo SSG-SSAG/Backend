@@ -1,5 +1,6 @@
 package com.shinsegae.ssgssag.recipe.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,18 @@ public class CartService {
 		}
 		
 		return obj;
+	}
+	
+	public List<CartVO> rcpIngs(String recipe_id) {
+		
+		List<CartVO> obj = mapper.rcpIngs(recipe_id);
+		
+		return obj;
+	}
+	
+	public int addIngs(String user_id, String ing_id) {
+		LocalDate now = LocalDate.now();
+		int r = mapper.addIngs(user_id, ing_id, now);
+		return 1; 
 	}
 }

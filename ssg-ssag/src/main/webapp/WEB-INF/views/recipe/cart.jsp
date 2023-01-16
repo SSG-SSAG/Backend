@@ -8,6 +8,14 @@
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
 </head>
 <body>
+<td >${vo.ing_name}</td>
+			<td>${vo.update_date}</td>
+		</c:if>
+	</tr>
+	</c:forEach>
+</table>
+<input type="button" value="싹~~~~~~" onclick="ssag('${currentUser.user_no}', 1);">
+<input type="button" value="냉장고로 이동" onclick="refg('${currentUser.user_no}');">
 <div class="main-background">
     <div class="pc-bg-left"></div>
     <div class="main-container">
@@ -34,6 +42,7 @@
 					</tr>
 				</c:forEach>
 			</table>
+      <input type="button" value="싹~~~~~~" onclick="ssag('${currentUser.user_no}', 1);">
 			<input type="button" value="냉장고로 이동" onclick="goPage(1, '${currentUser.user_no}');">
 		</div>
 		<jsp:include page="../layout/menu.jsp" />
@@ -49,6 +58,15 @@
 			location.href="deleteCart.ssg?no=" + no + "&ing_id=" + id;
 		}
 	}
+  
+  function refg(id) {
+	 location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + id;	 
+	 
+ }
+ 
+ function ssag(id, onssg) {
+	location.href="http://localhost:8081/ssgssag/recipe/cart.ssg?no="+id+'&onssg=' + onssg;
+ }
 </script>
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

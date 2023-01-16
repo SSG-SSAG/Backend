@@ -161,6 +161,12 @@ public class RecipeController {
 		return "recipe/recipe_ing";
 	}
 	
+
+	
+	
+	
+	
+
 	// 레시피 좋아요
 	@PostMapping("/recipe/recipe_like.ssg")
 	@ResponseBody
@@ -198,4 +204,5 @@ public class RecipeController {
 //		return "/";
 //		
 //	}
+
 }

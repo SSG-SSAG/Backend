@@ -91,7 +91,6 @@ public class CartController {
 		
 		if (result) {
 			out.print("<script>");
-			out.print("alert('정상적으로 삭제되었습니다.');");
 			out.print(s);
 			out.print("</script>");
 		} else {

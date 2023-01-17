@@ -67,9 +67,7 @@ public class MyController {
 		if (result == 1) {
 			//vo.setMytag(false);
 			System.out.println("관심 태그에 이미 존재");
-			//out.print("<script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"/>");
 			out.print("<script>");
-			//out.print("new swal(\"이미 존재합니다.\");");
 			out.print("alert('이미 관심 태그에 존재합니다.');");
 			out.print(s);
 			out.print("</script>");

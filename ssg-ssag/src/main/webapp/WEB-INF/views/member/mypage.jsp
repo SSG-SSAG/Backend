@@ -38,12 +38,8 @@
 						<td>${vo.category_name }</td>
 						<td>${vo.tag_name }</td>
 						<td><button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}')">레시피 보러가기</button></td>
-						<%-- <td><button id="delBtn" onclick="goPage(3, ${vo.like_tag_id})">삭제</button></td> --%>
-						<td><input id="delBtn" type="button" value="삭제"></td>
-						<!-- <td><button id="delBtn" type="submit">삭제</button></td> -->
-						<form id="mytagForm" name="mytagForm" action="deleteTag.ssg" method="get">
-							<input type="hidden" name="like_tag_id" value="${vo.like_tag_id }">
-						</form>
+						<!-- id는 동적으로 만들어야 적용됨!!! -->
+						<td><button id="delBtn${vo.like_tag_id}" onclick="delBtn(${vo.like_tag_id });">삭제</button></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -61,7 +57,7 @@
 					<select id="tagBox" name="tag_name">
 						<option>관심 있는 #태그를 선택해주세요</option>
 					</select>
-					<input id="addBtn" type="button" value="추가" <%-- onclick="addAlert(${currentUser.user_no });" --%>>
+					<input id="addBtn" type="button" value="추가">
 					<input type="hidden" name="user_no" value="${currentUser.user_no }">
 				</form>
 			</div>
@@ -75,7 +71,6 @@
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>
 
-<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 
@@ -131,6 +126,22 @@ function boxSelect(cat){
 	}
 }
 
+function delBtn(id){
+	console.log('태그 삭제');
+	new swal({
+		title : '관심 태그 삭제',
+		text : '관심 태그에서 삭제하시겠어요?',
+		icon : 'question',
+		confirmButtonText: '삭제',
+		cancelButtonText: '취소',
+		showCancelButton: true
+	}).then((result) =>{
+		if(result.value) {
+			location.href="deleteTag.ssg?like_tag_id="+id;
+		}
+	});
+}
+
 $(document).ready(function (){
 	
 	$("#addBtn").on("click", function(){
@@ -145,23 +156,6 @@ $(document).ready(function (){
 		}).then((result) => {
 			if(result.value) {
 				tagForm.submit();
-			}
-		});
-	});
-	
-	$("#delBtn").on("click", function(){
-		console.log('태그 삭제');
-		new swal({
-			title : '관심 태그 삭제',
-			text : '관심 태그에서 삭제하시겠어요?',
-			icon : 'question',
-			confirmButtonText: '삭제',
-			cancelButtonText: '취소',
-			showCancelButton: true
-		}).then((result) =>{
-			if(result.value) {
-				$("#mytagForm").submit();
-				//$("mytagForm").submit();
 			}
 		});
 	});

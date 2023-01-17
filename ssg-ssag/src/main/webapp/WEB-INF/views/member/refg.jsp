@@ -13,13 +13,12 @@
     <div class="main-container">
         <jsp:include page="../layout/header.jsp" />
         <div class="content-container">
-            <h>${currentUser.name }의 냉장고!</h>
+            <h3>${currentUser.name }의 냉장고!</h3>
            	
 			<table border="1">
 				<tr>
-					<td> 재료명</td>
+					<td>재료명</td>
 					<td colspan="2"> 남은 기한</td>
-					
 				</tr>
 				<c:forEach var="vo" items="${list }">
 				<tr>
@@ -31,12 +30,8 @@
 					${vo.remain_day }일 ${vo.remain_hour } 시간
 					</td></c:if>
 					<td>
-						<input id="delBtn" type="button" value="삭제">
-						<%-- <input type="button" value="삭제" onclick="del(${vo.refg_id});"> --%>
+						<input id="delBtn${vo.refg_id }" type="button" value="삭제" onclick="delBtn(${vo.refg_id });">
 					</td>
-					<form id="myingForm" name="myingForm" action="delete.ssg" method="get">
-						<input type="hidden" name="refg_id" value="${vo.refg_id }">
-					</form>
 				</tr>
 				</c:forEach>
 			</table>
@@ -48,7 +43,6 @@
 					유통기한
 					<input type="date" name="expire_date">
 					<input id="addBtn" type="button" value="추가">
-					<!-- <input type="submit" value="추가"> -->
 				</form>
 			</div>
         </div>
@@ -70,11 +64,21 @@
 			target.style.display = "none";	
 		}
 	}
-
-	function del(refg_id) {
-		if (confirm('삭제하시겠습니까?')) {
-			location.href="delete.ssg?refg_id="+refg_id;
-		}
+	
+	function delBtn(id){
+		console.log('재료 삭제');
+		new swal({
+			title : '재료 삭제',
+			text : '내 냉장고에서 삭제하시겠어요?',
+			icon : 'question',
+			confirmButtonText: '삭제',
+			cancelButtonText: '취소',
+			showCancelButton: true
+		}).then((result) =>{
+			if(result.value) {
+				location.href="delete.ssg?refg_id="+id;
+			}
+		});
 	}
 	
 	$(document).ready(function (){
@@ -91,22 +95,6 @@
 			}).then((result) => {
 				if(result.value) {
 					ingForm.submit();
-				}
-			});
-		});
-		
-		$("#delBtn").on("click", function(){
-			console.log('재료 삭제');
-			new swal({
-				title : '재료 삭제',
-				text : '내 냉장고에서 삭제하시겠어요?',
-				icon : 'question',
-				confirmButtonText: '삭제',
-				cancelButtonText: '취소',
-				showCancelButton: true
-			}).then((result) =>{
-				if(result.value) {
-					$("#myingForm").submit();
 				}
 			});
 		});

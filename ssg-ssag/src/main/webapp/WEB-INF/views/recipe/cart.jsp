@@ -31,7 +31,7 @@
 							<td >${vo.ing_name}</td>
 							<td>${vo.update_date}</td>
 						</c:if>
-						<td><button onclick="goPage(2, '${currentUser.user_no}', ${vo.ing_id});">삭제</button></td>
+						<td><input id="delBtn${vo.ing_id }" type="button" value="삭제" onclick="delBtn('${currentUser.user_no}', ${vo.ing_id });"></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -44,22 +44,37 @@
 </div>
 </body>
 <script>
-	function goPage(pg, no, id) {
-		if (pg == 1){
-			location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + no;
-		} else if (pg == 2) {
+function goPage(pg, no, id) {
+	if (pg == 1){
+		location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + no;
+	} else if (pg == 2) {
+		location.href="deleteCart.ssg?no=" + no + "&ing_id=" + id;
+	}
+}
+
+function refg(id) {
+	location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + id;	  
+}
+
+function ssag(id, onssg) {
+	location.href="http://localhost:8081/ssgssag/recipe/cart.ssg?no="+id+'&onssg=' + onssg;
+}
+
+function delBtn(no, id){
+	console.log('재료 삭제');
+	new swal({
+		title : '재료 삭제',
+		text : '내 장바구니에서 삭제하시겠어요?',
+		icon : 'question',
+		confirmButtonText: '삭제',
+		cancelButtonText: '취소',
+		showCancelButton: true
+	}).then((result) =>{
+		if(result.value) {
 			location.href="deleteCart.ssg?no=" + no + "&ing_id=" + id;
 		}
-	}
-  
-  function refg(id) {
-	 location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + id;	 
-	 
- }
- 
- function ssag(id, onssg) {
-	location.href="http://localhost:8081/ssgssag/recipe/cart.ssg?no="+id+'&onssg=' + onssg;
- }
+	});
+}
 </script>
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

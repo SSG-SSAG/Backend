@@ -14,7 +14,7 @@
 	        <div class="content-container ccenter-layout">
 	        		<div>
 	        			<form name="rForm" action="recipe_search.ssg" method="get">
-						<select name="sort" onchange="srch_sort()" style="width: 90px;">
+									<select name="sort" onchange="srch_sort()" style="width: 90px;">
 				              <option value="name" <c:if test="${recipeVO.sort == 'name' }">selected</c:if>>가나다순</option>
 				              <option value="like" <c:if test="${recipeVO.sort == 'like' }">selected</c:if>>인기순</option>
 				              <option value="level" <c:if test="${recipeVO.sort == 'level' }">selected</c:if>>난이도순</option>
@@ -24,10 +24,10 @@
 			                <option value="rcp" <c:if test="${recipeVO.type == 'rcp' }">selected</c:if>>레시피</option>
 			                <option value="ing" <c:if test="${recipeVO.type == 'ing' }">selected</c:if>>재료</option>
 			            </select>
-						<input type="text" name="rname" value="${recipeVO.rname }" style="width: 200px;">
-						<input type="submit" value="검색">
-						<input type="hidden" name="curpage" value="1">
-					</form>	     
+									<input type="text" name="rname" value="${recipeVO.rname }" style="width: 200px;">
+									<input type="submit" value="검색">
+									<input type="hidden" name="curpage" value="1">
+								</form>	     
 	        		</div>   	
 					<div class="recipe-list-container">
 						<c:forEach var="vo" items="${list }" varStatus="status">	<!-- request에 들어있는 아이템 -->

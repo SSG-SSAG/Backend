@@ -45,7 +45,7 @@ public class RefgController {
 		String s = "location.href='refg.ssg?no=" + curid+"';";
 		if (result) {
 			out.print("<script>");
-			out.print("alert('정상적으로 삭제되었습니다.');");
+//			out.print("alert('정상적으로 삭제되었습니다.');");
 			out.print(s);
 			out.print("</script>");
 		}
@@ -78,7 +78,7 @@ public class RefgController {
 		}
 		else {
 			out.print("<script>");
-			out.print("alert('추가 성공');");
+//			out.print("alert('추가 성공');");
 			out.print(s);
 			out.print("</script>");
 		}

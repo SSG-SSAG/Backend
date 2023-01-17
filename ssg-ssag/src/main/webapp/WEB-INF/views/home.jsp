@@ -26,7 +26,7 @@
 					  	<c:forEach var="vo" items="${hotRecipe_list }" varStatus="status">
 								<div class="carousel-item hot-recipe-card <c:if test="${status.first }">active</c:if>" onclick="goPage(${vo.recipe_id}, '${vo.recipe_name}')">
 						      <div class="hot-recipe-img ccenter-layout" style="background-image: url(${vo.recipe_img }); no-repeat">
-						        <h4 class="text-stroke">${vo.recipe_name }</h4>
+						        <h5 class="hot-recipe-title">${vo.recipe_name }</h5>
 						        <div>태그 태그</div>
 						      </div>
 						    </div>

@@ -27,9 +27,9 @@
 	background-position: center center;
 }
 
-.text-stroke {
+.hot-recipe-title {
 	font-weight: bold;
-	color: white;
+	color: #ffffff;
   /* -webkit-text-stroke: 1px #000;*/
 }
 
@@ -41,8 +41,8 @@
 }
 
 .main-tag-card {
-	width: 210px;
-	height: 80px;
+	width: 200px;
+	height: 85px;
 	border-radius: 10px;
 	margin: 5px;
 	display: flex;
@@ -50,6 +50,7 @@
 	align-items: center;
 	cursor: pointer;
 	color: #ffffff;
+	font-size: 1rem;
 }
 
 .main-tag-card:hover {

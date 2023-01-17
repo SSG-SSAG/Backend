@@ -31,7 +31,8 @@
 				</a>
 			</c:if>
 			<c:if test="${empty currentUser }">
-				<a href="/ssgssag/" onclick="alert('로그인 후 이용해주세요')">
+				<!-- <a href="/ssgssag/" onclick="alert('로그인 후 이용해주세요')"> -->
+				<a href="javascript:void(0);" onclick="login();">
 					<i class="fa-solid fa-heart fa-lg menu-icon"></i>
 					<p>찜</p>
 				</a>
@@ -45,7 +46,8 @@
 				</a>
 			</c:if>
 			<c:if test="${empty currentUser }">
-				<a href="/ssgssag/" onclick="alert('로그인 후 이용해주세요')">
+				<!-- <a href="/ssgssag/" onclick="alert('로그인 후 이용해주세요')"> -->
+				<a href="javascript:void(0);" onclick="login();">
 					<i class="fa-solid fa-bookmark fa-lg menu-icon"></i>
 					<p>냉장고</p>
 				</a>
@@ -68,3 +70,20 @@
 	</div>
 </body>
 </html>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+
+function login(){
+	new swal({
+		title : '로그인 후 이용해주세요.',
+		icon : 'error',
+		confirmButtonText: '확인',
+	}).then((result) => {
+		if(result.value) {
+			location.href="/ssgssag/auth/login.ssg";
+		}
+	});
+}
+
+</script>

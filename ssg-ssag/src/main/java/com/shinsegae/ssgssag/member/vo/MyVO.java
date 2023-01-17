@@ -26,5 +26,12 @@ public class MyVO {
 	// Tag Category Field
 	private int category_id;
 	private String category_name;
+	
+	
+	private String mytag;
+	
+	public MyVO() {				// default
+		this.mytag = "1";
+	}
     
 }

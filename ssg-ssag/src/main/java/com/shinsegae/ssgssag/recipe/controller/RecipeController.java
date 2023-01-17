@@ -186,3 +186,4 @@ public class RecipeController {
 
 		return "home";
 	}
+}

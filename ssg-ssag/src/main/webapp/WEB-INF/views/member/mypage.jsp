@@ -1,7 +1,85 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<html>
+<head>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
+	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
+	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
+</head>
+<body>
+<div class="main-background">
+    <div class="pc-bg-left"></div>
+    <div class="main-container">
+        <jsp:include page="../layout/header.jsp" />
+	    <div class="content-container">
+        	<div>
+				<h3>회원 정보 수정</h3>	
+				<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
+        	</div>
+        	<div>        	
+				<h3>장바구니</h3>	
+				<input type="button" value="장바구니" onclick="goPage(5, ${currentUser.user_no});">
+        	</div>
+        	<div>
+			<table border="1">
+				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>	
+				<tr>
+					<td></td>
+					<td>카테고리</td>
+					<td>#관심태그</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<c:forEach var="vo" items="${list_tags }" varStatus="status">
+					<%-- <form id="mytagForm" name="mytagForm" action="deleteTag.ssg" method="get">
+						<input type="hidden" name="like_tag_id" value="${vo.like_tag_id }">
+					</form> --%>
+					<tr>
+						<td>${status.count}</td>
+						<td>${vo.category_name }</td>
+						<td>${vo.tag_name }</td>
+						<td><button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}')">레시피 보러가기</button></td>
+						<%-- <td><button id="delBtn" onclick="goPage(3, ${vo.like_tag_id})">삭제</button></td> --%>
+						<td><input id="delBtn" type="button" value="삭제"></td>
+						<!-- <td><button id="delBtn" type="submit">삭제</button></td> -->
+						<form id="mytagForm" name="mytagForm" action="deleteTag.ssg" method="get">
+							<input type="hidden" name="like_tag_id" value="${vo.like_tag_id }">
+						</form>
+					</tr>
+				</c:forEach>
+			</table>
+
+			<input type="button" value="태그추가" onclick="showTag();">
+			<div id="addTag" style="display:none">
+				<form name="tagForm" action="tag_new.ssg" method="get">
+					<select id="catBox" name="catBox" onchange="boxSelect(this)">
+						<option value="cat">관심 카테고리를 선택하세요!</option>
+						<option value="option">종류</option>
+						<option value="health">건강</option>
+						<option value="theme">테마</option>
+						<option value="cook">조리법</option>
+					</select>
+					<select id="tagBox" name="tag_name">
+						<option>관심 있는 #태그를 선택해주세요</option>
+					</select>
+					<input id="addBtn" type="button" value="추가" <%-- onclick="addAlert(${currentUser.user_no });" --%>>
+					<input type="hidden" name="user_no" value="${currentUser.user_no }">
+				</form>
+			</div>
+        	</div>
+		</div>
+		<jsp:include page="../layout/menu.jsp" />
+	    </div>
+	<div class="pc-bg-right"></div>
+</div>
+</body>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
+</html>
+
 <script>
 
 function goPage(pg, id, name, cat, cname) {
@@ -10,6 +88,7 @@ function goPage(pg, id, name, cat, cname) {
 	} else if (pg == 2) {	// 다음 페이지로 이동
 		location.href = "../recipe/recipe_tag.ssg?tag_id=" + id + "&tag_name=" + name + "&cat=" + cat + "&category_name=" + cname;
 	} else if (pg == 3) {
+		//deleteTag();
 		location.href="deleteTag.ssg?like_tag_id="+id;
 	} else if (pg == 4) {
 		location.href="change.ssg?user_no="+id;
@@ -55,72 +134,39 @@ function boxSelect(cat){
 	}
 }
 
+$(document).ready(function (){
+	
+	$("#addBtn").on("click", function(){
+		console.log('태그 추가');
+		new swal({
+			title : '관심 태그 추가',
+			text : '관심 태그에 추가하시겠어요?',
+			icon : 'question',
+			confirmButtonText: '추가',
+			cancelButtonText: '취소',
+			showCancelButton: true
+		}).then((result) => {
+			if(result.value) {
+				tagForm.submit();
+			}
+		});
+	});
+	
+	$("#delBtn").on("click", function(){
+		console.log('태그 삭제');
+		new swal({
+			title : '관심 태그 삭제',
+			text : '관심 태그에서 삭제하시겠어요?',
+			icon : 'question',
+			confirmButtonText: '삭제',
+			cancelButtonText: '취소',
+			showCancelButton: true
+		}).then((result) =>{
+			if(result.value) {
+				$("#mytagForm").submit();
+			}
+		});
+	});
+});
+
 </script>
-
-<html>
-<head>
-	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
-	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
-</head>
-<body>
-<div class="main-background">
-    <div class="pc-bg-left"></div>
-    <div class="main-container">
-        <jsp:include page="../layout/header.jsp" />
-	    <div class="content-container">
-        	<div>     	
-				<h3>회원 정보 수정</h3>	
-				<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
-        	</div>
-        	<div>        	
-				<h3>장바구니</h3>	
-				<input type="button" value="장바구니" onclick="goPage(5, ${currentUser.user_no});">
-        	</div>
-        	<div>
-			<table border="1">
-				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>	
-				<tr>
-					<td></td>
-					<td>카테고리</td>
-					<td>#관심태그</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<c:forEach var="vo" items="${list_tags }" varStatus="status">
-				<tr>
-					<td>${status.count}</td>
-					<td>${vo.category_name }</td>
-					<td>${vo.tag_name }</td>
-					<td><button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}')">레시피 보러가기</button></td>
-					<td><button onclick="goPage(3, ${vo.like_tag_id})">삭제</button></td>
-				</tr>
-				</c:forEach>
-			</table>
-
-			<input type="button" value="태그추가" onclick="showTag();">
-			<div id="addTag" style="display:none">
-				<form name="tagForm" action="tag_new.ssg" method="get">
-					<select id="catBox" name="catBox" onchange="boxSelect(this)">
-						<option value="cat">관심 카테고리를 선택하세요!</option>
-						<option value="option">종류</option>
-						<option value="health">건강</option>
-						<option value="theme">테마</option>
-						<option value="cook">조리법</option>
-					</select>
-					<select id="tagBox" name="tag_name">
-						<option>관심 있는 #태그를 선택해주세요</option>
-					</select>
-					<input type="submit" value="추가">
-					<input type="hidden" name="user_no" value="${currentUser.user_no }">
-				</form>
-			</div>
-        	</div>
-		</div>
-		<jsp:include page="../layout/menu.jsp" />
-	    </div>
-	<div class="pc-bg-right"></div>
-</div>
-</body>
-<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
-</html>

@@ -11,10 +11,9 @@
 		<c:if test="${not empty currentUser }">
 			<i class="fa-solid fa-cart-shopping fa-lg cart" onclick="goCart(${currentUser.user_no});"></i>
 		</c:if>
-		<c:if test="${empty currentUser }">			
-			<!-- <i class="fa-solid fa-cart-shopping fa-lg cart" onclick="alert('로그인 후 이용해주세요')"></i> -->
+		<c:if test="${empty currentUser }">
 			<i class="fa-solid fa-cart-shopping fa-lg cart" onclick="login();"></i>
-		</c:if>		
+		</c:if>
 	</div>
 </div>
 

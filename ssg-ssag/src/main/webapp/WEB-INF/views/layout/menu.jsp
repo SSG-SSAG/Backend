@@ -31,7 +31,6 @@
 				</a>
 			</c:if>
 			<c:if test="${empty currentUser }">
-				<!-- <a href="/ssgssag/" onclick="alert('로그인 후 이용해주세요')"> -->
 				<a href="javascript:void(0);" onclick="login();">
 					<i class="fa-solid fa-heart fa-lg menu-icon"></i>
 					<p>찜</p>
@@ -40,13 +39,12 @@
 		</div>
 		<div class="menu-btn">
 			<c:if test="${not empty currentUser }">
-				<a href="/ssgssag/member/mypage.ssg?user_no=${currentUser.user_no }">
+				<a href="/ssgssag/refg.ssg?no=${currentUser.user_no }">
 					<i class="fa-solid fa-bookmark fa-lg menu-icon"></i>
 					<p>냉장고</p>
 				</a>
 			</c:if>
 			<c:if test="${empty currentUser }">
-				<!-- <a href="/ssgssag/" onclick="alert('로그인 후 이용해주세요')"> -->
 				<a href="javascript:void(0);" onclick="login();">
 					<i class="fa-solid fa-bookmark fa-lg menu-icon"></i>
 					<p>냉장고</p>

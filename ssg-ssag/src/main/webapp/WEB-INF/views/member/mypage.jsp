@@ -33,9 +33,6 @@
 					<td></td>
 				</tr>
 				<c:forEach var="vo" items="${list_tags }" varStatus="status">
-					<%-- <form id="mytagForm" name="mytagForm" action="deleteTag.ssg" method="get">
-						<input type="hidden" name="like_tag_id" value="${vo.like_tag_id }">
-					</form> --%>
 					<tr>
 						<td>${status.count}</td>
 						<td>${vo.category_name }</td>
@@ -78,7 +75,7 @@
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>
 
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 
@@ -164,6 +161,7 @@ $(document).ready(function (){
 		}).then((result) =>{
 			if(result.value) {
 				$("#mytagForm").submit();
+				//$("mytagForm").submit();
 			}
 		});
 	});

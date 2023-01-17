@@ -31,8 +31,12 @@
 					${vo.remain_day }일 ${vo.remain_hour } 시간
 					</td></c:if>
 					<td>
-						<input type="button" value="삭제" onclick="del(${vo.refg_id});">
+						<input id="delBtn" type="button" value="삭제">
+						<%-- <input type="button" value="삭제" onclick="del(${vo.refg_id});"> --%>
 					</td>
+					<form id="myingForm" name="myingForm" action="delete.ssg" method="get">
+						<input type="hidden" name="refg_id" value="${vo.refg_id }">
+					</form>
 				</tr>
 				</c:forEach>
 			</table>
@@ -42,8 +46,9 @@
 					재료명<br>
 					<input type="text" name="ing_name"><br>
 					유통기한
-					<input type="date" name="expire_date">	
-					<input type="submit" value="add">
+					<input type="date" name="expire_date">
+					<input id="addBtn" type="button" value="추가">
+					<!-- <input type="submit" value="추가"> -->
 				</form>
 			</div>
         </div>
@@ -52,6 +57,9 @@
 	    <div class="pc-bg-right"></div>
 	</div>
 </body>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 	function show() {
 		var target = document.getElementById("new");
@@ -68,6 +76,41 @@
 			location.href="delete.ssg?refg_id="+refg_id;
 		}
 	}
+	
+	$(document).ready(function (){
+		
+		$("#addBtn").on("click", function(){
+			console.log('재료 추가');
+			new swal({
+				title : '재료 추가',
+				text : '내 냉장고에 추가하시겠어요?',
+				icon : 'question',
+				confirmButtonText: '추가',
+				cancelButtonText: '취소',
+				showCancelButton: true
+			}).then((result) => {
+				if(result.value) {
+					ingForm.submit();
+				}
+			});
+		});
+		
+		$("#delBtn").on("click", function(){
+			console.log('재료 삭제');
+			new swal({
+				title : '재료 삭제',
+				text : '내 냉장고에서 삭제하시겠어요?',
+				icon : 'question',
+				confirmButtonText: '삭제',
+				cancelButtonText: '취소',
+				showCancelButton: true
+			}).then((result) =>{
+				if(result.value) {
+					$("#myingForm").submit();
+				}
+			});
+		});
+	});
 </script>
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

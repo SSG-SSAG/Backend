@@ -18,4 +18,9 @@ public class RecipeTagService {
 		List<RecipeVO> obj = mapper.selectTags(vo);
 		return obj;
 	}	
+	
+	public List<RecipeVO> rcpTags_page(RecipeVO vo) {
+		List<RecipeVO> obj = mapper.rcpTags_page(vo);
+		return obj;
+	}
 }

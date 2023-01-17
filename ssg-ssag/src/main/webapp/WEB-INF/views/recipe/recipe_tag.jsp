@@ -13,7 +13,7 @@
     <div class="main-container">
         <jsp:include page="../layout/header.jsp" />
         <div class="content-container ccenter-layout">
-			<h2>${param.category_name}의 #${recipeVO.tag_name} 레시피 모음 </h2>
+			<h3>${param.category_name}별 검색 </h3><h2 style="color: #F00FF0"> #${recipeVO.tag_name} 레시피 모음 </h2>
 			<form name="rForm" action="recipe_tag.ssg" method="get">
 				<!-- 정렬 기준 -->
 				<select name="sort" onchange="srch_sort()">
@@ -23,6 +23,8 @@
 				</select>
 				<input type="hidden" name="tag_id" value="${recipeVO.tag_id }">
 				<input type="hidden" name="tag_name" value="${recipeVO.tag_name }">
+				<input type="hidden" name="cat" value="${recipeVO.cat }">
+				<input type="hidden" name="category_name" value="${recipeVO.category_name }">
 			</form>
 			
 			<input type="button" value="다시 선택" onclick="goPage(3, ${param.cat}, '${param.category_name}')">
@@ -44,19 +46,19 @@
 					<ul class="pagination">
 					    <li class="page-item">
 					    <button class="page-link" 
-					        onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','1');" aria-label="Previous">
+					        onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}','${recipeVO.tag_id }', '${recipeVO.tag_name }', '${param.cat}', '${param.category_name}','${recipeVO.total_count }','1');" aria-label="Previous">
 					      <span aria-hidden="true" class="ssg-page">이전</span>
 					    </button>
 						</li>
 					  	<c:forEach var="n" items="${page }">
 							<li class="page-item">
-						    	<button class="page-link ssg-page" onclick="movepage(${n }, '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','0');"
+						    	<button class="page-link ssg-page" onclick="movepage(${n }, '${recipeVO.sort}','${recipeVO.tag_id }', '${recipeVO.tag_name }', '${param.cat}', '${param.category_name}', '${recipeVO.total_count }','0');"
 								<c:if test="${n eq recipeVO.curpage}">style="font-weight:500; background: rgba(163, 144, 122, 0.8);"</c:if>><span class="ssg-page">${n}</span></button>
 							</li>
 						</c:forEach>
 						<li class="page-item">
 					  		<button class="page-link" 
-				     			onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}', '${recipeVO.type }', '${recipeVO.rname }', '${recipeVO.total_count }','2');" aria-label="Next">
+				     			onclick="movepage('${recipeVO.curpage }', '${recipeVO.sort}','${recipeVO.tag_id }', '${recipeVO.tag_name }', '${param.cat}', '${param.category_name}', '${recipeVO.total_count }','2');" aria-label="Next">
 					        <span aria-hidden="true" class="ssg-page">다음</span>
 				     		</button>
 					    </li>
@@ -83,6 +85,44 @@
 	function srch_sort() {
 		rForm.submit();	// form 자체를 통째로 전송
 	}
+	
+	function movepage(page_num, sort, id, name, cat, cat_name, total_count,flag) {
+		
+		if (page_num == "" && page_num == null) {
+			page_num = "1"
+		}
+		if (flag == "1") {
+			if (page_num == "1") {
+				page_num = "1";
+			}
+			else {
+				var temp = parseInt(page_num);
+				temp -= 1;
+				page_num = String(temp);
+			}
+		}
+		if (flag == "2") {
+			if ( parseInt(page_num) < parseInt(total_count)){
+				var temp = parseInt(page_num);
+				temp += 1
+				page_num = String(temp);
+			}
+		}
+		
+		
+		var s = "recipe_tag.ssg?curpage=" + page_num;
+		if (sort != "" && sort != null) {
+			s += "&sort=" + sort;
+		} 
+		s += "&tag_id=" + id;
+		s += "&tag_name=" + name;
+		s += "&cat=" + cat;
+		s += "&category_name=" + cat_name;
+		
+	
+		location.href = s;
+	} 
+	
 </script>
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>

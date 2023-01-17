@@ -41,10 +41,7 @@ public class RecipeController {
 	@GetMapping("/recipe/recipe_search.ssg")
 	public String getIng(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Ingredient Controller ###");
-		System.out.println(vo.getRname());
 		List<RecipeVO> obj = service.reci(vo);	// Service
-		System.out.println("checkpoint");
-
 		int total = obj.size();
 		int cur = vo.getCurpage();
 		vo.setCurpage(cur);
@@ -96,7 +93,44 @@ public class RecipeController {
 	public String getTags(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Tag Controller ###");
 		List<RecipeVO> obj = service_tag.tags(vo);
-		req.setAttribute("list_tag", obj);
+		
+		
+		
+		int total = obj.size();
+		int cur = vo.getCurpage();
+		vo.setCurpage(cur);
+		System.out.println("tets");
+		System.out.println(vo.getSort());
+		System.out.println(vo.getTag_id());
+		System.out.println(vo.getTag_name());
+		System.out.println(vo.getCat());
+		System.out.println(vo.getCategory_name());
+		if (total % 5 == 0 ) {
+			vo.setTotal_count(total/5);
+		}
+		else {
+			vo.setTotal_count(total/5 + 1);
+		}
+		vo.setStart((cur-1)*5);
+		List<RecipeVO> obj2 = service_tag.rcpTags_page(vo);
+		int s = cur;
+		while (s % 5 != 1) {
+			s -= 1;
+		}
+		List<Integer> pagebutton = new ArrayList<>();
+		for ( int i = 0; i<5; i++) {
+			if (s+i <= vo.getTotal_count()) {
+				pagebutton.add(s+i);
+			}
+		}
+		
+		
+		List<RecipeVO> obj3 = service.rcp_tag(vo);
+	
+		req.setAttribute("list_tag", obj2);
+		req.setAttribute("page", pagebutton);
+		req.setAttribute("rcp_tag", obj3);
+
 		return "recipe/recipe_tag";
 	}
 
@@ -186,3 +220,4 @@ public class RecipeController {
 
 		return "home";
 	}
+}

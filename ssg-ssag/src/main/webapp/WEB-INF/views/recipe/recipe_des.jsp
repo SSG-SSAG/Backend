@@ -86,7 +86,7 @@ function goPage(user_no, pg, id, name) {
 		// 세션에 아예 값이 널일떄는 찾아오질 못한다 흑흑
 		if (recipeLike != '') {
 			//recipeLike = ${recipeLike.user_no };
-			console.log('이미 좋아요 누르셨네요!')
+			console.log('이미 좋아요 누르셨네요!');
 			$("#like-heart").prop("class", "fa-heart fa-solid fa-md"); // 채운 하트로 띄워주기						
 		} else {
 			// 좋아요 안 누름

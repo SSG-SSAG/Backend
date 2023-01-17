@@ -109,6 +109,31 @@
     </if>
 </select>
 
+<select id="rcpTags_page" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
+	SELECT tmp.recipe_id, tmp.recipe_name, tmp.recipe_img, tmp.level, t.tag_id, t.tag_name, tmp.cnt, tag_category
+	FROM tag t, recipe_tag rt, (
+		SELECT r.recipe_id, recipe_name, recipe_img, source, level, IFNULL(COUNT(like_id), 0) as cnt
+		FROM recipe r
+		LEFT OUTER JOIN like_recipe l
+		ON r.recipe_id = l.recipe_id
+		GROUP BY recipe_id
+	) tmp
+	WHERE tmp.recipe_id = rt.recipe_id
+	AND t.tag_id = rt.tag_id
+	AND rt.tag_id = #{tag_id}
+	<!-- 정렬 조건 -->
+	<if test="sort != null and sort !=''"> ORDER BY
+		<choose>
+		    <when test="sort == 'name'"> recipe_name </when>
+		    <when test="sort == 'level'"> level, recipe_name </when>
+		    <when test="sort == 'like'"> cnt DESC, recipe_name </when>
+	    </choose>
+    </if>
+     limit #{start}, 5
+</select>
+
+
+
 <!-- 레시피의 태그 조회 -->
 <select id="rcp_tag" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
 	SELECT tag_name
@@ -151,6 +176,7 @@
 		WHERE recipe_id = #{recipe_id }
 	)
 </select>
+
 
 <select id="rcp_page" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
 	SELECT r.recipe_id, recipe_name, recipe_img, source, level, <!-- recipe_ing_info, -->

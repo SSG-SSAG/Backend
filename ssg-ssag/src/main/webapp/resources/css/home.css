@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 /* 인기 레시피 관련 */
 
 .home-recipe-title {
@@ -26,9 +27,9 @@
 	background-position: center center;
 }
 
-.text-stroke {
+.hot-recipe-title {
 	font-weight: bold;
-	color: white;
+	color: #ffffff;
   /* -webkit-text-stroke: 1px #000;*/
 }
 
@@ -40,16 +41,16 @@
 }
 
 .main-tag-card {
-	width: 220px;
-	height: 80px;
+	width: 200px;
+	height: 85px;
 	border-radius: 10px;
 	margin: 5px;
-	background: #000000;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
 	color: #ffffff;
+	font-size: 1rem;
 }
 
 .main-tag-card:hover {
@@ -58,6 +59,35 @@
 	z-index: 100;
 }
 
+/* 태그 배경 이미지 (링크는 이미지 출처) */
 .tag-1 {
-	
+	background-image: url(/ssgssag/resources/img/tag1.jpg);
+	/* https://pixabay.com/images/id-1613680 */
+	background-size: 120%;
+	background-position:center;
+	background-repeat: no-repeat
+}
+
+.tag-2 {
+	background-image: url(/ssgssag/resources/img/tag2.jpg);
+	/* https://pixabay.com/images/id-1584999 */
+	background-size: 120%;
+	background-position:center;
+	background-repeat: no-repeat
+}
+
+.tag-3 {
+	background-image: url(/ssgssag/resources/img/tag3.jpg);
+	/* https://pixabay.com/images/id-2957809 */
+	background-size: 120%;
+	background-position:center;
+	background-repeat: no-repeat
+}
+
+.tag-4 {
+	background-image: url(/ssgssag/resources/img/tag4.jpg);
+	/* https://pixabay.com/images/id-1835369 */
+	background-size: 120%;
+	background-position:center;
+	background-repeat: no-repeat
 }

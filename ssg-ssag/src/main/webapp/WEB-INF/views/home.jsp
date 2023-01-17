@@ -26,7 +26,7 @@
 					  	<c:forEach var="vo" items="${hotRecipe_list }" varStatus="status">
 								<div class="carousel-item hot-recipe-card <c:if test="${status.first }">active</c:if>" onclick="goPage(${vo.recipe_id}, '${vo.recipe_name}')">
 						      <div class="hot-recipe-img ccenter-layout" style="background-image: url(${vo.recipe_img }); no-repeat">
-						        <h4 class="text-stroke">${vo.recipe_name }</h4>
+						        <h5 class="hot-recipe-title">${vo.recipe_name }</h5>
 						        <div>태그 태그</div>
 						      </div>
 						    </div>
@@ -45,13 +45,13 @@
 				<div class="main-tag-container">
 					<h4 class="home-recipe-title">태그로 알아보는 쓱-싹 레시피</h4>
 					<div class="rcenter-layout">
-						<div class="main-tag-card" onclick="goTag(1, '종류');">종류</div>
-						<div class="main-tag-card" onclick="goTag(2, '건강');">건강</div>
+						<div class="main-tag-card tag-1" onclick="goTag(1, '종류');">종류</div>
+						<div class="main-tag-card tag-2" onclick="goTag(2, '건강');">건강</div>
 								
 					</div>
 					<div class="rcenter-layout">
-						<div class="main-tag-card" onclick="goTag(3, '테마');">테마</div>
-						<div class="main-tag-card" onclick="goTag(4, '조리법');">조리법</div>		
+						<div class="main-tag-card tag-3" onclick="goTag(3, '테마');">테마</div>
+						<div class="main-tag-card tag-4" onclick="goTag(4, '조리법');">조리법</div>		
 					</div>
 				</div>
 			</div>

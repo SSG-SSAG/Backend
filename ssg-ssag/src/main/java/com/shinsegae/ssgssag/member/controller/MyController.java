@@ -31,6 +31,7 @@ public class MyController {
 		List<MyVO> obj = service.tags(vo);
 		user_no = vo.getUser_no();
 		req.setAttribute("list_tags", obj);
+		//vo.setMytag("0");
 		return "member/mypage";
 	}
 	
@@ -42,21 +43,11 @@ public class MyController {
 		String s = "location.href='/ssgssag/member/mypage.ssg?user_no=" + Integer.toString(user_no) + "';";
 		
 		if (result) {
-//			out.print("<script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>");
 			out.print("<script>");
-//			out.print("new swal(\"삭제\", \"관심 태그를 삭제할까요?\").then(function(){})");
-//			out.print("");
-//			.then(function(){
-//				location.href="${pageContext.request.contextPath}/main.do";                   
-//			})
-			out.print("alert('정상적으로 삭제되었습니다.');");
 			out.print(s);
 			out.print("</script>");
-			System.out.println("정상적으로 삭제되었습니다");
 		} else {
-//			out.print("<script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"></script>");
 			out.print("<script>");
-//			out.print("new swal(\"삭제 실패\", \"이미 관심 태그로 등록하셨네요!\");");
 			out.print("alert('삭제 실패');");
 			out.print(s);
 			out.print("</script>");
@@ -74,16 +65,19 @@ public class MyController {
 		System.out.println("result : " + result);
 		
 		if (result == 1) {
+			//vo.setMytag(false);
 			System.out.println("관심 태그에 이미 존재");
+			//out.print("<script src=\"https://unpkg.com/sweetalert/dist/sweetalert.min.js\"/>");
 			out.print("<script>");
+			//out.print("new swal(\"이미 존재합니다.\");");
 			out.print("alert('이미 관심 태그에 존재합니다.');");
 			out.print(s);
 			out.print("</script>");
 		}
 		else {
+			//vo.setMytag(true);
 			System.out.println("관심 태그 추가 성공");
 			out.print("<script>");
-//			out.print("alert('태그 추가 성공');");
 			out.print(s);
 			out.print("</script>");
 		}

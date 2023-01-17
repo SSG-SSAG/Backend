@@ -1,75 +1,84 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-<link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" /> -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 
-<script type="text/javascript">
-/* function addTag(){
-	new swal("Alert", "hi");
-}
+<html>
+<head>
+	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
+	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
+	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
+</head>
+<body>
+<div class="main-background">
+    <div class="pc-bg-left"></div>
+    <div class="main-container">
+        <jsp:include page="../layout/header.jsp" />
+	    <div class="content-container">
+        	<div>
+				<h3>회원 정보 수정</h3>	
+				<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
+        	</div>
+        	<div>        	
+				<h3>장바구니</h3>	
+				<input type="button" value="장바구니" onclick="goPage(5, ${currentUser.user_no});">
+        	</div>
+        	<div>
+			<table border="1">
+				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>	
+				<tr>
+					<td></td>
+					<td>카테고리</td>
+					<td>#관심태그</td>
+					<td></td>
+					<td></td>
+				</tr>
+				<c:forEach var="vo" items="${list_tags }" varStatus="status">
+					<%-- <form id="mytagForm" name="mytagForm" action="deleteTag.ssg" method="get">
+						<input type="hidden" name="like_tag_id" value="${vo.like_tag_id }">
+					</form> --%>
+					<tr>
+						<td>${status.count}</td>
+						<td>${vo.category_name }</td>
+						<td>${vo.tag_name }</td>
+						<td><button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}')">레시피 보러가기</button></td>
+						<%-- <td><button id="delBtn" onclick="goPage(3, ${vo.like_tag_id})">삭제</button></td> --%>
+						<td><input id="delBtn" type="button" value="삭제"></td>
+						<!-- <td><button id="delBtn" type="submit">삭제</button></td> -->
+						<form id="mytagForm" name="mytagForm" action="deleteTag.ssg" method="get">
+							<input type="hidden" name="like_tag_id" value="${vo.like_tag_id }">
+						</form>
+					</tr>
+				</c:forEach>
+			</table>
 
-function deleteTag(){
-	new swal("삭제", "관심 태그를 삭제할까요?");
-} */
-	/* var alert = function(msg, type) {
-		swal('로그인 실패!',"아이디와 비밀번호를 확인해 주세요",'warning');
-		swal({
-			title : '',
-			text : msg,
-			type : type,
-			timer : 1500,
-			customClass : 'sweet-size',
-			showConfirmButton : false
-		});
-		swal('로그인 성공!','success')
-		.then(function(){
-			location.href="mypage.ssg";                   
-		})
-
-		} else {
-			swal('로그인 실패!',"아이디와 비밀번호를 확인해 주세요",'warning');
-		};
-	} */
-
-	/* var confirm = function(msg, title, resvNum) {
-		swal({
-			title : title,
-			text : msg,
-			type : "warning",
-			showCancelButton : true,
-			confirmButtonClass : "btn-danger",
-			confirmButtonText : "예",
-			cancelButtonText : "아니오",
-			closeOnConfirm : false,
-			closeOnCancel : true
-		}, function(isConfirm) {
-			if (isConfirm) {
-				swal('', '예약이 승인되었습니다.', "success");
-			}else{
-				swal('', '예약이 거부되었습니다.', "failed");
-			}
-
-		});
-		swal('로그인 성공!','success')
-		.then(function(){
-			location.href="mypage.ssg";                   
-		})
-
-		} else {
-			swal('로그인 실패!',"아이디와 비밀번호를 확인해 주세요",'warning');
-		};
-	}
-
-	function Alert() {
-		alert('gg', 'success');
-	}
-	function Confirm() {
-		confirm('', '승인할까요?');
-	} */
-</script>
+			<input type="button" value="태그추가" onclick="showTag();">
+			<div id="addTag" style="display:none">
+				<form name="tagForm" action="tag_new.ssg" method="get">
+					<select id="catBox" name="catBox" onchange="boxSelect(this)">
+						<option value="cat">관심 카테고리를 선택하세요!</option>
+						<option value="option">종류</option>
+						<option value="health">건강</option>
+						<option value="theme">테마</option>
+						<option value="cook">조리법</option>
+					</select>
+					<select id="tagBox" name="tag_name">
+						<option>관심 있는 #태그를 선택해주세요</option>
+					</select>
+					<input id="addBtn" type="button" value="추가" <%-- onclick="addAlert(${currentUser.user_no });" --%>>
+					<input type="hidden" name="user_no" value="${currentUser.user_no }">
+				</form>
+			</div>
+        	</div>
+		</div>
+		<jsp:include page="../layout/menu.jsp" />
+	    </div>
+	<div class="pc-bg-right"></div>
+</div>
+</body>
+<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
+</html>
 
 <script>
 
@@ -127,141 +136,37 @@ function boxSelect(cat){
 
 $(document).ready(function (){
 	
+	$("#addBtn").on("click", function(){
+		console.log('태그 추가');
+		new swal({
+			title : '관심 태그 추가',
+			text : '관심 태그에 추가하시겠어요?',
+			icon : 'question',
+			confirmButtonText: '추가',
+			cancelButtonText: '취소',
+			showCancelButton: true
+		}).then((result) => {
+			if(result.value) {
+				tagForm.submit();
+			}
+		});
+	});
+	
+	$("#delBtn").on("click", function(){
+		console.log('태그 삭제');
+		new swal({
+			title : '관심 태그 삭제',
+			text : '관심 태그에서 삭제하시겠어요?',
+			icon : 'question',
+			confirmButtonText: '삭제',
+			cancelButtonText: '취소',
+			showCancelButton: true
+		}).then((result) =>{
+			if(result.value) {
+				$("#mytagForm").submit();
+			}
+		});
+	});
 });
 
-function addAlert(id){
-	//new swal("Alert", "hi");
-	// 처리를 다르게 하고 싶다며 ajax로 비동기 처리
-	new swal("관심 태그 추가", "관심 태그에 추가하시겠어요?", 'question').then(
-		function(){
-			//location.href="mypage.ssg?user_no="+id;
-			tagForm.submit();
-		}
-	)
-	
-	
-	// 좋아요(찜)
-	// 렌더링 전에 미리 확인하고 붙여야 함
-	$(document).ready(function () {
-		
-		// 좋아요 여부 확인하자
-		// 로그인한 유저지만 좋아요를 누르지 않았거나 비로그인 상태라면 recipeLike가 null이다
-		let recipeLike = '${recipeLike.user_no }';
-		// 세션에 아예 값이 널일떄는 찾아오질 못한다 흑흑
-		if (recipeLike != '') {
-			//recipeLike = ${recipeLike.user_no };
-			console.log('이미 좋아요 누르셨네요!')
-			$("#like-heart").prop("class", "fa-heart fa-solid fa-md"); // 채운 하트로 띄워주기						
-		} else {
-			// 좋아요 안 누름
-			console.log('좋아요를 안 누르셨네요!')
-			$("#like-heart").prop("class", "fa-heart fa-regular fa-md"); // 빈 하트로 띄워주기			
-		}		
-
-		// 좋아요 버튼 클릭시 동작하는 함수
-		$("#like-heart").on("click", function() {
-			const that = $("like-heart");
-			console.log('하트 클릭');
-			if ('${currentUser.user_no}' == '') {
-				alert('로그인 해주세요!')
-			} else {
-				$.ajax({
-					url: '/ssgssag/recipe/recipe_like.ssg',
-					type: 'POST',
-					data: {'recipe_id': ${recipeVO.recipe_id}, 'user_no': ${currentUser.user_no} + ""},
-					success: function(data) {
-						if (data == 1) {
-							console.log()
-							// 새로 추가했어요
-							$("#like-heart").prop("class", "fa-heart fa-solid fa-md"); // 채운 하트로 바꿔주기
-						} else {
-							console.log('좋아요 추ㅣ소하라고 ㅡㅡ')
-							// 좋아요 취소했어요
-							$("#like-heart").prop("class", "fa-heart fa-regular fa-md"); // 빈 하트로 띄워주기
-						}
-					},
-					error: function (xhr, status, error) {
-						alert('실패'); 
-					}		
-				})
-			}
-		
-		});
-	})
-}
-
-function deleteAlert(){
-	new swal("삭제", "관심 태그를 삭제할까요?");
-}
-
 </script>
-
-<html>
-<head>
-	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
-	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
-	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
-</head>
-<body>
-<div class="main-background">
-    <div class="pc-bg-left"></div>
-    <div class="main-container">
-        <jsp:include page="../layout/header.jsp" />
-	    <div class="content-container">
-        	<div>
-        		<!-- <button onclick="Alert();">Alert</button>
-				<button onclick="Confirm();">Confirm</button> -->
-				<h3>회원 정보 수정</h3>	
-				<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
-        	</div>
-        	<div>        	
-				<h3>장바구니</h3>	
-				<input type="button" value="장바구니" onclick="goPage(5, ${currentUser.user_no});">
-        	</div>
-        	<div>
-			<table border="1">
-				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>	
-				<tr>
-					<td></td>
-					<td>카테고리</td>
-					<td>#관심태그</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<c:forEach var="vo" items="${list_tags }" varStatus="status">
-				<tr>
-					<td>${status.count}</td>
-					<td>${vo.category_name }</td>
-					<td>${vo.tag_name }</td>
-					<td><button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}')">레시피 보러가기</button></td>
-					<td><button onclick="goPage(3, ${vo.like_tag_id})">삭제</button></td>
-				</tr>
-				</c:forEach>
-			</table>
-
-			<input type="button" value="태그추가" onclick="showTag();">
-			<div id="addTag" style="display:none">
-				<form name="tagForm" action="tag_new.ssg" method="get">
-					<select id="catBox" name="catBox" onchange="boxSelect(this)">
-						<option value="cat">관심 카테고리를 선택하세요!</option>
-						<option value="option">종류</option>
-						<option value="health">건강</option>
-						<option value="theme">테마</option>
-						<option value="cook">조리법</option>
-					</select>
-					<select id="tagBox" name="tag_name">
-						<option>관심 있는 #태그를 선택해주세요</option>
-					</select>
-					<input type="button" value="추가" onclick="addAlert(${currentUser.user_no });">
-					<input type="hidden" name="user_no" value="${currentUser.user_no }">
-				</form>
-			</div>
-        	</div>
-		</div>
-		<jsp:include page="../layout/menu.jsp" />
-	    </div>
-	<div class="pc-bg-right"></div>
-</div>
-</body>
-<jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
-</html>

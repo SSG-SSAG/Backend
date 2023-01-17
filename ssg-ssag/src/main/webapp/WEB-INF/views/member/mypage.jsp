@@ -125,16 +125,72 @@ function boxSelect(cat){
 	}
 }
 
-function addTag(id){
+$(document).ready(function (){
+	
+});
+
+function addAlert(id){
 	//new swal("Alert", "hi");
+	// 처리를 다르게 하고 싶다며 ajax로 비동기 처리
 	new swal("관심 태그 추가", "관심 태그에 추가하시겠어요?", 'question').then(
 		function(){
-			location.href="mypage.ssg?user_no="+id;
+			//location.href="mypage.ssg?user_no="+id;
+			tagForm.submit();
 		}
 	)
+	
+	
+	// 좋아요(찜)
+	// 렌더링 전에 미리 확인하고 붙여야 함
+	$(document).ready(function () {
+		
+		// 좋아요 여부 확인하자
+		// 로그인한 유저지만 좋아요를 누르지 않았거나 비로그인 상태라면 recipeLike가 null이다
+		let recipeLike = '${recipeLike.user_no }';
+		// 세션에 아예 값이 널일떄는 찾아오질 못한다 흑흑
+		if (recipeLike != '') {
+			//recipeLike = ${recipeLike.user_no };
+			console.log('이미 좋아요 누르셨네요!')
+			$("#like-heart").prop("class", "fa-heart fa-solid fa-md"); // 채운 하트로 띄워주기						
+		} else {
+			// 좋아요 안 누름
+			console.log('좋아요를 안 누르셨네요!')
+			$("#like-heart").prop("class", "fa-heart fa-regular fa-md"); // 빈 하트로 띄워주기			
+		}		
+
+		// 좋아요 버튼 클릭시 동작하는 함수
+		$("#like-heart").on("click", function() {
+			const that = $("like-heart");
+			console.log('하트 클릭');
+			if ('${currentUser.user_no}' == '') {
+				alert('로그인 해주세요!')
+			} else {
+				$.ajax({
+					url: '/ssgssag/recipe/recipe_like.ssg',
+					type: 'POST',
+					data: {'recipe_id': ${recipeVO.recipe_id}, 'user_no': ${currentUser.user_no} + ""},
+					success: function(data) {
+						if (data == 1) {
+							console.log()
+							// 새로 추가했어요
+							$("#like-heart").prop("class", "fa-heart fa-solid fa-md"); // 채운 하트로 바꿔주기
+						} else {
+							console.log('좋아요 추ㅣ소하라고 ㅡㅡ')
+							// 좋아요 취소했어요
+							$("#like-heart").prop("class", "fa-heart fa-regular fa-md"); // 빈 하트로 띄워주기
+						}
+					},
+					error: function (xhr, status, error) {
+						alert('실패'); 
+					}		
+				})
+			}
+		
+		});
+	})
 }
 
-function deleteTag(){
+function deleteAlert(){
 	new swal("삭제", "관심 태그를 삭제할까요?");
 }
 
@@ -196,7 +252,7 @@ function deleteTag(){
 					<select id="tagBox" name="tag_name">
 						<option>관심 있는 #태그를 선택해주세요</option>
 					</select>
-					<input type="submit" value="추가" onclick="addTag(${currentUser.user_no });">
+					<input type="button" value="추가" onclick="addAlert(${currentUser.user_no });">
 					<input type="hidden" name="user_no" value="${currentUser.user_no }">
 				</form>
 			</div>

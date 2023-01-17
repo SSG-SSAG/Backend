@@ -82,10 +82,10 @@ public class MyController {
 		}
 		else {
 			System.out.println("관심 태그 추가 성공");
-//			out.print("<script>");
+			out.print("<script>");
 //			out.print("alert('태그 추가 성공');");
-//			out.print(s);
-//			out.print("</script>");
+			out.print(s);
+			out.print("</script>");
 		}
 	}
 	

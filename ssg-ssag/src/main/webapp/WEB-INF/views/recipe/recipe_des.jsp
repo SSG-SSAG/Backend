@@ -61,17 +61,20 @@
 	    <div class="pc-bg-right"></div>
 	</div>
 </body>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+
 <script>
-	function goPage(user_no, pg, id, name) {
-		if (pg == 1) {			// 장바구니로 이동
-			location.href = "cart.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;		 
-		} else if (pg == 2) {	// 다음 페이지로 이동
-			location.href = "recipe_ing.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;
-		} else if (pg == 3) {	// 이전 페이지로 이동
-			location.href = "recipe_search.ssg";
-		}
+function goPage(user_no, pg, id, name) {
+	if (pg == 1) {			// 장바구니로 이동
+		location.href = "cart.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;		 
+	} else if (pg == 2) {	// 다음 페이지로 이동
+		location.href = "recipe_ing.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;
+	} else if (pg == 3) {	// 이전 페이지로 이동
+		location.href = "recipe_search.ssg";
 	}
+}
 	
 	// 좋아요(찜)
 	// 렌더링 전에 미리 확인하고 붙여야 함
@@ -96,7 +99,8 @@
 			const that = $("like-heart");
 			console.log('하트 클릭');
 			if ('${currentUser.user_no}' == '') {
-				alert('로그인 해주세요!')
+				//alert('로그인 해주세요!')
+				login();
 			} else {
 				$.ajax({
 					url: '/ssgssag/recipe/recipe_like.ssg',
@@ -122,6 +126,17 @@
 		});
 	})
 	
+function login(){
+	new swal({
+		title : '로그인 후 이용해주세요.',
+		icon : 'error',
+		confirmButtonText: '확인',
+	}).then((result) => {
+		if(result.value) {
+			location.href="/ssgssag/auth/login.ssg";
+		}
+	});
+}
 	
 </script>
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>

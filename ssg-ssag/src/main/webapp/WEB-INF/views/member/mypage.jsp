@@ -1,8 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 <html>
 <head>
@@ -80,6 +78,8 @@
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>
 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 
 function goPage(pg, id, name, cat, cname) {

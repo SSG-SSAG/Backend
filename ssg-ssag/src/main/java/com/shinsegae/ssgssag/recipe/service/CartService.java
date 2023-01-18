@@ -15,6 +15,11 @@ public class CartService {
 	@Autowired
 	CartMapper mapper;
 	
+	public List<String> getRefg(String user_id) {
+		List<String> obj = mapper.getRefg(user_id);
+		return obj;
+	}
+	
 	public List<CartVO> getIngs(String user_id) {
 		List<CartVO> obj = mapper.getIngs(user_id);
 		for ( int i = 0; i<obj.size(); i++) {

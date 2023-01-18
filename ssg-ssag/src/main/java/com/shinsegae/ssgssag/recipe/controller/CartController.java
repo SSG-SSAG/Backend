@@ -57,13 +57,15 @@ public class CartController {
 		
 		List<CartVO> obj = service.getIngs(user_id);
 		List<String> contain_id = new ArrayList<>();
+		List<String> refg_id = service.getRefg(user_id);
+		
 		for ( int i = 0; i<obj.size(); i++) {
 			contain_id.add(obj.get(i).getIng_id());
 		}
 		if (recipe_id != null) {
 			List<CartVO> list = service.rcpIngs(recipe_id);
 			for ( int i =0; i<list.size(); i++) {
-				if (!contain_id.contains(list.get(i).getIng_id())) {
+				if (!contain_id.contains(list.get(i).getIng_id()) && !refg_id.contains(list.get(i).getIng_id())) {
 					int r = service.addIngs(user_id, list.get(i).getIng_id());
 				}	
 			}

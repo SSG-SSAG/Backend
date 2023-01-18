@@ -84,7 +84,7 @@ public class CartController {
 		boolean result = service.deleteCart(user_id, ing_id);
 		PrintWriter out = res.getWriter();
 		res.setContentType("text/html;charset=utf-8");
-		String s = "location.href='/ssgssag/recipe/cart.ssg?no=" + user_id + "';";
+		String s = "location.href='/ssgssag/cart.ssg?no=" + user_id + "';";
 		
 		if (result) {
 			out.print("<script>");

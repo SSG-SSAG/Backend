@@ -1,12 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<script>
-	function goTag(cat, name) {
-		location.href="recipe/recipe_cat.ssg?cat=" + cat + "&category_name=" + name;
-	}	
-</script>
 
 <html>
 <head>
@@ -62,3 +56,13 @@
 </body>
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>
 </html>
+
+<script>
+	function goTag(cat, name) {
+		location.href="recipe/recipe_cat.ssg?cat=" + cat + "&category_name=" + name;
+	}
+	
+	function goPage(id, name) {
+		location.href="recipe/recipe_des.ssg?recipe_id=" + id + "&recipe_name=" + name;
+	}
+</script>

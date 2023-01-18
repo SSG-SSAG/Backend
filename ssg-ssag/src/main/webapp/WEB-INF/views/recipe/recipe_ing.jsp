@@ -37,27 +37,16 @@
 						<div class="card step-card" style="display: flex; flex-direction: row;">
 							<div class="step-card-body">
 							    <p class="step-desc-p">${vo.ing_name}</p>
-							    <p class="step-desc-p">${vo.my_ing}</p>
+							    <c:if test="${not empty currentUser.user_no}">
+							    	<p class="step-desc-p">${vo.my_ing}</p>									
+								</c:if>
 							</div>
 						</div>
 					</c:forEach>
 	            </div>
-				<input type="button" value="장바구니로 쓰윽" 
-				onclick="page(${currentUser.user_no} , 1, ${recipeVO.recipe_id } );">
-	            <%-- <table border="1">
-					<tr>
-						<td></td>
-						<td>ID</td>
-						<td>이름</td>
-					</tr>
-					<c:forEach var="vo" items="${list_ref }" varStatus="status">
-					<tr>
-						<td>${status.count}</td>
-						<td>${vo.ing_id }</td>
-						<td>${vo.expire_date }</td>
-					</tr>
-					</c:forEach>
-				</table> --%>
+	            <c:if test="${not empty currentUser.user_no}">
+					<input type="button" value="장바구니로 쓰윽" onclick="page(${currentUser.user_no}, 1, ${recipeVO.recipe_id } );">
+				</c:if>
 	        </div>
 	        <jsp:include page="../layout/menu.jsp" />
 	    </div>
@@ -67,8 +56,8 @@
 <script>
 	function page(user_no, pg, recipe_id) {
 		 if (pg == 1){			// 장바구니로 이동
-			 console.log("dadf0");
-		 	location.href="cart.ssg?no="+user_no + "&recipe_id=" + recipe_id;
+			console.log("dadf0");
+			location.href="cart.ssg?no="+user_no + "&recipe_id=" + recipe_id;
 		 } else if (pg == 2){	// 이전 페이지로 이동
 		 	location.href="recipe_des.ssg?user_id="+user_no + "&recipe_id=" + recipe_id + "&recipe_name=" + name;
 		 }		 

@@ -35,9 +35,16 @@
 						    </div>
 						</div>
 					</div>
-					<div class="card step-recipe-ing-card" onclick="goPage(${currentUser.user_no }, 2, ${recipeVO.recipe_id}, '${recipeVO.recipe_name}');">
-						재료 목록 보기
-					</div>
+					<c:if test="${not empty currentUser.user_no}">
+						<div class="card step-recipe-ing-card" onclick="goPage(${currentUser.user_no }, 2, ${recipeVO.recipe_id}, '${recipeVO.recipe_name}');">
+							재료 목록 보기
+						</div>
+					</c:if>
+					<c:if test="${empty currentUser.user_no}">
+						<div class="card step-recipe-ing-card" onclick="goPage(-1, 2, ${recipeVO.recipe_id}, '${recipeVO.recipe_name}');">
+							재료 목록 보기
+						</div>
+					</c:if>
 	            </div>
 	            <div class="step-list-container">
 					<c:forEach var="vo" items="${list_step }" varStatus="status">
@@ -70,7 +77,12 @@ function goPage(user_no, pg, id, name) {
 	if (pg == 1) {			// 장바구니로 이동
 		location.href = "cart.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;		 
 	} else if (pg == 2) {	// 다음 페이지로 이동
-		location.href = "recipe_ing.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;
+		if (user_no == -1){
+			location.href = "recipe_ing.ssg?recipe_id=" + id + "&recipe_name=" + name;			
+		} else {
+			location.href = "recipe_ing.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name;			
+		}
+		/* location.href = "recipe_ing.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name; */
 	} else if (pg == 3) {	// 이전 페이지로 이동
 		location.href = "recipe_search.ssg";
 	}

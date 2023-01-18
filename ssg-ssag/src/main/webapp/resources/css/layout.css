@@ -36,7 +36,8 @@ body {
 /* 콘텐츠 들어갈 화면 레이아웃(모바일) */
 .content-container {
 	width: 100%;
-	height: 82vh;
+	height: 84vh;
+	border: 1px solid white;
 }
 
 .ccenter-layout {

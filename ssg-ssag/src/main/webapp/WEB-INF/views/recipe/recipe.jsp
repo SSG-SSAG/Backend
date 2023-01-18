@@ -1,7 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <html>
+<meta name="viewport" content="width=device-width">
 <head>
 	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">

@@ -8,7 +8,7 @@
 	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
 	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
-	<link rel="stylesheet" href="/ssgssag/resources/css/mypage.css?after">
+	<link rel="stylesheet" href="/ssgssag/resources/css/popup.css?after">
 </head>
 <body>
 <div class="main-background">
@@ -16,7 +16,7 @@
     <div class="main-container">
         <jsp:include page="../layout/header.jsp" />
 	    <div class="content-container">
-	    	<!-- popup layer -->
+	    	<!-- pop up layer -->
 	    	<div class="popup_layer" id="popup_layer" style="display: none;">
 			 <div class="popup_box">
 			     <div style="height: 10px; width: 375px; float: top;">

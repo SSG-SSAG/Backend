@@ -21,7 +21,8 @@
 <script>
 
 function goCart(no) {
-	location.href="recipe/cart.ssg?no="+no;			
+	console.log(window.location.href);
+	location.href="/ssgssag/cart.ssg?no="+no;
 }
 
 function login(){

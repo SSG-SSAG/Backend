@@ -39,7 +39,7 @@
 		</div>
 		<div class="menu-btn">
 			<c:if test="${not empty currentUser }">
-				<a href="/ssgssag/refg.ssg?no=${currentUser.user_no }">
+				<a href="/ssgssag/member/refg.ssg?no=${currentUser.user_no }">
 					<i class="fa-solid fa-bookmark fa-lg menu-icon"></i>
 					<p>냉장고</p>
 				</a>

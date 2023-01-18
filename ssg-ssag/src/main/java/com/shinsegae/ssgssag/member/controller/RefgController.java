@@ -25,7 +25,7 @@ public class RefgController {
 	RefgMapper mapper;
 	private String curid = "";
 	
-	@GetMapping(value="refg.ssg")
+	@GetMapping(value="/member/refg.ssg")
 	public String getList(@RequestParam("no") String no,HttpServletRequest req) {
 		curid = no;
 		List<RefgVO> list = service.getList(no);
@@ -37,7 +37,7 @@ public class RefgController {
 		return "member/refg";
 	}
 	
-	@GetMapping(value="delete.ssg")
+	@GetMapping(value="/member/delete.ssg")
 	public void delete(@RequestParam("refg_id") String param, HttpServletResponse res) throws Exception {
 		boolean result = service.delete(param);
 		PrintWriter out = res.getWriter();
@@ -57,7 +57,7 @@ public class RefgController {
 		}
 	}
 	
-	@GetMapping(value="refg_new.ssg")
+	@GetMapping(value="/member/refg_new.ssg")
 	public void add(ingVO vo, HttpServletResponse res) throws Exception {
 		String s = "location.href='refg.ssg?no=" + curid+"';";
 		PrintWriter out = res.getWriter();

@@ -57,7 +57,7 @@
 	function page(user_no, pg, recipe_id) {
 		 if (pg == 1){			// 장바구니로 이동
 			console.log("dadf0");
-			location.href="cart.ssg?no="+user_no + "&recipe_id=" + recipe_id;
+			location.href="../cart.ssg?no="+user_no + "&recipe_id=" + recipe_id;
 		 } else if (pg == 2){	// 이전 페이지로 이동
 		 	location.href="recipe_des.ssg?user_id="+user_no + "&recipe_id=" + recipe_id + "&recipe_name=" + name;
 		 }		 

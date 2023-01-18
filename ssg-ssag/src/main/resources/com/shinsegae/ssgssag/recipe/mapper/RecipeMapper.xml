@@ -13,7 +13,7 @@
 
 <!-- 조회 -->
 <select id="selectList" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
-	SELECT r.recipe_id, recipe_name, recipe_img, source, level, <!-- recipe_ing_info, -->
+	SELECT r.recipe_id, recipe_name, recipe_img, source, level, recipe_ing_info,
 	IFNULL(COUNT(like_id), 0) AS cnt
 	FROM recipe r
 	LEFT OUTER JOIN like_recipe l
@@ -179,7 +179,7 @@
 
 
 <select id="rcp_page" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
-	SELECT r.recipe_id, recipe_name, recipe_img, source, level, <!-- recipe_ing_info, -->
+	SELECT r.recipe_id, recipe_name, recipe_img, source, level, recipe_ing_info,
 	IFNULL(COUNT(like_id), 0) AS cnt
 	FROM recipe r
 	LEFT OUTER JOIN like_recipe l

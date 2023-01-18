@@ -64,6 +64,12 @@ public class RecipeController {
 			}
 		}
 		
+		for ( int i = 0; i<obj2.size(); i++) {
+			if ( obj2.get(i).getRecipe_ing_info() == null) {
+				obj2.get(i).setRecipe_ing_info("정보 없음");
+			}
+		}
+		
 		List<RecipeVO> obj3 = service.rcp_tag(vo);
 		
 		req.setAttribute("list", obj2);
@@ -175,12 +181,21 @@ public class RecipeController {
 		for ( int i = 0; i<obj3.size(); i++) {
 			my_ings.add(obj3.get(i).getIng_id());
 		}
+		List<RecipeVO> mine = new ArrayList<>();
+		List<RecipeVO> notmine = new ArrayList<>();
 		for ( int i = 0; i<obj.size(); i++) {
 			if (my_ings.contains(obj.get(i).getIng_id())) {
 				obj.get(i).setMy_ing(true);
+				mine.add(obj.get(i));
+			}
+			else {
+				notmine.add(obj.get(i));
 			}
 		}
-		req.setAttribute("list_detail", obj);
+		
+		
+		req.setAttribute("list_mine", mine);
+		req.setAttribute("list_notmine", notmine);
 		req.setAttribute("list_nut", obj2);
 		req.setAttribute("list_ref", obj3);
 		req.setAttribute("list_des", obj4);

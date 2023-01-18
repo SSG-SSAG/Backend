@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shinsegae.ssgssag.recipe.mapper.CartMapper">	<!-- 인터페이스 -->
+
+	<select id="getRefg" parameterType="String" resultType="String">
+		SELECT ing_id FROM refrigerator WHERE USER_no = #{a}
+	</select>
+	
 	<select id="getIngs" parameterType="String" resultType="com.shinsegae.ssgssag.recipe.vo.CartVO">
 		SELECT ing_id, update_date FROM cart WHERE user_no = #{a}
 	</select>

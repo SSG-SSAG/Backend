@@ -11,6 +11,8 @@ import com.shinsegae.ssgssag.recipe.vo.CartVO;
 @Mapper
 public interface CartMapper {
 
+	List<String> getRefg(String user_id);
+	
 	List<CartVO> getIngs(String user_id);
 	
 	String getName(String ing_id);

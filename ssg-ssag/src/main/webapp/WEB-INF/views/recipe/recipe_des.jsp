@@ -46,11 +46,6 @@
 										<td>${list_des.info_na }</td>
 									</tr>
 								</table>
-								<%-- <p>${list_des.calrorie }kcal</p>
-								<p>탄수화물 ${list_des.info_car }</p>
-								<p>단백질 ${list_des.info_pro }</p>
-								<p>지방 ${list_des.info_fat }</p>
-								<p>나트륨 ${list_des.info_na }</p> --%>
 							    ${recipeVO.recipe_img }
 						    </div>
 						</div>

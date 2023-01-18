@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width">
 <head>
 	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/member.css">

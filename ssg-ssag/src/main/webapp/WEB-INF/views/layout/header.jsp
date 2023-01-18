@@ -5,7 +5,9 @@
 
 <div class="header">
 	<div>
+		<a href="/ssgssag/">
 		<img class="header-logo" src="/ssgssag/resources/img/ssg-ssag-logo.png" />
+		</a>
 	</div>
 	<div>
 		<c:if test="${not empty currentUser }">

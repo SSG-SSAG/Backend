@@ -46,18 +46,19 @@
 <script>
 function goPage(pg, no, id) {
 	if (pg == 1){
-		location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + no;
+		//location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + no;
+		location.href="../member/refg.ssg?no=" + no;
 	} else if (pg == 2) {
 		location.href="deleteCart.ssg?no=" + no + "&ing_id=" + id;
 	}
 }
 
 function refg(id) {
-	location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + id;	  
+	location.href="../member/refg.ssg?no=" + id;
 }
 
 function ssag(id, onssg) {
-	location.href="http://localhost:8081/ssgssag/recipe/cart.ssg?no="+id+'&onssg=' + onssg;
+	location.href="cart.ssg?no="+id+'&onssg=' + onssg;
 }
 
 function delBtn(no, id){

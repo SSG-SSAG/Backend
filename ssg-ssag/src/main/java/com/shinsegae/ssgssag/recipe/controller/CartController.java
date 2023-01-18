@@ -27,7 +27,7 @@ public class CartController {
 	@Autowired
 	CartService service;
 	
-	@GetMapping("/recipe/cart.ssg")
+	@GetMapping("cart.ssg")
 	public String cart(@RequestParam(value="onssg", defaultValue = "0") String onssg, @RequestParam("no") String user_id, @RequestParam(value="recipe_id", required=false) String recipe_id, HttpServletRequest req) throws Exception {
 	
 		if (onssg.equals("1")) {
@@ -78,11 +78,8 @@ public class CartController {
 		
 		return "recipe/cart";
 	}
-	
 
-	 
-
-	@GetMapping(value="/recipe/deleteCart.ssg")
+	@GetMapping(value="deleteCart.ssg")
 	public void delete(@RequestParam("no") String user_id, @RequestParam("ing_id") int ing_id, HttpServletResponse res) throws Exception {
 		boolean result = service.deleteCart(user_id, ing_id);
 		PrintWriter out = res.getWriter();

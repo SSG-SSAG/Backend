@@ -14,7 +14,7 @@
 	        <jsp:include page="../layout/header.jsp" />
 	        <div class="content-container ccenter-layout">
 	            <div class="step-recipe-container">
-	            	<div class="card step-recipe-card rcenter-layout" style="border: 1px solid black">
+	            	<div class="card step-recipe-card rcenter-layout">
 						<img class="step-recipe-card-img" src="${list_des.recipe_img }" alt="${recipeVO.recipe_name }" >
 						<div class="step-recipe-desc-box">
 							<div class="recipe-desc-title-box">
@@ -23,14 +23,34 @@
 								<i id="like-heart" class="fa-heart fa-regular fa-md"></i>
 							</div>
 							<div class="recipe-desc">
-								<p>${list_des.calrorie }kcal</p>
+								<div class="recipe_desc tag" style="margin-top:10px; margin-bottom:10px;">
+								<c:forEach var="vo" items="${rcp_tag }" varStatus="status">
+									<div style="float:left;">
+							    	<p style="font-size:20px;">#${vo.tag_name }</p>
+							    	</div>
+							    </c:forEach>
+							    </div>
+								<table style="text-align:center;">
+									<tr>
+										<th>kcal</th>
+										<th>탄수화물</th>
+										<th>단백질</th>
+										<th>지방</th>
+										<th>나트륨</th>
+									</tr>
+									<tr>
+										<td>${list_des.calrorie }</td>
+										<td>${list_des.info_car }</td>
+										<td>${list_des.info_pro }</td>
+										<td>${list_des.info_fat }</td>
+										<td>${list_des.info_na }</td>
+									</tr>
+								</table>
+								<%-- <p>${list_des.calrorie }kcal</p>
 								<p>탄수화물 ${list_des.info_car }</p>
 								<p>단백질 ${list_des.info_pro }</p>
 								<p>지방 ${list_des.info_fat }</p>
-								<p>나트륨 ${list_des.info_na }</p>
-								<c:forEach var="vo" items="${rcp_tag }" varStatus="status">
-							    	<p>#${vo.tag_name }</p>
-							    </c:forEach>
+								<p>나트륨 ${list_des.info_na }</p> --%>
 							    ${recipeVO.recipe_img }
 						    </div>
 						</div>

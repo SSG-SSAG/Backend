@@ -1,6 +1,7 @@
 package com.shinsegae.ssgssag.recipe.vo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import lombok.Data;
 
@@ -58,7 +59,7 @@ public class RecipeVO {
 	private int refg_id;			// 냉장고 ID
 	private LocalDate expire_date;	// 유통기한
 	
-	
+	private String tags;
 	/*
 	 * Input Field
 	 * - 동적 처리를 위한 필드

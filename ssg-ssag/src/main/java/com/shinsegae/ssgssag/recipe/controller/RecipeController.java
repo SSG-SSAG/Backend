@@ -83,6 +83,11 @@ public class RecipeController {
 	public String getMy(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### Mylist Controller ###");
 		List<RecipeVO> obj = service_my.my(vo);
+		for ( int i = 0; i<obj.size(); i++) {
+			if ( obj.get(i).getRecipe_ing_info() == null) {
+				obj.get(i).setRecipe_ing_info("정보 없음");
+			}
+		}
 		req.setAttribute("list_my", obj);
 		return "recipe/myrecipe";
 	}
@@ -126,6 +131,11 @@ public class RecipeController {
 		
 		
 		List<RecipeVO> obj3 = service.rcp_tag(vo);
+		for ( int i = 0; i<obj2.size(); i++) {
+			if ( obj2.get(i).getRecipe_ing_info() == null) {
+				obj2.get(i).setRecipe_ing_info("정보 없음");
+			}
+		}
 	
 		req.setAttribute("list_tag", obj2);
 		req.setAttribute("page", pagebutton);
@@ -225,6 +235,15 @@ public class RecipeController {
 	public String hotRecipeList(HttpServletRequest req, RecipeVO vo) {
 		System.out.println("### hotRecipeList ###");
 		List<RecipeVO> obj = service.hotRe(vo);	// Service
+		for ( int i = 0; i<obj.size(); i++) {
+			List<String> tags = service.getTag(String.valueOf(obj.get(i).getRecipe_id()));
+			String tag = "";
+			for ( int j = 0; j<tags.size(); j++) {
+				tag += "#" + tags.get(j);
+			}
+			obj.get(i).setTags(tag);
+		}
+		
 		req.setAttribute("hotRecipe_list", obj);
 
 		return "home";

@@ -66,7 +66,7 @@
 
 <!-- 내가 찜한 레시피 조회 -->
 <select id="selectLikes" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
-	SELECT recipe.recipe_id, recipe.recipe_name, tmp.cnt, tmp.recipe_img, tmp.level
+	SELECT recipe.recipe_id, recipe.recipe_name, tmp.cnt, tmp.recipe_img, tmp.level, recipe_ing_info
 	FROM like_recipe, recipe, (
 		SELECT r.recipe_id, recipe_name, recipe_img, level, IFNULL(COUNT(like_id), 0) AS cnt
 		FROM recipe r
@@ -88,9 +88,9 @@
 
 <!-- 태그로 레시피 조회 -->
 <select id="selectTags" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
-	SELECT tmp.recipe_id, tmp.recipe_name, tmp.recipe_img, tmp.level, t.tag_id, t.tag_name, tmp.cnt, tag_category
+	SELECT tmp.recipe_id, tmp.recipe_name, tmp.recipe_img, tmp.level, t.tag_id, t.tag_name, tmp.cnt, tag_category, tmp.recipe_ing_info
 	FROM tag t, recipe_tag rt, (
-		SELECT r.recipe_id, recipe_name, recipe_img, source, level, IFNULL(COUNT(like_id), 0) as cnt
+		SELECT r.recipe_id, recipe_name, recipe_img, source, level, IFNULL(COUNT(like_id), 0) as cnt, recipe_ing_info
 		FROM recipe r
 		LEFT OUTER JOIN like_recipe l
 		ON r.recipe_id = l.recipe_id
@@ -110,9 +110,9 @@
 </select>
 
 <select id="rcpTags_page" resultType="com.shinsegae.ssgssag.recipe.vo.RecipeVO">
-	SELECT tmp.recipe_id, tmp.recipe_name, tmp.recipe_img, tmp.level, t.tag_id, t.tag_name, tmp.cnt, tag_category
+	SELECT tmp.recipe_id, tmp.recipe_name, tmp.recipe_img, tmp.level, t.tag_id, t.tag_name, tmp.cnt, tag_category, tmp.recipe_ing_info
 	FROM tag t, recipe_tag rt, (
-		SELECT r.recipe_id, recipe_name, recipe_img, source, level, IFNULL(COUNT(like_id), 0) as cnt
+		SELECT r.recipe_id, recipe_name, recipe_img, source, level, IFNULL(COUNT(like_id), 0) as cnt, recipe_ing_info
 		FROM recipe r
 		LEFT OUTER JOIN like_recipe l
 		ON r.recipe_id = l.recipe_id
@@ -255,6 +255,10 @@
 	GROUP BY r.recipe_id
 	ORDER BY cnt DESC, recipe_name <!-- 찜 순서대로 정렬 -->
 	LIMIT 5 <!-- 인기 많은 상위 5개만 -->
+</select>
+
+<select id="getTag" resultType="String" parameterType="String">
+	SELECT tag_name FROM tag WHERE tag_id IN (SELECT tag_id FROM recipe_tag WHERE recipe_id = #{a } )
 </select>
 
 </mapper>

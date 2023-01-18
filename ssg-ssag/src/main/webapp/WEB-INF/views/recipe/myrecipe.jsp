@@ -28,7 +28,7 @@
 						<div class="recipe-desc-box">
 							<img class="rcard-img" src="${vo.recipe_img }" alt="${vo.recipe_name }" >
 							<div class="recipe-desc">
-						      <p>우렁은 우렁우렁</p>
+						      <p>${vo.recipe_ing_info }</p>
 						      <c:forEach var="vo2" items="${rcp_tag }" varStatus="status">
 							  	<p>#${vo2.tag_name }</p>
 							  </c:forEach>

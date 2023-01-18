@@ -56,5 +56,7 @@ public interface RecipeMapper {
 //	RecipeVO rcp_tag(RecipeVO vo);
 	
 	List<RecipeVO> rcpTags_page(RecipeVO vo);
+	
+	List<String> getTag(String recipe_id);
 }
 

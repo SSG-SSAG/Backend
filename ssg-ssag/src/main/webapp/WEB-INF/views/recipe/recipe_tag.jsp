@@ -36,7 +36,7 @@
 					<div class="recipe-desc-box">
 						<img class="rcard-img" src="${vo.recipe_img }" alt="${vo.recipe_name }" >
 						<div class="recipe-desc">
-					      <p>우렁은 우렁우렁</p>
+					      <p>${vo.recipe_ing_info }</p>
 					      <p>찜 ${vo.cnt }</p>
 					    </div>
 					</div>

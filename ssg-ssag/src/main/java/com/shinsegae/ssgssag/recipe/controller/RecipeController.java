@@ -99,12 +99,6 @@ public class RecipeController {
 		int total = obj.size();
 		int cur = vo.getCurpage();
 		vo.setCurpage(cur);
-		System.out.println("tets");
-		System.out.println(vo.getSort());
-		System.out.println(vo.getTag_id());
-		System.out.println(vo.getTag_name());
-		System.out.println(vo.getCat());
-		System.out.println(vo.getCategory_name());
 		if (total % 5 == 0 ) {
 			vo.setTotal_count(total/5);
 		}

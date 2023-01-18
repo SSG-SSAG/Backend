@@ -145,16 +145,16 @@
 	align-items: center;
 }
 
-.ing-list-container::-webkit-scrollbar {
+.ref-list-container::-webkit-scrollbar {
 	width: 10px;
 }
 
-.ing-list-container::-webkit-scrollbar-thumb {
+.ref-list-container::-webkit-scrollbar-thumb {
 	background-color: rgba(163, 144, 122, 0.8);
 	border-radius: 10px;
 }
 
-.ing-list-container::-webkit-scrollbar-track {
+.ref-list-container::-webkit-scrollbar-track {
 	background-color: rgba(163, 144, 122, 0.4);
 	border-radius: 10px;
 }

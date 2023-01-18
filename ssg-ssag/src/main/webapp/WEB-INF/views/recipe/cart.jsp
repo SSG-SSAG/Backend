@@ -47,14 +47,14 @@
 function goPage(pg, no, id) {
 	if (pg == 1){
 		//location.href="http://localhost:8081/ssgssag/refg.ssg?no=" + no;
-		location.href="../member/refg.ssg?no=" + no;
+		location.href="member/refg.ssg?no=" + no;
 	} else if (pg == 2) {
 		location.href="deleteCart.ssg?no=" + no + "&ing_id=" + id;
 	}
 }
 
 function refg(id) {
-	location.href="../member/refg.ssg?no=" + id;
+	location.href="member/refg.ssg?no=" + id;
 }
 
 function ssag(id, onssg) {

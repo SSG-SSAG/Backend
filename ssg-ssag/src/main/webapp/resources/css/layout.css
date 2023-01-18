@@ -11,7 +11,7 @@ body {
 }
 
 .main-background {
-	width: 100%;
+	width: 100vw;
 	height: 100vh;
 	background: #554635;
 	display: flex;
@@ -19,12 +19,12 @@ body {
 }
 
 .pc-bg-left {
-    width: 60%;
-    background-image: url(/ssgssag/resources/img/pc-bg-left.jpg);
+   width: 60%;
+   background-image: url(/ssgssag/resources/img/pc-bg-left.jpg);
 }
 
 .pc-bg-right {
-    width: 15%;
+   width: 15%;
 }
 
 .main-container {
@@ -53,44 +53,82 @@ body {
 	align-items: center;
 }
 
-/* 글 설정 */
-h4 {
-	font-size: 2vw;
+
+
+/* ============================================== */
+/* ================== 반응형 CSS ================== */
+/* [데스크탑] width가 1024px이상일 때 */
+@media screen and (min-width: 1024px){  
+	h4 {
+		font-size: 2vw;
+	}
+	h5 {
+		font-size: 1.8vw;
+	}
 }
 
-h5 {
-	font-size: 1.8vw;
+/* [태블릿] width가 1024px이하일 때 */
+@media screen and (max-width: 1024px){
+	.main-background {
+      background: #554635;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+   }   
+   .pc-bg-left {
+      display: none;
+   }
+   .pc-bg-right {
+      display: none;
+   }   
+   .main-container {
+      width: 470px;
+      height: 100vh;
+   }   
+   h4 {
+   	 font-size: 2.2vw;
+   }
+   h5 {
+   	 font-size: 2vw;
+   }
 }
 
-/* 850px 이하 + 모바일 화면 레이아웃 */
-@media screen and (max-width: 600px) {
-    .main-background {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .pc-bg-left {
-        display: none;
-    }
 
-    .pc-bg-right {
-        display: none;
-    }
-    
-    .main-container {
-        position: relative;
-        min-width: 100vw;
-        height: 100vh;
-    }
-    
-    h4 {
-    	font-size: 4vw;
-    }
-    
-    h5 {
-    	font-size: 3.5vw;
-    }
+/* [모바일] width가 768px이하일 때 */
+@media screen and (max-width: 600px){
+	.main-background {
+		width: 100%;
+	}
+  .main-container {
+    width: 100vw;
+    height: 100vh;    
+  }
+  h4 {
+ 		font-size: 4vw;
+  }
+  
+  h5 {
+  	font-size: 3.5vw;
+  }
 }
+
+@media screen and (max-width: 470px){
+	.main-background {
+		width: 100%;
+
+	}
+  .main-container {
+    min-width: 100vw;
+    height: 100vh;    
+  }
+  h4 {
+ 		font-size: 4vw;
+  }
+  
+  h5 {
+  	font-size: 3.5vw;
+  }
+}
+

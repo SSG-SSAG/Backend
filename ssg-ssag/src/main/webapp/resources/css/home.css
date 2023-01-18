@@ -4,7 +4,7 @@
 /* 인기 레시피 관련 */
 
 .home-recipe-title {
-	margin: 18px 0 15px 10px;
+	margin: 18px 0 10px 10px;
 }
 
 .hot-recipe-card {
@@ -40,9 +40,15 @@
 	height: 40%;
 }
 
+.main-tag-grid {
+	height: 29vh;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;	
+	padding: 0 0.7vw 0.8vh 0.7vw;
+}
+
 .main-tag-card {
-	width: 200px;
-	height: 85px;
 	border-radius: 10px;
 	margin: 5px;
 	display: flex;

@@ -56,33 +56,27 @@
 						</div>
 					</c:if>
 				</div>
-	            <%-- <div class="ing-recipe-container">
-	            	<div class="card step-recipe-card" style="margin-top: 10px;">
-						<h5 style="margin: 0;">${recipeVO.recipe_name }</h5>
-						<div class="recipe-desc-box">
-							<img class="step-recipe-card-img" src="${list_des.recipe_img }" alt="${recipeVO.recipe_name }" >
-							<div class="recipe-desc">
-							    <p>${list_des.calrorie }kcal</p>
-								<p>탄수화물 ${list_des.info_car }</p>
-								<p>단백질 ${list_des.info_pro }</p>
-								<p>지방 ${list_des.info_fat }</p>
-								<p>나트륨 ${list_des.info_na }</p>
-							    <c:forEach var="vo" items="${rcp_tag }" varStatus="status">
-							    	<p>#${vo.tag_name }</p>
-							    </c:forEach>
-						    </div>
-						</div>
-					</div>
-	            </div> --%>
+	            
 	            <div class="ing-list-container" >
+	            	
 					<c:forEach var="vo" items="${list_notmine }" varStatus="status">
 						<div class="card step-card" style="display: flex; flex-direction: row;">
 							<div class="step-card-body">
 							    <p class="step-desc-p">${vo.ing_name}</p>
 							    <c:if test="${not empty currentUser.user_no}">
 							    	
-							    	<p class="step-desc-p">사야합니다.</p>
-							    										
+							    	
+							    	<button onclick="ssgone('${vo.ing_id}', '${currentUser.user_no }','${recipeVO.recipe_id  }','${recipeVO.recipe_name  }');">쓱</button>				
+								</c:if>
+							</div>
+						</div>
+					</c:forEach>
+					<c:forEach var="vo" items="${list_incart }" varStatus="status">
+						<div class="card step-card" style="display: flex; flex-direction: row; background:green;">
+							<div class="step-card-body">
+							    <p class="step-desc-p">${vo.ing_name}</p>
+							    <c:if test="${not empty currentUser.user_no}">
+							    	<p class="step-desc-p">(카트)</p>							
 								</c:if>
 							</div>
 						</div>
@@ -92,8 +86,7 @@
 							<div class="step-card-body">
 							    <p class="step-desc-p">${vo.ing_name}</p>
 							    <c:if test="${not empty currentUser.user_no}">
-							    	<p class="step-desc-p">이미 있지롱.</p>
-							    										
+							    	<p class="step-desc-p">(보유)</p>							
 								</c:if>
 							</div>
 						</div>
@@ -114,6 +107,11 @@
 		 } else if (pg == 2){	// 이전 페이지로 이동
 		 	location.href="recipe_des.ssg?user_id="+user_no + "&recipe_id=" + recipe_id + "&recipe_name=" + name;
 		 }		 
+	}
+	
+	function ssgone(ing_id, user_no, id, name) {
+		console.log(ing_id);
+		location.href = "recipe_ing.ssg?user_id=" + user_no + "&recipe_id=" + id + "&recipe_name=" + name + "&addone=" + ing_id;		
 	}
 </script>
 <jsp:include page="/WEB-INF/views/layout/import_scripts.jsp"/>

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.shinsegae.ssgssag.member.vo.MemberVO;
@@ -187,7 +188,12 @@ public class RecipeController {
 	}
 	
 	@GetMapping("/recipe/recipe_ing.ssg")
-	public String getMaking(HttpServletRequest req, RecipeVO vo) {
+	public String getMaking(HttpServletRequest req, RecipeVO vo, @RequestParam(value="addone", defaultValue = "-1") String ing_id) {
+		if (!ing_id.equals("-1")) {
+			int r = service_ing.addone(ing_id, vo.getUser_id());
+			System.out.println("kdkdkdkd");
+			System.out.println(r);
+		}
 		System.out.println("### Recipe Ing Controller ###");
 		List<RecipeVO> obj = service_ing.ings(vo);
 		List<RecipeVO> obj2 = service_ing.nut(vo);
@@ -195,23 +201,30 @@ public class RecipeController {
 		List<Integer> my_ings = new ArrayList<>();
 		RecipeVO obj4 = service_des.getImgs(vo);
 		List<RecipeVO> obj5 = service.rcp_tag(vo);
-		
+		List<String> cart_ings = service_ing.getCart(vo);
+		System.out.println("mimmimdidkdka;ksjdf;dlk");
+		System.out.println(cart_ings);
 		for ( int i = 0; i<obj3.size(); i++) {
 			my_ings.add(obj3.get(i).getIng_id());
 		}
 		List<RecipeVO> mine = new ArrayList<>();
 		List<RecipeVO> notmine = new ArrayList<>();
+		List<RecipeVO> incart = new ArrayList<>();
 		for ( int i = 0; i<obj.size(); i++) {
 			if (my_ings.contains(obj.get(i).getIng_id())) {
 				obj.get(i).setMy_ing(true);
 				mine.add(obj.get(i));
 			}
+			else if (cart_ings.contains(String.valueOf(obj.get(i).getIng_id()))) {
+				incart.add(obj.get(i));
+			}
 			else {
 				notmine.add(obj.get(i));
 			}
 		}
-		
-		
+		System.out.println("test");
+		System.out.println(mine);
+		req.setAttribute("list_incart", incart);
 		req.setAttribute("list_mine", mine);
 		req.setAttribute("list_notmine", notmine);
 		req.setAttribute("list_nut", obj2);

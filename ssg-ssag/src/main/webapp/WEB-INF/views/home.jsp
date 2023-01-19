@@ -15,7 +15,7 @@
 			<jsp:include page="layout/header.jsp" />
 			<div class="content-container">
 				<div>
-					<h4 class="home-recipe-title">지금 쓱-싹에서 인기 있는 레시피</h4>
+					<h4 class="home-recipe-title">🔥쓱-싹 인기 레시피🔥</h4>
 					<div id="hotRecipeCarousel" class="carousel slide" data-bs-ride="carousel" data-touch="true" data-interval="2000">
 					  <div class="carousel-inner">
 					  	<c:forEach var="vo" items="${hotRecipe_list }" varStatus="status">
@@ -38,7 +38,7 @@
 					</div>
 				</div>
 				<div class="main-tag-container">
-					<h4 class="home-recipe-title">태그로 알아보는 쓱-싹 레시피</h4>
+					<h4 class="home-recipe-title">#태그별로 쓱!</h4>
 					<div class="main-tag-grid">
 						<div class="main-tag-card tag-1" onclick="goTag(1, '종류');">종류</div>
 						<div class="main-tag-card tag-2" onclick="goTag(2, '건강');">건강</div>

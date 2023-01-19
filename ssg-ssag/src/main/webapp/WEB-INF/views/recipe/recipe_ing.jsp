@@ -31,16 +31,15 @@
 							    	</div>
 							    </c:forEach>
 							    </div>
-								<table style="text-align:center;">
+							    <p style="font-size:15px; text-align:left">총 ${list_des.calrorie } kcal</p>
+								<table style="text-align:left;">
 									<tr>
-										<th>kcal</th>
 										<th>탄수화물</th>
 										<th>단백질</th>
 										<th>지방</th>
 										<th>나트륨</th>
 									</tr>
 									<tr>
-										<td>${list_des.calrorie }</td>
 										<td>${list_des.info_car }</td>
 										<td>${list_des.info_pro }</td>
 										<td>${list_des.info_fat }</td>

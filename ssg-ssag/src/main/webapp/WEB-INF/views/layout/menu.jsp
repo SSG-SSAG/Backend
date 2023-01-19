@@ -10,7 +10,7 @@
 </head>
 <script src="https://kit.fontawesome.com/557d23e359.js" crossorigin="anonymous"></script>
 <body>
-	<div class="menu-bar">
+	<div class="menu-bar" style="border-top:2px solid;">
 		<div class="menu-btn">
 			<a href="/ssgssag">
 				<i class="fa-solid fa-house fa-lg menu-icon"></i>

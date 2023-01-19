@@ -97,4 +97,6 @@ public class RecipeVO {
 	private int pro;
 	private int fat;
 	
+	private String star;
+	
 }

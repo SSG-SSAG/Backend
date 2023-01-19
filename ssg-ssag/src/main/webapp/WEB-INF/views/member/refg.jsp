@@ -55,7 +55,7 @@
 						<c:if test="${vo.over eq 'false' }">
 							<h5 style="background-color:#90EE90">${vo.remain_day }일 ${vo.remain_hour }시간</h5>
 						</c:if>
-						<input id="delBtn${vo.refg_id }" type="button" value="삭제" onclick="delBtn(${vo.refg_id });">
+						<input style="margin-left:auto;" type="button" value="삭제" onclick="delBtn(${vo.refg_id });">
 					</div>
 				</c:forEach>
 				<input id="openBtn" type="button" value="추가" onclick="openPop();" style="align-items: center;">

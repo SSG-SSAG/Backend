@@ -14,8 +14,8 @@
     <div class="main-container">
         <jsp:include page="../layout/header.jsp" />
         <div class="content-container ccenter-layout">
-			<h3>${currentUser.name }님이 관심 있는 레시피</h3>
-			<h3>레시피 구경하고 장바구니에 ssag 담아보세요~!</h3>
+			<h3>${currentUser.name }님이 찜한 레시피~♡</h3>
+			<h3>장바구니에 ssag 담아보세요~♡</h3>
 			
 			<form name="rForm" action="recipe_tag.ssg" method="get">
 				<input type="hidden" name="tag_id" value="${recipeVO.tag_id }">
@@ -25,7 +25,8 @@
 			<div class="recipe-list-container">
 				<c:forEach var="vo" items="${list_my }" varStatus="status">
 					<div class="card recipe-card" onclick="goPage(1, ${vo.recipe_id}, '${vo.recipe_name}')">
-						<h5 style="margin: 0;">${vo.recipe_name }</h5>
+						<h5 style="margin: 0;">${vo.recipe_name } ${vo.star }</h5>
+						<p style="text-align: right;">찜 ${vo.cnt }</p>
 						<div class="recipe-desc-box">
 							<img class="rcard-img" src="${vo.recipe_img }" alt="${vo.recipe_name }" >
 							<div class="recipe-desc">
@@ -33,8 +34,7 @@
 						      <c:forEach var="vo2" items="${rcp_tag }" varStatus="status">
 							  	<p>#${vo2.tag_name }</p>
 							  </c:forEach>
-						      <p>찜 ${vo.cnt }</p>
-						      <p>난이도 ${vo.level }</p>
+						     
 						    </div>
 						</div>
 					</div>

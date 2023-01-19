@@ -3,7 +3,7 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<div class="header">
+<div class="header" style="border-bottom:2px solid">
 	<div>
 		<a href="/ssgssag/">
 		<img class="header-logo" src="/ssgssag/resources/img/ssg-ssag-logo.png" />

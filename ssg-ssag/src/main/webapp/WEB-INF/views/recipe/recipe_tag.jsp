@@ -33,12 +33,12 @@
 			<div class="recipe-list-container">
 				<c:forEach var="vo" items="${list_tag }" varStatus="status">	<!-- request에 들어있는 아이템 -->
 				<div class="card recipe-card" onclick="goPage(2, ${vo.recipe_id}, '${vo.recipe_name}')">
-					<h5 style="margin: 0;">${vo.recipe_name }</h5>
+					<h5 style="margin: 0;">${vo.recipe_name } ${vo.star }</h5>
+					<p style="text-align: right;">찜 ${vo.cnt }</p>
 					<div class="recipe-desc-box">
 						<img class="rcard-img" src="${vo.recipe_img }" alt="${vo.recipe_name }" >
 						<div class="recipe-desc">
 					      <p>${vo.recipe_ing_info }</p>
-					      <p>찜 ${vo.cnt }</p>
 					    </div>
 					</div>
 				</div>

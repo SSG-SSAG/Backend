@@ -17,7 +17,9 @@
 			<h2>${recipeVO.category_name} 중 원하는 #태그를 선택하세요!</h2>
 			
 			<c:forEach var="vo" items="${list_cat }" varStatus="status">
-				<button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${param.cat}, '${param.category_name}')">#${vo.tag_name }</button>
+				<div>
+					<button class="tag-btn" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${param.cat}, '${param.category_name}')">#${vo.tag_name }</button>
+				</div>
 			</c:forEach>
 		</div>
 	<jsp:include page="../layout/menu.jsp" />

@@ -68,10 +68,14 @@ public class RecipeController {
 			if ( obj2.get(i).getRecipe_ing_info() == null) {
 				obj2.get(i).setRecipe_ing_info("정보 없음");
 			}
+			String star = "";
+			for ( int j = 0; j<obj2.get(i).getLevel(); j++) {
+				star += "★";
+				obj2.get(i).setStar(star);
+			}
 		}
 		
 		List<RecipeVO> obj3 = service.rcp_tag(vo);
-		
 		req.setAttribute("list", obj2);
 		req.setAttribute("page", pagebutton);
 		req.setAttribute("rcp_tag", obj3);
@@ -135,8 +139,12 @@ public class RecipeController {
 			if ( obj2.get(i).getRecipe_ing_info() == null) {
 				obj2.get(i).setRecipe_ing_info("정보 없음");
 			}
+			String star = "";
+			for ( int j = 0; j<obj2.get(i).getLevel(); j++) {
+				star += "★";
+				obj2.get(i).setStar(star);
+			}
 		}
-	
 		req.setAttribute("list_tag", obj2);
 		req.setAttribute("page", pagebutton);
 		req.setAttribute("rcp_tag", obj3);

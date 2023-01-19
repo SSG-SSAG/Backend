@@ -50,20 +50,26 @@
 			</div>
         	<div class="tag-list-container">
 				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>
-				<c:forEach var="vo" items="${list_tags }" varStatus="status">
-					<div class="card step-card" style="display: flex; flex-direction: row;">
-						<div class="step-card-body">
-							<p class="step-desc-p">${vo.category_name }&nbsp;&nbsp;</p>
-							<p class="step-desc-p">#${vo.tag_name }&nbsp;</p>
-							<p class="step-desc-p">
-								<input id="rcpBtn" type="button" value="레시피 보러가기" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}');">
-							</p>
-							<p class="step-desc-p">
-								<input id="delBtn${vo.like_tag_id }" type="button" value="삭제" onclick="delBtn(${vo.like_tag_id });">
-							</p>
+				<div style="display: inline-block">
+					<c:forEach var="vo" items="${list_tags }" varStatus="status">
+						<div class="card tag-card" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}');" style="display: inline-block">
+							<c:if test="${vo.category_name eq '종류'}">
+								<h4 style="margin: 0; color:#FF8C00;">${vo.category_name }</h4>
+							</c:if>
+							<c:if test="${vo.category_name eq '건강'}">
+								<h4 style="margin: 0; color:#2E8B57;">${vo.category_name }</h4>
+							</c:if>
+							<c:if test="${vo.category_name eq '테마'}">
+								<h4 style="margin: 0; color:#DB7093;">${vo.category_name }</h4>
+							</c:if>
+							<c:if test="${vo.category_name eq '조리법'}">
+								<h4 style="margin: 0; color:#F0E68C;">${vo.category_name }</h4>
+							</c:if>
+							<h5>#${vo.tag_name }</h5>
 						</div>
-					</div>
-				</c:forEach>	
+						<input id="delBtn${vo.like_tag_id }" type="button" value="삭제" onclick="delBtn(${vo.like_tag_id });">
+					</c:forEach>
+				</div>
 				<input type="button" value="태그추가" onclick="openPop();">
 				<div id="addTag" style="display:none">
 					<form name="tagForm" action="tag_new.ssg" method="get">
@@ -82,13 +88,9 @@
 					</form>
 				</div>
         	</div>
-        	<div>
+        	<div style="align-items: center;">
 				<h3>회원 정보 수정</h3>	
 				<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
-        	</div>
-        	<div>        	
-				<h3>장바구니</h3>	
-				<input type="button" value="장바구니" onclick="goPage(5, ${currentUser.user_no});">
         	</div>
 		</div>
 		<jsp:include page="../layout/menu.jsp" />

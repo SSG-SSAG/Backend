@@ -22,7 +22,7 @@
 								<div class="carousel-item hot-recipe-card <c:if test="${status.first }">active</c:if>" onclick="goPage(${vo.recipe_id}, '${vo.recipe_name}')">
 						      <div class="hot-recipe-img ccenter-layout" style="background-image: url(${vo.recipe_img }); no-repeat">
 						        <h5 class="hot-recipe-title">${vo.recipe_name }</h5>
-						        <div style="background-color:blue;">${vo.tags }</div>
+						        <div class="hot-recipe-tag">${vo.tags }</div>
 						      </div>
 						    </div>
 							</c:forEach>

@@ -57,10 +57,12 @@
 	        <h5>관심 태그 추가하고 레시피 추천 받으세요!</h5>
       	</c:if>
         <c:if test="${fn:length(list_tags) != 0}">
+
 				<h3>💘${currentUser.name }님의 관심 태그💘</h3>
 				<div style="display: inline-block">
+
 					<c:forEach var="vo" items="${list_tags }" varStatus="status">
-						<div class="card tag-card" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}');" style="display: inline-block; margin-left:20px;">
+						<div class="card tag-card" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}');" style="display: inline-block; margin-left:5px;">
 							<c:if test="${vo.category_name eq '종류'}">
 								<h4 style="margin: 0; color:#FF8C00;">${vo.category_name }</h4>
 							</c:if>

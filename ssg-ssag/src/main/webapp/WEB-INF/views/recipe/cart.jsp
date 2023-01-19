@@ -25,8 +25,9 @@
 	        	</c:if>
 	        	<c:if test="${fn:length(list) != 0}">
 		        	<input type="button" value="모두사라져" onclick="delAll('${currentUser.user_no}');">
+		        	<div style="display: inline-block;">
 	        		<c:forEach var="vo" items="${list }" varStatus="status">
-						<div class="card cart-card" style="display: flex; flex-direction: row;">
+						<div class="card cart-card" style="display: inline-block; margin-left:5px; width:150px;">
 							<c:if test="${vo.iisNew == true }"> 
 								<h5 style="margin: 0; background-color:#FFB6C1;">${vo.ing_name }</h5>
 								<h7 style="margin: 0;">${vo.update_date}</h7>
@@ -35,9 +36,12 @@
 								<h5 style="margin: 0;">${vo.ing_name }</h5>
 								<h7 style="margin: 0;">${vo.update_date}</h7>
 							</c:if>
-							<input id="delBtn${vo.ing_id }" type="button" value="삭제" onclick="delBtn('${currentUser.user_no}', ${vo.ing_id });">
+							
 						</div>
+						<button class="mytagdelete" style="vertical-align:top; display: inline-block; height:80px;" onclick="delBtn('${currentUser.user_no}', ${vo.ing_id });"><span></span></button>
+						<%-- <input style="margin-left:auto;" id="delBtn${vo.ing_id }" type="button" value="삭제" onclick="delBtn('${currentUser.user_no}', ${vo.ing_id });"> --%>
 					</c:forEach>
+					</div>
 	        		<input type="button" value="싹~~~~~~" onclick="ssag('${currentUser.user_no}', 1);">
 	        		<input type="button" value="냉장고로 이동" onclick="goPage(1, '${currentUser.user_no}');">
 				</c:if>

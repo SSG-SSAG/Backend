@@ -3,6 +3,7 @@ package com.shinsegae.ssgssag.recipe.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.shinsegae.ssgssag.recipe.vo.RecipeVO;
 
@@ -58,5 +59,9 @@ public interface RecipeMapper {
 	List<RecipeVO> rcpTags_page(RecipeVO vo);
 	
 	List<String> getTag(String recipe_id);
+	
+	int addone(@Param("ing_id") String ing_id, @Param("user_id") String user_id, @Param("update_date") String update_date);
+	
+	List<String> getCart(String user_id);
 }
 

@@ -7,7 +7,7 @@
 <head>
 	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
-	<link rel="stylesheet" href="/ssgssag/resources/css/refg2.css?after">
+	<link rel="stylesheet" href="/ssgssag/resources/css/refg.css">
 	<link rel="stylesheet" href="/ssgssag/resources/css/popup.css?after">
 </head>
 <body>

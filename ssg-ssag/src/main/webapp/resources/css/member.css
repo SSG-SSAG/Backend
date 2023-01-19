@@ -12,7 +12,7 @@
 .member-submit-btn {
 	width: 200px;
 	height: 40px;
-	background: rgba(163, 144, 122, 0.8);
+	background: #554635;
 	color: #ffffff;
 	margin: 1.5vh 0;
 	border: none;
@@ -20,5 +20,5 @@
 	border-radius: 4px;
 }
 .member-submit-btn:hover {
-	background: rgba(163, 144, 122, 1);
+	background: rgba(163, 144, 122, 0.8);
 }

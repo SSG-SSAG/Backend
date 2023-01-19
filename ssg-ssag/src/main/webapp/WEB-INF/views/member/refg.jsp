@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html>
@@ -23,16 +24,15 @@
 			       <a href="javascript:closePop();"><class="m_header-banner-close" width="30px" height="30px"></a>
 			     </div>
 			     <!--팝업 컨텐츠 영역-->
-			     <div class="popup_cont">
-			        <h2>재료 추가</h2>
-			        <h5>내 냉장고에 재료 추가하기~!</h5>
+			     <div class="popup_cont" style="text-align:center;">
+			        <h3>🥕🥦 재료 추가 🍚🥩</h3>
+			        <h5>내 냉장고에 있는 재료를 추가해보세요!</h5>
 			        <div id="new">
 						<form name="ingForm" action="refg_new.ssg" method="get">
 							재료명<br>
 							<input type="text" name="ing_name"><br>
-							유통기한
+							유통기한<br>
 							<input type="date" name="expire_date">
-							<input type="button" value="추가" onclick="addBtn();">
 						</form>
 					</div>
 			     </div>
@@ -44,20 +44,26 @@
 			  </div>
 			</div>
 			<div class="rfg-list-container">
-	        	<h3>${currentUser.name }님의 냉장고!</h3>
-	        	<!-- <div class="ref-list-container"> -->
-        		<c:forEach var="vo" items="${list }" varStatus="status">
-					<div class="card rfg-card" style="display: flex; flex-direction: row;">
-						<h4 style="margin: 0;">${vo.ing_name }</h4>
-						<c:if test="${vo.over eq 'true' }">
-							<h5 style="background-color:#FFB6C1">유통기한지남</h5>
-						</c:if>
-						<c:if test="${vo.over eq 'false' }">
-							<h5 style="background-color:#90EE90">${vo.remain_day }일 ${vo.remain_hour }시간</h5>
-						</c:if>
-						<input style="margin-left:auto;" type="button" value="삭제" onclick="delBtn(${vo.refg_id });">
-					</div>
-				</c:forEach>
+	        	<h3>🍴${currentUser.name }님의 냉장고🍴</h3>
+	        	<c:if test="${fn:length(list) == 0}">
+	        		<h5 style="color:#FFB6C1;">아직 냉장고에 아무 것도 없네요 😥</h5>
+	        		<h5>집에 있는 재료와 유통기한을 추가해보세요!</h5>
+	        	</c:if>
+	        	<c:if test="${fn:length(list) != 0}">
+	        		<h6>냉장고에 있는 재료로 레시피 검색해서 요리하는건 어떠세요? 😋</h6>
+	        		<c:forEach var="vo" items="${list }" varStatus="status">
+						<div class="card rfg-card" style="display: flex; flex-direction: row;">
+							<h4 style="margin: 0;">${vo.ing_name }</h4>
+							<c:if test="${vo.over eq 'true' }">
+								<h5 style="background-color:#FFB6C1">유통기한지남</h5>
+							</c:if>
+							<c:if test="${vo.over eq 'false' }">
+								<h5 style="background-color:#90EE90">${vo.remain_day }일 ${vo.remain_hour }시간</h5>
+							</c:if>
+							<input style="margin-left:auto;" type="button" value="삭제" onclick="delBtn(${vo.refg_id });">
+						</div>
+					</c:forEach>
+	        	</c:if>
 				<input id="openBtn" type="button" value="추가" onclick="openPop();" style="align-items: center;">
         	</div>
         </div>

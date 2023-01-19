@@ -43,7 +43,7 @@
 					     </div>
 			  		</div>
 				</div>
-				<div class="rfg-list-container">
+				<div class="rfg-list-container ccenter-layout">
 	        		<h3>🍴${currentUser.name }님의 냉장고🍴</h3>
 		            <c:if test="${fn:length(list) == 0}">
 			        	<h5 style="color:#FFB6C1;">아직 냉장고에 아무 것도 없네요 😥</h5>

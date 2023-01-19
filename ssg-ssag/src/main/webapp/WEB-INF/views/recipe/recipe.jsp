@@ -14,28 +14,30 @@
 	    <div class="main-container">
 	        <jsp:include page="../layout/header.jsp" />
 	        <div class="content-container ccenter-layout">
-	        		<div>
-	        			<form name="rForm" action="recipe_search.ssg" method="get">
-							<select name="sort" onchange="srch_sort()" style="width: 90px;">
-				              <option value="name" <c:if test="${recipeVO.sort == 'name' }">selected</c:if>>가나다순</option>
-				              <option value="like" <c:if test="${recipeVO.sort == 'like' }">selected</c:if>>인기순</option>
-				              <option value="level" <c:if test="${recipeVO.sort == 'level' }">selected</c:if>>난이도순</option>
-	          				</select>
-			            	<select name="type"  style="width: 70px;">
-			                	<option value="all" <c:if test="${recipeVO.type == 'all' }">selected</c:if>>전체</option>
-			                	<option value="rcp" <c:if test="${recipeVO.type == 'rcp' }">selected</c:if>>레시피</option>
-			                	<option value="ing" <c:if test="${recipeVO.type == 'ing' }">selected</c:if>>재료</option>
-			            	</select>
-							<input type="text" name="rname" value="${recipeVO.rname }" style="width: 180px;">
-							<input type="submit" value="검색">
+	        		<div class="search-form">
+	        			<form name="rForm" action="recipe_search.ssg" method="get" class="form-body">
+								<select name="sort" onchange="srch_sort()" style="width: 25%; height: 4vh; margin-bottom: 0;">
+			              <option value="name" <c:if test="${recipeVO.sort == 'name' }">selected</c:if>>가나다순</option>
+			              <option value="like" <c:if test="${recipeVO.sort == 'like' }">selected</c:if>>인기순</option>
+			              <option value="level" <c:if test="${recipeVO.sort == 'level' }">selected</c:if>>난이도순</option>
+          				</select>
+		            	<select name="type"  style="width: 20%; height: 4vh; margin-bottom: 0;">
+		                	<option value="all" <c:if test="${recipeVO.type == 'all' }">selected</c:if>>전체</option>
+		                	<option value="rcp" <c:if test="${recipeVO.type == 'rcp' }">selected</c:if>>레시피</option>
+		                	<option value="ing" <c:if test="${recipeVO.type == 'ing' }">selected</c:if>>재료</option>
+		            	</select>
+							<input type="text" name="rname" value="${recipeVO.rname }" style="width: 35%; height: 4vh; margin-bottom: 0;">
+							<input type="submit" value="검색" class="search-btn">
 							<input type="hidden" name="curpage" value="1">
 						</form>	     
 	        		</div>   	
 					<div class="recipe-list-container">
 						<c:forEach var="vo" items="${list }" varStatus="status">	<!-- request에 들어있는 아이템 -->
 							<div class="card recipe-card" onclick="goPage(${vo.recipe_id}, '${vo.recipe_name}')">
-								<h5 style="margin: 0;">${vo.recipe_name } ${vo.star }</h5>
-								<p style="text-align: right;">찜 ${vo.cnt }</p>
+								<div style="display: flex; flex-direction: row; justify-content: space-between;">
+									<h5 style="margin: 0;">${vo.recipe_name } ${vo.star }</h5>
+									<p style="text-align: right;">${vo.cnt } <i class="fa-solid fa-heart fa-lg heart"></i></p>								
+								</div>
 								<div class="recipe-desc-box">
 									<img class="rcard-img" src="${vo.recipe_img }" alt="${vo.recipe_name }" >
 									<div class="recipe-desc">

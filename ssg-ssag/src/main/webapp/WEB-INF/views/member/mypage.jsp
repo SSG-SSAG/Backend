@@ -52,7 +52,7 @@
 				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>
 				<div style="display: inline-block">
 					<c:forEach var="vo" items="${list_tags }" varStatus="status">
-						<div class="card tag-card" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}');" style="display: inline-block">
+						<div class="card tag-card" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}');" style="display: inline-block; margin-left:20px;">
 							<c:if test="${vo.category_name eq '종류'}">
 								<h4 style="margin: 0; color:#FF8C00;">${vo.category_name }</h4>
 							</c:if>
@@ -67,10 +67,11 @@
 							</c:if>
 							<h5>#${vo.tag_name }</h5>
 						</div>
-						<input id="delBtn${vo.like_tag_id }" type="button" value="삭제" onclick="delBtn(${vo.like_tag_id });">
+						<button class="mytagdelete" style="vertical-align:top; display: inline-block; height:80px;" onclick="delBtn(${vo.like_tag_id });"><span></span></button>
+						<%-- <input style="vertical-align:top; display: inline-block; height:80px" class="mytagdelete" id="delBtn${vo.like_tag_id }" type="button" value="삭제" onclick="delBtn(${vo.like_tag_id });"> --%>
 					</c:forEach>
 				</div>
-				<input type="button" value="태그추가" onclick="openPop();">
+				<input type="button" style="background-color:red; border:0px; width:100px; border-radius:15px;" value="태그추가" onclick="openPop();">
 				<div id="addTag" style="display:none">
 					<form name="tagForm" action="tag_new.ssg" method="get">
 						<select id="catBox" name="catBox" onchange="boxSelect(this)">

@@ -13,67 +13,67 @@
 </head>
 <body>
 	<div class="main-background">
-    <div class="pc-bg-left"></div>
-    <div class="main-container">
-        <jsp:include page="../layout/header.jsp" />
-        <div class="content-container">
+    	<div class="pc-bg-left"></div>
+    	<div class="main-container">
+        	<jsp:include page="../layout/header.jsp" />
+        	<div class="content-container">
         	<!-- pop up layer -->
-	    	<div class="popup_layer" id="popup_layer" style="display: none;">
-			 <div class="popup_box">
-			     <div style="height: 10px; width: 375px; float: top;">
-			       <a href="javascript:closePop();"><class="m_header-banner-close" width="30px" height="30px"></a>
-			     </div>
+	    		<div class="popup_layer" id="popup_layer" style="display: none;">
+			 		<div class="popup_box">
+			     		<div style="height: 10px; width: 375px; float: top;">
+			      			 <a href="javascript:closePop();"><class="m_header-banner-close" width="30px" height="30px"></a>
+			    		</div>
 			     <!--팝업 컨텐츠 영역-->
-			     <div class="popup_cont" style="text-align:center;">
-			        <h3>🥕🥦 재료 추가 🍚🥩</h3>
-			        <h5>내 냉장고에 있는 재료를 추가해보세요!</h5>
-			        <div id="new">
-						<form name="ingForm" action="refg_new.ssg" method="get">
-							재료명<br>
-							<input type="text" name="ing_name"><br>
-							유통기한<br>
-							<input type="date" name="expire_date">
-						</form>
-					</div>
-			     </div>
+			     		<div class="popup_cont" style="text-align:center;">
+			        		<h3>🥕🥦 재료 추가 🍚🥩</h3>
+			        		<h5>내 냉장고에 있는 재료를 추가해보세요!</h5>
+			        		<div id="new">
+								<form name="ingForm" action="refg_new.ssg" method="get">
+									재료명<br>
+									<input type="text" name="ing_name"><br>
+									유통기한<br>
+									<input type="date" name="expire_date">
+								</form>
+							</div>
+			     		</div>
 			     <!--팝업 버튼 영역-->
-			     <div class="popup_btn" style="float: bottom; margin-top: 200px;">
-			          <a href="javascript:addBtn();">추가</a>
-			          <a href="javascript:closePop();">닫기</a>
-			     </div>
-			  </div>
-			</div>
-			<div class="rfg-list-container">
-
-	        	<h3>🍴${currentUser.name }님의 냉장고🍴</h3>
-            <c:if test="${fn:length(list) == 0}">
-	        		<h5 style="color:#FFB6C1;">아직 냉장고에 아무 것도 없네요 😥</h5>
-	        		<h5>집에 있는 재료와 유통기한을 추가해보세요!</h5>
-	        	</c:if>
-            <c:if test="${fn:length(list) != 0}">
-	        		<h6>냉장고에 있는 재료로 레시피 검색해서 요리하는건 어떠세요? 😋</h6>
-	        	<div class="ref-list-container" style="display: inline-block;">
-        		<c:forEach var="vo" items="${list }" varStatus="status">
-					<div class="card rfg-card" style="display: inline-block; width:150px; margin-left:5px;">
-						<h4 style="margin: 0;">${vo.ing_name }</h4>
-						<c:if test="${vo.over eq 'true' }">
-							<h5 style="background-color:#FFB6C1">유통기한지남</h5>
-						</c:if>
-						<c:if test="${vo.over eq 'false' }">
-							<h5 style="background-color:#90EE90">${vo.remain_day }일 ${vo.remain_hour }시간</h5>
-						</c:if>
-					</div>
-					<button class="mytagdelete" style="vertical-align:top; display: inline-block; height:80px;" onclick="delBtn(${vo.refg_id})"><span></span></button>
-					<%-- <input style="margin-left:auto;" type="button" value="삭제" onclick="delBtn(${vo.refg_id });"> --%>
-				</c:forEach>
-				</c:if>
+					     <div class="popup_btn" style="float: bottom; margin-top: 200px;">
+					          <a href="javascript:addBtn();">추가</a>
+					          <a href="javascript:closePop();">닫기</a>
+					     </div>
+			  		</div>
 				</div>
-
-				<input id="openBtn" type="button" value="추가" onclick="openPop();" style="align-items: center;">
+				<div class="rfg-list-container">
+	        		<h3>🍴${currentUser.name }님의 냉장고🍴</h3>
+		            <c:if test="${fn:length(list) == 0}">
+			        	<h5 style="color:#FFB6C1;">아직 냉장고에 아무 것도 없네요 😥</h5>
+			        	<h5>집에 있는 재료와 유통기한을 추가해보세요!</h5>
+			        </c:if>
+           			<c:if test="${fn:length(list) != 0}">
+	        			<h6>냉장고에 있는 재료로 레시피 검색해서 요리하는건 어떠세요? 😋</h6>
+	        			<div style="display: inline-block;">
+	        				<c:forEach var="vo" items="${list }" varStatus="status">
+								<div class="card rfg-card" style="display: inline-block; width:150px; margin-left:5px;">
+									<h4 style="margin: 0;">${vo.ing_name }</h4>
+									<c:if test="${vo.over eq 'true' }">
+										<h5 style="background-color:#FFB6C1">유통기한지남</h5>
+									</c:if>
+									<c:if test="${vo.over eq 'false' }">
+										<h5 style="background-color:#90EE90">${vo.remain_day }일 ${vo.remain_hour }시간</h5>
+									</c:if>
+								</div>
+								<button class="mytagdelete" style="vertical-align:top; display: inline-block; height:80px;" onclick="delBtn(${vo.refg_id})"><span></span></button>
+						<%-- <input style="margin-left:auto;" type="button" value="삭제" onclick="delBtn(${vo.refg_id });"> --%>
+							</c:forEach>
+						</div>
+					</c:if>
+					<input id="openBtn" type="button" value="추가" onclick="openPop();" style="align-items: center;">
+				</div>
+				
         	</div>
-        </div>
-        <jsp:include page="../layout/menu.jsp" />
-	    </div>
+      
+        	<jsp:include page="../layout/menu.jsp" />
+	      </div>
 	    <div class="pc-bg-right"></div>
 	</div>
 </body>

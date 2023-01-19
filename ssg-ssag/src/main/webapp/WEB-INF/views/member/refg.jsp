@@ -45,9 +45,9 @@
 			</div>
 			<div class="rfg-list-container">
 	        	<h3>${currentUser.name }님의 냉장고!</h3>
-	        	<!-- <div class="ref-list-container"> -->
+	        	<div class="ref-list-container" style="display: inline-block;">
         		<c:forEach var="vo" items="${list }" varStatus="status">
-					<div class="card rfg-card" style="display: flex; flex-direction: row;">
+					<div class="card rfg-card" style="display: inline-block; width:150px; margin-left:5px;">
 						<h4 style="margin: 0;">${vo.ing_name }</h4>
 						<c:if test="${vo.over eq 'true' }">
 							<h5 style="background-color:#FFB6C1">유통기한지남</h5>
@@ -55,9 +55,12 @@
 						<c:if test="${vo.over eq 'false' }">
 							<h5 style="background-color:#90EE90">${vo.remain_day }일 ${vo.remain_hour }시간</h5>
 						</c:if>
-						<input style="margin-left:auto;" type="button" value="삭제" onclick="delBtn(${vo.refg_id });">
 					</div>
+					<button class="mytagdelete" style="vertical-align:top; display: inline-block; height:80px;" onclick="delBtn(${vo.refg_id})"><span></span></button>
+					<%-- <input style="margin-left:auto;" type="button" value="삭제" onclick="delBtn(${vo.refg_id });"> --%>
 				</c:forEach>
+				
+				</div>
 				<input id="openBtn" type="button" value="추가" onclick="openPop();" style="align-items: center;">
         	</div>
         </div>

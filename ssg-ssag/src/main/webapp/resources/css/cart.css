@@ -103,3 +103,22 @@
 	margin: 0;
 	padding: 0;
 }
+
+.mytagdelete {
+	color: white;
+	background-color: white;
+	border: 0px;
+	width: 50px;
+}
+
+.mytagdelete span:after {
+	content: "xx";	
+}
+
+.mytagdelete:hover {
+	background-color: red;
+}
+
+.mytagdelete:hover span:after {
+	content: "삭제";
+}

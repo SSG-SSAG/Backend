@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -49,27 +50,34 @@
 			  </div>
 			</div>
         	<div class="tag-list-container">
-				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>
-				<div style="display: inline-block">
-					<c:forEach var="vo" items="${list_tags }" varStatus="status">
-						<div class="card tag-card" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}');" style="display: inline-block">
-							<c:if test="${vo.category_name eq '종류'}">
-								<h4 style="margin: 0; color:#FF8C00;">${vo.category_name }</h4>
-							</c:if>
-							<c:if test="${vo.category_name eq '건강'}">
-								<h4 style="margin: 0; color:#2E8B57;">${vo.category_name }</h4>
-							</c:if>
-							<c:if test="${vo.category_name eq '테마'}">
-								<h4 style="margin: 0; color:#DB7093;">${vo.category_name }</h4>
-							</c:if>
-							<c:if test="${vo.category_name eq '조리법'}">
-								<h4 style="margin: 0; color:#F0E68C;">${vo.category_name }</h4>
-							</c:if>
-							<h5>#${vo.tag_name }</h5>
-						</div>
-						<input id="delBtn${vo.like_tag_id }" type="button" value="삭제" onclick="delBtn(${vo.like_tag_id });">
-					</c:forEach>
-				</div>
+				<c:if test="${fn:length(list_tags) == 0}">
+	        		<h2>${currentUser.name }님,</h2>
+	        		<h5 style="color:#FFB6C1;">관심 있는 태그가 없네요.</h5>
+	        		<h5>관심 태그 추가하고 레시피 추천 받으세요!</h5>
+	        	</c:if>
+	        	<c:if test="${fn:length(list_tags) != 0}">
+					<h3>${currentUser.name }님이 관심 있는 태그예요</h3>
+					<div style="display: inline-block">
+						<c:forEach var="vo" items="${list_tags }" varStatus="status">
+							<div class="card tag-card" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}');" style="display: inline-block">
+								<c:if test="${vo.category_name eq '종류'}">
+									<h4 style="margin: 0; color:#FF8C00;">${vo.category_name }</h4>
+								</c:if>
+								<c:if test="${vo.category_name eq '건강'}">
+									<h4 style="margin: 0; color:#2E8B57;">${vo.category_name }</h4>
+								</c:if>
+								<c:if test="${vo.category_name eq '테마'}">
+									<h4 style="margin: 0; color:#DB7093;">${vo.category_name }</h4>
+								</c:if>
+								<c:if test="${vo.category_name eq '조리법'}">
+									<h4 style="margin: 0; color:#F0E68C;">${vo.category_name }</h4>
+								</c:if>
+								<h5>#${vo.tag_name }</h5>
+							</div>
+							<input id="delBtn${vo.like_tag_id }" type="button" value="삭제" onclick="delBtn(${vo.like_tag_id });">
+						</c:forEach>
+					</div>
+	        	</c:if>
 				<input type="button" value="태그추가" onclick="openPop();">
 				<div id="addTag" style="display:none">
 					<form name="tagForm" action="tag_new.ssg" method="get">

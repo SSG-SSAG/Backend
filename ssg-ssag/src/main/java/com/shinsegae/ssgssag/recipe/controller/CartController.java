@@ -83,20 +83,43 @@ public class CartController {
 
 	@GetMapping(value="deleteCart.ssg")
 	public void delete(@RequestParam("no") String user_id, @RequestParam("ing_id") int ing_id, HttpServletResponse res) throws Exception {
-		boolean result = service.deleteCart(user_id, ing_id);
-		PrintWriter out = res.getWriter();
-		res.setContentType("text/html;charset=utf-8");
-		String s = "location.href='/ssgssag/cart.ssg?no=" + user_id + "';";
-		
-		if (result) {
-			out.print("<script>");
-			out.print(s);
-			out.print("</script>");
-		} else {
-			out.print("<script>");
-			out.print("alert('삭제 실패');");
-			out.print(s);
-			out.print("</script>");
+		System.out.println(ing_id);
+		if (ing_id == -1) {
+			System.out.println("hehehehehe");
+			boolean result = service.deleteAll(user_id);
+			PrintWriter out = res.getWriter();
+			res.setContentType("text/html;charset=utf-8");
+			String s = "location.href='/ssgssag/cart.ssg?no=" + user_id + "';";
+			
+			if (result) {
+				out.print("<script>");
+				out.print("alert('삭제 성공');");
+				out.print(s);
+				out.print("</script>");
+			} else {
+				out.print("<script>");
+				out.print("alert('삭제 실패');");
+				out.print(s);
+				out.print("</script>");
+			}
+		}
+		else {
+			boolean result = service.deleteCart(user_id, ing_id);
+			PrintWriter out = res.getWriter();
+			res.setContentType("text/html;charset=utf-8");
+			String s = "location.href='/ssgssag/cart.ssg?no=" + user_id + "';";
+			
+			if (result) {
+				out.print("<script>");
+				out.print("alert('삭제 성공');");
+				out.print(s);
+				out.print("</script>");
+			} else {
+				out.print("<script>");
+				out.print("alert('삭제 실패');");
+				out.print(s);
+				out.print("</script>");
+			}
 		}
 	}
 

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,6 +8,7 @@
 <head>
 	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
+	<link rel="stylesheet" href="/ssgssag/resources/css/cart.css">
 </head>
 <body>
 	
@@ -15,29 +17,31 @@
     <div class="main-container">
         <jsp:include page="../layout/header.jsp" />
         <div class="content-container">
-        	<h2>${currentUser.name }님의 장바구니</h2>
-			<table border="1">
-				<tr>
-					<td>재고</td>
-					<td>update_date</td>
-					<td></td>
-				</tr>
-				<c:forEach var="vo" items="${list }">
-					<tr>
-						<c:if test="${vo.iisNew == true }"> 
-							<td style="background-color:#FF0000">${vo.ing_name}</td>
-							<td>${vo.update_date}</td>
-						</c:if>
-						<c:if test="${vo.iisNew eq 'false' }"> 
-							<td >${vo.ing_name}</td>
-							<td>${vo.update_date}</td>
-						</c:if>
-						<td><input id="delBtn${vo.ing_id }" type="button" value="삭제" onclick="delBtn('${currentUser.user_no}', ${vo.ing_id });"></td>
-					</tr>
-				</c:forEach>
-			</table>
-      <input type="button" value="싹~~~~~~" onclick="ssag('${currentUser.user_no}', 1);">
-			<input type="button" value="냉장고로 이동" onclick="goPage(1, '${currentUser.user_no}');">
+        	<div class="cart-list-container">
+	        	<h3>${currentUser.name }님의 장바구니</h3>
+	        	<c:if test="${fn:length(list) == 0}">
+	        		<h2 style="color:#FFB6C1;">텅~</h2>
+	        		<h5>레시피 구경하고 장바구니에 싹 담아보세요~!</h5>
+	        	</c:if>
+	        	<c:if test="${fn:length(list) } != 0">
+		        	<input type="button" value="모두사라져" onclick="delAll('${currentUser.user_no}');">
+	        		<c:forEach var="vo" items="${list }" varStatus="status">
+						<div class="card cart-card" style="display: flex; flex-direction: row;">
+							<c:if test="${vo.iisNew == true }"> 
+								<h5 style="margin: 0; background-color:#FFB6C1;">${vo.ing_name }</h5>
+								<h7 style="margin: 0;">${vo.update_date}</h7>
+							</c:if>
+							<c:if test="${vo.iisNew == false }"> 
+								<h5 style="margin: 0;">${vo.ing_name }</h5>
+								<h7 style="margin: 0;">${vo.update_date}</h7>
+							</c:if>
+							<input id="delBtn${vo.ing_id }" type="button" value="삭제" onclick="delBtn('${currentUser.user_no}', ${vo.ing_id });">
+						</div>
+					</c:forEach>
+	        		<input type="button" value="싹~~~~~~" onclick="ssag('${currentUser.user_no}', 1);">
+	        		<input type="button" value="냉장고로 이동" onclick="goPage(1, '${currentUser.user_no}');">
+				</c:if>
+        	</div>
 		</div>
 		<jsp:include page="../layout/menu.jsp" />
 	</div>
@@ -74,6 +78,21 @@ function delBtn(no, id){
 	}).then((result) =>{
 		if(result.value) {
 			location.href="deleteCart.ssg?no=" + no + "&ing_id=" + id;
+		}
+	});
+}
+
+function delAll(no) {
+	new swal({
+		title : '다지워~!!!~!',
+		text : '다 지운다???? 신중히 선택해',
+		icon : 'question',
+		confirmButtonText: '삭제',
+		cancelButtonText: '취소',
+		showCancelButton: true
+	}).then((result) =>{
+		if(result.value) {
+			location.href="deleteCart.ssg?no=" + no + "&ing_id=-1";
 		}
 	});
 }

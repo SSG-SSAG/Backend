@@ -99,6 +99,52 @@
 .popup_box .popup_btn a.close_day:before, .popup_box .popup_btn a.close_day:after{
 	display:none;
 }
+.popup_box .popup_btn button {
+	position: relative;
+	display: table-cell;
+	height:70px;
+	font-size:17px;
+	text-align:center;
+	vertical-align:middle;
+	text-decoration:none;
+	background:#ECECEC;
+}
+.popup_box .popup_btn button:before{
+	content:'';
+	display:block;
+	position:absolute;
+	top:26px;
+	right:29px;
+	width:1px;
+	height:21px;
+	background:#fff;
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+.popup_box .popup_btn button:after{
+	content:'';
+	display:block;
+	position:absolute;
+	top:26px;
+	right:29px;
+	width:1px;
+	height:21px;
+	background:#fff;
+	-moz-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.popup_box .popup_btn button:after.close_day {
+	background:#5d5d5d;
+}
+.popup_box .popup_btn button:after.close_day:before, .popup_box .popup_btn a.close_day:after{
+	display:none;
+}
 
 /*오버레이 뒷배경*/
 .popup_overlay{

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width">
 <head>
 	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
-	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
+	<link rel="stylesheet" href="/ssgssag/resources/css/mypage.css">
 	<link rel="stylesheet" href="/ssgssag/resources/css/member.css?after">
 	<link rel="stylesheet" href="/ssgssag/resources/css/popup.css?after">
 </head>
@@ -24,8 +24,49 @@
 			     </div>
 			     <!--팝업 컨텐츠 영역-->
 			     <div class="popup_cont">
-			         <h5>관심 태그 추가</h5>
+			         <h2>관심 태그 추가</h2>
+			         <h5>관심 태그 설정 후 추천 레시피 보러 가기</h5>
 			         <form id="tagForm" name="tagForm" action="tag_new.ssg" method="get">
+						<select id="catBox" name="catBox" onchange="boxSelect(this)">
+							<option value="cat">관심 카테고리를 선택하세요!</option>
+							<option value="option">종류</option>
+							<option value="health">건강</option>
+							<option value="theme">테마</option>
+							<option value="cook">조리법</option>
+						</select>
+						<select id="tagBox" name="tag_name">
+							<option>관심 있는 #태그를 선택해주세요</option>
+						</select>
+						<input type="hidden" name="user_no" value="${currentUser.user_no }">
+					</form>
+			     </div>
+			     <!--팝업 버튼 영역-->
+			     <div class="popup_btn" style="float: bottom; margin-top: 200px;">
+			          <a href="javascript:addBtn();">추가</a>
+			          <!-- <button onclick="addBtn()"></button> -->
+			          <a href="javascript:closePop();">닫기</a>
+			     </div>
+			  </div>
+			</div>
+        	<div class="tag-list-container">
+				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>
+				<c:forEach var="vo" items="${list_tags }" varStatus="status">
+					<div class="card step-card" style="display: flex; flex-direction: row;">
+						<div class="step-card-body">
+							<p class="step-desc-p">${vo.category_name }&nbsp;&nbsp;</p>
+							<p class="step-desc-p">#${vo.tag_name }&nbsp;</p>
+							<p class="step-desc-p">
+								<input id="rcpBtn" type="button" value="레시피 보러가기" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}');">
+							</p>
+							<p class="step-desc-p">
+								<input id="delBtn${vo.like_tag_id }" type="button" value="삭제" onclick="delBtn(${vo.like_tag_id });">
+							</p>
+						</div>
+					</div>
+				</c:forEach>	
+				<input type="button" value="태그추가" onclick="openPop();">
+				<div id="addTag" style="display:none">
+					<form name="tagForm" action="tag_new.ssg" method="get">
 						<select id="catBox" name="catBox" onchange="boxSelect(this)">
 							<option value="cat">관심 카테고리를 선택하세요!</option>
 							<option value="option">종류</option>
@@ -39,14 +80,8 @@
 						<input id="addBtn" type="button" value="추가">
 						<input type="hidden" name="user_no" value="${currentUser.user_no }">
 					</form>
-			     </div>
-			     <!--팝업 버튼 영역-->
-			     <div class="popup_btn" style="float: bottom; margin-top: 200px;">
-			          <a href="javascript:closePop();">닫기</a>
-			      </div>
-			  </div>
-			</div>
-        	
+				</div>
+        	</div>
         	<div>
 				<h3>회원 정보 수정</h3>	
 				<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
@@ -54,46 +89,6 @@
         	<div>        	
 				<h3>장바구니</h3>	
 				<input type="button" value="장바구니" onclick="goPage(5, ${currentUser.user_no});">
-        	</div>
-        	<div>
-			<table border="1">
-				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>	
-				<tr>
-					<td></td>
-					<td>카테고리</td>
-					<td>#관심태그</td>
-					<td></td>
-					<td></td>
-				</tr>
-				<c:forEach var="vo" items="${list_tags }" varStatus="status">
-					<tr>
-						<td>${status.count}</td>
-						<td>${vo.category_name }</td>
-						<td>${vo.tag_name }</td>
-						<td><button onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}')">레시피 보러가기</button></td>
-						<!-- id는 동적으로 만들어야 적용됨!!! -->
-						<td><button id="delBtn${vo.like_tag_id}" onclick="delBtn(${vo.like_tag_id });">삭제</button></td>
-					</tr>
-				</c:forEach>
-			</table>
-
-			<input type="button" value="태그추가" onclick="openPop();">
-			<div id="addTag" style="display:none">
-				<form name="tagForm" action="tag_new.ssg" method="get">
-					<select id="catBox" name="catBox" onchange="boxSelect(this)">
-						<option value="cat">관심 카테고리를 선택하세요!</option>
-						<option value="option">종류</option>
-						<option value="health">건강</option>
-						<option value="theme">테마</option>
-						<option value="cook">조리법</option>
-					</select>
-					<select id="tagBox" name="tag_name">
-						<option>관심 있는 #태그를 선택해주세요</option>
-					</select>
-					<input id="addBtn" type="button" value="추가">
-					<input type="hidden" name="user_no" value="${currentUser.user_no }">
-				</form>
-			</div>
         	</div>
 		</div>
 		<jsp:include page="../layout/menu.jsp" />
@@ -157,6 +152,24 @@ function boxSelect(cat){
 	}
 }
 
+function addBtn(){
+	console.log('팝업');
+	document.getElementById("popup_layer").style.display = "none";
+	new swal({
+		title : '관심 태그 추가',
+		text : '관심 태그에 추가하시겠어요?',
+		icon : 'question',
+		confirmButtonText: '추가',
+		cancelButtonText: '취소',
+		showCancelButton: true
+	}).then((result) => {
+		if(result.value) {
+			const form = document.getElementById('tagForm');
+			form.submit();
+		}
+	});
+}
+
 function delBtn(id){
 	console.log('태그 삭제');
 	new swal({
@@ -175,7 +188,7 @@ function delBtn(id){
 
 $(document).ready(function (){
 	
-	$("#addBtn").on("click", function(){
+	/* $("#addBtn").on("click", function(){
 		console.log('팝업');
 		document.getElementById("popup_layer").style.display = "none";
 		new swal({
@@ -191,7 +204,7 @@ $(document).ready(function (){
 				form.submit();
 			}
 		});
-	});
+	}); */
 });
 
 </script>

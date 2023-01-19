@@ -16,6 +16,7 @@
         <jsp:include page="../layout/header.jsp" />
         <div class="content-container">
         	<h2>${currentUser.name }님의 장바구니</h2>
+        	<input type="button" value="모두사라져" onclick="delAll('${currentUser.user_no}');">
 			<table border="1">
 				<tr>
 					<td>재고</td>
@@ -74,6 +75,21 @@ function delBtn(no, id){
 	}).then((result) =>{
 		if(result.value) {
 			location.href="deleteCart.ssg?no=" + no + "&ing_id=" + id;
+		}
+	});
+}
+
+function delAll(no) {
+	new swal({
+		title : '다지워~!!!~!',
+		text : '다 지운다???? 신중히 선택해',
+		icon : 'question',
+		confirmButtonText: '삭제',
+		cancelButtonText: '취소',
+		showCancelButton: true
+	}).then((result) =>{
+		if(result.value) {
+			location.href="deleteCart.ssg?no=" + no + "&ing_id=-1";
 		}
 	});
 }

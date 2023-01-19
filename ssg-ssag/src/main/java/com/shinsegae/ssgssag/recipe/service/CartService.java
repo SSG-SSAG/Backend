@@ -48,4 +48,10 @@ public class CartService {
 		}
 		return false;
 	}
+	
+	public boolean deleteAll(String user_id) {
+		int r = mapper.deleteAll(user_id);
+		System.out.println(r);
+		return true;
+	}
 }

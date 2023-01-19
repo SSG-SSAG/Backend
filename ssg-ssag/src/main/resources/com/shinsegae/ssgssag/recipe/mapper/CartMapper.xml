@@ -28,4 +28,8 @@
 		WHERE ing_id = #{ing_id}
 		AND user_no = #{user_id}
 	</delete>	
+	
+	<delete id="deleteAll" parameterType="String">
+		DELETE FROM cart WHERE user_no = #{a}
+	</delete>
 </mapper>

@@ -7,14 +7,19 @@
 <head>
 	<jsp:include page="/WEB-INF/views/layout/import_head.jsp"/>
 	<link rel="stylesheet" href="/ssgssag/resources/css/recipe.css">
+	<link rel="stylesheet" href="/ssgssag/resources/css/recipe-tag.css">
+	
 </head>
 <body>
 <div class="main-background">
     <div class="pc-bg-left"></div>
     <div class="main-container">
-        <jsp:include page="../layout/header.jsp" />
+        <jsp:include page="../layout/headerBack.jsp" />
         <div class="content-container ccenter-layout">
-			<h3>${param.category_name}별 검색 </h3><h2 style="color: #F00FF0"> #${recipeVO.tag_name} 레시피 모음 </h2>
+        <div class="tag-title-container">
+        	<div class="upper-tag"><h4>#${param.category_name}</h4></div>
+        	<div class="main-tag"><h3 class="detail-tag-title"> #${recipeVO.tag_name} </h3></div>
+        </div>
 			<form name="rForm" action="recipe_tag.ssg" method="get">
 				<!-- 정렬 기준 -->
 				<select name="sort" onchange="srch_sort()">
@@ -27,14 +32,12 @@
 				<input type="hidden" name="cat" value="${recipeVO.cat }">
 				<input type="hidden" name="category_name" value="${recipeVO.category_name }">
 			</form>
-			
-			<input type="button" value="다시 선택" onclick="goPage(3, ${param.cat}, '${param.category_name}')">
-			
+						
 			<div class="recipe-list-container">
 				<c:forEach var="vo" items="${list_tag }" varStatus="status">	<!-- request에 들어있는 아이템 -->
 				<div class="card recipe-card" onclick="goPage(2, ${vo.recipe_id}, '${vo.recipe_name}')">
 					<h5 style="margin: 0;">${vo.recipe_name } ${vo.star }</h5>
-					<p style="text-align: right;">찜 ${vo.cnt }</p>
+					<p style="text-align: right;">${vo.cnt } <i class="fa-solid fa-heart fa-lg heart"></i></p>
 					<div class="recipe-desc-box">
 						<img class="rcard-img" src="${vo.recipe_img }" alt="${vo.recipe_name }" >
 						<div class="recipe-desc">

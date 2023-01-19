@@ -20,8 +20,6 @@
 					<div class="mb-3">
 			            <label for="inputId" class="form-label">아이디</label>
 			            <input type="text" class="form-control" name="id">
-			            <span class="id_input_check1">사용 가능한 아이디입니다</span>
-			            <span class="id_input_check2">사용 중인 아이디입니다</span>
 		          	</div>
 					<div class="mb-3">
 					  	<label for="inputPwd" class="form-label">비밀번호</label>

@@ -4,10 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <div class="header">
-	<div>
-		<a href="/ssgssag/">
-		<img class="header-logo" src="/ssgssag/resources/img/ssg-ssag-logo.png" />
-		</a>
+	<div onclick="javascript:history.back();" style="padding-left: 0.5vw;">
+		<i class="fa-solid fa-chevron-left fa-xl cart"></i>
 	</div>
 	<div>
 		<c:if test="${not empty currentUser }">

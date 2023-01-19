@@ -28,9 +28,15 @@
 }
 
 .hot-recipe-title {
-
 	color: #ffffff;
   /* -webkit-text-stroke: 1px #000;*/
+}
+
+.hot-recipe-tag {
+	background: black;
+	padding: 4px;
+	border-radius: 5px;
+	color: #ffffff;
 }
 
 
@@ -57,6 +63,7 @@
 	cursor: pointer;
 	color: #ffffff;
 	font-size: 1rem;
+	font-weight: bold;
 }
 
 .main-tag-card:hover {

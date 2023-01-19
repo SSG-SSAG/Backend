@@ -23,7 +23,7 @@
 	        		<h2 style="color:#FFB6C1;">텅~</h2>
 	        		<h5>레시피 구경하고 장바구니에 싹 담아보세요~!</h5>
 	        	</c:if>
-	        	<c:if test="${fn:length(list) } != 0">
+	        	<c:if test="${fn:length(list) != 0}">
 		        	<input type="button" value="모두사라져" onclick="delAll('${currentUser.user_no}');">
 	        		<c:forEach var="vo" items="${list }" varStatus="status">
 						<div class="card cart-card" style="display: flex; flex-direction: row;">

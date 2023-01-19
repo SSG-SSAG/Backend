@@ -38,7 +38,7 @@
 					</div>
 				</div>
 				<div class="main-tag-container">
-					<h4 class="home-recipe-title">#태그별로 쓱!</h4>
+					<h4 class="home-recipe-title">#태그별로 쓱! 👀</h4>
 					<div class="main-tag-grid">
 						<div class="main-tag-card tag-1" onclick="goTag(1, '종류');">종류</div>
 						<div class="main-tag-card tag-2" onclick="goTag(2, '건강');">건강</div>

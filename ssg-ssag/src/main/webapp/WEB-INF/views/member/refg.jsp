@@ -33,27 +33,6 @@
 						</div>
 					</div>
 				</c:forEach>
-				
-				<%-- <table border="1">
-					<tr>
-						<td>재료명</td>
-						<td colspan="2"> 남은 기한</td>
-					</tr>
-					<c:forEach var="vo" items="${list }">
-					<tr>
-						<td>${vo.ing_name }</td>
-						<c:if test="${vo.over eq 'true' }"><td  style="background-color:#FF0000">
-						유통기한지남
-						</td></c:if>
-						<c:if test="${vo.over eq 'false' }"><td  style="background-color:#008000">
-						${vo.remain_day }일 ${vo.remain_hour } 시간
-						</td></c:if>
-						<td>
-							<input id="delBtn${vo.refg_id }" type="button" value="삭제" onclick="delBtn(${vo.refg_id });">
-						</td>
-					</tr>
-					</c:forEach>
-				</table> --%>
 				<input type="button" value="추가" onclick="show();">
 				<div id="new" style="display:none">
 					<form name="ingForm" action="refg_new.ssg" method="get">

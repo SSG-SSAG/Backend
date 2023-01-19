@@ -2,12 +2,16 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
 
 div {
-	font-family: Pretendard;
+	font-family: 'Pretendard-regular';
 }
 
 /* 전체 레이아웃 */
 body {
 	background: #554635;
+}
+
+p {
+    margin-bottom: 0;
 }
 
 .main-background {
@@ -59,13 +63,14 @@ body {
 /* ============================================== */
 /* ================== 반응형 CSS ================== */
 /* [데스크탑] width가 1024px이상일 때 */
-@media screen and (min-width: 1024px){  
-	h4 {
-		font-size: 2vw;
-	}
-	h5 {
-		font-size: 1.8vw;
-	}
+@media screen and (min-width: 1024px){
+    /*
+    h4 {
+        font-size: 1.5rem;
+    }
+    h5 {
+        font-size: 1.2rem;
+    }*/
 }
 
 /* [태블릿] width가 1024px이하일 때 */
@@ -87,13 +92,14 @@ body {
    .main-container {
       width: 470px;
       height: 100vh;
-   }   
+   }
+   /*
    h4 {
-   	 font-size: 2.2vw;
+   	 font-size: 1.5rem;
    }
    h5 {
-   	 font-size: 2vw;
-   }
+   	 font-size: 1.2rem;
+   }*/
 }
 
 
@@ -106,13 +112,14 @@ body {
     width: 100vw;
     height: 100vh;    
   }
+  /*
   h4 {
  		font-size: 4vw;
   }
   
   h5 {
   	font-size: 3.5vw;
-  }
+  }*/
 }
 
 @media screen and (max-width: 470px){
@@ -124,6 +131,8 @@ body {
     min-width: 100vw;
     height: 100vh;    
   }
+
+  /*
   h4 {
  		font-size: 4vw;
   }
@@ -131,5 +140,6 @@ body {
   h5 {
   	font-size: 3.5vw;
   }
+  */
 }
 

@@ -18,9 +18,9 @@
         <jsp:include page="../layout/header.jsp" />
         <div class="content-container">
         	<div class="cart-list-container">
-	        	<h3>${currentUser.name }님의 장바구니</h3>
+	        	<h3>🛒${currentUser.name }님의 장바구니🛒</h3>
 	        	<c:if test="${fn:length(list) == 0}">
-	        		<h2 style="color:#FFB6C1;">텅~</h2>
+	        		<h5 style="color:#FFB6C1;">아직 장바구니에 아무 것도 없네요 😥</h5>
 	        		<h5>레시피 구경하고 장바구니에 싹 담아보세요~!</h5>
 	        	</c:if>
 	        	<c:if test="${fn:length(list) != 0}">

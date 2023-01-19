@@ -24,19 +24,19 @@
 			       <a href="javascript:closePop();"><class="m_header-banner-close" width="30px" height="30px"></a>
 			     </div>
 			     <!--팝업 컨텐츠 영역-->
-			     <div class="popup_cont">
-			         <h2>관심 태그 추가</h2>
-			         <h5>관심 태그 설정 후 추천 레시피 보러 가기</h5>
+			     <div class="popup_cont" style="text-align:center;">
+			         <h3>🙌 관심 태그 추가 🙌</h3>
+			         <h5>관심 태그 설정하고 추천 레시피 구경해보세요!</h5>
 			         <form id="tagForm" name="tagForm" action="tag_new.ssg" method="get">
 						<select id="catBox" name="catBox" onchange="boxSelect(this)">
-							<option value="cat">관심 카테고리를 선택하세요!</option>
+							<option value="cat">관심 있는 카테고리 선택</option>
 							<option value="option">종류</option>
 							<option value="health">건강</option>
 							<option value="theme">테마</option>
 							<option value="cook">조리법</option>
 						</select>
 						<select id="tagBox" name="tag_name">
-							<option>관심 있는 #태그를 선택해주세요</option>
+							<option>관심 있는 #태그 선택</option>
 						</select>
 						<input type="hidden" name="user_no" value="${currentUser.user_no }">
 					</form>
@@ -51,14 +51,16 @@
 			</div>
         	<div class="tag-list-container">
 
-          <c:if test="${fn:length(list_tags) == 0}">
-        <h2>${currentUser.name }님,</h2>
-        <h5 style="color:#FFB6C1;">관심 있는 태그가 없네요.</h5>
-        <h5>관심 태그 추가하고 레시피 추천 받으세요!</h5>
-      </c:if>
+        <c:if test="${fn:length(list_tags) == 0}">
+	        <h3>💘${currentUser.name }님의 관심 태그💘</h3>
+	        <h5 style="color:#FFB6C1;">아직 관심 태그에 아무 것도 없네요 😥</h5>
+	        <h5>관심 태그 추가하고 레시피 추천 받으세요!</h5>
+      	</c:if>
         <c:if test="${fn:length(list_tags) != 0}">
-				<h3>${currentUser.name }님이 관심 있는 태그예요</h3>
-				<div style="display: inline-block" >
+
+				<h3>💘${currentUser.name }님의 관심 태그💘</h3>
+				<div style="display: inline-block">
+
 					<c:forEach var="vo" items="${list_tags }" varStatus="status">
 						<div class="card tag-card" onclick="goPage(2, ${vo.tag_id}, '${vo.tag_name}', ${vo.category_id }, '${vo.category_name}');" style="display: inline-block; margin-left:5px;">
 							<c:if test="${vo.category_name eq '종류'}">
@@ -98,10 +100,10 @@
 					</form>
 				</div>
         	</div>
-        	<div style="align-items: center;">
+        	<%-- <div style="align-items: center;">
 				<h3>회원 정보 수정</h3>	
 				<input type="button" value="회원 정보 수정" onclick="goPage(4, ${currentUser.user_no});">
-        	</div>
+        	</div> --%>
 		</div>
 		<jsp:include page="../layout/menu.jsp" />
 	    </div>

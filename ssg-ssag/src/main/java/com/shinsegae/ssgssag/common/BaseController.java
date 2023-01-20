@@ -12,7 +12,7 @@ public class BaseController {
 		res.setContentType("text/html; charset=utf-8;");
 		PrintWriter out = res.getWriter();
 		out.print("<script>");
-		out.print("alert('"+msg+"');");
+//		out.print("alert('"+msg+"');");
 		out.print("location.href='"+url+"';");
 		out.print("</script>");
 	}

@@ -24,7 +24,7 @@
 			       <a href="javascript:closePop();"><class="m_header-banner-close" width="30px" height="30px"></a>
 			     </div>
 			     <!--팝업 컨텐츠 영역-->
-			     <div class="popup_cont" style="text-align:center;">
+			     <div class="popup_cont">
 			         <h3>🙌 관심 태그 추가 🙌</h3>
 			         <h5>관심 태그 설정하고 추천 레시피 구경해보세요!</h5>
 			         <form id="tagForm" name="tagForm" action="tag_new.ssg" method="get">
@@ -42,10 +42,13 @@
 					</form>
 			     </div>
 			     <!--팝업 버튼 영역-->
-			     <div class="popup_btn" style="float: bottom; margin-top: 200px;">
-			          <a href="javascript:addBtn();">추가</a>
-			          <!-- <button onclick="addBtn()"></button> -->
-			          <a href="javascript:closePop();">닫기</a>
+			     <div class="popup-btn-contatiner" style="float: bottom; margin-top: 200px;">
+			     		<div class="popup-add">
+			          <a href="javascript:addBtn();"><h4>추가</h4></a>
+			     		</div>
+			     		<div class="popup-close">
+			          <a href="javascript:closePop();" class="popup-close"><h4>닫기</h4></a>
+			     		</div>
 			     </div>
 			  </div>
 			</div>
@@ -78,11 +81,10 @@
 							<h5>#${vo.tag_name }</h5>
 						</div>
 						<button class="mytagdelete" style="vertical-align:top; display: inline-block; height:80px;" onclick="delBtn(${vo.like_tag_id });"><span></span></button>
-						<%-- <input style="vertical-align:top; display: inline-block; height:80px" class="mytagdelete" id="delBtn${vo.like_tag_id }" type="button" value="삭제" onclick="delBtn(${vo.like_tag_id });"> --%>
 					</c:forEach>
 				</div>
         </c:if>
-				<input type="button" style="background-color:red; border:0px; width:100px; border-radius:15px;" value="태그추가" onclick="openPop();">
+				<button class="add-tag-btn" onclick="openPop();"><h4>태그 추가</h4></button>
 				<div id="addTag" style="display:none">
 					<form name="tagForm" action="tag_new.ssg" method="get">
 						<select id="catBox" name="catBox" onchange="boxSelect(this)">
@@ -95,7 +97,7 @@
 						<select id="tagBox" name="tag_name">
 							<option>관심 있는 #태그를 선택해주세요</option>
 						</select>
-						<input id="addBtn" type="button" value="추가">
+						<button id="addBtn" class="add-tag-btn">추가</button>
 						<input type="hidden" name="user_no" value="${currentUser.user_no }">
 					</form>
 				</div>

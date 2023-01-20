@@ -37,13 +37,17 @@
 							</div>
 			     		</div>
 			     <!--팝업 버튼 영역-->
-					     <div class="popup_btn" style="float: bottom; margin-top: 200px;">
-					          <a href="javascript:addBtn();">추가</a>
-					          <a href="javascript:closePop();">닫기</a>
-					     </div>
+					     <div class="popup-btn-contatiner" style="float: bottom; margin-top: 200px;">
+			     		<div class="popup-add">
+			          <a href="javascript:addBtn();"><h4>추가</h4></a>
+			     		</div>
+			     		<div class="popup-close">
+			          <a href="javascript:closePop();" class="popup-close"><h4>닫기</h4></a>
+			     		</div>
+			     </div>
 			  		</div>
 				</div>
-				<div class="rfg-list-container ccenter-layout">
+				<div class="rfg-list-container">
 	        		<h3>🍴${currentUser.name }님의 냉장고🍴</h3>
 		            <c:if test="${fn:length(list) == 0}">
 			        	<h5 style="color:#FFB6C1;">아직 냉장고에 아무 것도 없네요 😥</h5>
@@ -51,9 +55,9 @@
 			        </c:if>
            			<c:if test="${fn:length(list) != 0}">
 	        			<h6>냉장고에 있는 재료로 레시피 검색해서 요리하는건 어떠세요? 😋</h6>
-	        			<div style="display: inline-block;">
+	        			<div class="rfg-box-container">
 	        				<c:forEach var="vo" items="${list }" varStatus="status">
-								<div class="card rfg-card" style="display: inline-block; width:150px; margin-left:5px;">
+										<div class="card rfg-card" style="display: inline-block; width:150px; margin-left:5px;">
 									<h4 style="margin: 0;">${vo.ing_name }</h4>
 									<c:if test="${vo.over eq 'true' }">
 										<h5 style="background-color:#FFB6C1">유통기한지남</h5>
@@ -67,7 +71,11 @@
 							</c:forEach>
 						</div>
 					</c:if>
-					<input id="openBtn" type="button" value="추가" onclick="openPop();" style="align-items: center;">
+				</div>
+				<div class="rcenter-layout" style="margin-top: 2vh;">
+					<button id="openBtn" onclick="openPop();" style="align-items: center;" class="cart-add-btn">
+						<h4>추가</h4>
+					</button>				
 				</div>
 				
         	</div>

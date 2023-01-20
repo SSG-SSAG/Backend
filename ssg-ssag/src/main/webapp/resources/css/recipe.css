@@ -254,9 +254,7 @@
 
 .ing-list-container {
 	width: 100%;
-	height: 56vh;
-	padding-top: 2vh;
-	margin-top: 2vh;
+	height: 57vh;
 	overflow-y: scroll;
 	display: flex;
 	flex-direction: column;
@@ -292,6 +290,33 @@
 	font-size: 1rem;
 	display: flex;
 	flex-direction: row;
+}
+
+.ing-list-card-body {
+	width: 80%;
+	padding-left: 10%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ing-ssg-btn {
+	background: #fdbe00;
+	border-radius: 50%;
+	border: none;
+	font-size: 1rem;
+	padding: 1.8vh 1vw;
+	font-weight: Bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.ing-name {
+	margin-bottom: 0;
+	font-size: 1rem;
 }
 
 /* [모바일] width가 768px이하일 때 */

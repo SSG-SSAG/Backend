@@ -22,3 +22,21 @@
 .member-submit-btn:hover {
 	background: rgba(163, 144, 122, 0.8);
 }
+
+.member-input-box {
+	height: 3vh;
+}
+
+.add-tag-btn {
+	background: #fdbe00;
+	color: #ffffff;
+	width: 10vw;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 2px 2px 2px rgba(163, 144, 122, 0.5);
+	margin-top: 4vh;
+}
+
+.add-tag-btn:hover {
+	opacity: 0.8;
+}

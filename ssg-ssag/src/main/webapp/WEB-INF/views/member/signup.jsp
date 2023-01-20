@@ -29,12 +29,8 @@
 			            <label for="inputName" class="form-label">이름</label>
 			            <input type="text" class="form-control" name="name">
 			        </div>
-			        <div class="mb-3">
-			            <label for="inputNickname" class="form-label">닉네임</label>
-			            <input type="text" class="form-control" name="nickname">
-			        </div>
 			        <div class="mb-3 rcenter-layout" style="justify-content: space-between;">
-			            <div>
+			            <!--  <div>
 			                <input class="form-check-input" type="radio" name="gender" value="2">
 			                <label class="form-check-label" for="gender">
 			                    여자
@@ -43,7 +39,7 @@
 			                <label class="form-check-label" for="gender">
 			                    남자
 			                </label>				  		
-			            </div>
+			            </div>  -->
 			            <div>
 			                <label for="inputDate" class="form-label">생년월일</label>
 			                <input type="date" name="birth_date">				  		

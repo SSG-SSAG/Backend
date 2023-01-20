@@ -93,12 +93,12 @@ public class CartController {
 			
 			if (result) {
 				out.print("<script>");
-				out.print("alert('삭제 성공');");
+//				out.print("alert('삭제 성공');");
 				out.print(s);
 				out.print("</script>");
 			} else {
 				out.print("<script>");
-				out.print("alert('삭제 실패');");
+//				out.print("alert('삭제 실패');");
 				out.print(s);
 				out.print("</script>");
 			}
@@ -111,12 +111,12 @@ public class CartController {
 			
 			if (result) {
 				out.print("<script>");
-				out.print("alert('삭제 성공');");
+//				out.print("alert('삭제 성공');");
 				out.print(s);
 				out.print("</script>");
 			} else {
 				out.print("<script>");
-				out.print("alert('삭제 실패');");
+//				out.print("alert('삭제 실패');");
 				out.print(s);
 				out.print("</script>");
 			}

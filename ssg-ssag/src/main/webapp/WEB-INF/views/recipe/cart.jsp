@@ -27,20 +27,21 @@
 		        	<button class="deleteall-btn" onclick="delAll('${currentUser.user_no}');">
 		        		<h5>전체 삭제</h5>
 		        	</button>
-		        	<div style="display: inline-block;" class="cart-list-container">
-	        		<c:forEach var="vo" items="${list }" varStatus="status">
-						<div class="card cart-card" style="display: inline-block; margin-left:5px; width:150px;">
-							<c:if test="${vo.iisNew == true }"> 
-								<h5 class="ing-name">${vo.ing_name }</h5>
-							</c:if>
-							<c:if test="${vo.iisNew == false }"> 
-								<h5 style="margin: 0;">${vo.ing_name }</h5>
-							</c:if>
-							
-						</div>
-						<button class="mytagdelete" style="vertical-align:top; display: inline-block; height:80px;" onclick="delBtn('${currentUser.user_no}', ${vo.ing_id });"><span></span></button>
-					</c:forEach>
-					</div>
+		        	<div class="cart-list-container">
+	        			<c:forEach var="vo" items="${list }" varStatus="status">
+		        			<div class="cart-card-box">
+										<div class="card cart-card">
+											<c:if test="${vo.iisNew == true }"> 
+												<h5 class="ing-name">${vo.ing_name }</h5>
+											</c:if>
+											<c:if test="${vo.iisNew == false }"> 
+												<h5 style="margin: 0;">${vo.ing_name }</h5>
+											</c:if>
+										</div>
+										<button class="item-delete" onclick="delBtn('${currentUser.user_no}', ${vo.ing_id });"><span></span></button>
+									</div>
+								</c:forEach>
+							</div>
 	        		<button class="ssag-pay-btn" onclick="ssag('${currentUser.user_no}', 1);">
 	        		<h4>싹- 담아서 결제</h4>
 	        		</button>

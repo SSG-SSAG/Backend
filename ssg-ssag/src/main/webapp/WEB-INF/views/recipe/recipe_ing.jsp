@@ -27,7 +27,7 @@
                   </c:forEach>
                </div>        	
              </div>	
-             <i id="like-heart" class="fa-heart fa-regular fa-lg"></i>
+             <!-- <i id="like-heart" class="fa-heart fa-regular fa-lg"></i> -->
             </div>
             <div class="rcenter-layout">
              <img class="step-recipe-card-img" src="${list_des.recipe_img }" alt="${recipeVO.recipe_name }" >
@@ -62,36 +62,36 @@
 				</c:if>
 				</div>     
         <div class="ing-list-container" >
-					<c:forEach var="vo" items="${list_notmine }" varStatus="status">
-						<div class="card step-card" style="display: flex; flex-direction: row;">
-							<div class="step-card-body">
-						    <p class="step-desc-p">${vo.ing_name}</p>
-						    <c:if test="${not empty currentUser.user_no}">
-						    	<button onclick="ssgone('${vo.ing_id}', '${currentUser.user_no }','${recipeVO.recipe_id  }','${recipeVO.recipe_name  }');">쓱</button>				
-								</c:if>
-							</div>
-						</div>
-					</c:forEach>
-					<c:forEach var="vo" items="${list_incart }" varStatus="status">
-						<div class="card step-card" style="display: flex; flex-direction: row; background:green;">
-							<div class="step-card-body">
-						    <p class="step-desc-p">${vo.ing_name}</p>
-						    <c:if test="${not empty currentUser.user_no}">
-						    	<p class="step-desc-p">(카트)</p>							
-								</c:if>
-							</div>
-						</div>
-					</c:forEach>
-					<c:forEach var="vo" items="${list_mine }" varStatus="status">
-						<div class="card step-card" style="display: flex; flex-direction: row; background:green;">
-							<div class="step-card-body">
-						    <p class="step-desc-p">${vo.ing_name}</p>
-						    <c:if test="${not empty currentUser.user_no}">
-						    	<p class="step-desc-p">(보유)</p>							
-								</c:if>
-							</div>
-						</div>
-					</c:forEach>
+			<c:forEach var="vo" items="${list_notmine }" varStatus="status">
+				<div class="card step-card" style="display: flex; flex-direction: row;">
+					<div class="step-card-body">
+				    <p class="step-desc-p">${vo.ing_name}</p>
+				    <c:if test="${not empty currentUser.user_no}">
+				    	<button onclick="ssgone('${vo.ing_id}', '${currentUser.user_no }','${recipeVO.recipe_id  }','${recipeVO.recipe_name  }');">쓱</button>				
+						</c:if>
+					</div>
+				</div>
+			</c:forEach>
+			<c:forEach var="vo" items="${list_incart }" varStatus="status">
+				<div class="card step-card" style="display: flex; flex-direction: row; background:#FFFACD;">
+					<div class="step-card-body">
+				    <p class="step-desc-p">${vo.ing_name}</p>
+				    <c:if test="${not empty currentUser.user_no}">
+				    	<p class="step-desc-p">(카트)</p>							
+						</c:if>
+					</div>
+				</div>
+			</c:forEach>
+			<c:forEach var="vo" items="${list_mine }" varStatus="status">
+				<div class="card step-card" style="display: flex; flex-direction: row; background:#FFFACD;">
+					<div class="step-card-body">
+				    <p class="step-desc-p">${vo.ing_name}</p>
+				    <c:if test="${not empty currentUser.user_no}">
+				    	<p class="step-desc-p">(보유)</p>							
+						</c:if>
+					</div>
+				</div>
+			</c:forEach>
          </div>
        </div>
        <jsp:include page="../layout/menu.jsp" />

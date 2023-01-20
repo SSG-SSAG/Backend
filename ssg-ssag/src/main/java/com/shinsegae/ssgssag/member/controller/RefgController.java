@@ -66,13 +66,13 @@ public class RefgController {
 		int result = service.add(vo.getIng_name(), vo.getExpire_date(), curid);
 		if (result == 0) {
 			out.print("<script>");
-			out.print("alert('재료명을 다시 입력해주세요.');");
+//			out.print("alert('재료명을 다시 입력해주세요.');");
 			out.print(s);
 			out.print("</script>");
 		}
 		else if (result == 1) {
 			out.print("<script>");
-			out.print("alert('이미 냉장고에 있는 재료입니다.');");
+//			out.print("alert('이미 냉장고에 있는 재료입니다.');");
 			out.print(s);
 			out.print("</script>");
 		}

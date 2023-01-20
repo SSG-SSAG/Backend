@@ -88,7 +88,7 @@ public class RecipeVO {
 //		this.amount = 10;
 //		this.pageNum = 1;
 		this.type = "all";
-		this.sort = "name";
+		this.sort = "like";
 		this.curpage = 1;
 	}
 	

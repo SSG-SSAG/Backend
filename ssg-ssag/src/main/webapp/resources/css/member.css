@@ -22,3 +22,7 @@
 .member-submit-btn:hover {
 	background: rgba(163, 144, 122, 0.8);
 }
+
+.member-input-box {
+	height: 3vh;
+}

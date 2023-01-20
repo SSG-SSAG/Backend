@@ -51,9 +51,9 @@
 			        </c:if>
            			<c:if test="${fn:length(list) != 0}">
 	        			<h6>냉장고에 있는 재료로 레시피 검색해서 요리하는건 어떠세요? 😋</h6>
-	        			<div style="display: inline-block;">
+	        			<div class="rfg-box-container">
 	        				<c:forEach var="vo" items="${list }" varStatus="status">
-								<div class="card rfg-card" style="display: inline-block; width:150px; margin-left:5px;">
+										<div class="card rfg-card" style="display: inline-block; width:150px; margin-left:5px;">
 									<h4 style="margin: 0;">${vo.ing_name }</h4>
 									<c:if test="${vo.over eq 'true' }">
 										<h5 style="background-color:#FFB6C1">유통기한지남</h5>
@@ -67,7 +67,9 @@
 							</c:forEach>
 						</div>
 					</c:if>
-					<input id="openBtn" type="button" value="추가" onclick="openPop();" style="align-items: center;">
+					<button id="openBtn" onclick="openPop();" style="align-items: center;" class="cart-add-btn">
+						<h4>추가</h4>
+					</button>
 				</div>
 				
         	</div>

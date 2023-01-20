@@ -57,17 +57,17 @@
          </div>
 				<c:if test="${not empty currentUser.user_no}">
 					<div class="card step-recipe-ing-card" onclick="page(${currentUser.user_no}, 1, ${recipeVO.recipe_id } );">
-						장바구니로 쓰윽
+						<h4>장바구니로 쓰윽</h4>
 					</div>
 				</c:if>
 				</div>     
         <div class="ing-list-container" >
 			<c:forEach var="vo" items="${list_notmine }" varStatus="status">
 				<div class="card step-card" style="display: flex; flex-direction: row;">
-					<div class="step-card-body">
-				    <p class="step-desc-p">${vo.ing_name}</p>
+					<div class="ing-list-card-body">
+				    <p class=ing-name>${vo.ing_name}</p>
 				    <c:if test="${not empty currentUser.user_no}">
-				    	<button onclick="ssgone('${vo.ing_id}', '${currentUser.user_no }','${recipeVO.recipe_id  }','${recipeVO.recipe_name  }');">쓱</button>				
+				    	<button class="ing-ssg-btn" onclick="ssgone('${vo.ing_id}', '${currentUser.user_no }','${recipeVO.recipe_id  }','${recipeVO.recipe_name  }');">쓱</button>				
 						</c:if>
 					</div>
 				</div>

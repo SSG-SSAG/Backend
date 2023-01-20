@@ -121,107 +121,22 @@
 	content: "삭제";
 }
 
-/*
-요리 순서 페이지
-선택한 요리 관련 정보
-.step-tag-container {
-	width: 400px;
-	height: 200px;
-	display: flex;
-	flex-direction: column;
-	margin-left: -10px;
-	padding-top: 20px;
-}
-
-.step-tag-card{
-	width: 400px;
-	height: 50px;
-	margin-bottom: 1vh;
-	padding: 1.2vh 1vw;
-	border: 1px solid black;
-}
-
-.step-tag-desc-box {
-	padding: 0.3vh 0.5vw;
-	width: 60%;
-	height: 100%;
-}
-
-.step-list-container {
-	width: 100%;
-	height: 53vh;
-	padding-top: 2vh;
-	overflow-y: scroll;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.step-list-container::-webkit-scrollbar {
-	width: 10px;
-}
-
-.step-list-container::-webkit-scrollbar-thumb {
-	background-color: rgba(163, 144, 122, 0.8);
-	border-radius: 10px;
-}
-
-.step-list-container::-webkit-scrollbar-track {
-	background-color: rgba(163, 144, 122, 0.4);
-	border-radius: 10px;
-}
-
-레시피 재료 목록 페이지
-.ing-recipe-container {
-	width: 400px;
-	height: 22vh;
-	display: flex;
-	justify-content: cetner;
-	align-items: end;
-	margin-left: -13px;
-}
-
-.rfg-list-container {
-	width: 100%;
-	height: 60vh;
-	padding-top: 2vh;
-	margin-top: 2vh;
-	overflow-y: scroll;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.rfg-list-container::-webkit-scrollbar {
-	width: 10px;
-}
-
-.rfg-list-container::-webkit-scrollbar-thumb {
-	background-color: rgba(163, 144, 122, 0.8);
-	border-radius: 10px;
-}
-
-.rfg-list-container::-webkit-scrollbar-track {
-	background-color: rgba(163, 144, 122, 0.4);
-	border-radius: 10px;
-}
-
-.rfg-card {
-	display: inline-block;
-	width: 400px;
-	height: 80px;
-	margin-bottom: 8px;
-	padding: 15px;
-	cursor: pointer;
-}
-
-.rfg-card:hover {
+.cart-add-btn {
+	background: #ffffff;
+	width: 5vw;
+	border: none;
+	border-radius: 15px;
 	box-shadow: 2px 2px 2px rgba(163, 144, 122, 0.5);
-	transform: scale(1.02);
-	z-index: 100;
 }
 
-.space-strip {
-	margin: 0;
-	padding: 0;
-} */
+.cart-add-btn:hover {
+	background: #fdbe00;
+	color: #ffffff;
+}
+
+.rfg-box-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin: auto;
+}
+

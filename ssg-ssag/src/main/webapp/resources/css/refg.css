@@ -61,7 +61,7 @@
 
 .rfg-list-container {
 	width: 100%;
-	height: 80vh;
+	height: 70vh;
 	padding-top: 2vh;
 	margin-top: 2vh;
 	display: flex;
@@ -114,7 +114,8 @@
 }
 
 .mytagdelete:hover {
-	background-color: red;
+	background-color: #df1616;
+	border-radius: 5px;
 }
 
 .mytagdelete:hover span:after {
@@ -122,21 +123,21 @@
 }
 
 .cart-add-btn {
-	background: #ffffff;
-	width: 5vw;
+	background: #fdbe00;
+	color: #ffffff;
+	width: 10vw;
 	border: none;
-	border-radius: 15px;
+	border-radius: 10px;
 	box-shadow: 2px 2px 2px rgba(163, 144, 122, 0.5);
 }
 
 .cart-add-btn:hover {
-	background: #fdbe00;
-	color: #ffffff;
+	opacity: 0.8;
 }
 
 .rfg-box-container {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	margin: auto;
+	width: 100%;
+	heigth: 60vh;
+	margin-left: 1vw;
 }
 

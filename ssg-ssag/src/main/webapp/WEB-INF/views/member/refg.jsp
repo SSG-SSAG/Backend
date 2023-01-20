@@ -37,13 +37,17 @@
 							</div>
 			     		</div>
 			     <!--팝업 버튼 영역-->
-					     <div class="popup_btn" style="float: bottom; margin-top: 200px;">
-					          <a href="javascript:addBtn();">추가</a>
-					          <a href="javascript:closePop();">닫기</a>
-					     </div>
+					     <div class="popup-btn-contatiner" style="float: bottom; margin-top: 200px;">
+			     		<div class="popup-add">
+			          <a href="javascript:addBtn();"><h4>추가</h4></a>
+			     		</div>
+			     		<div class="popup-close">
+			          <a href="javascript:closePop();" class="popup-close"><h4>닫기</h4></a>
+			     		</div>
+			     </div>
 			  		</div>
 				</div>
-				<div class="rfg-list-container ccenter-layout">
+				<div class="rfg-list-container">
 	        		<h3>🍴${currentUser.name }님의 냉장고🍴</h3>
 		            <c:if test="${fn:length(list) == 0}">
 			        	<h5 style="color:#FFB6C1;">아직 냉장고에 아무 것도 없네요 😥</h5>
@@ -67,9 +71,11 @@
 							</c:forEach>
 						</div>
 					</c:if>
+				</div>
+				<div class="rcenter-layout" style="margin-top: 2vh;">
 					<button id="openBtn" onclick="openPop();" style="align-items: center;" class="cart-add-btn">
 						<h4>추가</h4>
-					</button>
+					</button>				
 				</div>
 				
         	</div>
